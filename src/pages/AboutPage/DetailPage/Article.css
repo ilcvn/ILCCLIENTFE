@@ -1,0 +1,90 @@
+/* Định dạng tổng thể cho bài viết */
+.article-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tiêu đề */
+.article-content h2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Đoạn văn */
+.article-content p {
+  font-size: 16px;
+}
+
+/* Hình ảnh */
+.article-content img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  margin: 16px 0;
+}
+
+/* Video */
+.article-content video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  margin: 16px 0;
+  border-radius: 8px;
+}
+
+/* Danh sách */
+.article-content ul {
+  background-color: #f5f5f5;
+  margin: 8px 0;
+  padding: 16px;
+  font-size: 16px;
+  list-style-type: disc;
+  border-radius: 8px;
+}
+
+.article-content ul li {
+  margin: 8px 0;
+}
+
+/* Liên kết */
+.article-content a {
+  color: #07689f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.article-content a:hover {
+  text-decoration: underline;
+}
+
+.article-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Iframe Video */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin: 16px 0;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Hình ảnh */
+.article-content img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  margin: 16px 0;
+  border-radius: 8px;
+}

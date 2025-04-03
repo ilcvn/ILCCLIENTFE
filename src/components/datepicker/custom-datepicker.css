@@ -1,0 +1,19 @@
+/* Áp dụng cho thẻ bao ngoài popup (popper) */
+.custom-popper {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  
+  /* Áp dụng cho phần lịch (calendar) */
+  .custom-calendar {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ẩn mũi tên nếu không cần thiết */
+  .custom-calendar .react-datepicker__triangle {
+    display: inline;
+  }
+  

@@ -1,0 +1,191 @@
+import React, { useContext, useEffect, useState } from "react";
+import clsx from "clsx";
+import { MoveRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import ConsultationForm from "./ConsultationForm";
+import { LanguageContext } from "../../context/LanguageContext";
+import { getArticles } from "../../api/Article/article";
+import { Link } from "react-router-dom";
+
+const Footer = () => {
+  const [articles, setArticles] = useState([]);
+  const [pagination, setPagination] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { t } = useTranslation();
+  const { language, changeLanguage } = useContext(LanguageContext);
+  const [articlesLn, setarticlesLn] = useState([]);
+
+  const address=[
+  
+    {
+      text: t("footer.addressOffice2Text"),
+      id: 5,
+      name: t("footer.addressOffice2Label"),
+    },
+    {
+      text: t("footer.addressOffice1Text"),
+      id: 5,
+      name: t("footer.addressOffice1Label"),
+    },
+  ]
+  const companyLinks = [
+    {
+      text: t("footer.addressText"),
+      id: 1,
+      name: t("footer.addressLabel"),
+    },
+    {
+      text: "0983 285 499",
+      id: 2,
+      name: t("footer.hotlineLabel"),
+    },
+    {
+      text: "info@ilcvn.vn",
+      id: 3,
+      name: t("footer.emailLabel"),
+    },
+    {
+      text: t("footer.workingTimeText"),
+      id: 4,
+      name: t("footer.workingTimeLabel"),
+    },
+    {
+      text: t("0318760066"),
+      id: 4,
+      name:t("footer.tax"),
+    },
+
+
+  ];
+
+  const searchQuery = "";
+  const type = "SERVICE";
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        const currentLanguage = language.toUpperCase() || "VI";
+        const res = await getArticles(
+          searchQuery,
+          currentPage,
+          6,
+          type,
+          currentLanguage
+        );
+        const {articles, pagination} = res.data.data;
+        const firstFive = articles.slice(0, 3); 
+
+        setArticles(firstFive);
+        setPagination(pagination);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, [searchQuery, currentPage, language]);
+
+  const createSlug = (title) => {
+    return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
+  };
+  return (
+    <footer className="bg-brandPrimary text-white py-10 px-6 md:px-12">
+      <div className="container mx-auto flex flex-col md:flex-row flex-wrap gap-8 md:gap-12">
+        {/* Cột 1: Liên hệ */}
+        <div className="w-full md:w-[45%] lg:w-[20%]">
+          <h2 className="text-xl font-semibold">{t("footer.contactTitle")}</h2>
+          <hr className="border-t-2 mt-2" />
+          <nav className="mt-4 space-y-3 text-md">
+            {companyLinks.map((link) => (
+              <p key={link.id}>
+                <span
+                  className={clsx("font-bold", {
+                    "whitespace-pre-line": link.id === 4,
+                  })}
+                >
+                  {link.name}
+                </span>{" "}
+                {link.text}
+              </p>
+            ))}
+          </nav>
+        </div>
+
+        {/* Cột 2: Hỗ trợ */}
+        <div className="w-full md:w-[45%] lg:w-[20%]">
+          <h2 className="text-xl font-semibold">{t("footer.supportTitle")}</h2>
+          <hr className="border-t-2 mt-2" />
+          <nav className="mt-4 space-y-3">
+            {articles?.length > 0 &&
+              articles.map((article, index) => {
+                // Tạo slug động từ title
+                const linkSlug = createSlug(article.title);
+                const linkTo = `/dich-vu/article.${linkSlug}=${article.id}`;
+
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 hover:translate-x-2 duration-300 hover:text-brandSecondary"
+                  >
+                    <MoveRight className="shrink-0" />
+                    <Link
+                      to={linkTo}
+                      className="focus:outline-none focus:ring-2 focus:ring-blue-300 rounded transition-all duration-300 ease-in-out hover:text-orange-400 hover:underline hover:font-bold"
+                    >
+                      {article.title}
+                    </Link>
+                  </div>
+                );
+              })}
+          </nav>
+          <br />
+          <h2 className="text-xl font-semibold">{t("footer.office")}</h2>
+          <hr className="border-t-2 mt-2" />
+          <nav className="mt-4 space-y-3 text-md">
+            {address.map((link) => (
+              <p key={link.id}>
+                <span
+                  className={clsx("font-bold", {
+                    "whitespace-pre-line": link.id === 5,
+                  })}
+                >
+                  {link.name}
+                </span>{" "}
+                {link.text}
+              </p>
+            ))}
+          </nav>
+        </div>
+
+        {/* Cột 3: Đăng ký tư vấn */}
+        <div className="w-full md:w-[45%] lg:w-[20%]">
+          <h2 className="text-xl font-semibold">{t("footer.consultTitle")}</h2>
+          <hr className="border-t-2 mt-2" />
+          <ConsultationForm />
+        </div>
+
+        {/* Cột 4: Bản đồ */}
+        <div className="w-full md:w-[45%] lg:w-[20%]">
+          <h2 className="text-xl font-semibold">{t("footer.mapTitle")}</h2>
+          <hr className="border-t-2 mt-2" />
+          <div className="mt-4 w-full h-60">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4735.498545208676!2d106.79961857581768!3d10.808763089342031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317526c6ef9fa41b%3A0x8514695d6a4ba34b!2zUGFyayBSaXZlcnNpZGUsIDEwMSBCxrBuZyDDlG5nIFRob8OgbiwgUGjGsOG7nW5nIFBow7ogSOG7r3UsIFRo4bunIMSQ4bupYywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e1!3m2!1svi!2s!4v1740813341091!5m2!1svi!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
