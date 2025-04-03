@@ -80,12 +80,12 @@ function HomePage() {
 
       <div className="py-4 invisible">=========SPACING============</div>
 
-      <ContentSection
+      {/* <ContentSection
         header={t("homepage.contentSection.knowledge.header")}
         content={t("homepage.contentSection.knowledge.content")}
       />
 
-      <ILCKnowledgeSection />
+      <ILCKnowledgeSection /> */}
 
       <div className="py-4 invisible">=========SPACING============</div>
 

@@ -91,9 +91,11 @@ const SliderCardsItem = ({
     const fetchMembers = async () => {
       try {
         const response = await getAllMember();
+        
         const memberTeam = response.data.data.members.filter(
-          (member) => member.isShow === true
+          (member) => (member.isShow === true /*&& member.department.includes('BOARD_OF_DIRECTORS')*/)
         );
+        
 
         const order = [
           "LAWYER",
@@ -142,7 +144,7 @@ const SliderCardsItem = ({
           (a, b) => new Date(b.updateDate) - new Date(a.updateDate)
         );
         setSliderArrayLength(articlesLeague.length);
-        console.log("articles", sortedArticles.length);
+        
         setArticles(sortedArticles);
         setPagination(pagination);
       } catch (error) {

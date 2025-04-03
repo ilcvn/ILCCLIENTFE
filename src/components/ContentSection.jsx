@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContentSection({ header, content }) {
   return (
-    <div className="max-w-7xl mx-auto text-black w-full md:w-1/2 lg:w-1/3 text-center px-1">
+    <div className="max-w-7xl mx-auto text-black w-full md:w-1/2 lg:w-5/12 text-center px-1">
       <h2 className="text-2xl lg:text-4xl font-extrabold text-brandSecondary mb-2">
         {header}
       </h2>

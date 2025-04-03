@@ -97,7 +97,7 @@ const resources = {
           knowledge: {
             header: "NGHIÊN CỨU LUẬT",
             content: "Cùng cộng đồng phát triển",
-            company: "Chúng tôi đã có cơ hội hợp tác với hơn 10 đối tác",
+            company: "Chúng tôi đã có một hệ sinh thái vô cùng lớn mạnh",
             Strategic: "Đối Tác Chiến Lược",
             mediaPartners: "Đối tác truyền thông",
             mediaCollaboration:
@@ -165,6 +165,11 @@ const resources = {
         PRESIDENT: "Viện Trưởng",
         CHAIRPERSON: "Chủ Tịch Hội đồng",
         VICE_CHAIRMAN: "Phó Chủ Tịch Hội đồng",
+        GROUP_PRESIDENT: "Trưởng Ban",
+        GROUP_VICE_PRESIDENT: "Phó Ban",
+        ROOM_PRESIDENT: "Trưởng Phòng",
+        ROOM_VICE_PRESIDENT: 'Phó Phòng',
+        NA: 'Chưa xác định',
       },
 
       titles: {
@@ -287,7 +292,7 @@ const resources = {
             header: "LEGAL KNOWLEDGE",
             content: "Growing together with the community",
             company:
-              "We have had the opportunity to collaborate with more than 10 partners",
+              "We have developed a powerful and rapidly growing ecosystem that continues to expand and strengthen.",
             Strategic: "Strategic Partners",
             mediaPartners: "Media Partners",
             mediaCollaboration:
@@ -356,6 +361,11 @@ const resources = {
         PRESIDENT: "President",
         CHAIRPERSON: "Chairperson",
         VICE_CHAIRMAN: "Vice Chairman",
+        GROUP_PRESIDENT: "Head of the Department",
+        GROUP_VICE_PRESIDENT: "Vice Head of the Department",
+        ROOM_PRESIDENT: "Department Manager",
+        ROOM_VICE_PRESIDENT: 'Assistant Manager',
+        NA: 'Unknown',
       },
       titles: {
         LAWYER: "Lawyer",
@@ -469,7 +479,7 @@ const resources = {
           knowledge: {
             header: "法律知识",
             content: "与社区共同成长",
-            company: "我们有机会与超过 10 个合作伙伴合作",
+            company: "我们拥有一个非常强大且快速发展的生态系统",
             Strategic: "战略合作伙伴",
             mediaPartners: "媒体合作伙伴",
             mediaCollaboration: "我们有机会与许多有效的媒体合作伙伴合作",
@@ -535,6 +545,12 @@ const resources = {
         PRESIDENT: "院长",
         CHAIRPERSON: "董事长",
         VICE_CHAIRMAN: "副董事长",
+        GROUP_PRESIDENT: "部门负责人",
+        GROUP_VICE_PRESIDENT: "部门副负责人",
+        ROOM_PRESIDENT: "部门经理",
+        ROOM_VICE_PRESIDENT: '副科长',
+        NA: '未知',
+        
       },
       titles: {
         LAWYER: "律师",

@@ -47,7 +47,7 @@ export default function AboutPage() {
         setLoading(true);
         const res = await getAllMember();
         const {members, pagination} = res.data.data;
-
+        //console.log(members);
         const memberLeague = members.filter(
           (member) => member.language.toLowerCase() === language.toLowerCase()
         );
@@ -95,15 +95,38 @@ export default function AboutPage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       {optionsToRender.map((option, index) => {
-        const filteredMembers = memberLn.filter((member) => {
+        const coppiedMembers = [...members];
+        
+        let filteredMembers = coppiedMembers.filter((member) => {
+          
+
           if (member.department) {
-            const index = member.department.indexOf(option.value);
+
+            let departments = member.department.split(", ");
+            const index = departments.indexOf(option.value);
             if (index !== -1) {
-              member.role = member.role.split(", ")[index];
+                let roles = member.role.split(", ");
+                if (roles.length > 1){
+                  [roles[0], roles[index]] = [roles[index], roles[0]];
+                  [departments[0], departments[index]] = [departments[index], departments[0]];
+                }
+                member.role = roles.join(', ');
+                member.department = departments.join(', ');
               return member;
             }
           }
-        });
+        }).map((member) => ({ ...member }));;
+        
+        if(option.value === 'BOARD_OF_DIRECTORS'){
+          const roleOrder = ['PRESIDENT', 'VICE_PRESIDENT', 'CHAIRPERSON', 'VICE_CHAIRMAN', 'MEMBER'];
+
+          filteredMembers = filteredMembers.sort((a, b) => {
+            const roleA = a.role.split(', ')[0].trim();
+            const roleB = b.role.split(', ')[0].trim();
+            
+            return roleOrder.indexOf(roleA) - roleOrder.indexOf(roleB);
+          });
+        }
 
         return (
           <LayoutOverviewPage

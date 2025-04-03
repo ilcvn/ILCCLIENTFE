@@ -23,6 +23,7 @@ export default function MemberPage() {
       try {
         const response = await getMemberById(newslug);
         // Lưu ý: dữ liệu thành viên nằm trong response.data.data
+        console.log(response.data.data);
         setMember(response.data.data);
       } catch (err) {
         setError(err);
@@ -88,6 +89,7 @@ export default function MemberPage() {
 
         {/* for tung cai cho nay */}
         <div className="max-w-7xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
+          {/* StudyStudy */}
           <div className="">
             <h2 className="text-2xl font-semibold text-brandSecondary">
               QUÁ TRÌNH HỌC TẬP
@@ -121,6 +123,80 @@ export default function MemberPage() {
             </ul>
           </div>
         </div>
+
+        <div className="max-w-7xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
+            {/* work */}
+          <div className="">
+            <h2 className="text-2xl font-semibold text-brandSecondary">
+              QUÁ TRÌNH CÔNG TÁC
+            </h2>
+            <ul className="mt-4 space-y-4">
+              {/* {member.timeline?.map((event, index) => ( */}
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+              {/* )) || <p className="text-gray-500">Chưa có thông tin</p>} */}
+            </ul>
+          </div>
+        </div>
+
+            {/* experience */}
+        <div className="max-w-7xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
+          <div className="">
+            <h2 className="text-2xl font-semibold text-brandSecondary">
+              KINH NGHIỆM TƯ VẤN
+            </h2>
+            <ul className="mt-4 space-y-4">
+              {/* {member.timeline?.map((event, index) => ( */}
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+
+              <li className="border-l-4 border-gray-300 pl-6 relative">
+                <div className="w-3 h-3 border-1 border-gray-500 rounded-full bg-brandSecondary absolute -left-2 top-1.5"></div>
+                <p className="text-lg font-bold">{"2025"}</p>
+                <p className="text-gray-600">{"React 2025"}</p>
+              </li>
+              {/* )) || <p className="text-gray-500">Chưa có thông tin</p>} */}
+            </ul>
+          </div>
+        </div>
+
+        
       </div>
     </div>
   );

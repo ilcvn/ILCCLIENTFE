@@ -25,7 +25,9 @@ export default function LayoutOverviewPage({
 
   // Hàm để tách vai trò và tìm tên vai trò
   const getRoleTitles = (roles) => {
-    const roleValues = roles.split(",").map((role) => role.trim());
+    //get only 1 role
+    const roleValues = [roles.split(",").map((role) => role.trim())[0]];
+    
     const roleNames = roleValues.map((roleValue) => {
       const roleFound = ChangeRole.find((item) => item.value === roleValue);
       return roleFound ? roleFound.title : "Chưa có vai trò";
