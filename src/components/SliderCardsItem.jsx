@@ -3,11 +3,11 @@ import Card from "./Card";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import CardAvatar from "./CardAvatar";
 import CardVideo from "./CardVideo";
-import {getAllMember} from "../api/Nember/nember";
 import {getArticles} from "../api/Article/article";
 import {LanguageContext} from "../context/LanguageContext";
 import {getTitles} from "../helper/TitleMember";
 import {useTranslation} from "react-i18next";
+import { getMembers } from "../api/Nember/nember";
 
 const videosArray = [
   {
@@ -90,7 +90,7 @@ const SliderCardsItem = ({
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await getAllMember();
+        const response = await getMembers();
         
         const memberTeam = response.data.data.members.filter(
           (member) => (member.isShow === true /*&& member.department.includes('BOARD_OF_DIRECTORS')*/)

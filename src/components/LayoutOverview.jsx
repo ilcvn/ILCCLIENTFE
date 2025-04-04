@@ -18,16 +18,23 @@ export default function LayoutOverviewPage({
   const ChangeRole = getRoles();
   const ChangeTitle = getTitles();
 
+  // Kiểm tra pagination.total và pagination.limit
+  console.log("Total:", pagination.total);
+  console.log("Limit:", pagination.limit);
+
+  // Số lượng thành viên mỗi trang là 8
+  const membersPerPage = 8;
+
   // Tính toán tổng số trang
   const totalPages = pagination.total
-    ? Math.ceil(pagination.total / pagination.limit)
+    ? Math.ceil(pagination.total / membersPerPage)
     : 0;
 
   // Hàm để tách vai trò và tìm tên vai trò
   const getRoleTitles = (roles) => {
     //get only 1 role
     const roleValues = [roles.split(",").map((role) => role.trim())[0]];
-    
+
     const roleNames = roleValues.map((roleValue) => {
       const roleFound = ChangeRole.find((item) => item.value === roleValue);
       return roleFound ? roleFound.title : "Chưa có vai trò";
@@ -49,7 +56,6 @@ export default function LayoutOverviewPage({
 
         <div className="flex flex-wrap justify-center gap-2 mt-3 mb-16 sm:gap-3 xl:gap-4 sm:mt-8 xl:mt-12">
           {data.map((member) => {
-            // Lấy vai trò và học vị cho từng thành viên
             const roleName = member.role
               ? getRoleTitles(member.role)
               : "Chưa có vai trò";
@@ -73,14 +79,11 @@ export default function LayoutOverviewPage({
                     <h3 className="font-bold text-lg mt-3">
                       {member.fullName}
                     </h3>
-                    <p className="text-sm text-gray-600">{roleName}</p>{" "}
-                    {/* Hiển thị vai trò đã tìm được */}
-                    <p className="text-xs text-gray-500">{titleName}</p>{" "}
-                    {/* Hiển thị học vị */}
+                    <p className="text-sm text-gray-600">{roleName}</p>
+                    <p className="text-xs text-gray-500">{titleName}</p>
                   </div>
                 </div>
 
-                {/* Phần hiển thị khi hover */}
                 <div className="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex flex-col justify-between h-full">
                     <div className="text-white text-center p-4">
@@ -103,38 +106,40 @@ export default function LayoutOverviewPage({
         </div>
 
         {/* Phần phân trang */}
-        <div className="flex justify-center items-center gap-2">
-          <button
-            onClick={() => onPageChange(pagination.page - 1)}
-            disabled={pagination.page === 1}
-            className="px-3 py-1 border rounded-full disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            <MoveLeft className="text-neutralGrey" />
-          </button>
-          {[...Array(5)].map((_, index) => {
-            const pageNum = index + 1;
-            return (
-              <button
-                key={pageNum}
-                onClick={() => onPageChange(pageNum)}
-                className={`px-3 py-1 text-neutralGrey border rounded-full ${
-                  pagination.page === pageNum
-                    ? "font-bold bg-brandSecondary text-white"
-                    : ""
-                }`}
-              >
-                {pageNum}
-              </button>
-            );
-          })}
-          <button
-            onClick={() => onPageChange(pagination.page + 1)}
-            disabled={pagination.page === totalPages}
-            className="px-3 py-1 border rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <MoveRight className="text-neutralGrey" />
-          </button>
-        </div>
+        {pagination.total > 8 && (
+          <div className="flex justify-center items-center gap-2">
+            <button
+              onClick={() => onPageChange(pagination.page - 1)}
+              disabled={pagination.page === 1}
+              className="px-3 py-1 border rounded-full disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <MoveLeft className="text-neutralGrey" />
+            </button>
+            {[...Array(totalPages)].map((_, index) => {
+              const pageNum = index + 1;
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => onPageChange(pageNum)}
+                  className={`px-3 py-1 text-neutralGrey border rounded-full ${
+                    pagination.page === pageNum
+                      ? "font-bold bg-brandSecondary text-white"
+                      : ""
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              );
+            })}
+            <button
+              onClick={() => onPageChange(pagination.page + 1)}
+              disabled={pagination.page === totalPages}
+              className="px-3 py-1 border rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <MoveRight className="text-neutralGrey" />
+            </button>
+          </div>
+        )}
       </div>
     )
   );

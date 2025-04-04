@@ -1,0 +1,8 @@
+# VITE_SERVER_URL = https://ilc-be.vercel.app/api
+# VITE_SERVER_URL = http://localhost:3000/api/
+
+VITE_SERVER_URL = https://ilcbe-azure2212s-projects.vercel.app/api/
+VITE_SUPABASE_URL = https://rjqidvdyiufbcykpuauw.supabase.co
+
+VITE_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcWlkdmR5aXVmYmN5a3B1YXV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwNDA5NTAsImV4cCI6MjA1NzYxNjk1MH0.azBIDGXv_UDdjxhBJufSTwuEPHJYpscXUdiWzo_vOK8
+
