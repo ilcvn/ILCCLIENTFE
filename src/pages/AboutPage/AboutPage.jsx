@@ -47,6 +47,7 @@ export default function AboutPage() {
         setLoading(true);
         const res = await getAllMember();
         const {members, pagination} = res.data.data;
+        console.log(pagination);
         //console.log(members);
         const memberLeague = members.filter(
           (member) => member.language.toLowerCase() === language.toLowerCase()
@@ -97,8 +98,7 @@ export default function AboutPage() {
       {optionsToRender.map((option, index) => {
         const coppiedMembers = [...members];
         
-        let filteredMembers = coppiedMembers.filter((member) => {
-          
+        let filteredMembers = coppiedMembers.filter((member) => {    
 
           if (member.department) {
 
@@ -126,6 +126,14 @@ export default function AboutPage() {
             
             return roleOrder.indexOf(roleA) - roleOrder.indexOf(roleB);
           });
+
+          const new_pagination = {
+            page: 0,   
+            limit: 8,   
+            total: filteredMembers.length  
+          };
+          //console.log(new_pagination);
+          //setPagination(new_pagination);
         }
 
         return (
