@@ -194,6 +194,7 @@ const resources = {
           "Ban Công Tác Xã Hội Và Hỗ Trợ Doanh Nghiệp, Doanh Nhân",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Ban Đào Tạo Và Phát Triển Nguồn Nhân Lực",
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Ban Hợp Tác Đầu Tư Và Truyền Thông' ,
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Ban Kinh Tế Số, Trí Tuệ Nhân Tạo Và Phát Triển Doanh Nghiệp",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -401,6 +402,7 @@ const resources = {
           "Social Work and Business Support Board",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Human Resource Training and Development Department",
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Investment and Communication Cooperation Department' ,
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Department of Digital Economy, Artificial Intelligence and Business Development",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -595,6 +597,7 @@ const resources = {
         SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD: "社会工作与商业支持委员会",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "人力资源培训与发展部",
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: '投资与传播合作部',
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "数字经济、人工智能与商业发展部",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
