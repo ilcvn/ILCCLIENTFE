@@ -23,14 +23,13 @@ import { ToastContainer } from "react-toastify";
 const routesConfig = [
   { path: "/", element: <HomePage /> },
   { path: "/tong-quan", element: <AboutPage /> },
-  { path: "/tong-quan/:slug", element: <DetailPage /> },
   { path: "/dich-vu", element: <ServicePage /> },
   { path: "/dich-vu/:slug", element: <DetailPage /> },
   { path: "/tin-tuc", element: <NewsPage /> },
   { path: "/tin-tuc/:slug", element: <DetailPage /> },
   { path: "/doi-tac", element: <KnowledgePage /> },
   { path: "/lien-he", element: <ContactPage /> },
-  { path: "/thanh-vien/:slug", element: <MemberPage /> },
+  { path: "/tong-quan/:slug", element: <MemberPage /> },
   { path: "/tim-kiem", element: <SearchPage /> },
   { path: "/tim-kiem/:slug", element: <DetailPage /> },
 ];

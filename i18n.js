@@ -168,16 +168,22 @@ const resources = {
         GROUP_PRESIDENT: "Trưởng Ban",
         GROUP_VICE_PRESIDENT: "Phó Ban",
         ROOM_PRESIDENT: "Trưởng Phòng",
-        ROOM_VICE_PRESIDENT: 'Phó Phòng',
-        NA: 'Chưa xác định',
+        ROOM_VICE_PRESIDENT: "Phó Phòng",
+        NA: "Chưa xác định",
       },
 
       titles: {
+        NA: "------",
+        BACHELOR_OF_ECONOMICS_AND_LAW: "Cử nhân Kinh tế - Luật",
+        BACHELOR_OF_ACCOUNTING: "Cử nhân Kế toán",
+        BACHELOR_OF_BUSINESS_ADMINISTRATION: "Cử nhân Quản trị kinh doanh",
         LAWYER: "Luật sư",
         MASTER: "Thạc sĩ",
         DOCTORATE: "Tiến sĩ",
         ASSOCIATE: "Phó Giáo sư",
         PROFESSOR: "Giáo sư",
+        ARBITRATOR: "Trọng tài viên",
+        JUDGE: "Thẩm phán",
       },
       about: {
         BOARD_OF_DIRECTORS: "Ban Lãnh Đạo",
@@ -188,6 +194,7 @@ const resources = {
           "Ban Công Tác Xã Hội Và Hỗ Trợ Doanh Nghiệp, Doanh Nhân",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Ban Đào Tạo Và Phát Triển Nguồn Nhân Lực",
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Ban Hợp Tác Đầu Tư Và Truyền Thông' ,
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Ban Kinh Tế Số, Trí Tuệ Nhân Tạo Và Phát Triển Doanh Nghiệp",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -195,8 +202,13 @@ const resources = {
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Ban Pháp Luật Và Định Chế Thương Mại",
         CHIEF_OF_STAFF: "Văn Phòng Viện",
-        Sub_header:"Viện Khoa học pháp lý và Phát triển doanh nghiệp "
-
+        Sub_header: "Viện Khoa học pháp lý và Phát triển doanh nghiệp ",
+      },
+      detailMenber: {
+        MEMBER_INFO: "Thông Tin thành viên",
+        EDUCATION: "QUÁ TRÌNH HỌC TẬP",
+        WORK_EXPERIENCE: "QUÁ TRÌNH CÔNG TÁC",
+        CONSULT_EXPERIENCE: "Kinh Nghiệm Tư vấn",
       },
     },
   },
@@ -364,15 +376,22 @@ const resources = {
         GROUP_PRESIDENT: "Head of the Department",
         GROUP_VICE_PRESIDENT: "Vice Head of the Department",
         ROOM_PRESIDENT: "Department Manager",
-        ROOM_VICE_PRESIDENT: 'Assistant Manager',
-        NA: 'Unknown',
+        ROOM_VICE_PRESIDENT: "Assistant Manager",
+        NA: "Unknown",
       },
       titles: {
+        NA: "------",
+        BACHELOR_OF_ECONOMICS_AND_LAW: "Bachelor of Economics and Law",
+        BACHELOR_OF_ACCOUNTING: "Bachelor of Accounting",
+        BACHELOR_OF_BUSINESS_ADMINISTRATION:
+          "Bachelor of Business Administration",
         LAWYER: "Lawyer",
         MASTER: "Master",
         DOCTORATE: "Doctorate",
         ASSOCIATE: "Associate Professor",
         PROFESSOR: "Professor",
+        ARBITRATOR: "Arbitrator",
+        JUDGE: "Judge",
       },
       about: {
         BOARD_OF_DIRECTORS: "Board of Directors",
@@ -383,6 +402,7 @@ const resources = {
           "Social Work and Business Support Board",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Human Resource Training and Development Department",
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Investment and Communication Cooperation Department' ,
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Department of Digital Economy, Artificial Intelligence and Business Development",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -390,8 +410,13 @@ const resources = {
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Department of Legal Affairs and Commercial Institutions",
         CHIEF_OF_STAFF: "Chief of Staff",
-        Sub_header:"Institute of Legal Science and Business Development"
-
+        Sub_header: "Institute of Legal Science and Business Development",
+      },
+      detailMember: {
+        MEMBER_INFO: "Member Information",
+        EDUCATION: "Education History",
+        WORK_EXPERIENCE: "Work Experience",
+        CONSULT_EXPERIENCE: "Consulting Experience",
       },
     },
   },
@@ -548,16 +573,21 @@ const resources = {
         GROUP_PRESIDENT: "部门负责人",
         GROUP_VICE_PRESIDENT: "部门副负责人",
         ROOM_PRESIDENT: "部门经理",
-        ROOM_VICE_PRESIDENT: '副科长',
-        NA: '未知',
-        
+        ROOM_VICE_PRESIDENT: "副科长",
+        NA: "未知",
       },
       titles: {
+        NA: "------",
+        BACHELOR_OF_ECONOMICS_AND_LAW: "经济与法律学士",
+        BACHELOR_OF_ACCOUNTING: "会计学士",
+        BACHELOR_OF_BUSINESS_ADMINISTRATION: "工商管理学士",
         LAWYER: "律师",
         MASTER: "硕士",
         DOCTORATE: "博士",
         ASSOCIATE: "副教授",
         PROFESSOR: "教授",
+        ARBITRATOR: "仲裁员",
+        JUDGE: "法官",
       },
       about: {
         BOARD_OF_DIRECTORS: "董事会",
@@ -567,13 +597,20 @@ const resources = {
         SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD: "社会工作与商业支持委员会",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "人力资源培训与发展部",
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: '投资与传播合作部',
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "数字经济、人工智能与商业发展部",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
           "经济、财务与国际贸易部",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT: "法律与商业机构部",
         CHIEF_OF_STAFF: "院办公室",
-        Sub_header:"法律科学与企业发展研究院"
+        Sub_header: "法律科学与企业发展研究院",
+      },
+      detailMember: {
+        MEMBER_INFO: "成員信息",
+        EDUCATION: "教育经历",
+        WORK_EXPERIENCE: "工作经历",
+        CONSULT_EXPERIENCE: "咨询经验",
       },
     },
   },

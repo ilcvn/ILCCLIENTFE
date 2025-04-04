@@ -242,7 +242,7 @@ const Header = () => {
                   return (
                     <li
                       key={link.id}
-                      className={clsx(link.children ? "relative group" : "")}
+                      className={clsx(link.children ? "relative group max-w-32 inline-block" : "")}
                     >
                       <Link
                         to={link.path}
@@ -269,7 +269,7 @@ const Header = () => {
                                 to={child.path}
                                 className="block px-4 py-2 hover:bg-brandPrimary hover:text-white text-sm text-neutralGrey font-semibold"
                               >
-                                {child.label}
+                                {t(child.label).toUpperCase()}
                               </Link>
                             </li>
                           ))}
@@ -394,7 +394,7 @@ const Header = () => {
                     className="block text-md font-medium text-black hover:bg-gray-200 w-full p-2"
                     onClick={() => setIsOpen(false)}
                   >
-                    {t(link.label)}
+                    {t(link.label).toUpperCase()}
                   </Link>
 
                   {link.children && (
@@ -422,7 +422,7 @@ const Header = () => {
                           className="block text-sm text-gray-600 hover:bg-gray-200 w-full p-2 transition-all duration-150"
                           onClick={() => setIsOpen(false)}
                         >
-                          {child.label}
+                          {t(link.label)}
                         </Link>
                       </li>
                     ))}

@@ -18,21 +18,13 @@ export default function LayoutOverviewPage({
   const ChangeRole = getRoles();
   const ChangeTitle = getTitles();
 
-  // Kiểm tra pagination.total và pagination.limit
-  console.log("Total:", pagination.total);
-  console.log("Limit:", pagination.limit);
-
-  // Số lượng thành viên mỗi trang là 8
   const membersPerPage = 8;
 
-  // Tính toán tổng số trang
   const totalPages = pagination.total
     ? Math.ceil(pagination.total / membersPerPage)
     : 0;
 
-  // Hàm để tách vai trò và tìm tên vai trò
   const getRoleTitles = (roles) => {
-    //get only 1 role
     const roleValues = [roles.split(",").map((role) => role.trim())[0]];
 
     const roleNames = roleValues.map((roleValue) => {
@@ -42,9 +34,7 @@ export default function LayoutOverviewPage({
     return roleNames.join(", ");
   };
 
-  // Hàm để tách học vị và tìm tên học vị
   const getTitleNames = (penName) => {
-    const titleValues = penName.split(",").map((title) => title.trim());
     const titleFound = ChangeTitle.find((item) => item.value === penName);
     return titleFound ? titleFound.title : "Chưa có học vị";
   };
@@ -67,7 +57,9 @@ export default function LayoutOverviewPage({
               <div
                 key={member.id}
                 className="relative w-[200px] xl:w-[286px] xl:h-[350px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white"
-                onClick={() => navigate(`/thanh-vien/${member.id}`)}
+                onClick={() =>
+                  navigate(`/tong-quan/${member.fullName}=${member.id}`)
+                }
               >
                 <div className="px-2 py-10 text-center">
                   <img

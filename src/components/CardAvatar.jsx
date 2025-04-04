@@ -49,7 +49,7 @@ export default function CardAvatar({ props = {} }) {
   return (
     <div
       className="text-center cursor-pointer"
-      onClick={language === "vi" ? handleClick : undefined}
+      // onClick={language === "vi" ? handleClick : undefined}
     >
       <img
         src={imgUrl}

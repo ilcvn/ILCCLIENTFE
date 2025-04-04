@@ -8,13 +8,11 @@ const navLinks = [
     dynamicSource: "default",
     dynamicPrefix: "/tong-quan",
     children: [
-      {id: 1, label: "Ban Lãnh Đạo", path: "/tong-quan/BOARD_OF_DIRECTORS"},
-      {id: 2, label: "Hội Đồng Quản Lý Viện", path: "/tong-quan/BOARD_OF_MANAGEMERS"},
-      {id: 3, label: "Hội Đồng Khoa Học", path: "/tong-quan/SCIENTIFIC_COUNCIL"},
-      {id: 4, label: "Hội Đồng Cố Vấn", path: "/tong-quan/ADVISORY_BOARD"},
-      {id: 5, label: "Văn Phòng Và Các Ban", path: "/tong-quan/department"},
-      // {id: 6, label: "Văn phòng đại diện", path: "/tong-quan/office"},
-    ],
+      {id: 1, label: "about.BOARD_OF_DIRECTORS", path: "/tong-quan/BOARD_OF_DIRECTORS"},
+      {id: 2, label: "about.BOARD_OF_MANAGEMERS", path: "/tong-quan/BOARD_OF_MANAGEMERS"},
+      {id: 3, label: "about.SCIENTIFIC_COUNCIL", path: "/tong-quan/SCIENTIFIC_COUNCIL"},
+      {id: 4, label: "about.ADVISORY_BOARD", path: "/tong-quan/ADVISORY_BOARD"},
+      {id: 5, label: "about.CHIEF_OF_STAFF", path: "/tong-quan/department"},    ],
   },
   {
     id: 3,

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import ContentSection from "./ContentSection";
 import CardKnowledge from "./KnowledgeSection/CardKnowledge";

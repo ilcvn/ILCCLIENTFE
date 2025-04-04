@@ -11,11 +11,14 @@ const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
   { value: "SCIENTIFIC_COUNCIL", filterKey: "HDKH" },
   { value: "BOARD_OF_MANAGEMERS", filterKey: "HDQLV" },
   { value: "ADVISORY_BOARD", filterKey: "HDCV" },
-  { value: "SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD", filterKey: "department" },
-  { value: "HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT", filterKey: "department" },
-  { value: "DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT", filterKey: "department" },
-  { value: "DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE", filterKey: "department" },
+
+  { value: 'INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT', filterKey: "department" },
   { value: "LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT", filterKey: "department" },
+  { value: "HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT", filterKey: "department" },
+  { value: "SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD", filterKey: "department" },
+  { value: "DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE", filterKey: "department" },
+  { value: "DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT", filterKey: "department" },
+  
   { value: "CHIEF_OF_STAFF", filterKey: "department" },
 ]
 

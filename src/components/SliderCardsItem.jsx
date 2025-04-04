@@ -91,7 +91,7 @@ const SliderCardsItem = ({
     const fetchMembers = async () => {
       try {
         const response = await getMembers();
-        
+        console.log(response);
         const memberTeam = response.data.data.members.filter(
           (member) => (member.isShow === true /*&& member.department.includes('BOARD_OF_DIRECTORS')*/)
         );
