@@ -25,12 +25,10 @@ const BreadcrumbDynamic = () => {
 
     // Thêm "Tìm kiếm" và "Thành viên"
     map["/tim-kiem"] = t("nav.search");
-    map["/thanh-vien"] = t("nav.member");
 
     return map;
-  }, [t]); // Không đưa `navLinks` vào dependency vì nó không thay đổi
+  }, [t]); 
 
-  // Hàm chuyển slug thành label mặc định (nếu không tìm thấy trong navLabelMap)
   const defaultSlugToLabel = (slug) => {
     slug = decodeURIComponent(slug);
     const equalIndex = slug.indexOf("=");

@@ -5,11 +5,39 @@ import { getMemberById } from "../../api/Nember/nember";
 import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import Logo from "../../assets/hello.png";
+import { getTitles } from "../../helper/TitleMember";
+import { getRoles } from "../../helper/RoleMember";
 
 export default function MemberPage() {
-  const { slug } = useParams(); // Lấy slug từ URL]
+  const { slug } = useParams(); // Lấy slug từ URL
 
-  console.log(slug);
+  const ChangeRole = getRoles(); // Lấy roles từ helper
+  const ChangeTitle = getTitles(); // Lấy titles từ helper
+
+  const getRoleTitles = (roles) => {
+    const roleValues = roles.split(",").map((role) => role.trim());
+    const roleNames = roleValues.map((roleValue) => {
+      const roleFound = ChangeRole.find((item) => item.value === roleValue);
+      return roleFound ? roleFound.title : "";
+    });
+    return roleNames.join(", ");
+  };
+
+  // Hàm để tách học vị và tìm tên học vị
+  const getTitleNames = (penName) => {
+    // Tách chuỗi theo dấu phẩy
+    const penNamesArray = penName.split(',');
+
+    // Dùng map để ánh xạ mỗi giá trị trong mảng penNamesArray
+    const titles = penNamesArray.map((pen) => {
+      const titleFound = ChangeTitle.find((item) => item.value === pen.trim());
+      return titleFound ? titleFound.title : "Chưa có học vị";
+    });
+
+    // Trả về chuỗi các tên học vị nối nhau bằng dấu phẩy
+    return titles.join(", ");
+  };
 
   const newslug = slug.slice(slug.indexOf("=") + 1);
   const [member, setMember] = useState(null);
@@ -22,9 +50,7 @@ export default function MemberPage() {
       setLoading(true);
       try {
         const response = await getMemberById(newslug);
-        // Lưu ý: dữ liệu thành viên nằm trong response.data.data
-        console.log(response.data.data);
-        setMember(response.data.data);
+        setMember(response.data.data); // Lưu lại thông tin thành viên
       } catch (err) {
         setError(err);
       } finally {
@@ -44,21 +70,29 @@ export default function MemberPage() {
   return (
     <div className="w-full">
       <BreadcrumbDynamic />
+      <img src={Logo} alt="" className="w-full h-full p-4" />
+
       <div className="bg-white min-h-screen p-6">
-        <div className="max-w-7xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg mb-6">
-          <div className="flex flex-col md:flex-row items-center md:items-start">
+        <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg mb-6">
+          <div className="flex flex-col md:flex-row items-center md:items-start relative">
             <img
               src={member.imgUrl}
               alt={member.fullName}
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-lg"
+              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-lg absolute z-20 bottom-32 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
             />
 
+            <div className="w-48 h-48 md:w-64 md:h-64"></div>
+
             <div className="md:ml-8 text-center md:text-left">
-              <h1 className="text-3xl font-bold text-brandPrimary">
+              <h1 className="text-5xl font-bold text-brandPrimary">
                 {member.fullName}
               </h1>
-              <p className="text-lg text-gray-600">{member.position}</p>
-              <p className="text-md text-gray-500">{member.expertise}</p>
+              <p className="text-lg text-gray-600">
+                {getRoleTitles(member.role)}
+              </p>
+              <p className="text-lg text-gray-600">
+                {getTitleNames(member.penName)}
+              </p>
 
               <div className="mt-4 flex flex-col gap-2">
                 <a
@@ -87,6 +121,7 @@ export default function MemberPage() {
           </div>
         </div>
 
+        {/* Các phần thông tin khác */}
         {/* for tung cai cho nay */}
         <div className="max-w-7xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           {/* StudyStudy */}
@@ -125,7 +160,7 @@ export default function MemberPage() {
         </div>
 
         <div className="max-w-7xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
-            {/* work */}
+          {/* work */}
           <div className="">
             <h2 className="text-2xl font-semibold text-brandSecondary">
               QUÁ TRÌNH CÔNG TÁC
@@ -160,7 +195,7 @@ export default function MemberPage() {
           </div>
         </div>
 
-            {/* experience */}
+        {/* experience */}
         <div className="max-w-7xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           <div className="">
             <h2 className="text-2xl font-semibold text-brandSecondary">
@@ -195,8 +230,6 @@ export default function MemberPage() {
             </ul>
           </div>
         </div>
-
-        
       </div>
     </div>
   );
