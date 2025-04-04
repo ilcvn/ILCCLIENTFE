@@ -13,11 +13,10 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const { t } = useTranslation();
-  const { language, changeLanguage } = useContext(LanguageContext);
-  const [articlesLn, setarticlesLn] = useState([]);
-
-  const address=[
+  const { language } = useContext(LanguageContext);
   
+  // Dữ liệu liên hệ
+  const address = [
     {
       text: t("footer.addressOffice2Text"),
       id: 5,
@@ -25,10 +24,12 @@ const Footer = () => {
     },
     {
       text: t("footer.addressOffice1Text"),
-      id: 5,
+      id: 6, // Sửa id để tránh trùng với id: 5
       name: t("footer.addressOffice1Label"),
     },
-  ]
+  ];
+
+  // Dữ liệu công ty
   const companyLinks = [
     {
       text: t("footer.addressText"),
@@ -52,13 +53,12 @@ const Footer = () => {
     },
     {
       text: t("0318760066"),
-      id: 4,
-      name:t("footer.tax"),
+      id: 5, // Sửa id để tránh trùng với id: 4
+      name: t("footer.tax"),
     },
-
-
   ];
 
+  // Fetch bài viết
   const searchQuery = "";
   const type = "SERVICE";
   useEffect(() => {
@@ -73,7 +73,7 @@ const Footer = () => {
           type,
           currentLanguage
         );
-        const {articles, pagination} = res.data.data;
+        const { articles, pagination } = res.data.data;
         const firstFive = articles.slice(0, 3); 
 
         setArticles(firstFive);
@@ -91,6 +91,7 @@ const Footer = () => {
   const createSlug = (title) => {
     return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
   };
+
   return (
     <footer className="bg-brandPrimary text-white py-10 px-6 md:px-12">
       <div className="container mx-auto flex flex-col md:flex-row flex-wrap gap-8 md:gap-12">
@@ -99,8 +100,8 @@ const Footer = () => {
           <h2 className="text-xl font-semibold">{t("footer.contactTitle")}</h2>
           <hr className="border-t-2 mt-2" />
           <nav className="mt-4 space-y-3 text-md">
-            {companyLinks.map((link) => (
-              <p key={link.id}>
+            {companyLinks.map((link, index) => (
+              <p key={link.id + '-' + index}>
                 <span
                   className={clsx("font-bold", {
                     "whitespace-pre-line": link.id === 4,
@@ -145,8 +146,8 @@ const Footer = () => {
           <h2 className="text-xl font-semibold">{t("footer.office")}</h2>
           <hr className="border-t-2 mt-2" />
           <nav className="mt-4 space-y-3 text-md">
-            {address.map((link) => (
-              <p key={link.id}>
+            {address.map((link, index) => (
+              <p key={link.id + '-' + index}>
                 <span
                   className={clsx("font-bold", {
                     "whitespace-pre-line": link.id === 5,
