@@ -51,10 +51,12 @@ const ContactForm = ({data}) => {
          try {
            setLoading(true);
            const currentLanguage= language.toUpperCase() || "VI"; 
-           const res = await getArticles(searchQuery, currentPage,6, type,currentLanguage);
+           let res = await getArticles(searchQuery, currentPage, 100000000, type, currentLanguage);
+           
            const { articles, pagination } = res.data.data;
    
-           setArticles(articles);
+           const services = articles.filter((ser) => ser.language.toUpperCase() === currentLanguage);
+           setArticles(services);
          } catch (error) {
            console.error("Error fetching articles:", error);
          } finally {
@@ -288,9 +290,9 @@ const ContactForm = ({data}) => {
       </div>
 
       <div>
+        <h2 className="text-[16px] my-2">{t("footer.serviceText")}</h2>
         {articles?.length > 0 && (
           <>
-            <h2 className="text-[16px] my-2">{t("footer.serviceText")}</h2>
             {articles.map((article) => (
               <div key={article.id} className="flex items-center space-x-2">
                 <input
