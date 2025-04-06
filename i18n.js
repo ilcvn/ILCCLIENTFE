@@ -201,7 +201,7 @@ const resources = {
           "Ban Kinh tế - Tài chính và Thương mại quốc tế",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Ban Pháp Luật Và Định Chế Thương Mại",
-        CHIEF_OF_STAFF: "Văn Phòng Viện",
+        CHIEF_OF_STAFF: "Chánh Văn Phòng",
         Sub_header: "Viện Khoa học pháp lý và Phát triển doanh nghiệp ",
       },
       detailMenber: {
