@@ -208,8 +208,9 @@ const resources = {
         MEMBER_INFO: "Thông Tin thành viên",
         EDUCATION: "QUÁ TRÌNH HỌC TẬP",
         WORK_EXPERIENCE: "QUÁ TRÌNH CÔNG TÁC",
-        CONSULT_EXPERIENCE: "Kinh Nghiệm Tư vấn",
+        CONSULT_EXPERIENCE: "KINH NGHIỆM TƯ VẤN",
       },
+      
     },
   },
   en: {

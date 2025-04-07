@@ -29,7 +29,7 @@ export default function MemberPage() {
   const getRoleTitles = (roles) => {
     if (!roles) return "";
     return roles
-      .split(",")
+      .split(", ")
       .map((roleValue) => {
         const found = ChangeRole.find(
           (item) => item.value === roleValue.trim()
@@ -37,6 +37,28 @@ export default function MemberPage() {
         return found ? found.title : "";
       })
       .join(", ");
+  };
+
+  const getRoleTitlesWithDepartments = (roles, departments) => {
+    if (!roles) return "";
+    let role_department = "";
+    
+    let origin_roles = roles.split(", ");
+    let origin_departments = departments.split(", ");
+
+    for(let i = 0; i < origin_departments.length; i++){
+      if(i !== 0){
+        role_department += ", ";
+      }
+      
+      if(origin_departments[i] === 'BOARD_OF_DIRECTORS' && origin_roles[i] !== 'MEMBER'){
+        role_department += origin_roles[i];
+      }else{
+        role_department += origin_roles[i]+ " " + origin_departments[i];
+      }
+
+    }
+    return role_department;
   };
 
   const getTitleNames = (penName) => {
@@ -145,10 +167,10 @@ export default function MemberPage() {
                 {member.fullName}
               </h1>
               <p className="text-2xl lg:py-2 py-3 text-brandPrimary font-semibold">
-                {getRoleTitles(member.role)}
+                {getRoleTitlesWithDepartments(member.role, member.department)}
               </p>
               <p className="text-xl  text-black">
-                {getTitleNames(member.penName)}
+                {member.penName}
               </p>
             </div>
           </div>
@@ -183,7 +205,7 @@ export default function MemberPage() {
         {/* EDUCATION */}
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           <h2 className="text-2xl font-semibold text-brandSecondary flex gap-3">
-            <FaBookOpen className="" /> {t("detailMenber.EDUCATION")}
+            <FaBookOpen className="" /> {t("detailMember.EDUCATION")}
           </h2>
           <ul className="mt-4 space-y-4">{renderTimeline(education)}</ul>
         </div>
@@ -191,7 +213,7 @@ export default function MemberPage() {
         {/* WORK EXPERIENCE */}
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           <h2 className="text-2xl font-semibold text-brandSecondary flex gap-3">
-            <RiContactsBook3Fill /> {t("detailMenber.WORK_EXPERIENCE")}
+            <RiContactsBook3Fill /> {t("detailMember.WORK_EXPERIENCE")}
           </h2>
           <ul className="mt-4 space-y-4">{renderTimeline(workExperience)}</ul>
         </div>
@@ -200,7 +222,7 @@ export default function MemberPage() {
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           <h2 className="text-2xl font-semibold text-brandSecondary flex gap-3">
             <BsBookmarkStarFill />
-            {t("detailMenber.CONSULT_EXPERIENCE")}
+            {t("detailMember.CONSULT_EXPERIENCE")}
           </h2>
           <ul className="mt-4 space-y-4">
             {renderTimeline(consultExperience)}
