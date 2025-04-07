@@ -41,7 +41,21 @@ export default function CardAvatar({props = {}}) {
     return roleFound ? roleFound.title : "";
   };
   const getRoleTitles = (roles) => {
-    const roleValues = [roles.split(",").map((role) => role.trim())[0]];
+
+    const priorityList = [
+      'PRESIDENT', 'VICE_PRESIDENT', 'CHAIRPERSON', 'GROUP_PRESIDENT',
+      'ROOM_PRESIDENT', 'VICE_CHAIRMAN', 'GROUP_VICE_PRESIDENT', 'ROOM_VICE_PRESIDENT', 'MEMBER'
+    ];
+  
+    const roleArray = roles.split(', ').map(role => role.trim());
+  
+    const sortedRoles = roleArray.sort((a, b) => {
+      return priorityList.indexOf(a) - priorityList.indexOf(b);
+    });
+  
+    const sortedRolesString = sortedRoles.join(', ');
+
+    const roleValues = [sortedRolesString.split(",").map((role) => role.trim())[0]];
 
     const roleNames = roleValues.map((roleValue) => {
       const roleFound = ChangeRole.find((item) => item.value === roleValue);

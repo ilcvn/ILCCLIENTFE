@@ -107,14 +107,23 @@ export default function AboutPage() {
           return false
         }).map((member) => ({ ...member }))
 
+
+        let roleOrder = ["PRESIDENT", "VICE_PRESIDENT", "CHAIRPERSON", "VICE_CHAIRMAN", "MEMBER"]
         if (option.value === "BOARD_OF_DIRECTORS") {
-          const roleOrder = ["PRESIDENT", "VICE_PRESIDENT", "CHAIRPERSON", "VICE_CHAIRMAN", "MEMBER"]
-          filteredMembers = filteredMembers.sort((a, b) => {
-            const roleA = a.role.split(", ")[0].trim()
-            const roleB = b.role.split(", ")[0].trim()
-            return roleOrder.indexOf(roleA) - roleOrder.indexOf(roleB)
-          })
+          roleOrder = ["PRESIDENT", "VICE_PRESIDENT", "MEMBER"]
+        }else if(option.value === "SCIENTIFIC_COUNCIL" || option.value === "ADVISORY_BOARD" || option.value === "BOARD_OF_MANAGEMERS") {
+          roleOrder = ["CHAIRPERSON", "VICE_CHAIRMAN", "MEMBER"]
+        }else if(option.value === "CHIEF_OF_STAFF") {
+          roleOrder = ["ROOM_PRESIDENT", "ROOM_VICE_PRESIDENT", "MEMBER"];
+        }else{
+          roleOrder = ["GROUP_PRESIDENT", "ROOM_VICE_PRESIDENT", "MEMBER"];
         }
+           
+        filteredMembers = filteredMembers.sort((a, b) => {
+          const roleA = a.role.split(", ")[0].trim()
+          const roleB = b.role.split(", ")[0].trim()
+          return roleOrder.indexOf(roleA) - roleOrder.indexOf(roleB)
+        })
 
         const currentDepartmentPage = currentPages[option.value] || 1
         const startIndex = (currentDepartmentPage - 1) * pageSize
