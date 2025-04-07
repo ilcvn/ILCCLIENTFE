@@ -39,28 +39,13 @@ const SliderMember = () => {
         const memberTeam = memberLanguage.filter(
           (member) =>
             member.isShow === true &&
-            member.department.includes("BOARD_OF_DIRECTORS")
+            (member.department.includes("BOARD_OF_DIRECTORS") ||
+              member.role.includes("GROUP_PRESIDENT") ||
+              member.role.includes("ROOM_PRESIDENT"))
         );
-
-        const roleSort = [
-          "MEMBER",
-          "VICE_PRESIDENT",
-          "PRESIDENT",
-          "CHAIRPERSON",
-          "VICE_CHAIRMAN",
-          "GROUP_PRESIDENT",
-          "GROUP_VICE_PRESIDENT",
-          "ROOM_PRESIDENT",
-          "ROOM_VICE_PRESIDENT",
-        ];
-
-        const sortedMembers = memberTeam.sort((a, b) => {
-          return roleSort.indexOf(b.role) - roleSort.indexOf(a.role);
-        });
-
-        console.log("Danh sách thành viên:", sortedMembers.length);
-        setMembers(sortedMembers);
-        setSliderArrayLength(sortedMembers.length);
+      
+        setMembers(memberTeam);
+        setSliderArrayLength(memberTeam.length);
       } catch (error) {
         console.error("Lỗi khi lấy danh sách members:", error);
       }

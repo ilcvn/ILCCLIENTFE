@@ -90,12 +90,13 @@ export default function CardAvatar({props = {}}) {
         alt={fullName}
         className="p-1 w-[330px]  aspect-square mx-auto rounded-full object-cover transition-transform duration-300 hover:scale-90"
       />
-      <div className="p-2 md:mb-0  w-full lg:h-36 h-60 bg-white rounded-md shadow-md flex flex-col items-center justify-center text-center">
+      <div className="p-2 md:mb-0  w-full lg:h-36 h-52 bg-white rounded-md shadow-md flex flex-col items-center justify-center text-center">
         <h2 className="text-base font-bold mt-2 p-1 w-full text-brandPrimary">
           {fullName.toUpperCase()}
         </h2>
         <p className="text-[14px] md:my-1 font-bold text-brandSecondary ">
           {getRoleTitles(role)}
+          
         </p>
         <h2 className="text-[12px] p-1 my-2 w-full font-semibold opacity-80 text-black">
           {penName.toUpperCase()}

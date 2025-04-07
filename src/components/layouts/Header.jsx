@@ -111,34 +111,7 @@ const Header = () => {
     navigate("/tim-kiem", {state: {query: inputValue}});
   };
 
-  //   useEffect(() => {
-  //     const handleScroll = () => {
-  //       setScrollY(window.scrollY);
-  //       setIsSticky(window.scrollY > 100);
-  //     };
-
-  //     const handleZoom = (event) => {
-  //       if (event.ctrlKey) {
-  //         // event.preventDefault();
-  //         setZoomLevel((prev) => {
-  //           const newZoom = event.deltaY < 0 ? prev + 0.1 : prev - 0.1;
-  //           const clampedZoom = Math.min(Math.max(newZoom, 0.5), 2); // Giới hạn zoom từ 0.5x đến 2x
-
-  //           setLevelZoom(clampedZoom >= 1.1); // Kích hoạt ngay khi zoom >= 110%
-
-  //           return clampedZoom;
-  //         });
-  //       }
-  //     };
-
-  //     window.addEventListener("scroll", handleScroll);
-  //     window.addEventListener("wheel", handleZoom, { passive: false });
-
-  //     return () => {
-  //       window.removeEventListener("scroll", handleScroll);
-  //       window.removeEventListener("wheel", handleZoom);
-  //     };
-  //   }, []);
+ 
 
   const createSlug = (title) => {
     return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
