@@ -8,8 +8,8 @@ import { getMembers } from "../../api/Nember/nember"
 
 const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
   { value: "BOARD_OF_DIRECTORS", filterKey: "BLD" },
-  { value: "SCIENTIFIC_COUNCIL", filterKey: "HDKH" },
   { value: "BOARD_OF_MANAGEMERS", filterKey: "HDQLV" },
+  { value: "SCIENTIFIC_COUNCIL", filterKey: "HDKH" },
   { value: "ADVISORY_BOARD", filterKey: "HDCV" },
 
   { value: 'INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT', filterKey: "department" },
