@@ -16,14 +16,14 @@ export default function Card({ id,preview_img, title, summary }) {
   
   
   return (
-    <div className="text-center cursor-pointer w-full" onClick={handleClick}>
+    <div className="text-justify cursor-pointer w-full" onClick={handleClick}>
       <div className="overflow-hidden rounded-md hover:scale-105 duration-300">
         <div className="w-full aspect-[3/2]">
           <img src={preview_img||"https://th.bing.com/th/id/OIP.2DKs9SGRKVXDYlFidn7NQAHaH5?w=1500&h=1600&rs=1&pid=ImgDetMain"} alt={title||" "} className="w-full h-full object-cover" />
         </div>
       </div>
-      <div className="p-2">
-        <h1 className="text-base font-semibold p-1 hover:text-brandSecondary text-justify">
+      <div className="p-1">
+        <h1 className="text-base font-semibold py-1 text-brandPrimary hover:text-brandSecondary text-justify">
           {title||""}
         </h1>
         <p className="text-[14px] line-clamp-4 h-[85px]">{summary||""}</p>

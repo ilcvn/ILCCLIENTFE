@@ -9,6 +9,7 @@ import SliderCardsItem from "../../components/SliderCardsItem";
 import SliderCounterparty from "../../components/SliderCounterparty";
 import { useTranslation } from "react-i18next";
 import EcoSystem from "../../components/Ecosystem";
+import SliderMember from "../../components/MemberSlider";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -76,7 +77,7 @@ function HomePage() {
         content={t("homepage.contentSection.developers.content")}
       />
 
-      <SliderCardsItem isCardAvatar={true} isPrevNextBtn={true} />
+      <SliderMember />
 
       <div className="py-4 invisible">=========SPACING============</div>
 

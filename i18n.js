@@ -201,10 +201,10 @@ const resources = {
           "Ban Kinh tế - Tài chính và Thương mại quốc tế",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Ban Pháp Luật Và Định Chế Thương Mại",
-        CHIEF_OF_STAFF: "Chánh Văn Phòng",
+        CHIEF_OF_STAFF: "Hành Chánh ",
         Sub_header: "Viện Khoa học pháp lý và Phát triển doanh nghiệp ",
       },
-      detailMenber: {
+      detailMember: {
         MEMBER_INFO: "Thông Tin thành viên",
         EDUCATION: "QUÁ TRÌNH HỌC TẬP",
         WORK_EXPERIENCE: "QUÁ TRÌNH CÔNG TÁC",
@@ -410,7 +410,7 @@ const resources = {
           "Department of Economics, Finance and International Trade",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Department of Legal Affairs and Commercial Institutions",
-        CHIEF_OF_STAFF: "Chief of Staff",
+        CHIEF_OF_STAFF: "Administrative",
         Sub_header: "Institute of Legal Science and Business Development",
       },
       detailMember: {
@@ -604,7 +604,7 @@ const resources = {
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
           "经济、财务与国际贸易部",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT: "法律与商业机构部",
-        CHIEF_OF_STAFF: "院办公室",
+        CHIEF_OF_STAFF: "行政",
         Sub_header: "法律科学与企业发展研究院",
       },
       detailMember: {

@@ -52,9 +52,9 @@ export default function MemberPage() {
       }
       
       if(origin_departments[i] === 'BOARD_OF_DIRECTORS' && origin_roles[i] !== 'MEMBER'){
-        role_department += origin_roles[i];
+        role_department += t(`roles.${origin_roles[i]}`) + " " + t(`about.${origin_departments[i]}`) ;
       }else{
-        role_department += origin_roles[i]+ " " + origin_departments[i];
+        role_department +=t(`roles.${origin_roles[i]}`)+ " " +t(`about.${origin_departments[i]}`) ;
       }
 
     }
@@ -151,19 +151,19 @@ export default function MemberPage() {
       <BreadcrumbDynamic />
       <img src={Logo} alt="Banner" className="w-full h-full p-4" />
 
-      <div className="bg-white min-h-screen p-6">
+      <div className="bg-white min-h-screen p-6  max-w-screen-2xl mx-auto">
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg mb-6">
           <div className="flex flex-col md:flex-row items-center md:items-start relative">
             <img
               src={member.imgUrl}
               alt={member.fullName}
-              className="w-60 h-80 md:w-48 md:h-48 lg:w-64 lg:h-64 md:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
+              className="w-64 h-80 lg:w-60 lg:h-64 lg:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
             />
 
-            <div className="w-48 h-6 md:w-32 md:h-32 lg:w-64 lg:h-32" />
+            <div className="w-48 h-6 md:w-32 md:h-32  lg:h-32 lg:mr-[10%] mx-1 lg:mx-11" />
 
-            <div className="lg:ml-8  my-4 text-center lg:text-left">
-              <h1 className="text-5xl font-bold text-brandSecondary">
+            <div className="lg:ml-8  my-4 text-left">
+              <h1 className="text-3xl font-bold text-brandSecondary ">
                 {member.fullName}
               </h1>
               <p className="text-2xl lg:py-2 py-3 text-brandPrimary font-semibold">
@@ -175,7 +175,7 @@ export default function MemberPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 md:mb-4 my-4">
+          <div className="flex flex-col gap-2 md:mb-4 my-6">
             <a
               href={`tel:${member.phone}`}
               className="flex items-center space-x-2 text-brandPrimary"

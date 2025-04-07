@@ -68,11 +68,11 @@ export default function LayoutOverviewPage({
                     className="w-40 h-40 rounded-full mx-auto object-cover"
                   />
                   <div className="space-y-2 mt-6">
-                    <h3 className="font-bold text-lg mt-3">
+                    <h3 className="font-bold md:text-lg text-base text-brandPrimary mt-3">
                       {member.fullName}
                     </h3>
-                    <p className="text-sm text-gray-600">{roleName}</p>
-                    <p className="text-xs text-gray-500">{titleName}</p>
+                    <p className="md:text-sm text-sm text-brandSecondary font-semibold">{roleName.toLocaleUpperCase()}</p>
+                    <p className="md:text-xs text-[10px] black">{titleName}</p>
                   </div>
                 </div>
 
