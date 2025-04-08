@@ -42,7 +42,7 @@ export default function LayoutOverviewPage({
       <div className='max-w-screen-2xl w-full mx-auto px-4 py-10 z-50 text-black'>
         <ContentSection header={header} content={content} />
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 -mx-4 px-4 p-4 gap-4 '>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6   p-4  '>
           {data.map((member) => {
             const roleName = member.role
               ? getRoleTitles(member.role)
@@ -54,7 +54,7 @@ export default function LayoutOverviewPage({
             return (
               <div
                 key={member.id}
-                className='relative w-5/6 group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-lg'
+                className='relative w-full h-[380px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-lg'
                 onClick={() =>
                   navigate(`/tong-quan/${member.fullName}=${member.id}`)
                 }
