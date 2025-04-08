@@ -91,37 +91,37 @@ const SliderCardsItem = ({
     const fetchMembers = async () => {
       try {
         const response = await getMembers();
-        console.log(response);
-        const memberTeam = response.data.data.members.filter(
-          (member) => (member.isShow === true /*&& member.department.includes('BOARD_OF_DIRECTORS')*/)
+        const memberLanguage = response.data.data.members.filter(
+          (member) => member.language.toLowerCase() === language.toLowerCase()
         );
-        
 
-        const order = [
-          "LAWYER",
-          "MASTER",
-          "DOCTORATE",
-          "ASSOCIATE",
-          "PROFESSOR",
-        ];
-
+        const memberTeam = memberLanguage.filter(
+          (member) =>
+            member.isShow === true &&
+            member.department.includes("BOARD_OF_DIRECTORS")
+        );
         const roleSort = [
           "MEMBER",
           "VICE_PRESIDENT",
           "PRESIDENT",
-          "VICE_CHAIRMAN",
           "CHAIRPERSON",
+          "VICE_CHAIRMAN",
+          "GROUP_PRESIDENT",
+          "GROUP_VICE_PRESIDENT",
+          "ROOM_PRESIDENT",
+          "ROOM_VICE_PRESIDENT",
         ];
 
         const sortedMembers = memberTeam.sort((a, b) => {
-          // Sắp xếp theo role
           const roleDiff = roleSort.indexOf(b.role) - roleSort.indexOf(a.role);
           if (roleDiff !== 0) {
             return roleDiff;
           }
-          return order.indexOf(b.penName) - order.indexOf(a.penName);
+          return 0;
         });
+        console.log("Danh sách thành viên:", sortedMembers.length);
         setMembers(sortedMembers);
+        setMemberArrayLength(memberLanguage.length);
       } catch (error) {
         console.error("Lỗi khi lấy danh sách members:", error);
       }

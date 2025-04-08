@@ -29,7 +29,7 @@ export default function MemberPage() {
   const getRoleTitles = (roles) => {
     if (!roles) return "";
     return roles
-      .split(",")
+      .split(", ")
       .map((roleValue) => {
         const found = ChangeRole.find(
           (item) => item.value === roleValue.trim()
@@ -37,6 +37,28 @@ export default function MemberPage() {
         return found ? found.title : "";
       })
       .join(", ");
+  };
+
+  const getRoleTitlesWithDepartments = (roles, departments) => {
+    if (!roles) return "";
+    let role_department = "";
+    
+    let origin_roles = roles.split(", ");
+    let origin_departments = departments.split(", ");
+
+    for(let i = 0; i < origin_departments.length; i++){
+      if(i !== 0){
+        role_department += ", ";
+      }
+      
+      if(origin_departments[i] === 'BOARD_OF_DIRECTORS' && origin_roles[i] !== 'MEMBER'){
+        role_department += t(`roles.${origin_roles[i]}`) + " " + t(`about.${origin_departments[i]}`) ;
+      }else{
+        role_department +=t(`roles.${origin_roles[i]}`)+ " " +t(`about.${origin_departments[i]}`) ;
+      }
+
+    }
+    return role_department;
   };
 
   const getTitleNames = (penName) => {
@@ -129,31 +151,31 @@ export default function MemberPage() {
       <BreadcrumbDynamic />
       <img src={Logo} alt="Banner" className="w-full h-full p-4" />
 
-      <div className="bg-white min-h-screen p-6">
+      <div className="bg-white min-h-screen p-6  max-w-screen-2xl mx-auto">
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg mb-6">
           <div className="flex flex-col md:flex-row items-center md:items-start relative">
             <img
               src={member.imgUrl}
               alt={member.fullName}
-              className="w-60 h-80 md:w-48 md:h-48 lg:w-64 lg:h-64 md:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
+              className="w-64 h-80 lg:w-60 lg:h-64 lg:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
             />
 
-            <div className="w-48 h-6 md:w-32 md:h-32 lg:w-64 lg:h-32" />
+            <div className="w-48 h-6 md:w-32 md:h-32  lg:h-32 lg:mr-[10%] mx-1 lg:mx-11" />
 
-            <div className="lg:ml-8  my-4 text-center lg:text-left">
-              <h1 className="text-5xl font-bold text-brandSecondary">
+            <div className="lg:ml-8  my-4 text-left">
+              <h1 className="text-3xl font-bold text-brandSecondary ">
                 {member.fullName}
               </h1>
               <p className="text-2xl lg:py-2 py-3 text-brandPrimary font-semibold">
-                {getRoleTitles(member.role)}
+                {getRoleTitlesWithDepartments(member.role, member.department)}
               </p>
               <p className="text-xl  text-black">
-                {getTitleNames(member.penName)}
+                {member.penName}
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 md:mb-4 my-4">
+          <div className="flex flex-col gap-2 md:mb-4 my-6">
             <a
               href={`tel:${member.phone}`}
               className="flex items-center space-x-2 text-brandPrimary"
@@ -183,7 +205,7 @@ export default function MemberPage() {
         {/* EDUCATION */}
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           <h2 className="text-2xl font-semibold text-brandSecondary flex gap-3">
-            <FaBookOpen className="" /> {t("detailMenber.EDUCATION")}
+            <FaBookOpen className="" /> {t("detailMember.EDUCATION")}
           </h2>
           <ul className="mt-4 space-y-4">{renderTimeline(education)}</ul>
         </div>
@@ -191,7 +213,7 @@ export default function MemberPage() {
         {/* WORK EXPERIENCE */}
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           <h2 className="text-2xl font-semibold text-brandSecondary flex gap-3">
-            <RiContactsBook3Fill /> {t("detailMenber.WORK_EXPERIENCE")}
+            <RiContactsBook3Fill /> {t("detailMember.WORK_EXPERIENCE")}
           </h2>
           <ul className="mt-4 space-y-4">{renderTimeline(workExperience)}</ul>
         </div>
@@ -200,7 +222,7 @@ export default function MemberPage() {
         <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
           <h2 className="text-2xl font-semibold text-brandSecondary flex gap-3">
             <BsBookmarkStarFill />
-            {t("detailMenber.CONSULT_EXPERIENCE")}
+            {t("detailMember.CONSULT_EXPERIENCE")}
           </h2>
           <ul className="mt-4 space-y-4">
             {renderTimeline(consultExperience)}
