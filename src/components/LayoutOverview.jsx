@@ -48,7 +48,7 @@ export default function LayoutOverviewPage({
               ? getRoleTitles(member.role)
               : 'Chưa có vai trò'
             const titleName = member.penName
-              ? member.penName // getTitleNames(member.penName)
+              ? member.penName 
               : 'Chưa có học vị'
 
             return (
