@@ -42,7 +42,7 @@ export default function LayoutOverviewPage({
       <div className='max-w-screen-2xl w-full mx-auto px-4 py-10 z-50 text-black'>
         <ContentSection header={header} content={content} />
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-1 p-1 mt-6 mb-16'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 -mx-4 px-4 p-4 gap-4 '>
           {data.map((member) => {
             const roleName = member.role
               ? getRoleTitles(member.role)
