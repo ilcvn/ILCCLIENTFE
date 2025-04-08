@@ -62,7 +62,7 @@ export default function ServicePage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>Dịch Vụ | ILC</title>
+      <title>{t("nav.service")} {t("banner.marquee")}(ILC)</title>
       </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
       {isRootPath && (

@@ -88,7 +88,7 @@ export default function AboutPage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>Tổng Quan | ILC</title>
+        <title>{t("nav.overview")} {t("banner.marquee")}(ILC)</title>
       </Helmet>
       {optionsToRender.map((option, index) => {
         const coppiedMembers = [...members]

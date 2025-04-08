@@ -30,7 +30,7 @@ export default function KnowledgePage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>Đối Tác | ILC</title>
+      <title>{t("nav.legalKnowledge")} {t("banner.marquee")}(ILC)</title>
       </Helmet>
       {/* Nếu path là "/doi-tac", hiển thị EcoSystem */}
       {isRootPath && (

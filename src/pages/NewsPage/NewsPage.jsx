@@ -57,7 +57,7 @@ export default function NewPage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>Tin Tức | ILC</title>
+        <title>{t("nav.news")} {t("banner.marquee")}(ILC)</title>
       </Helmet>
       {isRootPath && (
         <LayoutPage

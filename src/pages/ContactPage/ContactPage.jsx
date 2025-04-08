@@ -21,7 +21,7 @@ function ContactPage() {
     <div>
       <BreadcrumbDynamic />
       <Helmet>
-        <title>Liên Hệ | ILC</title>
+        <title>{t("nav.contact")} {t("banner.marquee")}(ILC)</title>
       </Helmet>
       <div className="px-2 py-10 lg:px-14 lg:py-10 mb-12">
         <ContentSection header={t("contactPage.header", "LIÊN HỆ")} />

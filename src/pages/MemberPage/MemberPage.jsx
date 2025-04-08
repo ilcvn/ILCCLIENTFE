@@ -57,15 +57,14 @@ export default function MemberPage() {
         origin_roles[i] !== "MEMBER"
       ) {
         role_department +=
-          t(`roles.${origin_roles[i]}`) +
-          " " +
-          t(`about.${origin_departments[i]}`);
+          t(`roles.${origin_roles[i]}`) 
       } else {
         role_department +=
           t(`roles.${origin_roles[i]}`) +
           " " +
           t(`about.${origin_departments[i]}`);
       }
+      console.log('go');
     }
     return role_department;
   };
@@ -170,7 +169,7 @@ export default function MemberPage() {
     <div className="w-full">
       <BreadcrumbDynamic />
       <Helmet>
-            <title>{member.fullName || "ILC"}</title>
+            <title>{member.fullName} {t("banner.marquee")}(ILC)</title>
           </Helmet>
       <img src={Logo} alt="Banner" className="w-full h-full p-4" />
 

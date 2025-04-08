@@ -28,7 +28,7 @@ const BlogCard = ({
             <h2 className="text-2xl lg:text-2xl font-extrabold text-brandSecondary mx-2 mb-2 uppercase">
               {title}
             </h2>
-            <h2 className="text-base font-light px-2 text-neutralDGrey mb-4  border-b-2">
+            <h2 className="text-base  font-bold px-2 text-neutralDGrey mb-4  border-b-2">
               {subTitle}
             </h2>
           </div>

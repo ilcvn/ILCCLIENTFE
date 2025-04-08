@@ -18,8 +18,9 @@ function HomePage() {
   return (
     <div>
       <Helmet>
-        <title>Trang Chủ | ILC</title>
+        <title>{t("nav.home")} {t("banner.marquee")}(ILC)</title>
       </Helmet>
+
       <CarouselBanner />
 
       <div className="py-4 invisible">=========SPACING============</div>
@@ -45,12 +46,12 @@ function HomePage() {
             <p>{t("homepage.blogCard.content.paragraph3")}</p>
             <br />
             <div className="flex items-center gap-2">
-              <span>{t("homepage.blogCard.content.tip1")}</span>
+              <span><b>{t("homepage.blogCard.content.tip1")}:</b></span>
               <i>{t("homepage.blogCard.content.paragraph4")}</i>
             </div>
 
             <div className="flex items-center gap-2">
-              <span>{t("homepage.blogCard.content.tip2")}</span>
+              <span><b>{t("homepage.blogCard.content.tip2")}:</b></span>
               <i>{t("homepage.blogCard.content.paragraph5")}</i>
             </div>
           </>
