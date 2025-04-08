@@ -1,15 +1,16 @@
-import { useEffect } from "react";
-import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+import {useEffect} from "react";
+import {MapPinIcon, PhoneIcon, EnvelopeIcon} from "@heroicons/react/24/solid";
 import ContentSection from "../../components/ContentSection.jsx";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb.jsx";
-import { Link } from "lucide-react";
-import { IoLocationSharp } from "react-icons/io5";
-import { useTranslation } from "react-i18next";
+import {Link} from "lucide-react";
+import {IoLocationSharp} from "react-icons/io5";
+import {useTranslation} from "react-i18next";
 import ContactForm from "../../components/layouts/ContactForm.jsx";
-import { useLocation } from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function ContactPage() {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const location = useLocation();
   const data = location.state?.formData;
   useEffect(() => {
@@ -19,7 +20,9 @@ function ContactPage() {
   return (
     <div>
       <BreadcrumbDynamic />
-
+      <Helmet>
+        <title>{t("nav.contact")} {t("banner.marquee")}(ILC)</title>
+      </Helmet>
       <div className="px-2 py-10 lg:px-14 lg:py-10 mb-12">
         <ContentSection header={t("contactPage.header", "LIÊN HỆ")} />
         <div className="flex items-center justify-center">
@@ -30,30 +33,32 @@ function ContactPage() {
                   {t("contactPage.platformName", "ILC PLATFORM").toUpperCase()}
                 </h1>
                 <div className="flex items-center">
-                  <EnvelopeIcon className="w-5 h-5 text-brandPrimary mr-2" />
-                  <span className="mr-1">{t("contactPage.emailLabel", "Email:")}</span>
+                  <EnvelopeIcon className="w-5 h-5 text-brandPrimary mr-2 font-semibold" />
+                  <span className="mr-1 font-semibold">
+                    {t("contactPage.emailLabel", "Email:")}
+                  </span>
                   <span>info@ilcvn.vn</span>
                 </div>
                 <div className="flex items-center">
-                  <PhoneIcon className="w-5 h-5 text-brandPrimary mr-2" />
-                  <span className="mr-1">{t("contactPage.hotlineLabel", "Hotline:")}</span>
+                  <PhoneIcon className="w-5 h-5 text-brandPrimary mr-2 font-semibold" />
+                  <span className="mr-1 font-semibold">
+                    {t("contactPage.hotlineLabel", "Hotline:")}
+                  </span>
                   <span>0934 121 183</span>
                 </div>
                 <div className="flex items-center">
-                  <Link className="w-5 h-5 text-brandPrimary mr-2" />
-                  <span className="mr-1">
+                  <Link className="w-5 h-5 text-brandPrimary mr-2 font-semibold" />
+                  <span className="mr-1 font-semibold">
                     {t("contactPage.hotlineLabel2", "Hotline:")}
                   </span>
                   <span>0934 121 183</span>
                 </div>
                 <div className="flex items-center">
-                  <IoLocationSharp className="w-12 md:w-6 h-5 text-brandPrimary mr-2" />
-                  <p className="text-black text-md mb-2 flex items-center">
-                    {t(
-                      "contactPage.addressText",
-                      "Địa chỉ: Nhà số 32, Khu nhà ở Park Riverside, số 130 Bưng Ông Thoàn, Phường Phú Hữu, TP. Thủ Đức, TP. HCM."
-                    )}
-                  </p>
+                  <IoLocationSharp className="w-12 md:w-6 h-5 text-brandPrimary mr-1 font-semibold" />
+                  <span className=" font-semibold">
+                    {t("contactPage.adddresslabel")}{" "}
+                  </span>
+                  <span>{t("contactPage.addressText")}</span>
                 </div>
               </div>
               <div className="relative w-full aspect-[21/9] overflow-hidden shadow-md">

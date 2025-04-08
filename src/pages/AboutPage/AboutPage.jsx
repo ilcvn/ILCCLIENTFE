@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next"
 import { LanguageContext } from "../../context/LanguageContext"
 import LayoutOverviewPage from "../../components/LayoutOverview"
 import { getMembers } from "../../api/Nember/nember"
+import { Helmet } from "react-helmet"
 
 const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
   { value: "BOARD_OF_DIRECTORS", filterKey: "BLD" },
@@ -86,6 +87,9 @@ export default function AboutPage() {
   return (
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
+      <Helmet>
+        <title>{t("nav.overview")} {t("banner.marquee")}(ILC)</title>
+      </Helmet>
       {optionsToRender.map((option, index) => {
         const coppiedMembers = [...members]
 

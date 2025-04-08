@@ -141,7 +141,6 @@ const ContactForm = ({data}) => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  console.log(selectedDate, "selectedDate");
 
   const handleSubmit = async (e) => {
     e.preventDefault();

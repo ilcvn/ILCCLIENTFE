@@ -24,7 +24,6 @@ export default function ItemKnowledge({
 
   const handleGetID = (e) => {
     e.preventDefault();
-    console.log("Prevent Default", id);
   };
 
   return (

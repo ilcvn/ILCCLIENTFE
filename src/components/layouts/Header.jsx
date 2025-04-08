@@ -111,8 +111,6 @@ const Header = () => {
     navigate("/tim-kiem", {state: {query: inputValue}});
   };
 
- 
-
   const createSlug = (title) => {
     return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
   };
@@ -215,7 +213,11 @@ const Header = () => {
                   return (
                     <li
                       key={link.id}
-                      className={clsx(link.children ? "relative group max-w-32 inline-block" : "")}
+                      className={clsx(
+                        link.children
+                          ? "relative group max-w-32 inline-block"
+                          : ""
+                      )}
                     >
                       <Link
                         to={link.path}
@@ -370,7 +372,7 @@ const Header = () => {
                     {t(link.label).toUpperCase()}
                   </Link>
 
-                  {link.children && (
+                  {link.children && link.children.length > 0 && (
                     <button
                       onClick={() =>
                         setOpenSubmenu(openSubmenu === index ? null : index)
@@ -395,7 +397,7 @@ const Header = () => {
                           className="block text-sm text-gray-600 hover:bg-gray-200 w-full p-2 transition-all duration-150"
                           onClick={() => setIsOpen(false)}
                         >
-                          {t(link.label)}
+                          {t(child.label).toUpperCase()}
                         </Link>
                       </li>
                     ))}

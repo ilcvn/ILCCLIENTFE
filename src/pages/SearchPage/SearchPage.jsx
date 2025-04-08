@@ -5,6 +5,7 @@ import LayoutPage from "../../components/LayoutPage";
 import {getArticles} from "../../api/Article/article";
 import {LanguageContext} from "../../context/LanguageContext";
 import {  useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 export default function SearchPage() {
   const location = useLocation();
@@ -60,7 +61,9 @@ export default function SearchPage() {
   return (
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
-
+      <Helmet>
+        <title>{t("nav.search")} {t("banner.marquee")}(ILC)</title>
+      </Helmet>
       {isRootPath && (
         <div className="">
           {loading ? (

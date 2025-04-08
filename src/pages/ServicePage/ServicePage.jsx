@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import { Outlet, useLocation } from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 import LayoutPage from "../../components/LayoutPage";
-import { getArticles } from "../../api/Article/article";
-import { useTranslation } from "react-i18next";
-import { LanguageContext } from "../../context/LanguageContext";
+import {getArticles} from "../../api/Article/article";
+import {useTranslation} from "react-i18next";
+import {LanguageContext} from "../../context/LanguageContext";
+import { Helmet } from "react-helmet";
 
 export default function ServicePage() {
   const location = useLocation();
@@ -13,9 +14,10 @@ export default function ServicePage() {
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const { t } = useTranslation();
-  const { language, changeLanguage } = useContext(LanguageContext);
+  const {t} = useTranslation();
+  const {language, changeLanguage} = useContext(LanguageContext);
   const [articlesLn, setarticlesLn] = useState([]);
+  console.log("language", language.toUpperCase());
   // Tạm thời searchQuery = "" (mặc định)
   const searchQuery = "";
   const type = "SERVICE";
@@ -23,26 +25,33 @@ export default function ServicePage() {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const currentLanguage= language.toUpperCase() || "VI"; 
-        const res = await getArticles(searchQuery, currentPage,6, type,currentLanguage);
-        const { articles, pagination } = res.data.data;
-
-        // const articlesLeague = articles.filter(
-        //   (article) => article.language.toLowerCase() === language.toLowerCase()
-        // );
-
-        setArticles(articles);
-        // setarticlesLn(articlesLeague); 
-        setPagination(pagination);
+        const currentLanguage = (language || "VI").toUpperCase();
+        const res = await getArticles(
+          searchQuery,
+          currentPage,
+          6,
+          type,
+          currentLanguage
+        );
+        const data = res.data?.data;
+  
+        if (data) {
+          const { articles, pagination } = data;
+          setArticles(articles);
+          setPagination(pagination);
+        } else {
+          console.warn("No data received from API.");
+        }
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchArticles();
-  }, [searchQuery, currentPage, language]);
+  }, [searchQuery, currentPage, language, type]);
+  
 
   // Hàm thay đổi trang
   const handlePageChange = (page) => {
@@ -52,7 +61,9 @@ export default function ServicePage() {
   return (
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
-
+      <Helmet>
+      <title>{t("nav.service")} {t("banner.marquee")}(ILC)</title>
+      </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
       {isRootPath && (
         <LayoutPage
