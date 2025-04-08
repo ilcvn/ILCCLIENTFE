@@ -23,6 +23,8 @@ export const deleteArticle = (id) => {
 
 
 export const getArticles = (search = "", page = "", limit = "", type = "",language="") => {
+  console.log("hellos",`/article/?type=${encodeURIComponent(type)}&search=${search}&page=${page}&limit=${limit}&language=${language}`);
+
   return instance.get(`/article/?type=${encodeURIComponent(type)}&search=${search}&page=${page}&limit=${limit}&language=${language}`);
 };
 
