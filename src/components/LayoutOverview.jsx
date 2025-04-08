@@ -39,11 +39,11 @@ export default function LayoutOverviewPage({
 
   return (
     isShow && (
-      <div className='max-w-screen-2xl w-full mx-auto px-4 py-10 z-50 text-black'>
+      <div className='max-w-screen-2xl  mx-auto  py-10 z-50 text-black'>
         <ContentSection header={header} content={content} />
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6   p-4  '>
-          {data.map((member) => {
+        <div className="flex flex-wrap justify-center gap-4">
+        {data.map((member) => {
             const roleName = member.role
               ? getRoleTitles(member.role)
               : 'Chưa có vai trò'
@@ -54,7 +54,7 @@ export default function LayoutOverviewPage({
             return (
               <div
                 key={member.id}
-                className='relative w-full h-[380px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-lg'
+                className="relative w-full sm:w-[48%] md:w-[31%] xl:w-[23%] h-[400px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-lg"
                 onClick={() =>
                   navigate(`/tong-quan/${member.fullName}=${member.id}`)
                 }
@@ -66,13 +66,13 @@ export default function LayoutOverviewPage({
                     className='w-40 h-40 rounded-full mx-auto object-cover'
                   />
                   <div className='space-y-2 mt-6'>
-                    <h3 className='font-bold md:text-lg text-base text-brandPrimary mt-3'>
+                    <h3 className='font-bold md:text-xl text-lg text-brandPrimary mt-3'>
                       {member.fullName}
                     </h3>
-                    <p className='md:text-sm text-sm text-brandSecondary font-semibold'>
+                    <p className='md:text-lg text-base text-brandSecondary font-semibold'>
                       {roleName.toUpperCase()}
                     </p>
-                    <p className='md:text-xs text-[10px] black'>{titleName}</p>
+                    <p className='md:text-base text-sm black'>{titleName}</p>
                   </div>
                 </div>
 
