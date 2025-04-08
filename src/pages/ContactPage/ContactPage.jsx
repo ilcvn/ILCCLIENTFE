@@ -7,6 +7,7 @@ import {IoLocationSharp} from "react-icons/io5";
 import {useTranslation} from "react-i18next";
 import ContactForm from "../../components/layouts/ContactForm.jsx";
 import {useLocation} from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function ContactPage() {
   const {t} = useTranslation();
@@ -19,7 +20,9 @@ function ContactPage() {
   return (
     <div>
       <BreadcrumbDynamic />
-
+      <Helmet>
+        <title>Liên Hệ | ILC</title>
+      </Helmet>
       <div className="px-2 py-10 lg:px-14 lg:py-10 mb-12">
         <ContentSection header={t("contactPage.header", "LIÊN HỆ")} />
         <div className="flex items-center justify-center">

@@ -4,6 +4,7 @@ import {Outlet, useLocation} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {LanguageContext} from "../../context/LanguageContext";
 import EcoSystem from "../../components/Ecosystem";
+import { Helmet } from "react-helmet";
 
 export default function KnowledgePage() {
   const location = useLocation();
@@ -28,7 +29,9 @@ export default function KnowledgePage() {
   return (
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
-
+      <Helmet>
+        <title>Đối Tác | ILC</title>
+      </Helmet>
       {/* Nếu path là "/doi-tac", hiển thị EcoSystem */}
       {isRootPath && (
         <>

@@ -4,7 +4,6 @@ import { supabase } from "../supabase";
 async function checkLogin() {
   const { data: user } = await supabase.auth.getUser();
   if (!user) {
-    console.log("🔑 User chưa đăng nhập, tiến hành login...");
     const { data, error } = await supabase.auth.signInWithPassword({
       email: "loiphong5@gmail.com",
       password: "@WebsiteILC123456",

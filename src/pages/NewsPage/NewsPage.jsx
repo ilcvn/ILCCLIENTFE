@@ -5,6 +5,7 @@ import LayoutPage from "../../components/LayoutPage";
 import {getArticles} from "../../api/Article/article";
 import {useTranslation} from "react-i18next";
 import {LanguageContext} from "../../context/LanguageContext";
+import { Helmet } from "react-helmet";
 
 export default function NewPage() {
   const location = useLocation();
@@ -52,9 +53,12 @@ export default function NewPage() {
   };
 
   return (
+    
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
-
+      <Helmet>
+        <title>Tin Tức | ILC</title>
+      </Helmet>
       {isRootPath && (
         <LayoutPage
           header={t("nav.news")}

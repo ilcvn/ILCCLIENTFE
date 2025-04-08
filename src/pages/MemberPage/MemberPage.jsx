@@ -10,6 +10,7 @@ import {getTitles} from "../../helper/TitleMember";
 import {getRoles} from "../../helper/RoleMember";
 import {RiContactsBook3Fill} from "react-icons/ri";
 import {BsBookmarkStarFill} from "react-icons/bs";
+import {Helmet} from "react-helmet";
 
 export default function MemberPage() {
   const {slug} = useParams();
@@ -168,6 +169,9 @@ export default function MemberPage() {
   return (
     <div className="w-full">
       <BreadcrumbDynamic />
+      <Helmet>
+            <title>{member.fullName || "ILC"}</title>
+          </Helmet>
       <img src={Logo} alt="Banner" className="w-full h-full p-4" />
 
       <div className="bg-white min-h-screen p-6  max-w-screen-2xl mx-auto">

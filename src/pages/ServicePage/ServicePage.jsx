@@ -5,6 +5,7 @@ import LayoutPage from "../../components/LayoutPage";
 import {getArticles} from "../../api/Article/article";
 import {useTranslation} from "react-i18next";
 import {LanguageContext} from "../../context/LanguageContext";
+import { Helmet } from "react-helmet";
 
 export default function ServicePage() {
   const location = useLocation();
@@ -36,7 +37,6 @@ export default function ServicePage() {
   
         if (data) {
           const { articles, pagination } = data;
-          console.log("articles", articles);
           setArticles(articles);
           setPagination(pagination);
         } else {
@@ -61,7 +61,9 @@ export default function ServicePage() {
   return (
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
-
+      <Helmet>
+        <title>Dịch Vụ | ILC</title>
+      </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
       {isRootPath && (
         <LayoutPage

@@ -10,12 +10,16 @@ import SliderCounterparty from "../../components/SliderCounterparty";
 import { useTranslation } from "react-i18next";
 import EcoSystem from "../../components/Ecosystem";
 import SliderMember from "../../components/MemberSlider";
+import { Helmet } from "react-helmet";
 
 function HomePage() {
   const { t } = useTranslation();
 
   return (
     <div>
+      <Helmet>
+        <title>Trang Chủ | ILC</title>
+      </Helmet>
       <CarouselBanner />
 
       <div className="py-4 invisible">=========SPACING============</div>

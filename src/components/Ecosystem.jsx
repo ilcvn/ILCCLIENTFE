@@ -15,7 +15,6 @@ const EcoSystem = ({type, header, subheader}) => {
       try {
         const response = await getEcoSystem();
         let ecosystems = response.data.data.Ecosystems || [];
-        console.log(ecosystems)
         // Lọc danh sách theo typeEcosystem
         const filteredEcosystems = ecosystems.filter(
           (item) => item.typeEcosystem === type
