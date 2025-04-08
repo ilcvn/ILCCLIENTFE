@@ -34,6 +34,7 @@ export default function ServicePage() {
           currentLanguage
         );
         const data = res.data?.data;
+        console.log(res);
   
         if (data) {
           const { articles, pagination } = data;
