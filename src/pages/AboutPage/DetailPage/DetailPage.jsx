@@ -10,6 +10,7 @@ import { convertISOToDate } from "../../../helper/date";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../../../context/LanguageContext";
 import ShareButton from "../../../components/layouts/ShareButton";
+import { Helmet } from "react-helmet";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -109,6 +110,9 @@ export default function DetailPage() {
   return (
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
+      <Helmet>
+        <title>{article.title || "ILC"}</title>
+      </Helmet>
       <div className="md:w-3/4 w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
         <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">
           <h1 className="font-semibold text-xl py-2">{article.title || " "}</h1>

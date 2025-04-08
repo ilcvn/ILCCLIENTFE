@@ -87,48 +87,48 @@ const SliderCardsItem = ({
   }, []);
 
   // Lấy danh sách member và thêm fallback nếu không đủ số lượng (yêu cầu 7)
-  useEffect(() => {
-    const fetchMembers = async () => {
-      try {
-        const response = await getMembers();
-        const memberLanguage = response.data.data.members.filter(
-          (member) => member.language.toLowerCase() === language.toLowerCase()
-        );
+  // useEffect(() => {
+  //   const fetchMembers = async () => {
+  //     try {
+  //       const response = await getMembers();
+  //       const memberLanguage = response.data.data.members.filter(
+  //         (member) => member.language.toLowerCase() === language.toLowerCase()
+  //       );
 
-        const memberTeam = memberLanguage.filter(
-          (member) =>
-            member.isShow === true &&
-            member.department.includes("BOARD_OF_DIRECTORS")
-        );
-        const roleSort = [
-          "MEMBER",
-          "VICE_PRESIDENT",
-          "PRESIDENT",
-          "CHAIRPERSON",
-          "VICE_CHAIRMAN",
-          "GROUP_PRESIDENT",
-          "GROUP_VICE_PRESIDENT",
-          "ROOM_PRESIDENT",
-          "ROOM_VICE_PRESIDENT",
-        ];
+  //       const memberTeam = memberLanguage.filter(
+  //         (member) =>
+  //           member.isShow === true &&
+  //           member.department.includes("BOARD_OF_DIRECTORS")
+  //       );
+  //       const roleSort = [
+  //         "MEMBER",
+  //         "VICE_PRESIDENT",
+  //         "PRESIDENT",
+  //         "CHAIRPERSON",
+  //         "VICE_CHAIRMAN",
+  //         "GROUP_PRESIDENT",
+  //         "GROUP_VICE_PRESIDENT",
+  //         "ROOM_PRESIDENT",
+  //         "ROOM_VICE_PRESIDENT",
+  //       ];
 
-        const sortedMembers = memberTeam.sort((a, b) => {
-          const roleDiff = roleSort.indexOf(b.role) - roleSort.indexOf(a.role);
-          if (roleDiff !== 0) {
-            return roleDiff;
-          }
-          return 0;
-        });
-        console.log("Danh sách thành viên:", sortedMembers.length);
-        setMembers(sortedMembers);
-        setMemberArrayLength(memberLanguage.length);
-      } catch (error) {
-        console.error("Lỗi khi lấy danh sách members:", error);
-      }
-    };
+  //       const sortedMembers = memberTeam.sort((a, b) => {
+  //         const roleDiff = roleSort.indexOf(b.role) - roleSort.indexOf(a.role);
+  //         if (roleDiff !== 0) {
+  //           return roleDiff;
+  //         }
+  //         return 0;
+  //       });
+  //       console.log("Danh sách thành viên:", sortedMembers.length);
+  //       setMembers(sortedMembers);
+  //       setMemberArrayLength(memberLanguage.length);
+  //     } catch (error) {
+  //       console.error("Lỗi khi lấy danh sách members:", error);
+  //     }
+  //   };
 
-    fetchMembers();
-  }, [t]);
+  //   fetchMembers();
+  // }, [t]);
 
   useEffect(() => {
     const fetchArticles = async () => {
