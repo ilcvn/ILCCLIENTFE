@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import {Outlet, useLocation} from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import LayoutPage from "../../components/LayoutPage";
-import {getArticles} from "../../api/Article/article";
-import {useTranslation} from "react-i18next";
-import {LanguageContext} from "../../context/LanguageContext";
+import { getArticles } from "../../api/Article/article";
+import { useTranslation } from "react-i18next";
+import { LanguageContext } from "../../context/LanguageContext";
 import { Helmet } from "react-helmet";
 
 export default function ServicePage() {
@@ -14,8 +14,8 @@ export default function ServicePage() {
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const {t} = useTranslation();
-  const {language, changeLanguage} = useContext(LanguageContext);
+  const { t } = useTranslation();
+  const { language, changeLanguage } = useContext(LanguageContext);
   const [articlesLn, setarticlesLn] = useState([]);
   console.log("language", language.toUpperCase());
   // Tạm thời searchQuery = "" (mặc định)
@@ -35,7 +35,7 @@ export default function ServicePage() {
         );
         const data = res.data?.data;
         console.log(res);
-  
+
         if (data) {
           const { articles, pagination } = data;
           setArticles(articles);
@@ -49,10 +49,9 @@ export default function ServicePage() {
         setLoading(false);
       }
     };
-  
+
     fetchArticles();
   }, [searchQuery, currentPage, language, type]);
-  
 
   // Hàm thay đổi trang
   const handlePageChange = (page) => {
@@ -63,7 +62,9 @@ export default function ServicePage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-      <title>{t("nav.service")} {t("banner.marquee")}(ILC)</title>
+        <title>
+          {t("nav.service")} {t("banner.marquee")}(ILC)
+        </title>
       </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
       {isRootPath && (

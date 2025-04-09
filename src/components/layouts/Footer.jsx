@@ -14,7 +14,7 @@ const Footer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { t } = useTranslation();
   const { language } = useContext(LanguageContext);
-  
+
   // Dữ liệu liên hệ
   const address = [
     {
@@ -74,7 +74,7 @@ const Footer = () => {
           currentLanguage
         );
         const { articles, pagination } = res.data.data;
-        const firstFive = articles.slice(0, 3); 
+        const firstFive = articles.slice(0, 3);
 
         setArticles(firstFive);
         setPagination(pagination);
@@ -93,7 +93,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-brandPrimary text-white py-10 px-6 md:px-12">
+    <footer className="bg-brandPrimary text-white py-10 px-6 md:px-12 justify-end">
       <div className="container mx-auto flex flex-col md:flex-row flex-wrap gap-8 md:gap-12">
         {/* Cột 1: Liên hệ */}
         <div className="w-full md:w-[45%] lg:w-[20%]">
@@ -101,7 +101,7 @@ const Footer = () => {
           <hr className="border-t-2 mt-2" />
           <nav className="mt-4 space-y-3 text-md">
             {companyLinks.map((link, index) => (
-              <p key={link.id + '-' + index}>
+              <p key={link.id + "-" + index}>
                 <span
                   className={clsx("font-bold", {
                     "whitespace-pre-line": link.id === 4,
@@ -147,7 +147,7 @@ const Footer = () => {
           <hr className="border-t-2 mt-2" />
           <nav className="mt-4 space-y-3 text-md">
             {address.map((link, index) => (
-              <p key={link.id + '-' + index}>
+              <p key={link.id + "-" + index}>
                 <span
                   className={clsx("font-bold", {
                     "whitespace-pre-line": link.id === 5,
@@ -174,7 +174,7 @@ const Footer = () => {
           <hr className="border-t-2 mt-2" />
           <div className="mt-4 w-full h-60">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4735.498545208676!2d106.79961857581768!3d10.808763089342031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317526c6ef9fa41b%3A0x8514695d6a4ba34b!2zUGFyayBSaXZlcnNpZGUsIDEwMSBCxrBuZyDDlG5nIFRob8OgbiwgUGjGsOG7nW5nIFBow7ogSOG7r3UsIFRo4bunIMSQ4bupYywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e1!3m2!1svi!2s!4v1740813341091!5m2!1svi!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7994954790993!2d106.71636007583876!3d10.826650758263636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528815d9292d1%3A0xcc09c2ed0645bee8!2zMzIgxJDGsOG7nW5nIDE4LCBIaeG7h3AgQsOsbmggQ2jDoW5oLCBUaOG7pyDEkOG7qWMsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1744222384981!5m2!1svi!2s"
               width="100%"
               height="100%"
               style={{ border: 0 }}
