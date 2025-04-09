@@ -62,7 +62,7 @@ const resources = {
           subTitle: "CÔNG CUỘC - PHÁT TRIỂN - ĐỔI MỚI",
           content: {
             paragraph1:
-              "Là đơn vị trực thuộc thứ 29 của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện được thành lập năm 2024 với chức năng, nhiệm vụ chính như sau: Nghiên cứu khoa học về luật pháp và kinh doanh trong nước và quốc tế; Nghiên cứu các định chế thương mại của các tổ chức quốc tế; Nghiên cứu khoa học và thực hiện các đề tài, dự án liên quan pháp luật, tài chính, đầu tư, kinh doanh thương mại, quản trị doanh nghiệp, kinh tế số và trí tuệ nhân tạo, nguồn nhân lực và quản lý rủi ro.",
+              "Là đơn vị trực thuộc thứ 29 của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện Khoa học pháp lý và Phát triển doanh nghiệp được thành lập với mục tiêu tư vấn chính sách pháp luật, cầu nối cho chính sách của cơ quan nhà nước và hoạt động của doanh nghiệp được gặp nhau; đào tạo, bồi dưỡng kiến thức pháp luật; phản biện chính sách và kiến nghị nhà nước sửa đổi, bổ sung các quy định của pháp luật phù hợp với thực tế; nghiên cứu và ứng dụng chuyển đổi số, trí tuệ nhân tạo AI, đặc biệt tập trung vào quản trị doanh nghiệp, kinh tế xanh và công nghệ mới. Bằng cách thực hiện những mục tiêu này, Viện có thể đóng góp vào sự phát triển bền vững của doanh nghiệp, đồng thời cung cấp giá trị cho cộng đồng xã hội.",
             paragraph2:
               "Bên cạnh hoạt động nghiên cứu, Viện còn thực hiện các dịch vụ KH&CN:",
             listItem1:
