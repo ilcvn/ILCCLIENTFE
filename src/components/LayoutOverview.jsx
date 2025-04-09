@@ -99,7 +99,7 @@ export default function LayoutOverviewPage({
 
         {/* Pagination Section */}
         {pagination.total > membersPerPage && (
-          <div className='flex justify-center items-center gap-2 flex-wrap'>
+          <div className='flex justify-center mt-10 items-center gap-2 flex-wrap'>
             <button
               onClick={() => onPageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage === 1}

@@ -7,15 +7,16 @@ const resources = {
   vi: {
     translation: {
       nav: {
-        home: "Trang chủ",
-        overview: "Tổng quan",
+        home: "Trang Chủ",
+        overview: "Tổng Quan",
         service: "Dịch vụ",
+        training: "Đào Tạo",
         news: "Tin tức",
         legalKnowledge: "Đối Tác",
-        contact: "Liên hệ",
+        contact: "Liên Hệ",
         member: "Thành Viên",
         placeholderSearch: "Nhập từ khóa...",
-        search: "Tìm kiếm",
+        search: "Tìm Kiếm",
       },
       banner: {
         marquee: "Viện Khoa học Pháp Lý và Phát triển doanh nghiệp",
@@ -110,6 +111,12 @@ const resources = {
           partners: {
             header: "ĐỐI TÁC KHÁCH HÀNG",
             content: "",
+            enterprise: "Đối Tác Doanh Nghiệp",
+            enterprise_sub: "Chúng tôi tự hào đồng hành cùng nhiều doanh nghiệp lớn, vững mạnh trong các lĩnh vực khác nhau.",
+            educationInstitution: "Đối Tác Giáo Dục",
+            educationInstitution_sub: "Hệ sinh thái của chúng tôi hợp tác với các tổ chức giáo dục toàn quốc, xây dựng mạng lưới đối tác mạnh mẽ",
+            organization: "Cơ Quan Đối Tác",
+            organization_sub: "Viện phát triển mạnh mẽ, gắn kết với các cơ quan tổ chức tiềm năng, đang vươn lên",
           },
         },
       },
@@ -202,7 +209,9 @@ const resources = {
           "Ban Kinh tế - Tài chính và Thương mại quốc tế",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Ban Pháp Luật Và Định Chế Thương Mại",
-        CHIEF_OF_STAFF: "Hành Chánh ",
+        OTHER_DEPRATMENTS: "Văn Phòng Và Các Ban",
+        PARTNERS: "Đối Tác Của Viện",
+        CHIEF_OF_STAFF: "Chánh Văn Phòng",
         Sub_header: "Viện Khoa học pháp lý và Phát triển doanh nghiệp ",
       },
       detailMember: {
@@ -220,6 +229,7 @@ const resources = {
         home: "Home",
         overview: "Overview",
         service: "Service",
+        training: "Training",
         news: "News",
         legalKnowledge: "Partner",
         contact: "Contact",
@@ -319,6 +329,12 @@ const resources = {
           partners: {
             header: "CUSTOMER PARTNERS",
             content: "",
+            enterprise: "Enterprise Partner",
+            enterprise_sub: "We are proud to partner with many large and strong enterprises across various industries",
+            educationInstitution: "Educational Partner",
+            educationInstitution_sub: "Our ecosystem collaborates with educational institutions nationwide, building a robust network of partners",
+            organization: "Partner Organization",
+            organization_sub: "The institute is growing rapidly, building strong connections with potential organizations that are rising",
           },
         },
       },
@@ -412,7 +428,9 @@ const resources = {
           "Department of Economics, Finance and International Trade",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Department of Legal Affairs and Commercial Institutions",
-        CHIEF_OF_STAFF: "Administrative",
+        OTHER_DEPRATMENTS: "Office And Departments",
+        CHIEF_OF_STAFF: "Chief Of Staff",
+        PARTNERS: "Partners",
         Sub_header: "Institute of Legal Science and Business Development",
       },
       detailMember: {
@@ -429,6 +447,7 @@ const resources = {
         home: "首页",
         overview: "概览",
         service: "服务",
+        training: "培训",
         news: "新闻",
         legalKnowledge: "合作伙伴",
         contact: "联系",
@@ -519,6 +538,12 @@ const resources = {
           partners: {
             header: "客户合作伙伴",
             content: "",
+            enterprise: "企业合作伙伴",
+            enterprise_sub: "我们自豪地与多个行业的大型且强大的企业合作",
+            educationInstitution: "教育合作伙伴",
+            educationInstitution_sub: "我们的生态系统与全国各地的教育机构合作，建立了一个强大的合作伙伴网络",
+            organization: "合作机构",
+            organization_sub: "学院正在快速发展，与有潜力的机构建立紧密联系，正在崛起",
           },
         },
       },
@@ -607,7 +632,9 @@ const resources = {
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
           "经济、财务与国际贸易部",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT: "法律与商业机构部",
-        CHIEF_OF_STAFF: "行政",
+        OTHER_DEPRATMENTS: "办公室和部门",
+        PARTNERS: "合作伙伴",
+        CHIEF_OF_STAFF: "办公室主任",
         Sub_header: "法律科学与企业发展研究院",
       },
       detailMember: {

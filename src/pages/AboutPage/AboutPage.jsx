@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next"
 import { LanguageContext } from "../../context/LanguageContext"
 import LayoutOverviewPage from "../../components/LayoutOverview"
 import { getMembers } from "../../api/Nember/nember"
+import EcoSystem from "../../components/Ecosystem";
 import { Helmet } from "react-helmet"
 
 const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
@@ -21,7 +22,11 @@ const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
   { value: "DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT", filterKey: "department" },
   
   { value: "CHIEF_OF_STAFF", filterKey: "department" },
+  
+  { value: "PARTNER", filterKey: "partner" },
 ]
+
+const PARTNER_OPTIONS = ['EDUCATIONAL_INSTITUTION', 'ENTERPRISE', 'ORGANIZATION']
 
 export default function AboutPage() {
   const location = useLocation()
@@ -90,7 +95,12 @@ export default function AboutPage() {
       <Helmet>
         <title>{t("nav.overview")} {t("banner.marquee")}(ILC)</title>
       </Helmet>
-      {optionsToRender.map((option, index) => {
+
+      
+      {
+      optionsToRender.map((option, index) => {
+        console.log(optionsToRender);
+        if(option.value !== 'PARTNER'){
         const coppiedMembers = [...members]
 
         let filteredMembers = coppiedMembers.filter((member) => {
@@ -120,7 +130,7 @@ export default function AboutPage() {
         }else if(option.value === "CHIEF_OF_STAFF") {
           roleOrder = ["ROOM_PRESIDENT", "ROOM_VICE_PRESIDENT", "MEMBER"];
         }else{
-          roleOrder = ["GROUP_PRESIDENT", "ROOM_VICE_PRESIDENT", "MEMBER"];
+          roleOrder = ["GROUP_PRESIDENT", "GROUP_VICE_PRESIDENT", "MEMBER"];
         }
            
         filteredMembers = filteredMembers.sort((a, b) => {
@@ -153,6 +163,16 @@ export default function AboutPage() {
             isShow={true}
           />
         )
+      }else{
+        console.log('go');
+        return (
+          <>
+            <EcoSystem type={PARTNER_OPTIONS[0]} header={t("homepage.contentSection.partners.educationInstitution")} subheader={t("homepage.contentSection.partners.educationInstitution_sub")}/>
+            <EcoSystem type={PARTNER_OPTIONS[1]} header={t("homepage.contentSection.partners.enterprise")} subheader={t("homepage.contentSection.partners.enterprise_sub")} />
+            <EcoSystem type={PARTNER_OPTIONS[2]} header={t("homepage.contentSection.partners.organization")} subheader={t("homepage.contentSection.partners.organization_sub")}/>
+          </>
+        );
+      }
       })}
       <Outlet />
     </div>

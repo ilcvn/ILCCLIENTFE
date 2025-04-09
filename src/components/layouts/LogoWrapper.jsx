@@ -10,7 +10,7 @@ const LogoWrapper = () => {
         <button onClick={() => navigate("/")}>
           <img
             src={Logo}
-            alt="CÔNG TY LUẬT BẾN THÀNH LAW"
+            alt="Viện Khoa học pháp lý và Phát triển doanh nghiệp (Institute of Legal Science and Corporate Development - ILC)"
             className="w-full h-[121px] object-contain cursor-pointer"
           />
         </button>

@@ -39,6 +39,7 @@ const allRootPath = [
   "/tong-quan/BOARD_OF_MANAGEMERS",  
   "/tong-quan/ADVISORY_BOARD",   
   "/tong-quan/department",     
+  "/tong-quan/partner",  
   "/tong-quan/office",
   "/tong-quan/ecosystem",   
 ];

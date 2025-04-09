@@ -151,7 +151,7 @@ const Header = () => {
               <button onClick={() => navigate("/")}>
                 <img
                   src={Logo}
-                  alt="CÔNG TY LUẬT BẾN THÀNH LAW"
+                  alt="Viện Khoa học pháp lý và Phát triển doanh nghiệp (Institute of Legal Science and Corporate Development - ILC)"
                   className="w-full h-[121px] object-contain cursor-pointer"
                 />
               </button>
@@ -325,7 +325,7 @@ const Header = () => {
             <a href="/public" className="mx-auto">
               <img
                 src={Logo}
-                alt="CÔNG TY LUẬT BẾN THÀNH LAW"
+                alt="Viện Khoa học pháp lý và Phát triển doanh nghiệp (Institute of Legal Science and Corporate Development - ILC)"
                 className="w-full h-[126px] object-contain"
               />
             </a>

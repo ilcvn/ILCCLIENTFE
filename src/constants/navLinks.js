@@ -12,7 +12,9 @@ const navLinks = [
       {id: 2, label: "about.BOARD_OF_MANAGEMERS", path: "/tong-quan/BOARD_OF_MANAGEMERS"},
       {id: 3, label: "about.SCIENTIFIC_COUNCIL", path: "/tong-quan/SCIENTIFIC_COUNCIL"},
       {id: 4, label: "about.ADVISORY_BOARD", path: "/tong-quan/ADVISORY_BOARD"},
-      {id: 5, label: "about.CHIEF_OF_STAFF", path: "/tong-quan/department"},    ],
+      {id: 5, label: "about.OTHER_DEPRATMENTS", path: "/tong-quan/department"},    
+      {id: 6, label: "about.PARTNERS", path: "/tong-quan/partner"},    
+    ],
   },
   {
     id: 3,
@@ -23,7 +25,23 @@ const navLinks = [
     children: [],
   },
   {
-    id: 4,
+    id: 7,
+    label: "nav.training",
+    path: "/tin-tuc",
+    dynamicSource: "articles",
+    dynamicPrefix: "/tin-tuc",
+    children: [],
+  },
+  // {
+  //   id: 8,
+  //   label: "Nghiên Cứu Khoa Học Và Xây Dựng Pháp Luật",
+  //   path: "/tin-tuc",
+  //   dynamicSource: "articles",
+  //   dynamicPrefix: "/tin-tuc",
+  //   children: [],
+  // },
+  {
+    id: 6,
     label: "nav.news",
     path: "/tin-tuc",
     dynamicSource: "articles",
@@ -31,14 +49,14 @@ const navLinks = [
     children: [],
   },
   {
-    id: 5,
+    id: 77,
     label: "nav.legalKnowledge",
     path: "/doi-tac",
     dynamicSource: "articles",
     dynamicPrefix: "/kien-thuc-ve-luat",
     children: [],
   },
-  {id: 6, label: "nav.contact", path: "/lien-he"},
+  {id: 8, label: "nav.contact", path: "/lien-he"},
 ];
 
 export default navLinks;
