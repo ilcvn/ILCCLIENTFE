@@ -146,7 +146,7 @@ const Header = () => {
       <div className="w-full relative shadow-lg">
         <div className=" relative mx-auto max-w-screen-2xl ">
           {/* Logo */}
-          <div className=" xl:absolute  relative w-full  xl:left-[4%] h-full shadow-sm  px-2  xl:max-w-[240px] bottom-[112%] z-40">
+          <div className="xl:absolute relative w-full xl:left-[4%] h-full shadow-sm px-2 xl:max-w-[240px] bottom-[112%] z-40">
             <div className="bg-white text-center sticky">
               <button onClick={() => navigate("/")}>
                 <img
