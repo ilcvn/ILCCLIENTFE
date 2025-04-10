@@ -1,4 +1,5 @@
 // src/constants/navLinks.js
+console.log('co vo');
 const navLinks = [
   {id: 1, label: "nav.home", path: "/"},
   {
@@ -25,21 +26,23 @@ const navLinks = [
     children: [],
   },
   {
-    id: 7,
+    id: 4,
     label: "nav.training",
-    path: "/tin-tuc",
+    path: "/dao-tao",
     dynamicSource: "articles",
-    dynamicPrefix: "/tin-tuc",
+    dynamicPrefix: "/dao-tao",
     children: [],
+    typePage: "TRAINING"
   },
-  // {
-  //   id: 8,
-  //   label: "Nghiên Cứu Khoa Học Và Xây Dựng Pháp Luật",
-  //   path: "/tin-tuc",
-  //   dynamicSource: "articles",
-  //   dynamicPrefix: "/tin-tuc",
-  //   children: [],
-  // },
+  {
+    id: 5,
+    label: "nav.research_title",
+    path: "/nghien-cuu",
+    dynamicSource: "articles",
+    dynamicPrefix: "/nghien-cuu-khoa-hoc-va-ung-dung-chuyen-doi-so",
+    children: [],
+    typePage: "RESEARCH"
+  },
   {
     id: 6,
     label: "nav.news",
@@ -48,15 +51,7 @@ const navLinks = [
     dynamicPrefix: "/tin-tuc",
     children: [],
   },
-  {
-    id: 77,
-    label: "nav.legalKnowledge",
-    path: "/doi-tac",
-    dynamicSource: "articles",
-    dynamicPrefix: "/kien-thuc-ve-luat",
-    children: [],
-  },
-  {id: 8, label: "nav.contact", path: "/lien-he"},
+  {id: 7, label: "nav.contact", path: "/lien-he"},
 ];
 
 export default navLinks;

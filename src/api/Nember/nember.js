@@ -1,7 +1,7 @@
 import instance from "../api";
 
-export const getMembers = (search = "", page = "", limit = "") => {
-  return instance.get(`/member/?search=${search}&page=${page}&limit=${limit}`);
+export const getMembers = (search = "", page = "", limit = "", language = "") => {
+  return instance.get(`/member/?search=${search}&page=${page}&limit=${limit}&language=${language}`);
 };
 
 export const getMemberById = (id) => {

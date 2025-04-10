@@ -32,7 +32,7 @@ function HomePage() {
         subTitle={t("homepage.blogCard.subTitle")}
         content={
           <>
-            <p>{t("homepage.blogCard.content.paragraph1")}</p>
+            <p className="text-justify">{t("homepage.blogCard.content.paragraph1")}</p>
             <br />
             {/* <p>{t("homepage.blogCard.content.paragraph2")}</p>
             <ul>

@@ -49,6 +49,7 @@ export default function DetailPage() {
       setLoading(true);
       try {
         const res = await getArticles(searchQuery, currentPage, 6);
+        console.log('ua ua ');
         const { articles: fetchedArticles, pagination } = res.data.data;
 
         const filteredArticles = targetId

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../../context/LanguageContext";
 import { Helmet } from "react-helmet";
 
-export default function ServicePage() {
+export default function ServicePage({ typePage }) {
   const location = useLocation();
   const isRootPath = location.pathname === "/dich-vu";
   const [articles, setArticles] = useState([]);
@@ -17,25 +17,30 @@ export default function ServicePage() {
   const { t } = useTranslation();
   const { language, changeLanguage } = useContext(LanguageContext);
   const [articlesLn, setarticlesLn] = useState([]);
-  console.log("language", language.toUpperCase());
+  const [type, setType] = useState("SERVICE");
+  const [headerValue, setHeaderValue] = useState();
+
   // Tạm thời searchQuery = "" (mặc định)
   const searchQuery = "";
-  const type = "SERVICE";
+  // const type = "SERVICE";
   useEffect(() => {
+    
     const fetchArticles = async () => {
       try {
         setLoading(true);
         const currentLanguage = (language || "VI").toUpperCase();
+
         const res = await getArticles(
           searchQuery,
           currentPage,
           6,
-          type,
+          typePage,
           currentLanguage
         );
         const data = res.data?.data;
-        console.log(res);
 
+        setType(typePage);
+        setHeaderValue(t(`nav.${typePage.toLowerCase()}`));
         if (data) {
           const { articles, pagination } = data;
           setArticles(articles);
@@ -51,7 +56,7 @@ export default function ServicePage() {
     };
 
     fetchArticles();
-  }, [searchQuery, currentPage, language, type]);
+  }, [searchQuery, currentPage, language, typePage]);
 
   // Hàm thay đổi trang
   const handlePageChange = (page) => {
@@ -67,15 +72,16 @@ export default function ServicePage() {
         </title>
       </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
-      {isRootPath && (
-        <LayoutPage
-          header={t("nav.service")}
-          data={articles}
-          pagination={pagination}
-          onPageChange={handlePageChange}
-          path={location.pathname}
-        />
-      )}
+      {
+              (
+                <LayoutPage
+                  header={headerValue}
+                  data={articles}
+                  pagination={pagination}
+                  onPageChange={handlePageChange}
+                  path={location.pathname}
+                />
+              )}
 
       {/* Hiển thị nội dung của route con (nếu có) */}
       <Outlet />

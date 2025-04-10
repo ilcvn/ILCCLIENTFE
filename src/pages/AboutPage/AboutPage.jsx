@@ -63,12 +63,13 @@ export default function AboutPage() {
     const fetchMembers = async () => {
       try {
         setLoading(true);
-        const res = await getMembers();
+        const res = await getMembers("",1, 100000, language.toLowerCase());
         const { members } = res.data.data;
-        const memberByLanguage = members.filter(
-          (member) => member.language.toLowerCase() === language.toLowerCase()
-        );
-        setMembers(memberByLanguage);
+        // const memberByLanguage = members.filter(
+        //   (member) => member.language.toLowerCase() === language.toLowerCase()
+        // );
+        console.log(res);
+        setMembers(members);
       } catch (error) {
         console.error("Error fetching members:", error);
       } finally {
@@ -171,7 +172,7 @@ export default function AboutPage() {
             const roleB = b.role.split(", ")[0].trim();
             return roleOrder.indexOf(roleA) - roleOrder.indexOf(roleB);
           });
-
+        
           const currentDepartmentPage = currentPages[option.value] || 1;
           const startIndex = (currentDepartmentPage - 1) * pageSize;
           const endIndex = startIndex + pageSize;
