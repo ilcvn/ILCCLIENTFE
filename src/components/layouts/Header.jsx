@@ -209,9 +209,9 @@ const Header = () => {
               } `}
             >
               {" "}
-              <ul className={"flex items-center gap-12"}>
-              {/* <ul className={`flex items-center ${language.toUpperCase() === 'VI' ? 'gap-12' : 
-              language.toUpperCase() === 'EN' ? 'gap-14' : 'gap-24'}`}> */}
+              {/* <ul className={"flex items-center gap-12"}> */}
+              <ul className={`flex items-center ${language.toUpperCase() === 'VI' ? 'gap-12' : 
+              language.toUpperCase() === 'EN' ? 'gap-14' : 'gap-24'}`}>
                 {dynamicNavLinks.map((link) => {
                   const isActive =
                     location.pathname === link.path ||
