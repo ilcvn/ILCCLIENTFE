@@ -49,6 +49,7 @@ export default function DetailPage() {
       setLoading(true);
       try {
         const res = await getArticles(searchQuery, currentPage, 6);
+        console.log('ua ua ');
         const { articles: fetchedArticles, pagination } = res.data.data;
 
         const filteredArticles = targetId
@@ -111,7 +112,10 @@ export default function DetailPage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>{article.title} {t("banner.marquee")}(ILC)</title>
+        <title>
+          {/* {article.title} {t("banner.marquee")}(ILC) */}
+          {article.title + " (ILC)"}
+        </title>
       </Helmet>
       <div className="md:w-3/4 w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
         <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">

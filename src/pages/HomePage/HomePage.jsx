@@ -32,9 +32,9 @@ function HomePage() {
         subTitle={t("homepage.blogCard.subTitle")}
         content={
           <>
-            <p>{t("homepage.blogCard.content.paragraph1")}</p>
+            <p className="text-justify">{t("homepage.blogCard.content.paragraph1")}</p>
             <br />
-            <p>{t("homepage.blogCard.content.paragraph2")}</p>
+            {/* <p>{t("homepage.blogCard.content.paragraph2")}</p>
             <ul>
               <li>{t("homepage.blogCard.content.listItem1")}</li>
               <li>{t("homepage.blogCard.content.listItem2")}</li>
@@ -44,7 +44,7 @@ function HomePage() {
             </ul>
             <br />
             <p>{t("homepage.blogCard.content.paragraph3")}</p>
-            <br />
+            <br /> */}
             <div className="flex items-center gap-2">
               <span><b>{t("homepage.blogCard.content.tip1")}:</b></span>
               <i>{t("homepage.blogCard.content.paragraph4")}</i>

@@ -15,13 +15,15 @@ const routesConfig = [
   { path: "/", element: <HomePage /> },
   { path: "/tong-quan", element: <AboutPage /> },
   { path: "/tong-quan/:slug", element: <DetailPage /> },
-  { path: "/dich-vu", element: <ServicePage /> },
+   { path: "/dich-vu", element: <ServicePage typePage="SERVICE"/> },
   { path: "/dich-vu/:slug", element: <DetailPage /> },
-  { path: "/tin-tuc", element: <NewsPage /> },
+  { path: "/tin-tuc", element: <ServicePage typePage="NEWS"/> },
   { path: "/kien-thuc-ve-luat", element: <KnowledgePage /> },
   { path: "/kien-thuc-ve-luat/:slug", element: <DetailPage /> },
   { path: "/lien-he", element: <ContactPage /> },
   { path: "*", element: <NotFoundPage /> },
+  { path: "/nghien-cuu", element: <ServicePage typePage="RESEARCH"/> },
+  { path: "/dao-tao", element: <ServicePage typePage="TRAINING"/> },
 ];
 
 export default routesConfig;

@@ -23,51 +23,58 @@ import { ToastContainer } from "react-toastify";
 const routesConfig = [
   { path: "/", element: <HomePage /> },
   { path: "/tong-quan", element: <AboutPage /> },
-  { path: "/dich-vu", element: <ServicePage /> },
+  { path: "/dich-vu", element: <ServicePage typePage="SERVICE"/> },
   { path: "/dich-vu/:slug", element: <DetailPage /> },
-  { path: "/tin-tuc", element: <NewsPage /> },
+  { path: "/tin-tuc", element: <ServicePage typePage="NEWS"/> },
   { path: "/tin-tuc/:slug", element: <DetailPage /> },
-  { path: "/doi-tac", element: <KnowledgePage /> },
+  { path: "/nghien-cuu", element: <ServicePage typePage="RESEARCH"/> },
+  { path: "/dao-tao", element: <ServicePage typePage="TRAINING"/> },
   { path: "/lien-he", element: <ContactPage /> },
   { path: "/tong-quan/:slug", element: <MemberPage /> },
   { path: "/tim-kiem", element: <SearchPage /> },
   { path: "/tim-kiem/:slug", element: <DetailPage /> },
 ];
 const allRootPath = [
-  "/tong-quan/BOARD_OF_DIRECTORS",  
-  "/tong-quan/SCIENTIFIC_COUNCIL",   
-  "/tong-quan/BOARD_OF_MANAGEMERS",  
-  "/tong-quan/ADVISORY_BOARD",   
-  "/tong-quan/department",     
+  "/tong-quan/BOARD_OF_DIRECTORS",
+  "/tong-quan/SCIENTIFIC_COUNCIL",
+  "/tong-quan/BOARD_OF_MANAGEMERS",
+  "/tong-quan/ADVISORY_BOARD",
+  "/tong-quan/department",
+  "/tong-quan/partner",
   "/tong-quan/office",
-  "/tong-quan/ecosystem",   
+  "/tong-quan/ecosystem",
 ];
 
 function App() {
   return (
-    <>
-      <Router>
-        <Banner />
-        <LoadingScreenSlash />
-        <Suspense fallback={<div>Loading...</div>}>
+    <Router>
+      <Banner />
+      <LoadingScreenSlash />
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="flex flex-col min-h-screen">
           <Header />
-          <Routes>
-            {routesConfig.map((route, index) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))}
-             {allRootPath.map((path, index) => (
-              <Route key={`about-${index}`} path={path} element={<AboutPage />} />
-            ))}
-            {/* Route cho trang lỗi */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <main className="flex-grow">
+            <Routes>
+              {routesConfig.map((route, index) => (
+                <Route key={index} path={route.path} element={route.element} />
+              ))}
+              {allRootPath.map((path, index) => (
+                <Route
+                  key={`about-${index}`}
+                  path={path}
+                  element={<AboutPage />}
+                />
+              ))}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
           <SharingContact />
           <Footer />
-          <SubFooter />
-        </Suspense>
-      </Router>
+        </div>
+        <SubFooter />
+      </Suspense>
       <ToastContainer position="top-right" autoClose={3000} />
-    </>
+    </Router>
   );
 }
 

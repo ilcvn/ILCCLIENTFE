@@ -7,15 +7,18 @@ const resources = {
   vi: {
     translation: {
       nav: {
-        home: "Trang chủ",
-        overview: "Tổng quan",
+        home: "Trang Chủ",
+        overview: "Tổng Quan",
         service: "Dịch vụ",
+        training: "Đào Tạo",
         news: "Tin tức",
         legalKnowledge: "Đối Tác",
-        contact: "Liên hệ",
+        research_title: "Nghiên Cứu",
+        research: "Nghiên Cứu Khoa Học và Xây Dựng Pháp Luật",
+        contact: "Liên Hệ",
         member: "Thành Viên",
         placeholderSearch: "Nhập từ khóa...",
-        search: "Tìm kiếm",
+        search: "Tìm Kiếm",
       },
       banner: {
         marquee: "Viện Khoa học Pháp Lý và Phát triển doanh nghiệp",
@@ -61,7 +64,7 @@ const resources = {
           subTitle: "CÔNG CUỘC - PHÁT TRIỂN - ĐỔI MỚI",
           content: {
             paragraph1:
-              "Là đơn vị trực thuộc thứ 29 của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện được thành lập năm 2024 với chức năng, nhiệm vụ chính như sau: Nghiên cứu khoa học về luật pháp và kinh doanh trong nước và quốc tế; Nghiên cứu các định chế thương mại của các tổ chức quốc tế; Nghiên cứu khoa học và thực hiện các đề tài, dự án liên quan pháp luật, tài chính, đầu tư, kinh doanh thương mại, quản trị doanh nghiệp, kinh tế số và trí tuệ nhân tạo, nguồn nhân lực và quản lý rủi ro.",
+              "Là đơn vị trực thuộc thứ 29 của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện Khoa học pháp lý và Phát triển doanh nghiệp được thành lập với mục tiêu tư vấn chính sách pháp luật, cầu nối cho chính sách của cơ quan nhà nước và hoạt động của doanh nghiệp được gặp nhau; đào tạo, bồi dưỡng kiến thức pháp luật; phản biện chính sách và kiến nghị nhà nước sửa đổi, bổ sung các quy định của pháp luật phù hợp với thực tế; nghiên cứu và ứng dụng chuyển đổi số, trí tuệ nhân tạo AI, đặc biệt tập trung vào quản trị doanh nghiệp, kinh tế xanh và công nghệ mới. Bằng cách thực hiện những mục tiêu này, Viện có thể đóng góp vào sự phát triển bền vững của doanh nghiệp, đồng thời cung cấp giá trị cho cộng đồng xã hội.",
             paragraph2:
               "Bên cạnh hoạt động nghiên cứu, Viện còn thực hiện các dịch vụ KH&CN:",
             listItem1:
@@ -110,6 +113,12 @@ const resources = {
           partners: {
             header: "ĐỐI TÁC KHÁCH HÀNG",
             content: "",
+            enterprise: "Đối Tác Doanh Nghiệp",
+            enterprise_sub: "Chúng tôi tự hào đồng hành cùng nhiều doanh nghiệp lớn, vững mạnh trong các lĩnh vực khác nhau.",
+            educationInstitution: "Đối Tác Giáo Dục",
+            educationInstitution_sub: "Hệ sinh thái của chúng tôi hợp tác với các tổ chức giáo dục toàn quốc, xây dựng mạng lưới đối tác mạnh mẽ",
+            organization: "Cơ Quan Đối Tác",
+            organization_sub: "Viện phát triển mạnh mẽ, gắn kết với các cơ quan tổ chức tiềm năng, đang vươn lên",
           },
         },
       },
@@ -202,7 +211,9 @@ const resources = {
           "Ban Kinh tế - Tài chính và Thương mại quốc tế",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Ban Pháp Luật Và Định Chế Thương Mại",
-        CHIEF_OF_STAFF: "Hành Chánh ",
+        OTHER_DEPRATMENTS: "Văn Phòng Và Các Ban",
+        PARTNERS: "Đối Tác Của Viện",
+        CHIEF_OF_STAFF: "Chánh Văn Phòng",
         Sub_header: "Viện Khoa học pháp lý và Phát triển doanh nghiệp ",
       },
       detailMember: {
@@ -220,8 +231,11 @@ const resources = {
         home: "Home",
         overview: "Overview",
         service: "Service",
+        training: "Training",
         news: "News",
         legalKnowledge: "Partner",
+        research_title: "Research",
+        research: "Scientific Research and Legal Development",
         contact: "Contact",
         member: "Member",
         placeholderSearch: "Enter keyword...",
@@ -319,6 +333,12 @@ const resources = {
           partners: {
             header: "CUSTOMER PARTNERS",
             content: "",
+            enterprise: "Enterprise Partner",
+            enterprise_sub: "We are proud to partner with many large and strong enterprises across various industries",
+            educationInstitution: "Educational Partner",
+            educationInstitution_sub: "Our ecosystem collaborates with educational institutions nationwide, building a robust network of partners",
+            organization: "Partner Organization",
+            organization_sub: "The institute is growing rapidly, building strong connections with potential organizations that are rising",
           },
         },
       },
@@ -412,7 +432,9 @@ const resources = {
           "Department of Economics, Finance and International Trade",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Department of Legal Affairs and Commercial Institutions",
-        CHIEF_OF_STAFF: "Administrative",
+        OTHER_DEPRATMENTS: "Office And Departments",
+        CHIEF_OF_STAFF: "Chief Of Staff",
+        PARTNERS: "Partners",
         Sub_header: "Institute of Legal Science and Business Development",
       },
       detailMember: {
@@ -429,8 +451,11 @@ const resources = {
         home: "首页",
         overview: "概览",
         service: "服务",
+        training: "培训",
         news: "新闻",
         legalKnowledge: "合作伙伴",
+        research_title: "研究",
+        research: "科学研究与立法建设",
         contact: "联系",
         member: "成员",
         placeholderSearch: "输入关键词...",
@@ -519,6 +544,12 @@ const resources = {
           partners: {
             header: "客户合作伙伴",
             content: "",
+            enterprise: "企业合作伙伴",
+            enterprise_sub: "我们自豪地与多个行业的大型且强大的企业合作",
+            educationInstitution: "教育合作伙伴",
+            educationInstitution_sub: "我们的生态系统与全国各地的教育机构合作，建立了一个强大的合作伙伴网络",
+            organization: "合作机构",
+            organization_sub: "学院正在快速发展，与有潜力的机构建立紧密联系，正在崛起",
           },
         },
       },
@@ -607,7 +638,9 @@ const resources = {
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
           "经济、财务与国际贸易部",
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT: "法律与商业机构部",
-        CHIEF_OF_STAFF: "行政",
+        OTHER_DEPRATMENTS: "办公室和部门",
+        PARTNERS: "合作伙伴",
+        CHIEF_OF_STAFF: "办公室主任",
         Sub_header: "法律科学与企业发展研究院",
       },
       detailMember: {

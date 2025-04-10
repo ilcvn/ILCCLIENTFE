@@ -30,20 +30,21 @@ const EcoSystem = ({type, header, subheader}) => {
   }, [type]); // useEffect chạy lại khi `type` thay đổi
 
   return (
-    <div className="md:w-3/4 max-w-7xl w-full mx-auto py-16 relative ">
+    <div className="max-w-7xl mx-auto my-10 text-black w-full md:w-1/2 lg:w-5/12 text-center px-1">
       {/* Phần tiêu đề và mô tả */}
-      <h1 className="text-2xl md:text-5xl font-bold text-center mb-2 text-brandSecondary">
+      <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-2 text-brandSecondary">
         {header}
-      </h1>
+      </h2>
       
         {/* Nếu muốn icon nằm giữa 2 đường kẻ */}
-        <div className="flex items-center">
+
+      <p className="text-center mb-8 md:text-md">{subheader}</p>
+
+      <div className="flex items-center">
           <hr className="flex-1 mx-2 border-t-2 border-neutralGrey" />
           <div className=" text-5xl text-gray-500">⚖</div>
           <hr className="flex-1 mx-2 border-t-2 border-neutralGrey" />
         </div>
-
-      <p className="text-center mb-8 md:text-2xl">{subheader}</p>
 
       {/* Khung hiển thị slider */}
       <div className="overflow-hidden">
