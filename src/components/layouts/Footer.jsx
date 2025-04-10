@@ -175,9 +175,11 @@ const Footer = () => {
           <div className="mt-4 w-full h-60">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7994954790993!2d106.71636007583876!3d10.826650758263636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528815d9292d1%3A0xcc09c2ed0645bee8!2zMzIgxJDGsOG7nW5nIDE4LCBIaeG7h3AgQsOsbmggQ2jDoW5oLCBUaOG7pyDEkOG7qWMsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1744222384981!5m2!1svi!2s"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
+              className={clsx(
+                "border-0",
+                "w-[100%] h-[100%]",
+                "md:w-[350px] md:h-[300px]"
+              )}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
