@@ -30,37 +30,39 @@ function ContactPage() {
         <div className="flex items-center justify-center">
           <div className="container md:mx-auto md:p-5 grid lg:grid-cols-1 xl:grid-cols-2 gap-10">
             <div className="relative">
-              <div className="col-span-2 mb-10 space-y-1">
+              <div className="col-span-2 mb-10 space-y-2">
                 <h1 className="text-3xl font-bold text-center text-brandSecondary mb-4">
                   {t("contactPage.platformName", "ILC PLATFORM").toUpperCase()}
                 </h1>
                 <div className="flex items-center">
-                  <EnvelopeIcon className="w-5 h-5 text-brandPrimary mr-2 font-semibold" />
+                  <EnvelopeIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
                     {t("contactPage.emailLabel", "Email:")}
                   </span>
                   <span>info@ilcvn.vn</span>
                 </div>
                 <div className="flex items-center">
-                  <PhoneIcon className="w-5 h-5 text-brandPrimary mr-2 font-semibold" />
+                  <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
                     {t("contactPage.hotlineLabel", "Hotline:")}
                   </span>
                   <span>0934 121 183</span>
                 </div>
                 <div className="flex items-center">
-                  <Link className="w-5 h-5 text-brandPrimary mr-2 font-semibold" />
+                  <Link className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
                     {t("contactPage.hotlineLabel2", "Hotline:")}
                   </span>
                   <span>0934 121 183</span>
                 </div>
-                <div className="flex items-center">
-                  <IoLocationSharp className="w-12 md:w-6 h-5 text-brandPrimary mr-1 font-semibold" />
-                  <span className=" font-semibold">
-                    {t("contactPage.adddresslabel")}{" "}
-                  </span>
-                  <span>{t("contactPage.addressText")}</span>
+                <div className="flex items-start">
+                  <IoLocationSharp className="w-6 h-6 text-brandSecondary mr-1 font-semibold" />
+                  <div className="flex flex-col">
+                    <span className=" font-semibold">
+                      {t("contactPage.adddresslabel")}{" "}
+                    </span>
+                    <span>{t("contactPage.addressText")}</span>
+                  </div>
                 </div>
               </div>
               <div className="relative w-full aspect-[21/9] overflow-hidden shadow-md">

@@ -27,7 +27,7 @@ const BreadcrumbDynamic = () => {
     map["/tim-kiem"] = t("nav.search");
 
     return map;
-  }, [t]); 
+  }, [t]);
 
   const defaultSlugToLabel = (slug) => {
     slug = decodeURIComponent(slug);
@@ -65,9 +65,14 @@ const BreadcrumbDynamic = () => {
                 <li key={routeTo} className="flex items-center">
                   <ChevronRightIcon className="w-4 h-4 text-black mx-2" />
                   {isLast ? (
-                    <span className="text-black font-bold">{label}</span>
+                    <span className="text-brandSecondary font-bold">
+                      {label}
+                    </span>
                   ) : (
-                    <Link to={routeTo} className="text-black hover:underline text-base">
+                    <Link
+                      to={routeTo}
+                      className="text-black hover:underline text-base"
+                    >
                       {label}
                     </Link>
                   )}

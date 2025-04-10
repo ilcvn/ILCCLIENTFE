@@ -42,8 +42,7 @@ export default function LayoutOverviewPage({
     isShow && (
       <div className="max-w-screen-2xl mx-auto py-10 z-50 text-black p-1">
         <ContentSection header={header} content={content} />
-
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4 mt-3">
           {data.map((member, index) => {
             const roleName = member.role
               ? getRoleTitles(member.role)
@@ -70,7 +69,7 @@ export default function LayoutOverviewPage({
                     className="w-32 h-32 lg:w-40 lg:h-40 rounded-full mx-auto object-cover"
                   />
                   <div className="space-y-2 mt-6">
-                    <h3 className="font-bold md:text-xl text-lg text-brandPrimary mt-3">
+                    <h3 className="font-bold md:text-xl text-md text-brandPrimary mt-3">
                       {member.fullName}
                     </h3>
                     <p className="md:text-lg text-base text-brandSecondary font-semibold">
@@ -87,7 +86,7 @@ export default function LayoutOverviewPage({
                       <p className="text-sm mt-2">Email: {member.email}</p>
                       <p className="text-sm">SĐT: {member.phone}</p>
                       <div className="w-20 h-[1px] bg-white rounded-lg my-3"></div>
-                      <p className="text-xs text-justify line-clamp-[8]">
+                      <p className="text-xs text-justify line-clamp-[8] whitespace-pre-line">
                         {member.description}
                       </p>
                     </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ViewReload } from "../../api/ViewWebsite/View";
+import { ChartBar, MessageCircle, MessageSquare } from "lucide-react";
 function SharingContact() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -102,6 +103,23 @@ function SharingContact() {
               </div>
             </a>
           </li>
+
+          {/* Comment */}
+          <li>
+            <button
+              onClick={() => {}}
+              className="group flex flex-col items-center"
+            >
+              <div className="relative">
+                <span className="absolute inset-0 w-full h-full rounded-full border-4 border-brandPrimary animate-pulse-border"></span>
+                <img
+                  src="https://images.vexels.com/media/users/3/139959/isolated/preview/d9bc539ecb4092e391863126207c3b6a-cloud-chat-round-icon.png"
+                  alt="Chat với chúng tôi qua Facebook"
+                  className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
+                />
+              </div>
+            </button>
+          </li>
         </ul>
       </div>
 
@@ -109,7 +127,7 @@ function SharingContact() {
         <button
           onClick={scrollToTop}
           href="#"
-          className={`flex items-center justify-center w-11 h-11 bg-brandSecondary text-white rounded-md shadow-md hover:bg-neutralGrey focus:ring-2 transition ${
+          className={`flex items-center justify-center w-11 h-11 bg-brandSecondary text-white rounded-full shadow-md hover:bg-neutralGrey focus:ring-2 transition ${
             isVisible ? "flex" : "hidden"
           } `}
           title="Lên đầu trang"

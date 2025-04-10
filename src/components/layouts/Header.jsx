@@ -74,7 +74,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 180);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -167,7 +167,7 @@ const Header = () => {
             {/* MOBILE MENU */}
             <div className="h-full flex items-center xl:hidden bg-brandPrimary w-full px-2 shadow-lg">
               <button className="mr-2" onClick={() => setIsOpen(true)}>
-                <Menu className="object-contain w-12 h-12 text-white" />
+                <Menu className="object-contain w-11 h-11 text-white" />
               </button>
 
               <div className="relative w-full">
@@ -176,7 +176,7 @@ const Header = () => {
                   placeholder={t("nav.placeholderSearch")}
                   value={inputValue}
                   onChange={handleChange}
-                  className="border border-gray-300 px-4 py-3 text-sm w-full rounded-sm"
+                  className="border border-gray-300 px-4 py-2 text-sm w-full rounded-md"
                 />
                 <button
                   className="absolute right-2 top-1/2 -translate-y-1/2 px-2"
@@ -210,8 +210,15 @@ const Header = () => {
             >
               {" "}
               {/* <ul className={"flex items-center gap-12"}> */}
-              <ul className={`flex items-center ${language.toUpperCase() === 'VI' ? 'gap-12' : 
-              language.toUpperCase() === 'EN' ? 'gap-14' : 'gap-24'}`}>
+              <ul
+                className={`flex items-center ${
+                  language.toUpperCase() === "VI"
+                    ? "gap-12"
+                    : language.toUpperCase() === "EN"
+                    ? "gap-14"
+                    : "gap-24"
+                }`}
+              >
                 {dynamicNavLinks.map((link) => {
                   const isActive =
                     location.pathname === link.path ||

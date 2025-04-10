@@ -122,46 +122,44 @@ export default function MemberPage() {
     }
 
     return (
-      <>
-        <div className="relative">
-          {/* Đường viền chung cho timeline */}
-          <div className="absolute  top-1 bottom-0 w-1 left-[178px] bg-gray-400 md:block hidden"></div>
-          <ul className="space-y-0">
-            {data.map((event, index) => (
-              <li
-                key={event.id || index}
-                className="flex md:items-start justify-start md:my-7 my-3  md:flex-row flex-col  "
-              >
-                {/* Cột Date */}
-                <div className="text-left mt-1 sm:text-right md:pr-4 w-full md:w-[180px]">
-                  <p className="text-base  text-left md:text-lg font-bold">
-                    {event.fromDate} - {event.toDate}
-                  </p>
-                </div>
+      <div className="relative">
+        <div className="absolute top-1 bottom-0 w-1 left-[178px] bg-gray-200 md:block hidden"></div>
+        <ul className="">
+          {data.map((event, index) => (
+            <li
+              key={event.id || index}
+              className="flex flex-col items-start justify-start my-2 md:items-start md:my-7 md:flex-row border-t border-gray-300 md:border-none first:border-none pt-4 md:pt-0"
+            >
+              {/* Cột Date */}
+              <div className="text-left sm:text-right md:pr-4 w-full md:w-[180px]">
+                <p className="text-base text-left md:text-md">
+                  {event.fromDate} - {event.toDate}
+                </p>
+              </div>
 
-                {/* Cột Line (ở giữa) */}
-                <div className="relative  md:flex-col  items-center  md:flex hidden">
-                  {/* Dot */}
-                  <div className="absolute w-3 h-3 bg-brandSecondary top-4 bottom-0  -translate-y-1/2 rounded-full " />
-                </div>
+              {/* Cột Line (ở giữa) */}
+              <div className="relative md:flex-col items-center md:flex hidden">
+                <div className="absolute w-3 h-3 bg-brandSecondary top-4 bottom-0 -translate-y-1/2 rounded-full " />
+              </div>
 
-                {/* Cột Description */}
-                <div className=" md:px-4">
-                  <p className=" md:p-1 font-bold text-brandPrimary">
-                    {event.title}
-                  </p>
-                  <p className="md: p-1 font-bold text-brandPrimary">
-                    {event.place}
-                  </p>
-                  <p className="md:p-1 break-words whitespace-pre-line truncate text-gray-700 text-base max-w-[300px]">
-                    {event.description}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </>
+              <div className=""></div>
+
+              {/* Cột Description */}
+              <div className="md:px-4">
+                <p className="md:p-1 font-bold text-brandPrimary">
+                  {event.title}
+                </p>
+                <p className="mt-2 md:p-1 md:mt-0 font-bold text-brandPrimary">
+                  {event.place}
+                </p>
+                <p className="md:p-1 break-words whitespace-pre-line truncate text-sm text-gray-700 max-w-[300px]">
+                  {event.description}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   };
 
@@ -173,7 +171,13 @@ export default function MemberPage() {
           {member.fullName} {t("banner.marquee")}(ILC)
         </title>
       </Helmet>
-      <img src={Logo} alt="Banner" className="w-full h-full p-4" />
+      <div className="flex justify-center">
+        <img
+          src="https://www.ilcvn.vn/assets/logo-jN9dnkTi.png"
+          alt="Banner"
+          className="w-[500px] h-[450px] p-4 "
+        />
+      </div>
 
       {/* Wrapper with Background Image and Overlay */}
       <div
@@ -192,12 +196,12 @@ export default function MemberPage() {
               <img
                 src={member.imgUrl}
                 alt={member.fullName}
-                className="w-64 h-72 p-1 lg:w-60 lg:h-60 lg:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
+                className="w-64 h-64 p-1 lg:w-60 lg:h-60 rounded-full object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
               />
 
-              <div className="w-48 h-6 md:w-32 md:h-32  lg:h-32 lg:mr-[10%] mx-1 lg:mx-11" />
+              <div className="w-48 h-6 md:w-32 md:h-32 lg:h-32 lg:mr-[10%] mx-1 lg:mx-11" />
 
-              <div className="lg:ml-8  my-4 text-left">
+              <div className="lg:ml-8 my-4 text-left">
                 <h1 className="text-4xl font-bold text-brandSecondary">
                   {member.fullName}
                 </h1>
@@ -236,7 +240,7 @@ export default function MemberPage() {
           </div>
 
           {/* EDUCATION */}
-          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+          <div className="w-full lg:max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
             <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
               <FaBookOpen className="" /> {t("detailMember.EDUCATION")}
             </h2>
