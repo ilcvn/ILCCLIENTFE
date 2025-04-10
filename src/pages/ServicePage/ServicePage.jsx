@@ -30,6 +30,8 @@ export default function ServicePage({ typePage }) {
         setLoading(true);
         const currentLanguage = (language || "VI").toUpperCase();
 
+        console.log(typePage);
+        setHeaderValue(t(`nav.${typePage.toLowerCase()}`));
         const res = await getArticles(
           searchQuery,
           currentPage,
@@ -40,7 +42,6 @@ export default function ServicePage({ typePage }) {
         const data = res.data?.data;
 
         setType(typePage);
-        setHeaderValue(t(`nav.${typePage.toLowerCase()}`));
         if (data) {
           const { articles, pagination } = data;
           setArticles(articles);

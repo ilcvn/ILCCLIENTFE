@@ -1,5 +1,4 @@
 // src/constants/navLinks.js
-console.log('co vo');
 const navLinks = [
   {id: 1, label: "nav.home", path: "/"},
   {

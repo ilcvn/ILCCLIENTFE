@@ -25,7 +25,7 @@ const routesConfig = [
   { path: "/tong-quan", element: <AboutPage /> },
   { path: "/dich-vu", element: <ServicePage typePage="SERVICE"/> },
   { path: "/dich-vu/:slug", element: <DetailPage /> },
-  { path: "/tin-tuc", element: <NewsPage /> },
+  { path: "/tin-tuc", element: <ServicePage typePage="NEWS"/> },
   { path: "/tin-tuc/:slug", element: <DetailPage /> },
   { path: "/nghien-cuu", element: <ServicePage typePage="RESEARCH"/> },
   { path: "/dao-tao", element: <ServicePage typePage="TRAINING"/> },
