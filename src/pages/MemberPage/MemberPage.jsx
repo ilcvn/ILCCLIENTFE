@@ -11,6 +11,7 @@ import { getRoles } from "../../helper/RoleMember";
 import { RiContactsBook3Fill } from "react-icons/ri";
 import { BsBookmarkStarFill } from "react-icons/bs";
 import { Helmet } from "react-helmet";
+import { BannerMemberDetail } from "../../assets/index";
 
 export default function MemberPage() {
   const { slug } = useParams();
@@ -174,78 +175,90 @@ export default function MemberPage() {
       </Helmet>
       <img src={Logo} alt="Banner" className="w-full h-full p-4" />
 
-      <div className="bg-white min-h-screen p-6  max-w-screen-2xl mx-auto">
-        <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg mb-6">
-          <div className="flex flex-col md:flex-row items-center md:items-start relative">
-            <img
-              src={member.imgUrl}
-              alt={member.fullName}
-              className="w-64 h-72 p-1 lg:w-60 lg:h-60 lg:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
-            />
+      {/* Wrapper with Background Image and Overlay */}
+      <div
+        className="relative bg-cover bg-center bg-no-repeat min-h-screen w-full"
+        style={{
+          backgroundImage: `url(${BannerMemberDetail})`,
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/85 backdrop-blur-sm z-0" />
 
-            <div className="w-48 h-6 md:w-32 md:h-32  lg:h-32 lg:mr-[10%] mx-1 lg:mx-11" />
+        {/* Content */}
+        <div className="relative z-10">
+          <div className="max-w-screen-2xl mx-auto bg-white p-8 shadow-lg mb-6">
+            <div className="flex flex-col md:flex-row items-center md:items-start relative">
+              <img
+                src={member.imgUrl}
+                alt={member.fullName}
+                className="w-64 h-72 p-1 lg:w-60 lg:h-60 lg:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
+              />
 
-            <div className="lg:ml-8  my-4 text-left">
-              <h1 className="text-3xl font-bold text-brandSecondary ">
-                {member.fullName}
-              </h1>
-              <p className="md:text-2xl  text-xl lg:py-2 py-3 text-brandPrimary font-semibold">
-                {getRoleTitlesWithDepartments(member.role, member.department)}
+              <div className="w-48 h-6 md:w-32 md:h-32  lg:h-32 lg:mr-[10%] mx-1 lg:mx-11" />
+
+              <div className="lg:ml-8  my-4 text-left">
+                <h1 className="text-4xl font-bold text-brandSecondary">
+                  {member.fullName}
+                </h1>
+                <p className="md:text-2xl text-xl lg:py-2 py-3 text-brandPrimary font-semibold">
+                  {getRoleTitlesWithDepartments(member.role, member.department)}
+                </p>
+                <p className="text-xl text-black">{member.penName}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 md:mb-4 my-6">
+              <a
+                href={`tel:${member.phone}`}
+                className="flex items-center space-x-2 text-brandSecondary"
+              >
+                <FaPhone size={20} />
+                <span className="text-black/80">{member.phone}</span>
+              </a>
+              <a
+                href={`mailto:${member.gmail}`}
+                className="flex items-center space-x-2 text-brandSecondary"
+              >
+                <MdEmail size={20} />
+                <span className="text-black/80">{member.gmail}</span>
+              </a>
+            </div>
+
+            <div>
+              <h2 className="md:text-2xl text-xl font-semibold text-brandSecondary">
+                {t("memberPage.infoMember")}
+              </h2>
+              <p className="text-md text-gray-700 mt-2 text-justify whitespace-pre-line">
+                {member.description || ""}
               </p>
-              <p className="text-xl  text-black">{member.penName}</p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 md:mb-4 my-6">
-            <a
-              href={`tel:${member.phone}`}
-              className="flex items-center space-x-2 text-brandPrimary"
-            >
-              <FaPhone size={25} />
-              <span className="text-black">{member.phone}</span>
-            </a>
-            <a
-              href={`mailto:${member.gmail}`}
-              className="flex items-center space-x-2 text-brandPrimary"
-            >
-              <MdEmail size={25} />
-              <span className="text-black">{member.gmail}</span>
-            </a>
-          </div>
-
-          <div>
-            <h2 className="md:text-2xl  text-xl font-semibold text-brandSecondary">
-              {t("memberPage.infoMember")}
+          {/* EDUCATION */}
+          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+            <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
+              <FaBookOpen className="" /> {t("detailMember.EDUCATION")}
             </h2>
-            <p className="text-lg text-gray-700 mt-2 text-justify whitespace-pre-line">
-              {member.description || ""}
-            </p>
+            <ul className="space-y-4">{renderTimeline(education)}</ul>
           </div>
-        </div>
 
-        {/* EDUCATION */}
-        <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
-          <h2 className="md:text-2xl  text-xl font-semibold text-brandSecondary flex gap-3">
-            <FaBookOpen className="" /> {t("detailMember.EDUCATION")}
-          </h2>
-          <ul className=" space-y-4">{renderTimeline(education)}</ul>
-        </div>
+          {/* WORK EXPERIENCE */}
+          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+            <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
+              <RiContactsBook3Fill /> {t("detailMember.WORK_EXPERIENCE")}
+            </h2>
+            <ul className="space-y-4">{renderTimeline(workExperience)}</ul>
+          </div>
 
-        {/* WORK EXPERIENCE */}
-        <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
-          <h2 className="md:text-2xl  text-xl font-semibold text-brandSecondary flex gap-3">
-            <RiContactsBook3Fill /> {t("detailMember.WORK_EXPERIENCE")}
-          </h2>
-          <ul className="=space-y-4">{renderTimeline(workExperience)}</ul>
-        </div>
-
-        {/* CONSULT EXPERIENCE */}
-        <div className="max-w-screen-2xl mx-auto bg-gray-100 p-8 rounded-md shadow-lg mb-6">
-          <h2 className="md:text-2xl  text-xl font-semibold text-brandSecondary flex gap-3">
-            <BsBookmarkStarFill />
-            {t("detailMember.CONSULT_EXPERIENCE")}
-          </h2>
-          <ul className="space-y-4">{renderTimeline(consultExperience)}</ul>
+          {/* CONSULT EXPERIENCE */}
+          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+            <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
+              <BsBookmarkStarFill />
+              {t("detailMember.CONSULT_EXPERIENCE")}
+            </h2>
+            <ul className="space-y-4">{renderTimeline(consultExperience)}</ul>
+          </div>
         </div>
       </div>
     </div>

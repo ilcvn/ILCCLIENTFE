@@ -32,6 +32,8 @@ import IconVideo from "./icon-video.png";
 //
 import Persons from "./persons.png";
 
+import BannerMemberDetail from "./memberDetail/banner.jpg";
+
 export {
   PartnerShip,
   Reliable,
@@ -55,4 +57,5 @@ export {
   IconVideo,
   Persons,
   Spinner,
+  BannerMemberDetail,
 };
