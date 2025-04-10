@@ -34,41 +34,46 @@ const routesConfig = [
   { path: "/tim-kiem/:slug", element: <DetailPage /> },
 ];
 const allRootPath = [
-  "/tong-quan/BOARD_OF_DIRECTORS",  
-  "/tong-quan/SCIENTIFIC_COUNCIL",   
-  "/tong-quan/BOARD_OF_MANAGEMERS",  
-  "/tong-quan/ADVISORY_BOARD",   
-  "/tong-quan/department",     
-  "/tong-quan/partner",  
+  "/tong-quan/BOARD_OF_DIRECTORS",
+  "/tong-quan/SCIENTIFIC_COUNCIL",
+  "/tong-quan/BOARD_OF_MANAGEMERS",
+  "/tong-quan/ADVISORY_BOARD",
+  "/tong-quan/department",
+  "/tong-quan/partner",
   "/tong-quan/office",
-  "/tong-quan/ecosystem",   
+  "/tong-quan/ecosystem",
 ];
 
 function App() {
   return (
-    <>
-      <Router>
-        <Banner />
-        <LoadingScreenSlash />
-        <Suspense fallback={<div>Loading...</div>}>
+    <Router>
+      <Banner />
+      <LoadingScreenSlash />
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="flex flex-col min-h-screen">
           <Header />
-          <Routes>
-            {routesConfig.map((route, index) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))}
-             {allRootPath.map((path, index) => (
-              <Route key={`about-${index}`} path={path} element={<AboutPage />} />
-            ))}
-            {/* Route cho trang lỗi */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <main className="flex-grow">
+            <Routes>
+              {routesConfig.map((route, index) => (
+                <Route key={index} path={route.path} element={route.element} />
+              ))}
+              {allRootPath.map((path, index) => (
+                <Route
+                  key={`about-${index}`}
+                  path={path}
+                  element={<AboutPage />}
+                />
+              ))}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
           <SharingContact />
           <Footer />
-          <SubFooter />
-        </Suspense>
-      </Router>
+        </div>
+        <SubFooter />
+      </Suspense>
       <ToastContainer position="top-right" autoClose={3000} />
-    </>
+    </Router>
   );
 }
 

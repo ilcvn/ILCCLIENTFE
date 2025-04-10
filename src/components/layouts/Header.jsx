@@ -1,12 +1,12 @@
-import {useState, useEffect, useContext} from "react";
-import {useNavigate, Link, useLocation} from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
-import {ChevronDown, ChevronRight, Menu, Search, X} from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, Search, X } from "lucide-react";
 import navLinks from "../../constants/navLinks.js";
-import {Logo} from "../../assets/index.js";
-import {getAllArticles} from "../../api/Article/article.js";
-import {useTranslation} from "react-i18next";
-import {LanguageContext} from "../../context/LanguageContext";
+import { Logo } from "../../assets/index.js";
+import { getAllArticles } from "../../api/Article/article.js";
+import { useTranslation } from "react-i18next";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const Header = () => {
   // Các state chung
@@ -28,8 +28,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const {t} = useTranslation();
-  const {language, changeLanguage} = useContext(LanguageContext);
+  const { t } = useTranslation();
+  const { language, changeLanguage } = useContext(LanguageContext);
   const [articlesLn, setarticlesLn] = useState([]);
 
   // 1. Fetch danh sách bài viết từ API
@@ -108,7 +108,7 @@ const Header = () => {
 
   // 4. Xử lý khi nhấn nút tìm kiếm (ví dụ cho mobile)
   const handleSearchButtonClick = () => {
-    navigate("/tim-kiem", {state: {query: inputValue}});
+    navigate("/tim-kiem", { state: { query: inputValue } });
   };
 
   const createSlug = (title) => {
@@ -137,16 +137,16 @@ const Header = () => {
 
   const dynamicNavLinks = navLinks.map((nav) =>
     nav.dynamicSource === "articles"
-      ? {...nav, children: generateChildren(nav)}
+      ? { ...nav, children: generateChildren(nav) }
       : nav
   );
 
   return (
     <>
-      <div className="w-full relative">
+      <div className="w-full relative shadow-lg">
         <div className=" relative mx-auto max-w-screen-2xl ">
           {/* Logo */}
-          <div className=" xl:absolute  relative w-full  xl:left-[4%] h-full shadow-sm  px-2  xl:max-w-[240px] bottom-[112%]  z-40">
+          <div className=" xl:absolute  relative w-full  xl:left-[4%] h-full shadow-sm  px-2  xl:max-w-[240px] bottom-[112%] z-40">
             <div className="bg-white text-center sticky">
               <button onClick={() => navigate("/")}>
                 <img
@@ -157,7 +157,13 @@ const Header = () => {
               </button>
             </div>
           </div>
-          <div className="h-16  relative top-0 w-full bg-white z-30 ">
+
+          <div
+            className={clsx(
+              "h-16 w-full",
+              isScrolled ? "fixed top-0 z-30" : "relative top-0 z-40"
+            )}
+          >
             {/* MOBILE MENU */}
             <div className="h-full flex items-center xl:hidden bg-brandPrimary w-full px-2 shadow-lg">
               <button className="mr-2" onClick={() => setIsOpen(true)}>
@@ -193,11 +199,12 @@ const Header = () => {
                 )}
               </div>
             </div>
+
             {/* DESKTOP MENU */}
             <div
-              className={` hidden xl:flex items-center  ${
+              className={`hidden xl:flex items-center  ${
                 isScrolled
-                  ? "fixed top-0 left-0 justify-center w-full bg-white p-4"
+                  ? "fixed top-0 left-0 justify-center w-full bg-white p-4 shadow-lg"
                   : "relative justify-end mr-[5%]  h-full"
               } `}
             >

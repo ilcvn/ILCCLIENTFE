@@ -1,21 +1,21 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import {getMemberById} from "../../api/Nember/nember";
-import {FaBookOpen, FaPhone} from "react-icons/fa6";
-import {MdEmail} from "react-icons/md";
-import {useTranslation} from "react-i18next";
+import { getMemberById } from "../../api/Nember/nember";
+import { FaBookOpen, FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 import Logo from "../../assets/hello.png";
-import {getTitles} from "../../helper/TitleMember";
-import {getRoles} from "../../helper/RoleMember";
-import {RiContactsBook3Fill} from "react-icons/ri";
-import {BsBookmarkStarFill} from "react-icons/bs";
-import {Helmet} from "react-helmet";
+import { getTitles } from "../../helper/TitleMember";
+import { getRoles } from "../../helper/RoleMember";
+import { RiContactsBook3Fill } from "react-icons/ri";
+import { BsBookmarkStarFill } from "react-icons/bs";
+import { Helmet } from "react-helmet";
 
 export default function MemberPage() {
-  const {slug} = useParams();
+  const { slug } = useParams();
   const newslug = slug?.slice(slug.indexOf("=") + 1);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -56,15 +56,14 @@ export default function MemberPage() {
         origin_departments[i] === "BOARD_OF_DIRECTORS" &&
         origin_roles[i] !== "MEMBER"
       ) {
-        role_department +=
-          t(`roles.${origin_roles[i]}`) 
+        role_department += t(`roles.${origin_roles[i]}`);
       } else {
         role_department +=
           t(`roles.${origin_roles[i]}`) +
           " " +
           t(`about.${origin_departments[i]}`);
       }
-      console.log('go');
+      console.log("go");
     }
     return role_department;
   };
@@ -169,8 +168,10 @@ export default function MemberPage() {
     <div className="w-full">
       <BreadcrumbDynamic />
       <Helmet>
-            <title>{member.fullName} {t("banner.marquee")}(ILC)</title>
-          </Helmet>
+        <title>
+          {member.fullName} {t("banner.marquee")}(ILC)
+        </title>
+      </Helmet>
       <img src={Logo} alt="Banner" className="w-full h-full p-4" />
 
       <div className="bg-white min-h-screen p-6  max-w-screen-2xl mx-auto">
@@ -179,7 +180,7 @@ export default function MemberPage() {
             <img
               src={member.imgUrl}
               alt={member.fullName}
-              className="w-64 h-80 lg:w-60 lg:h-64 lg:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
+              className="w-64 h-72 p-1 lg:w-60 lg:h-60 lg:rounded-full rounded-xl object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
             />
 
             <div className="w-48 h-6 md:w-32 md:h-32  lg:h-32 lg:mr-[10%] mx-1 lg:mx-11" />
@@ -216,7 +217,7 @@ export default function MemberPage() {
             <h2 className="md:text-2xl  text-xl font-semibold text-brandSecondary">
               {t("memberPage.infoMember")}
             </h2>
-            <p className="text-lg text-gray-700 mt-2 text-justify">
+            <p className="text-lg text-gray-700 mt-2 text-justify whitespace-pre-line">
               {member.description || ""}
             </p>
           </div>
