@@ -9,8 +9,8 @@ import EcoSystem from "../../components/Ecosystem";
 import {Helmet} from "react-helmet";
 
 const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
-  {value: "BOARD_OF_DIRECTORS", filterKey: "ban-lanh-dao"},
   {value: "BOARD_OF_MANAGEMERS", filterKey: "hoi-dong-quan-ly-vien"},
+  {value: "BOARD_OF_DIRECTORS", filterKey: "ban-lanh-dao"},
   {value: "SCIENTIFIC_COUNCIL", filterKey: "Hoi-dong-khoa-hoc"},
   {value: "ADVISORY_BOARD", filterKey: "Hoi-dong-co-van"},
 
@@ -24,7 +24,7 @@ const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
   },
   {
     value: "HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
   {value: "SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD", filterKey: "phong-ban"},
   {

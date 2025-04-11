@@ -213,7 +213,7 @@ const resources = {
           "Ban Pháp Luật Và Định Chế Thương Mại",
         OTHER_DEPRATMENTS: "Văn Phòng Và Các Ban",
         PARTNERS: "Đối Tác Của Viện",
-        CHIEF_OF_STAFF: "Chánh Văn Phòng",
+        CHIEF_OF_STAFF: "Văn Phòng",
         Sub_header: "Viện Khoa học pháp lý và Phát triển doanh nghiệp ",
       },
       detailMember: {
@@ -433,7 +433,7 @@ const resources = {
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT:
           "Department of Legal Affairs and Commercial Institutions",
         OTHER_DEPRATMENTS: "Office And Departments",
-        CHIEF_OF_STAFF: "Chief Of Staff",
+        CHIEF_OF_STAFF: "Office",
         PARTNERS: "Partners",
         Sub_header: "Institute of Legal Science and Business Development",
       },
@@ -640,7 +640,7 @@ const resources = {
         LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT: "法律与商业机构部",
         OTHER_DEPRATMENTS: "办公室和部门",
         PARTNERS: "合作伙伴",
-        CHIEF_OF_STAFF: "办公室主任",
+        CHIEF_OF_STAFF: "办公室",
         Sub_header: "法律科学与企业发展研究院",
       },
       detailMember: {

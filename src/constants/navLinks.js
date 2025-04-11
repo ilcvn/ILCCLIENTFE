@@ -8,8 +8,8 @@ const navLinks = [
     dynamicSource: "default",
     dynamicPrefix: "/tong-quan",
     children: [
-      {id: 1, label: "about.BOARD_OF_DIRECTORS", path: "/tong-quan/ban-lanh-dao"},
-      {id: 2, label: "about.BOARD_OF_MANAGEMERS", path: "/tong-quan/hoi-dong-quan-ly-vien"},
+      {id: 1, label: "about.BOARD_OF_MANAGEMERS", path: "/tong-quan/hoi-dong-quan-ly-vien"},
+      {id: 2, label: "about.BOARD_OF_DIRECTORS", path: "/tong-quan/ban-lanh-dao"},
       {id: 3, label: "about.SCIENTIFIC_COUNCIL", path: "/tong-quan/Hoi-dong-khoa-hoc"},
       {id: 4, label: "about.ADVISORY_BOARD", path: "/tong-quan/Hoi-dong-co-van"},
       {id: 5, label: "about.OTHER_DEPRATMENTS", path: "/tong-quan/phong-ban"},    
