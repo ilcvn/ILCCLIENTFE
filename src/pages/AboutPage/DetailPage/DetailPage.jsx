@@ -140,9 +140,9 @@ export default function DetailPage() {
       <div className="md:w-3/4 w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
         <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">
           <h1 className="font-semibold text-xl py-2">{article.title || " "}</h1>
-          <h1 className="text-base opacity-75">
+          <h2 className="text-base opacity-75">
             {convertISOToDate(article.createDate)}
-          </h1>
+          </h2>
 
           <div className="space-y-6">
             {article?.preview_img && (
@@ -156,16 +156,16 @@ export default function DetailPage() {
           </div>
 
           <div className="mt-4 font-semibold text-xl">
-            <h1 className="mb-4">Chia sẻ</h1>
+            <h2 className="mb-4">Chia sẻ</h2>
             <ShareButton />
           </div>
         </div>
 
         <div className="px-2 py-6 md:block md:py-2">
           <div className="sticky top-20 bottom-20 right-10 w-full">
-            <h1 className="font-semibold text-xl py-2 text-red-600">
+            <h22 className="font-semibold text-xl py-2 text-red-600">
               {t("detailPage.title")}
-            </h1>
+            </h22>
             <div className="grid grid-rows-3 w-full gap-4">
               {articles.map((card, index) => (
                 <div key={index}>
