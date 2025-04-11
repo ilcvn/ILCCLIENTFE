@@ -11,6 +11,7 @@ const createSlug = (title) => {
 const fallbackImage =
   "https://th.bing.com/th/id/OIP.e56dGC9pD_mOD9EvzRg_4QHaEK?rs=1&pid=ImgDetMain";
 
+// eslint-disable-next-line react/prop-types
 export default function CardKnowledge({ basePath, id, title, preview_img, summary }) {
   const { t } = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
@@ -19,9 +20,10 @@ export default function CardKnowledge({ basePath, id, title, preview_img, summar
   const displayImage = preview_img || fallbackImage;
   const displaySummary = summary || " ";
   const linkSlug = createSlug(displayTitle);
+  // eslint-disable-next-line react/prop-types
   const cleanBasePath = basePath && basePath.startsWith("/") ? basePath.substring(1) : basePath;
 
-  const linkTo = `/${cleanBasePath}/article.${linkSlug}=${id}`;
+  const linkTo = `/${cleanBasePath}/${linkSlug}=${id}`;
 
   // Hàm xử lý khi bấm vào Card
   const handleCardClick = () => {

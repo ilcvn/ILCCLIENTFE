@@ -5,7 +5,6 @@ import { getMemberById } from "../../api/Nember/nember";
 import { FaBookOpen, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { useTranslation } from "react-i18next";
-import Logo from "../../assets/hello.png";
 import { getTitles } from "../../helper/TitleMember";
 import { getRoles } from "../../helper/RoleMember";
 import { RiContactsBook3Fill } from "react-icons/ri";
@@ -64,7 +63,6 @@ export default function MemberPage() {
           " " +
           t(`about.${origin_departments[i]}`);
       }
-      console.log("go");
     }
     return role_department;
   };

@@ -49,10 +49,10 @@ const Header = () => {
           article.type.includes("NEWS")
         );
         const AboutArticles = articlesLeague.filter((article) =>
-          article.type.includes("ABOUT")
+          article.type.includes("TRAINING")
         );
         const KnowledgeArticles = articlesLeague.filter((article) =>
-          article.type.includes("KNOWLEDGE")
+          article.type.includes("RESEARCH")
         );
 
         setArticles(allArticles);
@@ -119,8 +119,9 @@ const Header = () => {
   const generateChildren = (nav) => {
     const articleMap = {
       3: ServiceArticles,
-      4: NewsArticles,
+      2: AboutArticles,
       5: KnowledgeArticles,
+      6: NewsArticles,
       default: AboutArticles,
     };
 
@@ -129,7 +130,7 @@ const Header = () => {
     return selectedArticles.slice(0, 5).map((article) => ({
       id: article.id,
       label: article.title,
-      path: `${nav.dynamicPrefix}/article.${
+      path: `${nav.dynamicPrefix}/${
         article.slug ? article.slug : createSlug(article.title)
       }=${article.id}`,
     }));

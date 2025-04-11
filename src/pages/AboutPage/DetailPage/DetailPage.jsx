@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ItemKnowledge from "../../../components/KnowledgeSection/ItemKnowledge";
-import { getArticleById, getArticles } from "../../../api/Article/article";
-import { useParams } from "react-router-dom";
+import {getArticleById, getArticles} from "../../../api/Article/article";
+import {useLocation, useParams} from "react-router-dom";
 import "./Article.css";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import BreadcrumbDynamic from "../../../components/layouts/Breadcrumb";
-import { convertISOToDate } from "../../../helper/date";
-import { useTranslation } from "react-i18next";
-import { LanguageContext } from "../../../context/LanguageContext";
+import {convertISOToDate} from "../../../helper/date";
+import {useTranslation} from "react-i18next";
+import {LanguageContext} from "../../../context/LanguageContext";
 import ShareButton from "../../../components/layouts/ShareButton";
-import { Helmet } from "react-helmet";
+import {Helmet} from "react-helmet";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -20,12 +20,27 @@ export default function DetailPage() {
   const [article, setArticle] = useState({});
   const [targetId, setTargetId] = useState(0);
   const searchQuery = "";
-  const { slug } = useParams();
-  const { t } = useTranslation();
-  const { language } = useContext(LanguageContext);
+  const {slug} = useParams();
+  const {t} = useTranslation();
+  const {language} = useContext(LanguageContext);
+  const location = useLocation();
+  const pathParts = location.pathname.split("/");
+  const category = pathParts[1].toLowerCase(); 
 
+
+  const pathToCategory = {
+    "dich-vu": "SERVICE",
+    "dao-tao": "TRAINING", 
+    "nghien-cuu": "RESEARCH",
+    "tin-tuc": "NEWS",
+  };
+
+  // Nếu không tìm thấy, mặc định là "SERVICE"
+  const categoryPath = pathToCategory[category] || "SERVICE";
+  console.log("categoryPath", categoryPath);
   useEffect(() => {
     if (!slug) return;
+    console.log("slug", slug);
     const parts = slug.split("=");
     const id = parts.at(-1);
 
@@ -48,9 +63,16 @@ export default function DetailPage() {
     const fetchArticles = async () => {
       setLoading(true);
       try {
-        const res = await getArticles(searchQuery, currentPage, 6);
-        console.log('ua ua ');
-        const { articles: fetchedArticles, pagination } = res.data.data;
+        const currentLanguage = (language || "VI").toUpperCase();
+
+        const res = await getArticles(
+          searchQuery,
+          currentPage,
+          6,
+          categoryPath,
+          currentLanguage
+        );
+        const {articles: fetchedArticles, pagination} = res.data.data;
 
         const filteredArticles = targetId
           ? fetchedArticles.filter((article) => article.id !== targetId)
@@ -149,7 +171,7 @@ export default function DetailPage() {
             <div className="grid grid-rows-3 w-full gap-4">
               {articles.map((card, index) => (
                 <div key={index}>
-                  <ItemKnowledge {...card} />
+                  <ItemKnowledge {...card} path={category} />
                 </div>
               ))}
             </div>

@@ -6,6 +6,7 @@ import { getRoles } from "../helper/RoleMember";
 import { getTitles } from "../helper/TitleMember";
 import clsx from "clsx";
 
+
 export default function LayoutOverviewPage({
   data,
   header,
@@ -44,12 +45,16 @@ export default function LayoutOverviewPage({
         <ContentSection header={header} content={content} />
         <div className="flex flex-wrap justify-center gap-4 mt-3">
           {data.map((member, index) => {
+
             const roleName = member.role
               ? getRoleTitles(member.role)
               : "Chưa có vai trò";
             const titleName = member.penName
               ? member.penName
               : "Chưa có học vị";
+
+            const slug =  member.fullName.replace(/\s+/g, "-");
+
 
             return (
               <div
@@ -58,9 +63,7 @@ export default function LayoutOverviewPage({
                   "relative w-[46%] h-[350px] sm:w-[48%] md:w-[31%] xl:w-[23%] xl:h-[400px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-none",
                   index >= 4 ? "block sm:hidden" : ""
                 )}
-                onClick={() =>
-                  navigate(`/tong-quan/${member.fullName}=${member.id}`)
-                }
+                onClick={() => navigate(`/tong-quan/${slug}=${member.id}`)}
               >
                 <div className="px-2 py-10 text-center">
                   <img
@@ -70,6 +73,7 @@ export default function LayoutOverviewPage({
                   />
                   <div className="space-y-2 mt-6">
                     <h3 className="font-bold md:text-xl text-md text-brandPrimary mt-3">
+
                       {member.fullName}
                     </h3>
                     <p className="md:text-lg text-base text-brandSecondary font-semibold">
@@ -86,7 +90,7 @@ export default function LayoutOverviewPage({
                       <p className="text-sm mt-2">Email: {member.email}</p>
                       <p className="text-sm">SĐT: {member.phone}</p>
                       <div className="w-20 h-[1px] bg-white rounded-lg my-3"></div>
-                      <p className="text-xs text-justify line-clamp-[8] whitespace-pre-line">
+            <p className="text-xs text-justify line-clamp-[8]">
                         {member.description}
                       </p>
                     </div>
@@ -103,6 +107,7 @@ export default function LayoutOverviewPage({
         {/* Pagination Section */}
         {pagination.total > membersPerPage && (
           <div className="flex justify-center mt-10 items-center gap-2 flex-wrap">
+
             <button
               onClick={() => onPageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage === 1}

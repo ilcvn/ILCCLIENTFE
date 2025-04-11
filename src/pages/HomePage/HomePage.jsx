@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import EcoSystem from "../../components/Ecosystem";
 import SliderMember from "../../components/MemberSlider";
 import { Helmet } from "react-helmet";
+import ShareButton from "../../components/layouts/ShareButton";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -110,6 +111,7 @@ function HomePage() {
       />
 
       <SliderCounterparty />
+      <ShareButton/>
     </div>
   );
 }

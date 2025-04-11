@@ -9,35 +9,35 @@ import EcoSystem from "../../components/Ecosystem";
 import { Helmet } from "react-helmet";
 
 const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
-  { value: "BOARD_OF_DIRECTORS", filterKey: "BLD" },
-  { value: "BOARD_OF_MANAGEMERS", filterKey: "HDQLV" },
-  { value: "SCIENTIFIC_COUNCIL", filterKey: "HDKH" },
-  { value: "ADVISORY_BOARD", filterKey: "HDCV" },
+  { value: "BOARD_OF_DIRECTORS", filterKey: "ban-lanh-dao" },
+  { value: "BOARD_OF_MANAGEMERS", filterKey: "hoi-dong-quan-ly-vien" },
+  { value: "SCIENTIFIC_COUNCIL", filterKey: "Hoi-dong-khoa-hoc" },
+  { value: "ADVISORY_BOARD", filterKey: "Hoi-dong-co-van" },
 
   {
     value: "INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
   {
     value: "LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
   {
     value: "HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT",
     filterKey: "department",
   },
-  { value: "SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD", filterKey: "department" },
+  { value: "SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD", filterKey: "phong-ban" },
   {
     value: "DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
   {
     value:
       "DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
 
-  { value: "CHIEF_OF_STAFF", filterKey: "department" },
+  { value: "CHIEF_OF_STAFF", filterKey: "phong-ban" },
 
   { value: "PARTNER", filterKey: "partner" },
 ];
@@ -65,10 +65,7 @@ export default function AboutPage() {
         setLoading(true);
         const res = await getMembers("",1, 100000, language.toLowerCase());
         const { members } = res.data.data;
-        // const memberByLanguage = members.filter(
-        //   (member) => member.language.toLowerCase() === language.toLowerCase()
-        // );
-        console.log(res);
+     
         setMembers(members);
       } catch (error) {
         console.error("Error fetching members:", error);
@@ -90,9 +87,9 @@ export default function AboutPage() {
   // Determine which departments to render
   let optionsToRender = [];
 
-  if (location.pathname === "/tong-quan/department") {
+  if (location.pathname === "/tong-quan/phong-ban") {
     optionsToRender = HUMAN_RESOURCE_DEPARTMENT_OPTIONS.filter(
-      (option) => option.filterKey.toLowerCase() === "department"
+      (option) => option.filterKey.toLowerCase() === "phong-ban"
     );
   } else if (location.pathname === "/tong-quan") {
     optionsToRender = HUMAN_RESOURCE_DEPARTMENT_OPTIONS;
