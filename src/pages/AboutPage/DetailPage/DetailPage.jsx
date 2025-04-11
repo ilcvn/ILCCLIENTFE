@@ -11,6 +11,7 @@ import {useTranslation} from "react-i18next";
 import {LanguageContext} from "../../../context/LanguageContext";
 import ShareButton from "../../../components/layouts/ShareButton";
 import {Helmet} from "react-helmet";
+import NewBreadcrumbDynamic from "../../../components/layouts/newBreadcrumb";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -130,13 +131,14 @@ export default function DetailPage() {
 
   return (
     <div className="bg-white w-full">
-      <BreadcrumbDynamic />
       <Helmet>
         <title>
           {/* {article.title} {t("banner.marquee")}(ILC) */}
           {article.title + " (ILC)"}
         </title>
       </Helmet>
+      <BreadcrumbDynamic header={article.title} />
+
       <div className="md:w-3/4 w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
         <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">
           <h1 className="font-semibold text-xl py-2">{article.title || " "}</h1>
@@ -163,9 +165,9 @@ export default function DetailPage() {
 
         <div className="px-2 py-6 md:block md:py-2">
           <div className="sticky top-20 bottom-20 right-10 w-full">
-            <h22 className="font-semibold text-xl py-2 text-red-600">
+            <h2 className="font-semibold text-xl py-2 text-red-600">
               {t("detailPage.title")}
-            </h22>
+            </h2>
             <div className="grid grid-rows-3 w-full gap-4">
               {articles.map((card, index) => (
                 <div key={index}>

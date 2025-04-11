@@ -100,9 +100,7 @@ const Header = () => {
     setInputValue(article.title);
     setSuggestions([]);
     navigate(
-      `/tim-kiem/${
-        article.title ? article.title.replace(/\s/g, "-") : "unknown"
-      }=${article.id}`
+      `/tim-kiem/${article.id}`
     );
   };
 
@@ -130,9 +128,7 @@ const Header = () => {
     return selectedArticles.slice(0, 5).map((article) => ({
       id: article.id,
       label: article.title,
-      path: `${nav.dynamicPrefix}/${
-        article.slug ? article.slug : createSlug(article.title)
-      }=${article.id}`,
+      path: `${nav.dynamicPrefix}/${article.id}`,
     }));
   };
 
@@ -212,12 +208,12 @@ const Header = () => {
               {" "}
               {/* <ul className={"flex items-center gap-12"}> */}
               <ul
-                className={`flex items-center ${
+                className={`flex items-center mr-2 ${
                   language.toUpperCase() === "VI"
-                    ? "gap-12"
+                    ? "gap-9"
                     : language.toUpperCase() === "EN"
-                    ? "gap-14"
-                    : "gap-24"
+                    ? "gap-12"
+                    : "gap-20"
                 }`}
               >
                 {dynamicNavLinks.map((link) => {

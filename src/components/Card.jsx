@@ -11,7 +11,7 @@ export default function Card({ id,preview_img, title, summary }) {
   const handleClick = () => {
       // Tạo slug từ fullName và kết hợp với id theo định dạng "slug=id"
       const slug = createSlug(title);
-      navigate(`/dich-vu/${slug}=${id}`);
+      navigate(`/dich-vu/${id}`);
     };
   
   

@@ -13,7 +13,6 @@ export default function ShareButton() {
   const shareUrl = window.location.href;
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // 1️⃣ Chia sẻ bằng Web Share API
   const handleWebShare = async () => {
     if (navigator.share) {
       try {
@@ -30,7 +29,6 @@ export default function ShareButton() {
     }
   };
 
-  // 2️⃣ Chia sẻ lên mạng xã hội
   const shareToSocial = (platform) => {
     const encodedUrl = encodeURIComponent(shareUrl);
     let url = "";
@@ -41,6 +39,9 @@ export default function ShareButton() {
         break;
       case "twitter":
         url = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=Check this out!`;
+        break;
+      case "zalo":
+        url = `https://zalo.me/share?url=${encodedUrl}`;
         break;
       default:
         return;
@@ -80,6 +81,16 @@ export default function ShareButton() {
       >
         <FaTwitter size={20} />
       </button>
+
+      {/* Zalo - chỉ hiển thị nếu là mobile */}
+      {isMobile && (
+        <button
+          onClick={() => shareToSocial("zalo")}
+          className="bg-sky-500 text-white p-3 rounded-full hover:bg-sky-600"
+        >
+          <SiZalo size={20} />
+        </button>
+      )}
 
       {/* Copy */}
       <button

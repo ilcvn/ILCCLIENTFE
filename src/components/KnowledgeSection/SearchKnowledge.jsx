@@ -60,9 +60,7 @@ const SearchKnowledge = () => {
     setInputValue(article.title);
     setSuggestions([]);
     navigate(
-      `/tim-kiem/article.${
-        article.title ? article.title.replace(/\s/g, "-") : "unknown"
-      }=${article.id}`
+      `/tim-kiem/${article.id}`
     );
   };
 
