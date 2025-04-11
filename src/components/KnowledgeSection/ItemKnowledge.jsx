@@ -28,7 +28,7 @@ export default function ItemKnowledge({
   };
 
   return (
-    <Link to={`/${path}/${slug}=${id}`}>
+    <Link to={`/${path}/${id}`}>
       <div className="text-start grid lg:grid-cols-[1fr_2fr] gap-3 cursor-pointer">
         <img
           src={displayImage}

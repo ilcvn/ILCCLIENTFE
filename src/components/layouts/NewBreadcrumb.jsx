@@ -4,7 +4,7 @@ import {Link, useLocation} from "react-router-dom";
 import navLinks from "../../constants/navLinks.js";
 import {useTranslation} from "react-i18next";
 
-const BreadcrumbDynamic = ({header}) => {
+const NewBreadcrumbDynamic = ({header}) => {
   const {pathname} = useLocation();
   const pathnames = pathname.split("/").filter(Boolean);
   const {t} = useTranslation();
@@ -23,7 +23,6 @@ const BreadcrumbDynamic = ({header}) => {
       }
     });
 
-    // Thêm "Tìm kiếm" và "Thành viên"
     map["/tim-kiem"] = t("nav.search");
 
     return map;
@@ -33,18 +32,15 @@ const BreadcrumbDynamic = ({header}) => {
     slug = decodeURIComponent(slug);
     const equalIndex = slug.indexOf("=");
     if (equalIndex !== -1) slug = slug.slice(0, equalIndex);
-    if (slug.startsWith("article.")) slug = slug.substring("article.".length);
+    if (slug.startsWith(".article")) slug = slug.substring("article.".length);
     return slug
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   };
 
+  // Hàm tìm label theo đường dẫn
   const findLabelByPath = (path) => {
-    if (header && path === pathname) {
-      return header;
-    }
-
     return navLabelMap[path] || defaultSlugToLabel(path.split("/").pop());
   };
 
@@ -61,7 +57,8 @@ const BreadcrumbDynamic = ({header}) => {
             </li>
             {pathnames.map((_, index) => {
               const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-              const label = findLabelByPath(routeTo);
+              //   const label = findLabelByPath(routeTo);
+              const label = header || findLabelByPath(routeTo);
               const isLast = index === pathnames.length - 1;
 
               return (
@@ -89,4 +86,4 @@ const BreadcrumbDynamic = ({header}) => {
   );
 };
 
-export default BreadcrumbDynamic;
+export default NewBreadcrumbDynamic;

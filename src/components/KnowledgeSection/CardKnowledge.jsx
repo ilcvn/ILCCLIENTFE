@@ -23,7 +23,7 @@ export default function CardKnowledge({ basePath, id, title, preview_img, summar
   // eslint-disable-next-line react/prop-types
   const cleanBasePath = basePath && basePath.startsWith("/") ? basePath.substring(1) : basePath;
 
-  const linkTo = `/${cleanBasePath}/${linkSlug}=${id}`;
+  const linkTo = `/${cleanBasePath}/${id}`;
 
   // Hàm xử lý khi bấm vào Card
   const handleCardClick = () => {

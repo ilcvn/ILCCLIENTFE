@@ -28,7 +28,7 @@ export default function CardAvatar({props = {}}) {
   const handleClick = () => {
     // Tạo slug từ fullName và kết hợp với id theo định dạng "slug=id"
     const slug = createSlug(fullName);
-    navigate(`/thanh-vien/${slug}=${id}`);
+    navigate(`/thanh-vien/${id}`);
   };
 
   // Hàm tìm kiếm title của role dựa trên value
