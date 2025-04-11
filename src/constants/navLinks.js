@@ -37,7 +37,7 @@ const navLinks = [
     label: "nav.research_title",
     path: "/nghien-cuu",
     dynamicSource: "articles",
-    dynamicPrefix: "/nghien-cuu-khoa-hoc-va-ung-dung-chuyen-doi-so",
+    dynamicPrefix: "/nghien-cuu",
     children: [],
   },
   {

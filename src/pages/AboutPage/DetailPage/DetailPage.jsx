@@ -37,10 +37,8 @@ export default function DetailPage() {
 
   // Nếu không tìm thấy, mặc định là "SERVICE"
   const categoryPath = pathToCategory[category] || "SERVICE";
-  console.log("categoryPath", categoryPath);
   useEffect(() => {
     if (!slug) return;
-    console.log("slug", slug);
     const parts = slug.split("=");
     const id = parts.at(-1);
 

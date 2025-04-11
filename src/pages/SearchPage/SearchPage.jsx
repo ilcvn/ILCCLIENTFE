@@ -31,7 +31,7 @@ export default function SearchPage() {
         );
 
         setArticles(articles);
-        setarticlesLn(articlesLeague); // ✅ Lưu danh sách lọc vào state
+        setarticlesLn(articlesLeague);
         setPagination(pagination);
       } catch (error) {
         console.error("Error fetching articles:", error);

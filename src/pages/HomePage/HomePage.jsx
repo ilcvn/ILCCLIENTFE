@@ -111,7 +111,6 @@ function HomePage() {
       />
 
       <SliderCounterparty />
-      <ShareButton/>
     </div>
   );
 }
