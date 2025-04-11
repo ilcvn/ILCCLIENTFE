@@ -20,9 +20,7 @@ export default function ServicePage({ typePage }) {
   const [type, setType] = useState("SERVICE");
   const [headerValue, setHeaderValue] = useState();
 
-  // Tạm thời searchQuery = "" (mặc định)
   const searchQuery = "";
-  // const type = "SERVICE";
   useEffect(() => {
     
     const fetchArticles = async () => {
@@ -30,7 +28,6 @@ export default function ServicePage({ typePage }) {
         setLoading(true);
         const currentLanguage = (language || "VI").toUpperCase();
 
-        console.log(typePage);
         setHeaderValue(t(`nav.${typePage.toLowerCase()}`));
         const res = await getArticles(
           searchQuery,

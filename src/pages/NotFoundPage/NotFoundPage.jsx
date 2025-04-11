@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";

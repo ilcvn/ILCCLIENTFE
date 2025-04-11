@@ -8,11 +8,11 @@ const navLinks = [
     dynamicSource: "default",
     dynamicPrefix: "/tong-quan",
     children: [
-      {id: 1, label: "about.BOARD_OF_DIRECTORS", path: "/tong-quan/BOARD_OF_DIRECTORS"},
-      {id: 2, label: "about.BOARD_OF_MANAGEMERS", path: "/tong-quan/BOARD_OF_MANAGEMERS"},
-      {id: 3, label: "about.SCIENTIFIC_COUNCIL", path: "/tong-quan/SCIENTIFIC_COUNCIL"},
-      {id: 4, label: "about.ADVISORY_BOARD", path: "/tong-quan/ADVISORY_BOARD"},
-      {id: 5, label: "about.OTHER_DEPRATMENTS", path: "/tong-quan/department"},    
+      {id: 1, label: "about.BOARD_OF_DIRECTORS", path: "/tong-quan/ban-lanh-dao"},
+      {id: 2, label: "about.BOARD_OF_MANAGEMERS", path: "/tong-quan/hoi-dong-quan-ly-vien"},
+      {id: 3, label: "about.SCIENTIFIC_COUNCIL", path: "/tong-quan/Hoi-dong-khoa-hoc"},
+      {id: 4, label: "about.ADVISORY_BOARD", path: "/tong-quan/Hoi-dong-co-van"},
+      {id: 5, label: "about.OTHER_DEPRATMENTS", path: "/tong-quan/phong-ban"},    
       {id: 6, label: "about.PARTNERS", path: "/tong-quan/partner"},    
     ],
   },
@@ -31,16 +31,14 @@ const navLinks = [
     dynamicSource: "articles",
     dynamicPrefix: "/dao-tao",
     children: [],
-    typePage: "TRAINING"
   },
   {
     id: 5,
     label: "nav.research_title",
     path: "/nghien-cuu",
     dynamicSource: "articles",
-    dynamicPrefix: "/nghien-cuu-khoa-hoc-va-ung-dung-chuyen-doi-so",
+    dynamicPrefix: "/nghien-cuu",
     children: [],
-    typePage: "RESEARCH"
   },
   {
     id: 6,

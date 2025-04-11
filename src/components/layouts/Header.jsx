@@ -49,10 +49,10 @@ const Header = () => {
           article.type.includes("NEWS")
         );
         const AboutArticles = articlesLeague.filter((article) =>
-          article.type.includes("ABOUT")
+          article.type.includes("TRAINING")
         );
         const KnowledgeArticles = articlesLeague.filter((article) =>
-          article.type.includes("KNOWLEDGE")
+          article.type.includes("RESEARCH")
         );
 
         setArticles(allArticles);
@@ -100,7 +100,7 @@ const Header = () => {
     setInputValue(article.title);
     setSuggestions([]);
     navigate(
-      `/tim-kiem/article.${
+      `/tim-kiem/${
         article.title ? article.title.replace(/\s/g, "-") : "unknown"
       }=${article.id}`
     );
@@ -119,8 +119,9 @@ const Header = () => {
   const generateChildren = (nav) => {
     const articleMap = {
       3: ServiceArticles,
-      4: NewsArticles,
+      2: AboutArticles,
       5: KnowledgeArticles,
+      6: NewsArticles,
       default: AboutArticles,
     };
 
@@ -129,7 +130,7 @@ const Header = () => {
     return selectedArticles.slice(0, 5).map((article) => ({
       id: article.id,
       label: article.title,
-      path: `${nav.dynamicPrefix}/article.${
+      path: `${nav.dynamicPrefix}/${
         article.slug ? article.slug : createSlug(article.title)
       }=${article.id}`,
     }));
@@ -146,7 +147,7 @@ const Header = () => {
       <div className="w-full relative shadow-lg">
         <div className=" relative mx-auto max-w-screen-2xl ">
           {/* Logo */}
-          <div className="xl:absolute relative w-full xl:left-[4%] h-full shadow-sm px-2 xl:max-w-[240px] bottom-[112%] z-40">
+          <div className="xl:absolute relative w-full  xl:left-[0%] h-full shadow-sm px-2  xl:max-w-[240px] bottom-[112%] z-40">
             <div className="bg-white text-center sticky">
               <button onClick={() => navigate("/")}>
                 <img

@@ -33,7 +33,7 @@ const BreadcrumbDynamic = () => {
     slug = decodeURIComponent(slug);
     const equalIndex = slug.indexOf("=");
     if (equalIndex !== -1) slug = slug.slice(0, equalIndex);
-    if (slug.startsWith("article.")) slug = slug.substring("article.".length);
+    if (slug.startsWith(".article")) slug = slug.substring("article.".length);
     return slug
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
