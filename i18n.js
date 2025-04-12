@@ -160,6 +160,9 @@ const resources = {
         infomation: "Thông tin liên hệ",
         infoMember: "Thông Tin thành viên",
       },
+      comment: {
+
+      },
       search: {
         title: "Tìm kiếm",
         placeholder: "Nhập giá trị vào đây...",

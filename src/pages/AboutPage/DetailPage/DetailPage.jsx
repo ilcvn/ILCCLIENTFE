@@ -106,13 +106,14 @@ export default function DetailPage() {
           createdAt: item.createdDate,
         }));
 
-        const ratedRecord_by_user = articleData.interactedArticles.find(
-          (item) => item.type === INTERACTED_ARTICLE_ENUM.RATE && item.userName === user.email
-        );
-
         setComments(all_comments);
-        console.log(parseInt(ratedRecord_by_user.value));
-        if(ratedRecord_by_user) setRating(parseInt(ratedRecord_by_user.value));
+        console.log(user)
+        if(user){
+          const ratedRecord_by_user = articleData.interactedArticles.find(
+            (item) => item.type === INTERACTED_ARTICLE_ENUM.RATE && item.userName === user.email
+          );
+          if(ratedRecord_by_user) setRating(parseInt(ratedRecord_by_user.value));
+        }
       })
       .catch((error) => {
         console.error("Error fetching article:", error);
@@ -264,7 +265,7 @@ export default function DetailPage() {
                   />
                   <div className="bg-gray-100 p-3 rounded-lg w-full">
                     <div className="flex justify-between items-center">
-                      <span className={`font-semibold ${comment.user.userName === user.email ? 'font-bold underline' : '' }`}>{comment.user.name}</span>
+                    <span className={`font-semibold ${comment.user.userName === user?.email ? 'font-bold underline' : ''}`}>{comment.user.name}</span>
                       <span className="text-xs text-gray-500">
                         {new Date(comment.createdAt).toLocaleString("vi-VN")}
                       </span>
