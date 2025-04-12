@@ -1,37 +1,65 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ItemKnowledge from "../../../components/KnowledgeSection/ItemKnowledge";
-import {getArticleById, getArticles} from "../../../api/Article/article";
-import {useLocation, useParams} from "react-router-dom";
+import { getArticleById, getArticles } from "../../../api/Article/article";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./Article.css";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import BreadcrumbDynamic from "../../../components/layouts/Breadcrumb";
-import {convertISOToDate} from "../../../helper/date";
-import {useTranslation} from "react-i18next";
-import {LanguageContext} from "../../../context/LanguageContext";
+import { convertISOToDate } from "../../../helper/date";
+import { useTranslation } from "react-i18next";
+import { LanguageContext } from "../../../context/LanguageContext";
 import ShareButton from "../../../components/layouts/ShareButton";
-import {Helmet} from "react-helmet";
-import NewBreadcrumbDynamic from "../../../components/layouts/newBreadcrumb";
+import { Helmet } from "react-helmet";
+import LoginModal from "../../../components/LoginModal";
+import clsx from "clsx";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
   const [article, setArticle] = useState({});
   const [targetId, setTargetId] = useState(0);
+
   const searchQuery = "";
-  const {slug} = useParams();
-  const {t} = useTranslation();
-  const {language} = useContext(LanguageContext);
+  const { slug } = useParams();
+  const { t } = useTranslation();
+  const { language } = useContext(LanguageContext);
   const location = useLocation();
   const pathParts = location.pathname.split("/");
-  const category = pathParts[1].toLowerCase(); 
+  const category = pathParts[1].toLowerCase();
 
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      user: {
+        name: "Nguyễn Văn A",
+        avatar: "https://i.pravatar.cc/40?img=1",
+      },
+      content: "Bài viết rất hay, cảm ơn tác giả!",
+      createdAt: "2025-04-11T09:30:00Z",
+    },
+    {
+      id: 2,
+      user: {
+        name: "Trần Thị B",
+        avatar: "https://i.pravatar.cc/40?img=2",
+      },
+      content: "Mình có thể xin thêm tài liệu không?",
+      createdAt: "2025-04-11T10:45:00Z",
+    },
+  ]);
+
+  const [showLoginPrompt, setShowLoginPrompt] = useState(true);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
 
   const pathToCategory = {
     "dich-vu": "SERVICE",
-    "dao-tao": "TRAINING", 
+    "dao-tao": "TRAINING",
     "nghien-cuu": "RESEARCH",
     "tin-tuc": "NEWS",
   };
@@ -71,7 +99,7 @@ export default function DetailPage() {
           categoryPath,
           currentLanguage
         );
-        const {articles: fetchedArticles, pagination} = res.data.data;
+        const { articles: fetchedArticles, pagination } = res.data.data;
 
         const filteredArticles = targetId
           ? fetchedArticles.filter((article) => article.id !== targetId)
@@ -132,10 +160,7 @@ export default function DetailPage() {
   return (
     <div className="bg-white w-full">
       <Helmet>
-        <title>
-          {/* {article.title} {t("banner.marquee")}(ILC) */}
-          {article.title + " (ILC)"}
-        </title>
+        <title>{article.title + " (ILC)"}</title>
       </Helmet>
       <BreadcrumbDynamic header={article.title} />
 
@@ -157,9 +182,91 @@ export default function DetailPage() {
             <div className="article-content">{parsedContent}</div>
           </div>
 
-          <div className="mt-4 font-semibold text-xl">
-            <h2 className="mb-4">Chia sẻ</h2>
+          <div className="mt-4 font-medium text-lg">
+            <h2 className="">Chia sẻ</h2>
             <ShareButton />
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-medium mb-4">Bình luận gần đây</h3>
+            <div className="space-y-4">
+              {comments.map((comment) => (
+                <div key={comment.id} className="flex items-start gap-3">
+                  <img
+                    src={comment.user.avatar}
+                    alt={comment.user.name}
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <div className="bg-gray-100 p-3 rounded-lg w-full">
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold">{comment.user.name}</span>
+                      <span className="text-xs text-gray-500">
+                        {new Date(comment.createdAt).toLocaleString("vi-VN")}
+                      </span>
+                    </div>
+                    <p className="mt-1">{comment.content}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <h2 className="mb-4 text-brandPrimary font-bold text-xl">
+              BÌNH LUẬN
+            </h2>
+
+            <div className="mt-2">
+              <textarea
+                placeholder="Nhập bình luận..."
+                className={clsx(
+                  "w-full p-3 border border-gray-300 rounded resize-none min-h-[100px]",
+                  !user ? "bg-brandPrimary/10" : "bg-inherit"
+                )}
+                onFocus={() => {
+                  if (!user) {
+                    setShowLoginPrompt(true);
+                    setShowLoginDialog(true);
+                  }
+                }}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                disabled={!user}
+              />
+
+              {user && (
+                <button
+                  className="mt-2 px-4 py-2 bg-brandPrimary text-white rounded hover:bg-opacity-90 text-md"
+                  onClick={() => {
+                    if (!comment.trim()) return;
+                    console.log("Gửi bình luận:", comment);
+                    setComment("");
+                  }}
+                >
+                  Gửi bình luận
+                </button>
+              )}
+
+              {showLoginPrompt && !user && (
+                <div className="mt-2 bg-yellow-100 border border-yellow-400 text-yellow-700 p-3 rounded text-md">
+                  Bạn cần{" "}
+                  <span
+                    className="font-bold cursor-pointer text-blue-600 underline"
+                    onClick={() => setShowLoginDialog(true)}
+                  >
+                    đăng nhập{" "}
+                  </span>
+                  để bình luận.
+                </div>
+              )}
+
+              {showLoginDialog && !user && (
+                <LoginModal
+                  onClose={() => setShowLoginDialog(false)}
+                  onLoginSuccess={(userInfo) => setUser(userInfo)}
+                />
+              )}
+            </div>
           </div>
         </div>
 

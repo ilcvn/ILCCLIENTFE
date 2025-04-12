@@ -23,7 +23,6 @@ export default function ServicePage({ typePage }) {
 
   const searchQuery = "";
   useEffect(() => {
-    
     const fetchArticles = async () => {
       try {
         setLoading(true);
@@ -72,15 +71,14 @@ export default function ServicePage({ typePage }) {
       </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
       {
-              (
-                <LayoutPage
-                  header={headerValue}
-                  data={articles}
-                  pagination={pagination}
-                  onPageChange={handlePageChange}
-                  path={location.pathname}
-                />
-              )}
+        <LayoutPage
+          header={headerValue}
+          data={articles}
+          pagination={pagination}
+          onPageChange={handlePageChange}
+          path={location.pathname}
+        />
+      }
 
       {/* Hiển thị nội dung của route con (nếu có) */}
       <Outlet />

@@ -34,6 +34,10 @@ import Persons from "./persons.png";
 
 import BannerMemberDetail from "./memberDetail/banner.jpg";
 
+// =========================SOCIAL==================
+import Facebook from "./social/facebook.png";
+import Google from "./social/google.png";
+
 export {
   PartnerShip,
   Reliable,
@@ -58,4 +62,6 @@ export {
   Persons,
   Spinner,
   BannerMemberDetail,
+  Google,
+  Facebook,
 };
