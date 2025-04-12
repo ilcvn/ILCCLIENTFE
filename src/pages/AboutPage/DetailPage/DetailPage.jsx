@@ -13,6 +13,7 @@ import ShareButton from "../../../components/layouts/ShareButton";
 import { Helmet } from "react-helmet";
 import LoginModal from "../../../components/LoginModal";
 import clsx from "clsx";
+import {createInteractedArticle} from "../../../api/InteractedArticle/interactedArticle";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -33,27 +34,7 @@ export default function DetailPage() {
 
   const [comment, setComment] = useState("");
 
-  // DATA GIẢ
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      user: {
-        name: "Nguyễn Văn A",
-        avatar: "https://i.pravatar.cc/40?img=1",
-      },
-      content: "Bài viết rất hay, cảm ơn tác giả!",
-      createdAt: "2025-04-11T09:30:00Z",
-    },
-    {
-      id: 2,
-      user: {
-        name: "Trần Thị B",
-        avatar: "https://i.pravatar.cc/40?img=2",
-      },
-      content: "Mình có thể xin thêm tài liệu không?",
-      createdAt: "2025-04-11T10:45:00Z",
-    },
-  ]);
+  const [comments, setComments] = useState([]);
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
@@ -66,6 +47,36 @@ export default function DetailPage() {
     "dao-tao": "TRAINING",
     "nghien-cuu": "RESEARCH",
     "tin-tuc": "NEWS",
+  };
+
+  const INTERACTED_ARTICLE_ENUM = {
+    "COMMENT": "COMMENT",
+    "RATE": "RATE",
+  };
+
+  const handleRateSubmit = async (type, value) => {
+    if (!value.trim()) return;
+
+    if (!slug) return;
+    const parts = slug.split("=");
+    const articleID = parts.at(-1);
+
+    const data = {
+      userName: user.email,
+      fullName: user.name,
+      avatar: user.photo,
+      type: type,
+      value: value.trim(),
+      articleID: articleID,
+      createdDate: new Date(),
+      updatedDate: new Date()
+    };
+    const response = await createInteractedArticle(data);
+    //console.log(response.status === 201);
+    //if(response.status === 201) toast.success("Gửi thành công!");
+    
+    if(type === INTERACTED_ARTICLE_ENUM["COMMENT"])setComment("");
+    
   };
 
   // Nếu không tìm thấy, mặc định là "SERVICE"
@@ -81,6 +92,27 @@ export default function DetailPage() {
         const articleData = res.data.data;
         setTargetId(articleData.id);
         setArticle(articleData);
+
+        const all_comments = articleData.interactedArticles
+        .filter(item => item.type !== INTERACTED_ARTICLE_ENUM.RATE)
+        .map(item => ({
+          id: item.id, 
+          user: {
+            userName: item.userName,
+            name: item.fullName,
+            avatar: item.avatar,
+          },
+          content: item.value,
+          createdAt: item.createdDate,
+        }));
+
+        const ratedRecord_by_user = articleData.interactedArticles.find(
+          (item) => item.type === INTERACTED_ARTICLE_ENUM.RATE && item.userName === user.email
+        );
+
+        setComments(all_comments);
+        console.log(parseInt(ratedRecord_by_user.value));
+        if(ratedRecord_by_user) setRating(parseInt(ratedRecord_by_user.value));
       })
       .catch((error) => {
         console.error("Error fetching article:", error);
@@ -198,7 +230,7 @@ export default function DetailPage() {
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg
                     key={star}
-                    onClick={() => setRating(star)}
+                    onClick={()=>handleRateSubmit(INTERACTED_ARTICLE_ENUM["RATE"], star.toString())}
                     onMouseEnter={() => setHoverRating(star)}
                     onMouseLeave={() => setHoverRating(0)}
                     xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +264,7 @@ export default function DetailPage() {
                   />
                   <div className="bg-gray-100 p-3 rounded-lg w-full">
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold">{comment.user.name}</span>
+                      <span className={`font-semibold ${comment.user.userName === user.email ? 'font-bold underline' : '' }`}>{comment.user.name}</span>
                       <span className="text-xs text-gray-500">
                         {new Date(comment.createdAt).toLocaleString("vi-VN")}
                       </span>
@@ -270,12 +302,7 @@ export default function DetailPage() {
               {user && (
                 <button
                   className="mt-2 px-4 py-2 bg-brandPrimary text-white rounded hover:bg-opacity-90 text-md"
-                  onClick={() => {
-                    if (!comment.trim()) return;
-                    console.log("Gửi bình luận:", comment);
-                    setComment("");
-                  }}
-                >
+                  onClick={()=>handleRateSubmit(INTERACTED_ARTICLE_ENUM["COMMENT"], comment)}>
                   Gửi bình luận
                 </button>
               )}
