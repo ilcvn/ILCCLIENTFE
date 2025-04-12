@@ -57,7 +57,7 @@ export default function ShareButton() {
   };
 
   return (
-    <div className="flex space-x-3 p-4">
+    <div className="flex space-x-2 py-4">
       {/* Web Share API */}
       <button
         onClick={handleWebShare}

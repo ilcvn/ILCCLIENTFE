@@ -32,6 +32,8 @@ export default function DetailPage() {
   const category = pathParts[1].toLowerCase();
 
   const [comment, setComment] = useState("");
+
+  // DATA GIẢ
   const [comments, setComments] = useState([
     {
       id: 1,
@@ -52,6 +54,8 @@ export default function DetailPage() {
       createdAt: "2025-04-11T10:45:00Z",
     },
   ]);
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
 
   const [showLoginPrompt, setShowLoginPrompt] = useState(true);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -182,9 +186,38 @@ export default function DetailPage() {
             <div className="article-content">{parsedContent}</div>
           </div>
 
-          <div className="mt-4 font-medium text-lg">
-            <h2 className="">Chia sẻ</h2>
-            <ShareButton />
+          <div className="flex items-center justify-between mt-4 font-medium text-lg">
+            <div>
+              <h2 className="">Chia sẻ</h2>
+              <ShareButton />
+            </div>
+
+            <div>
+              <h2 className="text-lg font-medium mb-2">Đánh giá bài viết</h2>
+              <div className="flex gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <svg
+                    key={star}
+                    onClick={() => setRating(star)}
+                    onMouseEnter={() => setHoverRating(star)}
+                    onMouseLeave={() => setHoverRating(0)}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill={
+                      (hoverRating || rating) >= star ? "#facc15" : "#e5e7eb"
+                    }
+                    className="w-6 h-6 cursor-pointer transition-colors"
+                  >
+                    <path d="M12 .587l3.668 7.431L24 9.168l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.017 0 9.168l8.332-1.15z" />
+                  </svg>
+                ))}
+              </div>
+              {rating > 0 && (
+                <p className="text-sm text-gray-600 mt-1">
+                  Bạn đã đánh giá {rating} sao. Cảm ơn bạn!
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="mt-6">
