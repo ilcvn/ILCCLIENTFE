@@ -46,13 +46,13 @@ function HomePage() {
             <br />
             <p>{t("homepage.blogCard.content.paragraph3")}</p>
             <br /> */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span><b>{t("homepage.blogCard.content.tip1")}:</b></span>
               <i>{t("homepage.blogCard.content.paragraph4")}</i>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span><b>{t("homepage.blogCard.content.tip2")}:</b></span>
+            <div className="flex items-center gap-3">
+              <span className="whitespace-nowrap"><b>{t("homepage.blogCard.content.tip2")}:</b></span>
               <i>{t("homepage.blogCard.content.paragraph5")}</i>
             </div>
           </>
