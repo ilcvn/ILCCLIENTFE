@@ -6,7 +6,6 @@ import { getArticles } from "../../api/Article/article";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../../context/LanguageContext";
 import { Helmet } from "react-helmet";
-import NewBreadcrumbDynamic from "../../components/layouts/newBreadcrumb";
 
 export default function ServicePage({ typePage }) {
   const location = useLocation();
