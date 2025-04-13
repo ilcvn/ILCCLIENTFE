@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
-import React, {useState, useEffect, useContext} from "react";
-import {useTranslation} from "react-i18next";
-import {toast} from "react-toastify";
-import {format} from "date-fns";
-import {DatePickerDialog} from "../datepicker/DatePickerDialog";
+import React, { useState, useEffect, useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
+import { format } from "date-fns";
+import { DatePickerDialog } from "../datepicker/DatePickerDialog";
 import UploadComponent from "../UploadComponent";
-import {createReservation} from "../../api/reservation/reservation";
-import {uploadFile} from "../UploadFile";
-import {getAllArticles, getArticles} from "../../api/Article/article";
-import {LanguageContext} from "../../context/LanguageContext";
+import { createReservation } from "../../api/reservation/reservation";
+import { uploadFile } from "../UploadFile";
+import { getAllArticles, getArticles } from "../../api/Article/article";
+import { LanguageContext } from "../../context/LanguageContext";
 
-const ContactForm = ({data}) => {
-  const {t} = useTranslation();
-  const {language, changeLanguage} = useContext(LanguageContext);
+const ContactForm = ({ data }) => {
+  const { t } = useTranslation();
+  const { language, changeLanguage } = useContext(LanguageContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ const ContactForm = ({data}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesLn, setArticlesLn] = useState([]);
   const handleCheckboxChange = (event, articleId) => {
-    const {checked} = event.target;
+    const { checked } = event.target;
 
     setSelectedItems((prevSelectedItems) => {
       const updatedItems = checked
@@ -47,22 +47,30 @@ const ContactForm = ({data}) => {
   };
 
   useEffect(() => {
-       const fetchArticles = async () => {
-         try {
-           setLoading(true);
-           const currentLanguage= language.toUpperCase() || "VI"; 
-           let res = await getArticles(searchQuery, currentPage, 100000000, type, currentLanguage);
-           
-           const { articles, pagination } = res.data.data;
-   
-           const services = articles.filter((ser) => ser.language.toUpperCase() === currentLanguage);
-           setArticles(services);
-         } catch (error) {
-           console.error("Error fetching articles:", error);
-         } finally {
-           setLoading(false);
-         }
-       };
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        const currentLanguage = language.toUpperCase() || "VI";
+        let res = await getArticles(
+          searchQuery,
+          currentPage,
+          100000000,
+          type,
+          currentLanguage
+        );
+
+        const { articles, pagination } = res.data.data;
+
+        const services = articles.filter(
+          (ser) => ser.language.toUpperCase() === currentLanguage
+        );
+        setArticles(services);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
     fetchArticles();
     if (data) {
@@ -83,11 +91,11 @@ const ContactForm = ({data}) => {
 
   // Nhận file từ UploadComponent (đối tượng file)
   const handleFileUpload = (file) => {
-    setFormData((prev) => ({...prev, file}));
+    setFormData((prev) => ({ ...prev, file }));
   };
 
   const handleChange = (e) => {
-    const {name, value, type, files} = e.target;
+    const { name, value, type, files } = e.target;
     setFormData({
       ...formData,
       [name]: type === "file" ? files[0] : value,

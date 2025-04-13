@@ -14,6 +14,7 @@ import { Helmet } from "react-helmet";
 import LoginModal from "../../../components/LoginModal";
 import clsx from "clsx";
 import { createInteractedArticle } from "../../../api/InteractedArticle/interactedArticle";
+import { toast } from "react-toastify";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -36,6 +37,7 @@ export default function DetailPage() {
 
   const [comments, setComments] = useState([]);
   const [rating, setRating] = useState(0);
+  const [totalRating, setTotalRating] = useState(2);
   const [hoverRating, setHoverRating] = useState(0);
 
   const [showLoginPrompt, setShowLoginPrompt] = useState(true);
@@ -55,6 +57,10 @@ export default function DetailPage() {
   };
 
   const handleRateSubmit = async (type, value) => {
+    if (!localStorage.getItem("user")) {
+      setShowLoginDialog(true);
+    }
+
     if (!value.trim()) return;
 
     if (!slug) return;
@@ -74,6 +80,7 @@ export default function DetailPage() {
     const response = await createInteractedArticle(data);
 
     if (response.status === 201) {
+      toast.success("Bình của bạn đã được ghi nhận");
       fetchCommnent();
     }
 
@@ -212,9 +219,28 @@ export default function DetailPage() {
       <div className="md:w-3/4 w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
         <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">
           <h1 className="font-semibold text-xl py-2">{article.title || " "}</h1>
-          <h2 className="text-base opacity-75">
-            {convertISOToDate(article.createDate)}
-          </h2>
+
+          <div className="flex items-center justify-between">
+            <h2 className="text-base opacity-75">
+              {convertISOToDate(article.createDate)}
+            </h2>
+
+            <div className="flex gap-1">
+              <h2 className="text-lg font-medium mb-2">Điểm đánh giá: </h2>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <svg
+                  key={star}
+                  onClick={(e) => e.stopPropagation()}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill={totalRating >= star ? "#facc15" : "#e5e7eb"}
+                  className="w-6 h-6 cursor-pointer transition-colors"
+                >
+                  <path d="M12 .587l3.668 7.431L24 9.168l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.017 0 9.168l8.332-1.15z" />
+                </svg>
+              ))}
+            </div>
+          </div>
 
           <div className="space-y-6">
             {article?.preview_img && (

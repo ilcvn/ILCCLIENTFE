@@ -269,7 +269,7 @@ const SliderCardsItem = ({
                 className="flex-shrink-0 px-2 md:px-4"
                 style={{ width: `${100 / cardsPerView}%` }}
               >
-                <Card {...card} />
+                <Card {...card} star={4} />
               </div>
             ))}
           </div>

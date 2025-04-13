@@ -1,9 +1,10 @@
+import { Eye, MessageCircleMore } from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const createSlug = (title) => {
   return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
 };
-export default function Card({ id, preview_img, title, summary }) {
+export default function Card({ id, preview_img, title, summary, star = 3 }) {
   const navigate = useNavigate();
   const handleClick = () => {
     // Tạo slug từ fullName và kết hợp với id theo định dạng "slug=id"
@@ -11,7 +12,7 @@ export default function Card({ id, preview_img, title, summary }) {
     navigate(`/dich-vu/${id}`);
   };
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(star);
   const [totalComments, setTotalComments] = useState(0);
 
   return (
@@ -38,7 +39,7 @@ export default function Card({ id, preview_img, title, summary }) {
         <div
           className="flex flex-row gap-2 items-center 
                 md:flex-col md:items-start md:gap-2 
-                lg:flex-row lg:items-center lg:justify-between lg:gap-4"
+                lg:flex-row lg:items-center lg:justify-between lg:gap-6"
         >
           {/* Stars */}
           <div className="flex gap-1">
@@ -56,9 +57,20 @@ export default function Card({ id, preview_img, title, summary }) {
             ))}
           </div>
 
-          {/* Comment count */}
-          <div className="w-full text-[10px] text-gray-500">
-            <span>{totalComments} lượt bình luận</span>
+          <div className="flex items-center gap-2">
+            <div className="w-full text-[10px] text-gray-500">
+              <div className="flex items-center gap-2">
+                <span className="text-[16px]"> {totalComments}</span>
+                <MessageCircleMore className="w-4 h-4" />
+              </div>
+            </div>
+
+            <div className="w-full text-[10px] text-gray-500">
+              <div className="flex items-center gap-2">
+                <span className="text-[16px]"> {totalComments}</span>
+                <Eye className="w-4 h-4" />
+              </div>
+            </div>
           </div>
 
           {/* "Xem thêm" button */}

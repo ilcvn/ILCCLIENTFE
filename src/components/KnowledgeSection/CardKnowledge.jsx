@@ -1,3 +1,4 @@
+import { Eye, MessageCircleMore } from "lucide-react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +19,7 @@ export default function CardKnowledge({
   title,
   preview_img,
   summary,
+  star = 3,
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
@@ -32,7 +34,7 @@ export default function CardKnowledge({
 
   const linkTo = `/${cleanBasePath}/${id}`;
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(star);
   const [totalComments, setTotalComments] = useState(0);
 
   // Hàm xử lý khi bấm vào Card
@@ -82,8 +84,20 @@ export default function CardKnowledge({
             ))}
           </div>
 
-          <div className="w-full text-sm text-gray-500">
-            <span> {totalComments} lượt bình luận</span>
+          <div className="flex items-center gap-4">
+            <div className="w-full text-sm text-gray-500">
+              <div className="flex items-center gap-2">
+                <span className="text-[16px]"> {totalComments}</span>
+                <MessageCircleMore className="w-4 h-4" />
+              </div>
+            </div>
+
+            <div className="w-full text-sm text-gray-500">
+              <div className="flex items-center gap-2">
+                <span className="text-[16px]"> {totalComments}</span>
+                <Eye className="w-4 h-4" />
+              </div>
+            </div>
           </div>
 
           <button
