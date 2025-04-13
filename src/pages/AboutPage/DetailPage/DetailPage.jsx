@@ -80,7 +80,7 @@ export default function DetailPage() {
     const response = await createInteractedArticle(data);
 
     if (response.status === 201) {
-      toast.success("Bình của bạn đã được ghi nhận");
+      toast.success("Bình luận và đánh giá của bạn đã được ghi nhận");
       fetchCommnent();
     }
 
