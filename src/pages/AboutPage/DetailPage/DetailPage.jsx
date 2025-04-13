@@ -67,6 +67,7 @@ export default function DetailPage() {
     const parts = slug.split("=");
     const articleID = parts.at(-1);
 
+    console.log(articleID);
     const data = {
       userName: user.email,
       fullName: user.name,
@@ -80,7 +81,8 @@ export default function DetailPage() {
     const response = await createInteractedArticle(data);
 
     if (response.status === 201) {
-      toast.success("Bình luận và đánh giá của bạn đã được ghi nhận");
+      toast.success(t("homepage.contentSection.services.recordComment"));
+      if(type === INTERACTED_ARTICLE_ENUM["RATE"]) setRating(parseInt(value, 10));
       fetchCommnent();
     }
 
@@ -131,8 +133,11 @@ export default function DetailPage() {
               item.type === INTERACTED_ARTICLE_ENUM.RATE &&
               item.userName === user.email
           );
-          if (ratedRecord_by_user)
+
+          if (ratedRecord_by_user){
+            console.log(ratedRecord_by_user);
             setRating(parseInt(ratedRecord_by_user.value));
+          }
         }
       })
       .catch((error) => {

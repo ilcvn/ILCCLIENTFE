@@ -1,10 +1,12 @@
 import { Eye, MessageCircleMore } from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const createSlug = (title) => {
   return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
 };
 export default function Card({ id, preview_img, title, summary, views = 0, comments = 0, star = 3 }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleClick = () => {
     // Tạo slug từ fullName và kết hợp với id theo định dạng "slug=id"
@@ -79,9 +81,9 @@ export default function Card({ id, preview_img, title, summary, views = 0, comme
             className="text-sm text-brandSecondary font-semibold hover:text-red-600 
               w-full text-right 
               md:self-end md:w-auto 
-              lg:w-full lg:text-left"
+              lg:w-full lg:text-left whitespace-nowrap"
           >
-            Xem Thêm
+            {t("homepage.blogCard.btnContent")}
           </a>
         </div>
       </div>

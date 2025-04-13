@@ -108,7 +108,8 @@ const resources = {
             },
             evaluateArticle: "Đánh giá bài viết",
             share: "Chia Sẻ",
-            ratingScore: "Điểm Đánh Giá:"
+            ratingScore: "Điểm Đánh Giá:",
+            recordComment: "Tương Tác Của Bạn Với Bài Viết Đã Được Ghi Nhận.",
           },
           developers: {
             header: "CÁC THÀNH VIÊN",
@@ -347,7 +348,8 @@ const resources = {
             },
             evaluateArticle: "Evaluate This Article",
             share: "Share",
-            ratingScore: "Rating Score:"
+            ratingScore: "Rating Score:",
+            recordComment: "Your Feedback Has Been Recorded."
           },
           developers: {
             header: "OUR DEVELOPERS",
@@ -577,7 +579,8 @@ const resources = {
             },
             evaluateArticle: "评价文章",
             share: "分享",
-            ratingScore: "评分:"
+            ratingScore: "评分:",
+            recordComment: "您对文章的互动已被记录",
           },
           developers: {
             header: "我们的开发者",
