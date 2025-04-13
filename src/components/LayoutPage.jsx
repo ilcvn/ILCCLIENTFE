@@ -23,10 +23,10 @@ export default function LayoutPage({
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-8 gap-5 bg-white">
           {Array.isArray(data) &&
             data.map((item, index) => (
-              // Truyền basePath cho CardKnowledge để tạo link động
               <CardKnowledge key={index} {...item} basePath={path} />
             ))}
         </div>
+
         {/* Phần phân trang */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-2">

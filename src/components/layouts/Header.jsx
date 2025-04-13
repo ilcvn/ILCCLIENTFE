@@ -324,47 +324,6 @@ const Header = () => {
                     </ul>
                   )}
                 </li>
-                {user ? (
-                  <li>
-                    <div className="relative inline-block text-left">
-                      <div
-                        className="flex items-center space-x-2 cursor-pointer"
-                        onClick={toggleDropdown}
-                      >
-                        <img
-                          src={user?.photo}
-                          alt="avatar"
-                          className="w-10 h-10 rounded-full object-cover"
-                        />
-                      </div>
-
-                      {isOpenAvatar && (
-                        <div className="absolute left-0 mt-2 w-max bg-white rounded-md shadow-lg z-10">
-                          <div className="flex flex-col gap-2">
-                            <span className="text-sm px-4 py-2 text-brandPrimary font-bold">
-                              {user?.name}
-                            </span>
-                            <button
-                              onClick={handleLogout}
-                              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                              Đăng xuất
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </li>
-                ) : (
-                  <div>
-                    <span
-                      className="font-bold cursor-pointer text-brandPrimary underline"
-                      onClick={() => setShowLoginDialog(true)}
-                    >
-                      Đăng nhập
-                    </span>{" "}
-                  </div>
-                )}
               </ul>
             </div>
           </div>

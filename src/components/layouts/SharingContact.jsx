@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { ViewReload } from "../../api/ViewWebsite/View";
-import { ChartBar, MessageCircle, MessageSquare } from "lucide-react";
+import LoginModal from "../LoginModal";
 function SharingContact() {
   const [isVisible, setIsVisible] = useState(false);
+
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [isOpenAvatar, setIsOpenAvatar] = useState(false);
+
+  const toggleDropdown = () => setIsOpenAvatar((prev) => !prev);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -25,6 +31,11 @@ function SharingContact() {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.href = "/";
   };
 
   useEffect(() => {
@@ -104,21 +115,56 @@ function SharingContact() {
             </a>
           </li>
 
-          {/* Comment */}
+          {/* User */}
           <li>
-            <button
-              onClick={() => {}}
-              className="group flex flex-col items-center"
-            >
-              <div className="relative">
-                <span className="absolute inset-0 w-full h-full rounded-full border-4 border-brandPrimary animate-pulse-border"></span>
-                <img
-                  src="https://images.vexels.com/media/users/3/139959/isolated/preview/d9bc539ecb4092e391863126207c3b6a-cloud-chat-round-icon.png"
-                  alt="Chat với chúng tôi qua Facebook"
-                  className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
-                />
-              </div>
-            </button>
+            {user ? (
+              <li>
+                <div className="relative inline-block text-left">
+                  <div
+                    className="flex items-center space-x-2 cursor-pointer"
+                    onClick={toggleDropdown}
+                  >
+                    <img
+                      src={user?.photo}
+                      alt="avatar"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </div>
+
+                  {isOpenAvatar && (
+                    <div className="absolute right-0 mt-2 w-max bg-white rounded-md shadow-lg z-10">
+                      <div className="flex flex-col gap-2">
+                        <span className="text-sm px-4 py-2 text-brandPrimary font-bold">
+                          {user?.name}
+                        </span>
+                        <button
+                          onClick={handleLogout}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Đăng xuất
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </li>
+            ) : (
+              <button
+                onClick={() => {
+                  setShowLoginDialog(true);
+                }}
+                className="group flex flex-col items-center"
+              >
+                <div className="relative">
+                  <span className="absolute inset-0 w-full h-full rounded-full border-4 border-brandPrimary animate-pulse-border"></span>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/6681/6681221.png"
+                    alt="Login"
+                    className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
+                  />
+                </div>
+              </button>
+            )}
           </li>
         </ul>
       </div>
@@ -148,6 +194,13 @@ function SharingContact() {
           </svg>
         </button>
       </div>
+
+      {showLoginDialog && !user && (
+        <LoginModal
+          onClose={() => setShowLoginDialog(false)}
+          onLoginSuccess={(userInfo) => setUser(userInfo)}
+        />
+      )}
     </div>
   );
 }

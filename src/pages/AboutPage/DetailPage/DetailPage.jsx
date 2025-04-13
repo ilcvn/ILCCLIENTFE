@@ -13,7 +13,7 @@ import ShareButton from "../../../components/layouts/ShareButton";
 import { Helmet } from "react-helmet";
 import LoginModal from "../../../components/LoginModal";
 import clsx from "clsx";
-import {createInteractedArticle} from "../../../api/InteractedArticle/interactedArticle";
+import { createInteractedArticle } from "../../../api/InteractedArticle/interactedArticle";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -50,8 +50,8 @@ export default function DetailPage() {
   };
 
   const INTERACTED_ARTICLE_ENUM = {
-    "COMMENT": "COMMENT",
-    "RATE": "RATE",
+    COMMENT: "COMMENT",
+    RATE: "RATE",
   };
 
   const handleRateSubmit = async (type, value) => {
@@ -69,19 +69,25 @@ export default function DetailPage() {
       value: value.trim(),
       articleID: articleID,
       createdDate: new Date(),
-      updatedDate: new Date()
+      updatedDate: new Date(),
     };
     const response = await createInteractedArticle(data);
-    //console.log(response.status === 201);
-    //if(response.status === 201) toast.success("Gửi thành công!");
-    
-    if(type === INTERACTED_ARTICLE_ENUM["COMMENT"])setComment("");
-    
+
+    if (response.status === 201) {
+      fetchCommnent();
+    }
+
+    if (type === INTERACTED_ARTICLE_ENUM["COMMENT"]) setComment("");
   };
 
   // Nếu không tìm thấy, mặc định là "SERVICE"
   const categoryPath = pathToCategory[category] || "SERVICE";
+
   useEffect(() => {
+    fetchCommnent();
+  }, [slug, rating]);
+
+  const fetchCommnent = () => {
     if (!slug) return;
     const parts = slug.split("=");
     const id = parts.at(-1);
@@ -94,25 +100,27 @@ export default function DetailPage() {
         setArticle(articleData);
 
         const all_comments = articleData.interactedArticles
-        .filter(item => item.type !== INTERACTED_ARTICLE_ENUM.RATE)
-        .map(item => ({
-          id: item.id, 
-          user: {
-            userName: item.userName,
-            name: item.fullName,
-            avatar: item.avatar,
-          },
-          content: item.value,
-          createdAt: item.createdDate,
-        }));
+          .filter((item) => item.type !== INTERACTED_ARTICLE_ENUM.RATE)
+          .map((item) => ({
+            id: item.id,
+            user: {
+              userName: item.userName,
+              name: item.fullName,
+              avatar: item.avatar,
+            },
+            content: item.value,
+            createdAt: item.createdDate,
+          }));
 
         setComments(all_comments);
-        console.log(user)
-        if(user){
+        if (user) {
           const ratedRecord_by_user = articleData.interactedArticles.find(
-            (item) => item.type === INTERACTED_ARTICLE_ENUM.RATE && item.userName === user.email
+            (item) =>
+              item.type === INTERACTED_ARTICLE_ENUM.RATE &&
+              item.userName === user.email
           );
-          if(ratedRecord_by_user) setRating(parseInt(ratedRecord_by_user.value));
+          if (ratedRecord_by_user)
+            setRating(parseInt(ratedRecord_by_user.value));
         }
       })
       .catch((error) => {
@@ -121,7 +129,7 @@ export default function DetailPage() {
       .finally(() => {
         setLoading(false);
       });
-  }, [slug]);
+  };
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -231,7 +239,12 @@ export default function DetailPage() {
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg
                     key={star}
-                    onClick={()=>handleRateSubmit(INTERACTED_ARTICLE_ENUM["RATE"], star.toString())}
+                    onClick={() =>
+                      handleRateSubmit(
+                        INTERACTED_ARTICLE_ENUM["RATE"],
+                        star.toString()
+                      )
+                    }
                     onMouseEnter={() => setHoverRating(star)}
                     onMouseLeave={() => setHoverRating(0)}
                     xmlns="http://www.w3.org/2000/svg"
@@ -255,26 +268,39 @@ export default function DetailPage() {
 
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-4">Bình luận gần đây</h3>
-            <div className="space-y-4">
-              {comments.map((comment) => (
-                <div key={comment.id} className="flex items-start gap-3">
-                  <img
-                    src={comment.user.avatar}
-                    alt={comment.user.name}
-                    className="w-10 h-10 rounded-full"
-                  />
-                  <div className="bg-gray-100 p-3 rounded-lg w-full">
-                    <div className="flex justify-between items-center">
-                    <span className={`font-semibold ${comment.user.userName === user?.email ? 'font-bold underline' : ''}`}>{comment.user.name}</span>
-                      <span className="text-xs text-gray-500">
-                        {new Date(comment.createdAt).toLocaleString("vi-VN")}
-                      </span>
+            {comments.length > 0 ? (
+              <div className="space-y-4">
+                {comments.map((comment) => (
+                  <div key={comment.id} className="flex items-start gap-3">
+                    <img
+                      src={comment.user.avatar}
+                      alt={comment.user.name}
+                      className="w-10 h-10 rounded-full"
+                    />
+                    <div className="bg-gray-100 p-3 rounded-lg w-full">
+                      <div className="flex justify-between items-center">
+                        <span
+                          className={`font-semibold text-md ${
+                            comment.user.userName === user?.email
+                              ? "font-bold text-blue-600"
+                              : ""
+                          }`}
+                        >
+                          {comment.user.name}
+                        </span>
+
+                        <span className="text-xs text-gray-500">
+                          {new Date(comment.createdAt).toLocaleString("vi-VN")}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm">{comment.content}</p>
                     </div>
-                    <p className="mt-1">{comment.content}</p>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <i className="text-sm text-gray-500">Chưa có bình luận nào</i>
+            )}
           </div>
 
           <div className="mt-4">
@@ -286,7 +312,7 @@ export default function DetailPage() {
               <textarea
                 placeholder="Nhập bình luận..."
                 className={clsx(
-                  "w-full p-3 border border-gray-300 rounded resize-none min-h-[100px]",
+                  "w-full p-3 border border-gray-300 rounded resize-none min-h-[100px] text-sm",
                   !user ? "bg-brandPrimary/10" : "bg-inherit"
                 )}
                 onFocus={() => {
@@ -302,8 +328,14 @@ export default function DetailPage() {
 
               {user && (
                 <button
-                  className="mt-2 px-4 py-2 bg-brandPrimary text-white rounded hover:bg-opacity-90 text-md"
-                  onClick={()=>handleRateSubmit(INTERACTED_ARTICLE_ENUM["COMMENT"], comment)}>
+                  className="mt-2 px-4 py-2 bg-brandPrimary text-white rounded hover:bg-opacity-90 text-sm"
+                  onClick={() =>
+                    handleRateSubmit(
+                      INTERACTED_ARTICLE_ENUM["COMMENT"],
+                      comment
+                    )
+                  }
+                >
                   Gửi bình luận
                 </button>
               )}
