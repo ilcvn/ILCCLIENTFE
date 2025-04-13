@@ -1,12 +1,12 @@
-import React, {useState, useEffect, useRef, useContext} from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Card from "./Card";
-import {ChevronLeft, ChevronRight} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import CardAvatar from "./CardAvatar";
 import CardVideo from "./CardVideo";
-import {getArticles} from "../api/Article/article";
-import {LanguageContext} from "../context/LanguageContext";
-import {getTitles} from "../helper/TitleMember";
-import {useTranslation} from "react-i18next";
+import { getArticles } from "../api/Article/article";
+import { LanguageContext } from "../context/LanguageContext";
+import { getTitles } from "../helper/TitleMember";
+import { useTranslation } from "react-i18next";
 import { getMembers } from "../api/Nember/nember";
 
 const videosArray = [
@@ -61,9 +61,9 @@ const SliderCardsItem = ({
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
-  const {language} = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
   const [articlesLn, setarticlesLn] = useState([]);
   const [sliderArrayLength, setSliderArrayLength] = useState(0);
 
@@ -135,7 +135,7 @@ const SliderCardsItem = ({
       try {
         setLoading(true);
         const res = await getArticles(searchQuery, currentPage, 6, type);
-        const {articles, pagination} = res.data.data;
+        const { articles, pagination } = res.data.data;
         const articlesLeague = articles.filter(
           (article) => article.language.toLowerCase() === language.toLowerCase()
         );
@@ -144,7 +144,7 @@ const SliderCardsItem = ({
           (a, b) => new Date(b.updateDate) - new Date(a.updateDate)
         );
         setSliderArrayLength(articlesLeague.length);
-        
+
         setArticles(sortedArticles);
         setPagination(pagination);
       } catch (error) {
@@ -167,7 +167,7 @@ const SliderCardsItem = ({
   //   }
   // }, [articles, members, isCard, isCardAvatar, isCardVideo]);
 
-  const [sliderState, setSliderState] = useState({index: 0, direction: 1});
+  const [sliderState, setSliderState] = useState({ index: 0, direction: 1 });
   const [dragStartX, setDragStartX] = useState(null);
   const [dragDelta, setDragDelta] = useState(0);
   const containerRef = useRef(null);
@@ -177,11 +177,11 @@ const SliderCardsItem = ({
         setSliderState((prev) => {
           let nextIndex = prev.index + prev.direction;
           if (nextIndex >= sliderArrayLength - cardsPerView) {
-            return {index: sliderArrayLength - cardsPerView, direction: -1};
+            return { index: sliderArrayLength - cardsPerView, direction: -1 };
           } else if (nextIndex <= 0) {
-            return {index: 0, direction: 1};
+            return { index: 0, direction: 1 };
           }
-          return {index: nextIndex, direction: prev.direction};
+          return { index: nextIndex, direction: prev.direction };
         });
       }, 3000);
 
@@ -192,7 +192,7 @@ const SliderCardsItem = ({
   const handlePrev = () => {
     setSliderState((prev) => {
       const newIndex = Math.max(prev.index - 1, 0);
-      return {index: newIndex, direction: -1};
+      return { index: newIndex, direction: -1 };
     });
   };
 
@@ -202,7 +202,7 @@ const SliderCardsItem = ({
         prev.index + 1,
         Math.max(0, sliderArrayLength - cardsPerView)
       );
-      return {index: newIndex, direction: 1};
+      return { index: newIndex, direction: 1 };
     });
   };
 
@@ -223,7 +223,7 @@ const SliderCardsItem = ({
       // Kéo sang phải: chuyển về trang trước
       setSliderState((prev) => {
         const newIndex = Math.max(prev.index - 1, 0);
-        return {index: newIndex, direction: -1};
+        return { index: newIndex, direction: -1 };
       });
     } else if (dragDelta < -50) {
       // Kéo sang trái: chuyển về trang sau
@@ -232,7 +232,7 @@ const SliderCardsItem = ({
           prev.index + 1,
           sliderArrayLength - cardsPerView
         );
-        return {index: newIndex, direction: 1};
+        return { index: newIndex, direction: 1 };
       });
     }
     setDragStartX(null);
@@ -267,9 +267,20 @@ const SliderCardsItem = ({
               <div
                 key={index}
                 className="flex-shrink-0 px-2 md:px-4"
-                style={{width: `${100 / cardsPerView}%`}}
+                style={{ width: `${100 / cardsPerView}%` }}
               >
-                <Card {...card} />
+                <Card {...card} views ={card.views} comments = {card.interactedArticles.filter(item => item.type === 'COMMENT').length} star={
+                (() => {
+                  const rateItems = card.interactedArticles.filter(item => item.type === 'RATE');
+                  const total = rateItems.reduce(
+                    (sum, item) => sum + parseInt(item.value, 10),
+                    0
+                  );
+                  return rateItems.length > 0
+                    ? Math.ceil(total / rateItems.length)
+                    : 5;
+                })()
+              } />
               </div>
             ))}
           </div>
@@ -301,7 +312,7 @@ const SliderCardsItem = ({
               <div
                 key={index}
                 className="flex-shrink-0 px-2"
-                style={{width: `${100 / cardsPerView}%`}}
+                style={{ width: `${100 / cardsPerView}%` }}
               >
                 <CardAvatar props={card} />
               </div>
@@ -323,7 +334,7 @@ const SliderCardsItem = ({
             <div
               key={index}
               className="flex-shrink-0 px-2"
-              style={{width: `${100 / cardsPerView}%`}}
+              style={{ width: `${100 / cardsPerView}%` }}
             >
               <CardVideo {...card} />
             </div>

@@ -22,7 +22,7 @@ function ContactPage() {
       <BreadcrumbDynamic />
       <Helmet>
         <title>
-          {t("nav.contact")} {t("banner.marquee")}(ILC)
+          {t("nav.contact")} | ILC
         </title>
       </Helmet>
       <div className="px-2 py-10 lg:px-14 lg:py-10 mb-12">

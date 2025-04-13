@@ -1,4 +1,5 @@
-import React from "react";
+import { Eye, MessageCircleMore } from "lucide-react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -11,17 +12,34 @@ const createSlug = (title) => {
 const fallbackImage =
   "https://th.bing.com/th/id/OIP.e56dGC9pD_mOD9EvzRg_4QHaEK?rs=1&pid=ImgDetMain";
 
-export default function CardKnowledge({ basePath, id, title, preview_img, summary }) {
+// eslint-disable-next-line react/prop-types
+export default function CardKnowledge({
+  basePath,
+  id,
+  title,
+  preview_img,
+  summary,
+  star = 3,
+  views = 0,
+  comments = 0
+}) {
   const { t } = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
+
 
   const displayTitle = title || " ";
   const displayImage = preview_img || fallbackImage;
   const displaySummary = summary || " ";
+  const totalViews = views || 0;
+  const totalComments = comments || 0;
   const linkSlug = createSlug(displayTitle);
-  const cleanBasePath = basePath && basePath.startsWith("/") ? basePath.substring(1) : basePath;
+  // eslint-disable-next-line react/prop-types
+  const cleanBasePath =
+    basePath && basePath.startsWith("/") ? basePath.substring(1) : basePath;
 
-  const linkTo = `/${cleanBasePath}/article.${linkSlug}=${id}`;
+  const linkTo = `/${cleanBasePath}/${id}`;
+
+  const [rating, setRating] = useState(star);
 
   // Hàm xử lý khi bấm vào Card
   const handleCardClick = () => {
@@ -47,13 +65,52 @@ export default function CardKnowledge({ basePath, id, title, preview_img, summar
         </h1>
         <p className="text-base p-1 line-clamp-3">{displaySummary}</p>
 
-        {/* Thay <a> thành <button> để tránh lỗi */}
-        <button
-          onClick={(e) => e.stopPropagation()} // Ngăn chặn điều hướng khi bấm vào nút
-          className="text-base w-full inline-block p-4 mx-2 text-end text-brandSecondary font-semibold hover:mx-1 hover:text-red-600"
-        >
-          {t("homepage.blogCard.btnContent")}
-        </button>
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex gap-1">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <svg
+                key={star}
+                onClick={() =>
+                  // handleRateSubmit(
+                  //   INTERACTED_ARTICLE_ENUM["RATE"],
+                  //   star.toString()
+                  // )
+
+                  {}
+                }
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill={rating >= star ? "#facc15" : "#e5e7eb"}
+                className="w-6 h-6 cursor-pointer transition-colors"
+              >
+                <path d="M12 .587l3.668 7.431L24 9.168l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.017 0 9.168l8.332-1.15z" />
+              </svg>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="w-full text-sm text-gray-500">
+              <div className="flex items-center gap-2">
+                <span className="text-[16px]"> {totalComments}</span>
+                <MessageCircleMore className="w-4 h-4" />
+              </div>
+            </div>
+
+            <div className="w-full text-sm text-gray-500">
+              <div className="flex items-center gap-2">
+                <span className="text-[16px]"> {totalViews}</span>
+                <Eye className="w-4 h-4" />
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={(e) => e.stopPropagation()}
+            className="text-base w-full inline-block p-4 mx-2 text-end text-brandSecondary font-semibold hover:mx-1 hover:text-red-600"
+          >
+            {t("homepage.blogCard.btnContent")}
+          </button>
+        </div>
       </div>
     </div>
   );

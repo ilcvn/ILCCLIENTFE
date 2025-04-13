@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -6,13 +6,13 @@ import {
   FaShareAlt,
   FaCheck,
 } from "react-icons/fa";
-import {SiZalo} from "react-icons/si";
+import { SiZalo } from "react-icons/si";
 
 export default function ShareButton() {
   const [copied, setCopied] = useState(false);
   const shareUrl = window.location.href;
-  
-  // 1️⃣ Chia sẻ bằng Web Share API
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   const handleWebShare = async () => {
     if (navigator.share) {
       try {
@@ -29,30 +29,27 @@ export default function ShareButton() {
     }
   };
 
-  // 2️⃣ Chia sẻ lên mạng xã hội
   const shareToSocial = (platform) => {
+    const encodedUrl = encodeURIComponent(shareUrl);
     let url = "";
-    const shareUrl = encodeURIComponent(window.location.href);
-  
+
     switch (platform) {
       case "facebook":
-        url = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+        url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
         break;
       case "twitter":
-        url = `https://twitter.com/intent/tweet?url=${shareUrl}&text=Check this out!`;
+        url = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=Check this out!`;
         break;
       case "zalo":
-        url = `https://zalo.me/share?url=${shareUrl}`;
+        url = `https://zalo.me/share?url=${encodedUrl}`;
         break;
       default:
         return;
     }
-  
+
     window.open(url, "_blank", "noopener,noreferrer");
   };
-  
 
-  // 3️⃣ Copy link vào clipboard
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
     setCopied(true);
@@ -60,7 +57,7 @@ export default function ShareButton() {
   };
 
   return (
-    <div className="flex space-x-3 p-4">
+    <div className="flex space-x-2 py-4">
       {/* Web Share API */}
       <button
         onClick={handleWebShare}
@@ -69,7 +66,7 @@ export default function ShareButton() {
         <FaShareAlt size={20} />
       </button>
 
-      {/* Chia sẻ Facebook */}
+      {/* Facebook */}
       <button
         onClick={() => shareToSocial("facebook")}
         className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-500"
@@ -77,7 +74,7 @@ export default function ShareButton() {
         <FaFacebookF size={20} />
       </button>
 
-      {/* Chia sẻ Twitter */}
+      {/* Twitter */}
       <button
         onClick={() => shareToSocial("twitter")}
         className="bg-sky-500 text-white p-3 rounded-full hover:bg-sky-400"
@@ -85,15 +82,17 @@ export default function ShareButton() {
         <FaTwitter size={20} />
       </button>
 
-      {/* Chia sẻ Zalo */}
-      <button
-        onClick={() => shareToSocial("zalo")}
-        className="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-400"
-      >
-        <SiZalo size={20} />
-      </button>
+      {/* Zalo - chỉ hiển thị nếu là mobile */}
+      {isMobile && (
+        <button
+          onClick={() => shareToSocial("zalo")}
+          className="bg-sky-500 text-white p-3 rounded-full hover:bg-sky-600"
+        >
+          <SiZalo size={20} />
+        </button>
+      )}
 
-      {/* Copy link */}
+      {/* Copy */}
       <button
         onClick={copyToClipboard}
         className="bg-gray-500 text-white p-3 rounded-full hover:bg-gray-400"

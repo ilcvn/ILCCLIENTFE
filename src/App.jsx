@@ -14,8 +14,6 @@ import DetailPage from "./pages/AboutPage/DetailPage/DetailPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import HomePage from "./pages/HomePage/HomePage";
 import ServicePage from "./pages/ServicePage/ServicePage";
-import NewsPage from "./pages/NewsPage/NewsPage";
-import KnowledgePage from "./pages/KnowledgePage/KnowledgePage";
 import MemberPage from "./pages/MemberPage/MemberPage.jsx";
 import SearchPage from "./pages/SearchPage/SearchPage.jsx";
 import { ToastContainer } from "react-toastify";
@@ -28,18 +26,22 @@ const routesConfig = [
   { path: "/tin-tuc", element: <ServicePage typePage="NEWS"/> },
   { path: "/tin-tuc/:slug", element: <DetailPage /> },
   { path: "/nghien-cuu", element: <ServicePage typePage="RESEARCH"/> },
+  { path: "/nghien-cuu/:slug", element: <DetailPage /> },
+
   { path: "/dao-tao", element: <ServicePage typePage="TRAINING"/> },
+  { path: "/dao-tao/:slug", element: <DetailPage /> },
+
   { path: "/lien-he", element: <ContactPage /> },
   { path: "/tong-quan/:slug", element: <MemberPage /> },
   { path: "/tim-kiem", element: <SearchPage /> },
   { path: "/tim-kiem/:slug", element: <DetailPage /> },
 ];
 const allRootPath = [
-  "/tong-quan/BOARD_OF_DIRECTORS",
-  "/tong-quan/SCIENTIFIC_COUNCIL",
-  "/tong-quan/BOARD_OF_MANAGEMERS",
-  "/tong-quan/ADVISORY_BOARD",
-  "/tong-quan/department",
+  "/tong-quan/ban-lanh-dao",
+  "/tong-quan/hoi-dong-quan-ly-vien",
+  "/tong-quan/Hoi-dong-khoa-hoc",
+  "/tong-quan/Hoi-dong-co-van",
+  "/tong-quan/phong-ban",
   "/tong-quan/partner",
   "/tong-quan/office",
   "/tong-quan/ecosystem",

@@ -7,6 +7,7 @@ import { Logo } from "../../assets/index.js";
 import { getAllArticles } from "../../api/Article/article.js";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../../context/LanguageContext";
+import LoginModal from "../LoginModal.jsx";
 
 const Header = () => {
   // Các state chung
@@ -32,6 +33,12 @@ const Header = () => {
   const { language, changeLanguage } = useContext(LanguageContext);
   const [articlesLn, setarticlesLn] = useState([]);
 
+  const [isOpenAvatar, setIsOpenAvatar] = useState(false);
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
+  const toggleDropdown = () => setIsOpenAvatar((prev) => !prev);
+
   // 1. Fetch danh sách bài viết từ API
   useEffect(() => {
     const fetchArticles = async () => {
@@ -49,10 +56,10 @@ const Header = () => {
           article.type.includes("NEWS")
         );
         const AboutArticles = articlesLeague.filter((article) =>
-          article.type.includes("ABOUT")
+          article.type.includes("TRAINING")
         );
         const KnowledgeArticles = articlesLeague.filter((article) =>
-          article.type.includes("KNOWLEDGE")
+          article.type.includes("RESEARCH")
         );
 
         setArticles(allArticles);
@@ -99,11 +106,7 @@ const Header = () => {
   const handleSuggestionClick = (article) => {
     setInputValue(article.title);
     setSuggestions([]);
-    navigate(
-      `/tim-kiem/article.${
-        article.title ? article.title.replace(/\s/g, "-") : "unknown"
-      }=${article.id}`
-    );
+    navigate(`/tim-kiem/${article.id}`);
   };
 
   // 4. Xử lý khi nhấn nút tìm kiếm (ví dụ cho mobile)
@@ -119,8 +122,9 @@ const Header = () => {
   const generateChildren = (nav) => {
     const articleMap = {
       3: ServiceArticles,
-      4: NewsArticles,
+      2: AboutArticles,
       5: KnowledgeArticles,
+      6: NewsArticles,
       default: AboutArticles,
     };
 
@@ -129,9 +133,7 @@ const Header = () => {
     return selectedArticles.slice(0, 5).map((article) => ({
       id: article.id,
       label: article.title,
-      path: `${nav.dynamicPrefix}/article.${
-        article.slug ? article.slug : createSlug(article.title)
-      }=${article.id}`,
+      path: `${nav.dynamicPrefix}/${article.id}`,
     }));
   };
 
@@ -141,12 +143,17 @@ const Header = () => {
       : nav
   );
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.href = "/";
+  };
+
   return (
     <>
       <div className="w-full relative shadow-lg">
         <div className=" relative mx-auto max-w-screen-2xl ">
           {/* Logo */}
-          <div className="xl:absolute relative w-full xl:left-[4%] h-full shadow-sm px-2 xl:max-w-[240px] bottom-[112%] z-40">
+          <div className="xl:absolute relative w-full  xl:left-[0%] h-full shadow-sm px-2  xl:max-w-[240px] bottom-[112%] z-40">
             <div className="bg-white text-center sticky">
               <button onClick={() => navigate("/")}>
                 <img
@@ -211,12 +218,12 @@ const Header = () => {
               {" "}
               {/* <ul className={"flex items-center gap-12"}> */}
               <ul
-                className={`flex items-center ${
+                className={`flex items-center mr-2 ${
                   language.toUpperCase() === "VI"
-                    ? "gap-12"
+                    ? "gap-9"
                     : language.toUpperCase() === "EN"
-                    ? "gap-14"
-                    : "gap-24"
+                    ? "gap-12"
+                    : "gap-20"
                 }`}
               >
                 {dynamicNavLinks.map((link) => {
@@ -347,6 +354,39 @@ const Header = () => {
             </a>
           </div>
 
+          {user && (
+            <div className="flex justify-end p-4">
+              <div className="relative inline-block text-left">
+                <div
+                  className="flex items-center space-x-2 cursor-pointer"
+                  onClick={toggleDropdown}
+                >
+                  <img
+                    src={user?.photo}
+                    alt="avatar"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                </div>
+
+                {isOpenAvatar && (
+                  <div className="absolute right-0 mt-2 w-max bg-white rounded-md shadow-lg z-10">
+                    <div className="flex flex-col gap-2">
+                      <span className="text-sm px-4 py-2 text-brandPrimary font-bold">
+                        {user?.name}
+                      </span>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Đăng xuất
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           <div className="relative w-full px-2">
             <input
               type="text"
@@ -422,8 +462,29 @@ const Header = () => {
               </li>
             ))}
           </ul>
+
+          {!user && (
+            <div className="flex justify-end p-4">
+              <span
+                className="font-bold cursor-pointer text-brandPrimary underline"
+                onClick={() => {
+                  setIsOpen(false);
+                  setShowLoginDialog(true);
+                }}
+              >
+                Đăng nhập
+              </span>{" "}
+            </div>
+          )}
         </div>
       </div>
+
+      {showLoginDialog && !user && (
+        <LoginModal
+          onClose={() => setShowLoginDialog(false)}
+          onLoginSuccess={(userInfo) => setUser(userInfo)}
+        />
+      )}
     </>
   );
 };

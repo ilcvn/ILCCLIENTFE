@@ -1,18 +1,16 @@
 // src/components/layouts/Banner.jsx
-import {Mail, Phone} from "lucide-react";
-import {VietnamFlag, UKFlag, ChinaFlag} from "../../assets/index.js";
-import React, {useContext, useEffect, useState} from "react";
-import {useTranslation} from "react-i18next";
-import {LanguageContext} from "../../context/LanguageContext.jsx";
+import { Mail, Phone } from "lucide-react";
+import { VietnamFlag, UKFlag, ChinaFlag } from "../../assets/index.js";
+import React, { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { LanguageContext } from "../../context/LanguageContext.jsx";
 import clsx from "clsx";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Banner() {
-  const {t, i18n} = useTranslation();
-  const {changeLanguage} = useContext(LanguageContext);
+  const { t, i18n } = useTranslation();
+  const { changeLanguage } = useContext(LanguageContext);
 
-  const [zoomLevel, setZoomLevel] = useState(1);
-  const [levelZoom, setLevelZoom] = useState(false);
   const navigate = useNavigate();
 
   const handleLanguageChange = (lng) => {

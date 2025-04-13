@@ -1,45 +1,45 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import { Outlet, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { LanguageContext } from "../../context/LanguageContext";
+import {Outlet, useLocation} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {LanguageContext} from "../../context/LanguageContext";
 import LayoutOverviewPage from "../../components/LayoutOverview";
-import { getMembers } from "../../api/Nember/nember";
+import {getMembers} from "../../api/Nember/nember";
 import EcoSystem from "../../components/Ecosystem";
-import { Helmet } from "react-helmet";
+import {Helmet} from "react-helmet";
 
 const HUMAN_RESOURCE_DEPARTMENT_OPTIONS = [
-  { value: "BOARD_OF_DIRECTORS", filterKey: "BLD" },
-  { value: "BOARD_OF_MANAGEMERS", filterKey: "HDQLV" },
-  { value: "SCIENTIFIC_COUNCIL", filterKey: "HDKH" },
-  { value: "ADVISORY_BOARD", filterKey: "HDCV" },
+  {value: "BOARD_OF_MANAGEMERS", filterKey: "hoi-dong-quan-ly-vien"},
+  {value: "BOARD_OF_DIRECTORS", filterKey: "ban-lanh-dao"},
+  {value: "SCIENTIFIC_COUNCIL", filterKey: "Hoi-dong-khoa-hoc"},
+  {value: "ADVISORY_BOARD", filterKey: "Hoi-dong-co-van"},
 
   {
     value: "INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
   {
     value: "LEGAL_AND_COMMERCIAL_INSTITUTIONS_DEPARTMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
   {
     value: "HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
-  { value: "SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD", filterKey: "department" },
+  {value: "SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD", filterKey: "phong-ban"},
   {
     value: "DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
   {
     value:
       "DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT",
-    filterKey: "department",
+    filterKey: "phong-ban",
   },
 
-  { value: "CHIEF_OF_STAFF", filterKey: "department" },
+  {value: "CHIEF_OF_STAFF", filterKey: "phong-ban"},
 
-  { value: "PARTNER", filterKey: "partner" },
+  {value: "PARTNER", filterKey: "partner"},
 ];
 
 const PARTNER_OPTIONS = [
@@ -51,8 +51,8 @@ const PARTNER_OPTIONS = [
 export default function AboutPage() {
   const location = useLocation();
   const currentPath = location.pathname.split("/").pop();
-  const { t } = useTranslation();
-  const { language } = useContext(LanguageContext);
+  const {t} = useTranslation();
+  const {language} = useContext(LanguageContext);
 
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -63,12 +63,9 @@ export default function AboutPage() {
     const fetchMembers = async () => {
       try {
         setLoading(true);
-        const res = await getMembers("",1, 100000, language.toLowerCase());
-        const { members } = res.data.data;
-        // const memberByLanguage = members.filter(
-        //   (member) => member.language.toLowerCase() === language.toLowerCase()
-        // );
-        console.log(res);
+        const res = await getMembers("", 1, 100000, language.toLowerCase());
+        const {members} = res.data.data;
+
         setMembers(members);
       } catch (error) {
         console.error("Error fetching members:", error);
@@ -90,9 +87,9 @@ export default function AboutPage() {
   // Determine which departments to render
   let optionsToRender = [];
 
-  if (location.pathname === "/tong-quan/department") {
+  if (location.pathname === "/tong-quan/phong-ban") {
     optionsToRender = HUMAN_RESOURCE_DEPARTMENT_OPTIONS.filter(
-      (option) => option.filterKey.toLowerCase() === "department"
+      (option) => option.filterKey.toLowerCase() === "phong-ban"
     );
   } else if (location.pathname === "/tong-quan") {
     optionsToRender = HUMAN_RESOURCE_DEPARTMENT_OPTIONS;
@@ -115,7 +112,7 @@ export default function AboutPage() {
       <BreadcrumbDynamic />
       <Helmet>
         <title>
-          {t("nav.overview")} {t("banner.marquee")}(ILC)
+          {t("nav.overview")} | ILC
         </title>
       </Helmet>
 
@@ -144,7 +141,7 @@ export default function AboutPage() {
               }
               return false;
             })
-            .map((member) => ({ ...member }));
+            .map((member) => ({...member}));
 
           let roleOrder = [
             "PRESIDENT",
@@ -172,7 +169,7 @@ export default function AboutPage() {
             const roleB = b.role.split(", ")[0].trim();
             return roleOrder.indexOf(roleA) - roleOrder.indexOf(roleB);
           });
-        
+
           const currentDepartmentPage = currentPages[option.value] || 1;
           const startIndex = (currentDepartmentPage - 1) * pageSize;
           const endIndex = startIndex + pageSize;
@@ -187,7 +184,7 @@ export default function AboutPage() {
 
           return (
             <LayoutOverviewPage
-              key={index}
+              key={option.value}
               header={t(`about.${option.value}`)}
               content={t("about.Sub_header")}
               data={paginatedMembers}
@@ -201,6 +198,7 @@ export default function AboutPage() {
           return (
             <>
               <EcoSystem
+                key="edu"
                 type={PARTNER_OPTIONS[0]}
                 header={t(
                   "homepage.contentSection.partners.educationInstitution"
@@ -210,11 +208,13 @@ export default function AboutPage() {
                 )}
               />
               <EcoSystem
+                key="ent"
                 type={PARTNER_OPTIONS[1]}
                 header={t("homepage.contentSection.partners.enterprise")}
                 subheader={t("homepage.contentSection.partners.enterprise_sub")}
               />
               <EcoSystem
+                key="org"
                 type={PARTNER_OPTIONS[2]}
                 header={t("homepage.contentSection.partners.organization")}
                 subheader={t(

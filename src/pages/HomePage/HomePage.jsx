@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import EcoSystem from "../../components/Ecosystem";
 import SliderMember from "../../components/MemberSlider";
 import { Helmet } from "react-helmet";
+import ShareButton from "../../components/layouts/ShareButton";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -18,7 +19,7 @@ function HomePage() {
   return (
     <div>
       <Helmet>
-        <title>{t("nav.home")} {t("banner.marquee")}(ILC)</title>
+        <title>{t("nav.home")} | ILC</title>
       </Helmet>
 
       <CarouselBanner />
@@ -45,13 +46,13 @@ function HomePage() {
             <br />
             <p>{t("homepage.blogCard.content.paragraph3")}</p>
             <br /> */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span><b>{t("homepage.blogCard.content.tip1")}:</b></span>
               <i>{t("homepage.blogCard.content.paragraph4")}</i>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span><b>{t("homepage.blogCard.content.tip2")}:</b></span>
+            <div className="flex items-center gap-3">
+              <span className="whitespace-nowrap"><b>{t("homepage.blogCard.content.tip2")}:</b></span>
               <i>{t("homepage.blogCard.content.paragraph5")}</i>
             </div>
           </>
@@ -72,7 +73,7 @@ function HomePage() {
       <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto py-16">
         <img
           src={Banner}
-          alt=""
+          alt="Banner"
           className="w-full h-auto max-h-[500px] object-cover rounded-md"
         />
       </div>

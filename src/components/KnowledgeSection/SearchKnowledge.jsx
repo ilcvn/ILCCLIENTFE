@@ -60,9 +60,7 @@ const SearchKnowledge = () => {
     setInputValue(article.title);
     setSuggestions([]);
     navigate(
-      `/tim-kiem/article.${
-        article.title ? article.title.replace(/\s/g, "-") : "unknown"
-      }=${article.id}`
+      `/tim-kiem/${article.id}`
     );
   };
 
@@ -102,13 +100,13 @@ const SearchKnowledge = () => {
           </ul>
         )}
       </div>
-      <img src={img} alt="" className="lg:w-3/4 w-full mx-auto" />
+      <img src={img} alt="search" className="lg:w-3/4 w-full mx-auto" />
       <div className="text-center font-bold text-red-800">
-        <h1 className="text-lg px-0.5 text-brandSecondary">
+        <h2 className="text-lg px-0.5 text-brandSecondary">
           {t("search.subTitle")}
-        </h1>
-        <h1 className="p-0.5 text-2xl">(+84) 983 285 499</h1>
-        <h1 className="mb-2">24/7</h1>
+        </h2>
+        <h2 className="p-0.5 text-2xl">(+84) 983 285 499</h2>
+        <h22 className="mb-2">24/7</h22>
         <a
           href="tel:+0983285499"
           className="bg-red-800 text-white p-2 my-2 inline-block rounded-md hover:opacity-80"

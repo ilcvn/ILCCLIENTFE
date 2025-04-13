@@ -12,6 +12,7 @@ export default function ItemKnowledge({
   preview_img,
   summary,
   createDate,
+  path,
   ...rest
 }) {
   // Cung cấp dữ liệu ảo nếu các trường bị null hoặc undefined
@@ -27,7 +28,7 @@ export default function ItemKnowledge({
   };
 
   return (
-    <Link to={`/tong-quan/article.${slug}=${id}`}>
+    <Link to={`/${path}/${id}`}>
       <div className="text-start grid lg:grid-cols-[1fr_2fr] gap-3 cursor-pointer">
         <img
           src={displayImage}

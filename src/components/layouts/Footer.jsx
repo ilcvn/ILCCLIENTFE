@@ -37,7 +37,7 @@ const Footer = () => {
       name: t("footer.addressLabel"),
     },
     {
-      text: "0983 285 499",
+      text: "0934 121 183 - 0983 285 499",
       id: 2,
       name: t("footer.hotlineLabel"),
     },
@@ -124,7 +124,7 @@ const Footer = () => {
               articles.map((article, index) => {
                 // Tạo slug động từ title
                 const linkSlug = createSlug(article.title);
-                const linkTo = `/dich-vu/article.${linkSlug}=${article.id}`;
+                const linkTo = `/dich-vu/${article.id}`;
 
                 return (
                   <div

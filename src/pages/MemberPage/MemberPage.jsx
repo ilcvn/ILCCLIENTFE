@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import { getMemberById } from "../../api/Nember/nember";
-import { FaBookOpen, FaPhone } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
-import { useTranslation } from "react-i18next";
-import Logo from "../../assets/hello.png";
-import { getTitles } from "../../helper/TitleMember";
-import { getRoles } from "../../helper/RoleMember";
-import { RiContactsBook3Fill } from "react-icons/ri";
-import { BsBookmarkStarFill } from "react-icons/bs";
-import { Helmet } from "react-helmet";
-import { BannerMemberDetail } from "../../assets/index";
+import {getMemberById} from "../../api/Nember/nember";
+import {FaBookOpen, FaPhone} from "react-icons/fa6";
+import {MdEmail} from "react-icons/md";
+import {useTranslation} from "react-i18next";
+import {getTitles} from "../../helper/TitleMember";
+import {getRoles} from "../../helper/RoleMember";
+import {RiContactsBook3Fill} from "react-icons/ri";
+import {BsBookmarkStarFill} from "react-icons/bs";
+import {Helmet} from "react-helmet";
+import {BannerMemberDetail} from "../../assets/index";
 
 export default function MemberPage() {
-  const { slug } = useParams();
+  const {slug} = useParams();
   const newslug = slug?.slice(slug.indexOf("=") + 1);
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -64,7 +63,6 @@ export default function MemberPage() {
           " " +
           t(`about.${origin_departments[i]}`);
       }
-      console.log("go");
     }
     return role_department;
   };
@@ -165,10 +163,10 @@ export default function MemberPage() {
 
   return (
     <div className="w-full">
-      <BreadcrumbDynamic />
+      <BreadcrumbDynamic header={member.fullName} />
       <Helmet>
         <title>
-          {member.fullName} {t("banner.marquee")}(ILC)
+          {member.fullName} | ILC
         </title>
       </Helmet>
       <div className="flex justify-center">

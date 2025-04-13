@@ -6,6 +6,7 @@ import { getArticles } from "../../api/Article/article";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../../context/LanguageContext";
 import { Helmet } from "react-helmet";
+import NewBreadcrumbDynamic from "../../components/layouts/newBreadcrumb";
 
 export default function ServicePage({ typePage }) {
   const location = useLocation();
@@ -20,17 +21,13 @@ export default function ServicePage({ typePage }) {
   const [type, setType] = useState("SERVICE");
   const [headerValue, setHeaderValue] = useState();
 
-  // Tạm thời searchQuery = "" (mặc định)
   const searchQuery = "";
-  // const type = "SERVICE";
   useEffect(() => {
-    
     const fetchArticles = async () => {
       try {
         setLoading(true);
         const currentLanguage = (language || "VI").toUpperCase();
 
-        console.log(typePage);
         setHeaderValue(t(`nav.${typePage.toLowerCase()}`));
         const res = await getArticles(
           searchQuery,
@@ -68,21 +65,18 @@ export default function ServicePage({ typePage }) {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>
-          {t("nav.service")} {t("banner.marquee")}(ILC)
-        </title>
+        <title>{t("nav.service")} | ILC</title>
       </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
       {
-              (
-                <LayoutPage
-                  header={headerValue}
-                  data={articles}
-                  pagination={pagination}
-                  onPageChange={handlePageChange}
-                  path={location.pathname}
-                />
-              )}
+        <LayoutPage
+          header={headerValue}
+          data={articles}
+          pagination={pagination}
+          onPageChange={handlePageChange}
+          path={location.pathname}
+        />
+      }
 
       {/* Hiển thị nội dung của route con (nếu có) */}
       <Outlet />
