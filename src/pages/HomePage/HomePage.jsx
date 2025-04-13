@@ -19,7 +19,7 @@ function HomePage() {
   return (
     <div>
       <Helmet>
-        <title>{t("nav.home")} {t("banner.marquee")}(ILC)</title>
+        <title>{t("nav.home")} | ILC</title>
       </Helmet>
 
       <CarouselBanner />
@@ -73,7 +73,7 @@ function HomePage() {
       <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto py-16">
         <img
           src={Banner}
-          alt=""
+          alt="Banner"
           className="w-full h-auto max-h-[500px] object-cover rounded-md"
         />
       </div>

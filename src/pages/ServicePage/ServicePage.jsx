@@ -66,7 +66,7 @@ export default function ServicePage({ typePage }) {
       <BreadcrumbDynamic />
       <Helmet>
         <title>
-          {t("nav.service")} {t("banner.marquee")}(ILC)
+          {t("nav.service")} | ILC
         </title>
       </Helmet>
       {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}

@@ -166,7 +166,7 @@ export default function MemberPage() {
       <BreadcrumbDynamic header={member.fullName} />
       <Helmet>
         <title>
-          {member.fullName} {t("banner.marquee")}(ILC)
+          {member.fullName} | ILC
         </title>
       </Helmet>
       <div className="flex justify-center">

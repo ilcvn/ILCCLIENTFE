@@ -61,7 +61,7 @@ export default function SearchPage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>{t("nav.search")} {t("banner.marquee")}(ILC)</title>
+        <title>{t("nav.search")} | ILC</title>
       </Helmet>
       {isRootPath && (
         <div>

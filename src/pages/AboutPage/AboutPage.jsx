@@ -112,7 +112,7 @@ export default function AboutPage() {
       <BreadcrumbDynamic />
       <Helmet>
         <title>
-          {t("nav.overview")} {t("banner.marquee")}(ILC)
+          {t("nav.overview")} | ILC
         </title>
       </Helmet>
 

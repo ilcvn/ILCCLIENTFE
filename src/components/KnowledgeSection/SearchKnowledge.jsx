@@ -100,7 +100,7 @@ const SearchKnowledge = () => {
           </ul>
         )}
       </div>
-      <img src={img} alt="" className="lg:w-3/4 w-full mx-auto" />
+      <img src={img} alt="search" className="lg:w-3/4 w-full mx-auto" />
       <div className="text-center font-bold text-red-800">
         <h2 className="text-lg px-0.5 text-brandSecondary">
           {t("search.subTitle")}

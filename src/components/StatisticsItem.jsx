@@ -6,7 +6,7 @@ function StatisticItem({ icon, value, label }) {
       <img
         loading="lazy"
         src={icon}
-        alt=""
+        alt={label}
         className="object-contain shrink-0 self-stretch my-auto w-12 aspect-square"
       />
       <div className="flex overflow-hidden flex-col self-stretch my-auto w-[191px]">

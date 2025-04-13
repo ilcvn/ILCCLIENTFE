@@ -55,7 +55,7 @@ const BlogCard = ({
             whileInView="show"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <img src={imageUrl} alt="" className="w-3/4" />
+            <img src={imageUrl} alt={title} className="w-3/4" />
           </motion.div>
         </div>
       </div>

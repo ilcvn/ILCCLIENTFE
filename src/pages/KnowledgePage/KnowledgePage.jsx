@@ -62,7 +62,7 @@ export default function KnowledgePage({ typePage }) {
       <div className="bg-white w-full">
         <BreadcrumbDynamic />
         <Helmet>
-          <title>{t("nav.research")} {t("banner.marquee")}(ILC)</title>
+          <title>{t("nav.research")} | ILC</title>
         </Helmet>
         {
         (

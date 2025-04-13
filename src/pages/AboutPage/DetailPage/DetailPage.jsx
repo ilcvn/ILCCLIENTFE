@@ -197,7 +197,7 @@ export default function DetailPage() {
   return (
     <div className="bg-white w-full">
       <Helmet>
-        <title>{article.title + " (ILC)"}</title>
+        <title>{article.title + " | ILC"}</title>
       </Helmet>
       <BreadcrumbDynamic header={article.title} />
 
