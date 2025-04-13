@@ -269,7 +269,18 @@ const SliderCardsItem = ({
                 className="flex-shrink-0 px-2 md:px-4"
                 style={{ width: `${100 / cardsPerView}%` }}
               >
-                <Card {...card} star={4} />
+                <Card {...card} views ={card.views} comments = {card.interactedArticles.filter(item => item.type === 'COMMENT').length} star={
+                (() => {
+                  const rateItems = card.interactedArticles.filter(item => item.type === 'RATE');
+                  const total = rateItems.reduce(
+                    (sum, item) => sum + parseInt(item.value, 10),
+                    0
+                  );
+                  return rateItems.length > 0
+                    ? Math.ceil(total / rateItems.length)
+                    : 5;
+                })()
+              } />
               </div>
             ))}
           </div>

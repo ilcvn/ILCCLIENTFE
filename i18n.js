@@ -92,6 +92,23 @@ const resources = {
             header: "DỊCH VỤ KHOA HỌC VÀ CÔNG NGHỆ",
             content:
               "Tư vấn phản biện khoa học nâng cao trình độ trong các lĩnh vực nghiên cứu.",
+            currentComments: "Bình Luận Gần Đây",
+            noComment: "Chưa Có Bình Luận Nào",
+            comment: "Bình Luận",
+            sentComment: "Gửi Bình Luận",
+            needLogin2Comment: {
+              sentence1:"Bạn Cần",
+              sentence2:"Đăng Nhập",
+              sentence3:"Để Bình Luận"
+            },
+            inputComment: "Nhập Bình Luận",
+            thank4Rated:{
+              sentance1: "Bạn Đã Đánh Giá",
+              sentance2: "Sao. Cảm Ơn Bạn!",
+            },
+            evaluateArticle: "Đánh giá bài viết",
+            share: "Chia Sẻ",
+            ratingScore: "Điểm Đánh Giá:"
           },
           developers: {
             header: "CÁC THÀNH VIÊN",
@@ -314,6 +331,23 @@ const resources = {
             header: "CUSTOMER SERVICES",
             content:
               "Pioneering comprehensive legal solutions and partnering with businesses",
+            currentComments:"Latest Comments",
+            noComment: "No Comments Yet",
+            comment: "Comment",
+            sentComment: "Sent Your Comment",
+            needLogin2Comment: {
+              sentence1: "You need to",
+              sentence2: "log in",
+              sentence3: "to comment"
+            },
+            inputComment: "Enter Comment",
+            thank4Rated: {
+              sentence1: "You Have Rated",
+              sentence2: "Thank You For Your Feedback!"
+            },
+            evaluateArticle: "Evaluate This Article",
+            share: "Share",
+            ratingScore: "Rating Score:"
           },
           developers: {
             header: "OUR DEVELOPERS",
@@ -527,6 +561,23 @@ const resources = {
           services: {
             header: "客户服务",
             content: "率先提供全面的法律解决方案，并与企业携手同行",
+            currentComments:"最新评论",
+            noComment: "还没有评论",
+            comment: "评论",
+            sentComment: "提交评论",
+            needLogin2Comment: {
+              sentence1: "你需要",
+              sentence2: "登录",
+              sentence3: "才能评论"
+            },
+            inputComment: "输入评论",
+            thank4Rated: {
+              sentence1: "您已评分",
+              sentence2: "谢谢您的评价！"
+            },
+            evaluateArticle: "评价文章",
+            share: "分享",
+            ratingScore: "评分:"
           },
           developers: {
             header: "我们的开发者",

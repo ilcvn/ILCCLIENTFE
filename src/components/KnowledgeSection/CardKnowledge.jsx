@@ -20,13 +20,18 @@ export default function CardKnowledge({
   preview_img,
   summary,
   star = 3,
+  views = 0,
+  comments = 0
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
 
+
   const displayTitle = title || " ";
   const displayImage = preview_img || fallbackImage;
   const displaySummary = summary || " ";
+  const totalViews = views || 0;
+  const totalComments = comments || 0;
   const linkSlug = createSlug(displayTitle);
   // eslint-disable-next-line react/prop-types
   const cleanBasePath =
@@ -35,7 +40,6 @@ export default function CardKnowledge({
   const linkTo = `/${cleanBasePath}/${id}`;
 
   const [rating, setRating] = useState(star);
-  const [totalComments, setTotalComments] = useState(0);
 
   // Hàm xử lý khi bấm vào Card
   const handleCardClick = () => {
@@ -94,7 +98,7 @@ export default function CardKnowledge({
 
             <div className="w-full text-sm text-gray-500">
               <div className="flex items-center gap-2">
-                <span className="text-[16px]"> {totalComments}</span>
+                <span className="text-[16px]"> {totalViews}</span>
                 <Eye className="w-4 h-4" />
               </div>
             </div>

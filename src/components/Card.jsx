@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const createSlug = (title) => {
   return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
 };
-export default function Card({ id, preview_img, title, summary, star = 3 }) {
+export default function Card({ id, preview_img, title, summary, views = 0, comments = 0, star = 3 }) {
   const navigate = useNavigate();
   const handleClick = () => {
     // Tạo slug từ fullName và kết hợp với id theo định dạng "slug=id"
@@ -60,14 +60,14 @@ export default function Card({ id, preview_img, title, summary, star = 3 }) {
           <div className="flex items-center gap-2">
             <div className="w-full text-[10px] text-gray-500">
               <div className="flex items-center gap-2">
-                <span className="text-[16px]"> {totalComments}</span>
+                <span className="text-[16px]"> {comments || 0}</span>
                 <MessageCircleMore className="w-4 h-4" />
               </div>
             </div>
 
             <div className="w-full text-[10px] text-gray-500">
               <div className="flex items-center gap-2">
-                <span className="text-[16px]"> {totalComments}</span>
+                <span className="text-[16px]"> {views || 0}</span>
                 <Eye className="w-4 h-4" />
               </div>
             </div>

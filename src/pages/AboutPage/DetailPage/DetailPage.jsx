@@ -106,6 +106,11 @@ export default function DetailPage() {
         setTargetId(articleData.id);
         setArticle(articleData);
 
+        const rateItems = articleData.interactedArticles.filter(item => item.type === INTERACTED_ARTICLE_ENUM.RATE);
+        const total = rateItems.reduce((sum, item) => sum + parseInt(item.value, 10), 0);
+        const point =  rateItems.length > 0 ? Math.ceil(total / rateItems.length): 5;
+        setTotalRating(point);
+
         const all_comments = articleData.interactedArticles
           .filter((item) => item.type !== INTERACTED_ARTICLE_ENUM.RATE)
           .map((item) => ({
@@ -226,7 +231,7 @@ export default function DetailPage() {
             </h2>
 
             <div className="flex gap-1">
-              <h2 className="text-lg font-medium mb-2">Điểm đánh giá: </h2>
+              <h2 className="text-lg font-medium mb-2">{t("homepage.contentSection.services.ratingScore")}</h2>
               {[1, 2, 3, 4, 5].map((star) => (
                 <svg
                   key={star}
@@ -255,12 +260,12 @@ export default function DetailPage() {
 
           <div className="flex items-center justify-between mt-4 font-medium text-lg">
             <div>
-              <h2 className="">Chia sẻ</h2>
+              <h2 className="">{t("homepage.contentSection.services.share")}</h2>
               <ShareButton />
             </div>
 
             <div>
-              <h2 className="text-lg font-medium mb-2">Đánh giá bài viết</h2>
+              <h2 className="text-lg font-medium mb-2">{t("homepage.contentSection.services.evaluateArticle")}</h2>
               <div className="flex gap-1">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg
@@ -286,14 +291,14 @@ export default function DetailPage() {
               </div>
               {rating > 0 && (
                 <p className="text-sm text-gray-600 mt-1">
-                  Bạn đã đánh giá {rating} sao. Cảm ơn bạn!
+                  {t("homepage.contentSection.services.thank4Rated.sentence1")} {rating} {t("homepage.contentSection.services.thank4Rated.sentence2")}
                 </p>
               )}
             </div>
           </div>
 
           <div className="mt-6">
-            <h3 className="text-lg font-medium mb-4">Bình luận gần đây</h3>
+            <h3 className="text-lg font-medium mb-4">{t("homepage.contentSection.services.currentComments")}</h3>
             {comments.length > 0 ? (
               <div className="space-y-4">
                 {comments.map((comment) => (
@@ -325,18 +330,18 @@ export default function DetailPage() {
                 ))}
               </div>
             ) : (
-              <i className="text-sm text-gray-500">Chưa có bình luận nào</i>
+              <i className="text-sm text-gray-500">{t("homepage.contentSection.services.noComment")}</i>
             )}
           </div>
 
           <div className="mt-4">
             <h2 className="mb-4 text-brandPrimary font-bold text-xl">
-              BÌNH LUẬN
+            {t("homepage.contentSection.services.comment")}
             </h2>
 
             <div className="mt-2">
               <textarea
-                placeholder="Nhập bình luận..."
+                placeholder={t('homepage.contentSection.services.inputComment')+"..."}
                 className={clsx(
                   "w-full p-3 border border-gray-300 rounded resize-none min-h-[100px] text-sm",
                   !user ? "bg-brandPrimary/10" : "bg-inherit"
@@ -362,20 +367,20 @@ export default function DetailPage() {
                     )
                   }
                 >
-                  Gửi bình luận
+                  {t("homepage.contentSection.services.sentComment")}
                 </button>
               )}
 
               {showLoginPrompt && !user && (
                 <div className="mt-2 bg-yellow-100 border border-yellow-400 text-yellow-700 p-3 rounded text-md">
-                  Bạn cần{" "}
+                  {t("homepage.contentSection.services.needLogin2Comment.sentence1")} {" "}
                   <span
                     className="font-bold cursor-pointer text-blue-600 underline"
                     onClick={() => setShowLoginDialog(true)}
                   >
-                    đăng nhập{" "}
+                    {t("homepage.contentSection.services.needLogin2Comment.sentence2")} {" "}
                   </span>
-                  để bình luận.
+                  {t("homepage.contentSection.services.needLogin2Comment.sentence3")}.
                 </div>
               )}
 
