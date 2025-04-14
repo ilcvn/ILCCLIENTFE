@@ -1,7 +1,7 @@
-import { Eye, MessageCircleMore } from "lucide-react";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import {Eye, MessageCircleMore} from "lucide-react";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 const createSlug = (title) => {
   return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
 };
@@ -14,8 +14,8 @@ export default function Card({
   comments = 0,
   star = 3,
 }) {
-  const { t } = useTranslation();
 
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleClick = () => {
     // Tạo slug từ fullName và kết hợp với id theo định dạng "slug=id"
