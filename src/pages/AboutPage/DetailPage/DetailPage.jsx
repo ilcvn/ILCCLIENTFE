@@ -79,7 +79,6 @@ export default function DetailPage() {
       updatedDate: new Date(),
     };
 
-    console.log(data);
 
     const response = await createInteractedArticle(data);
 
@@ -237,7 +236,7 @@ export default function DetailPage() {
       </Helmet>
       <BreadcrumbDynamic header={article.title} />
 
-      <div className="md:w-3/4 w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
+      <div className="md:max-w-screen-2xl w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
         <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">
           <h1 className="font-semibold text-xl py-2">{article.title || " "}</h1>
 
@@ -276,7 +275,7 @@ export default function DetailPage() {
             <div className="article-content">{parsedContent}</div>
           </div>
 
-          <div className="flex items-center justify-between mt-4 font-medium text-lg">
+          <div className="flex md:flex-row  flex-col md:items-center justify-between mt-4 font-medium text-lg">
             <div>
               <h2 className="">
                 {t("homepage.contentSection.services.share")}
