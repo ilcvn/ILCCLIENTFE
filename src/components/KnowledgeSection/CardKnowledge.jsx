@@ -21,11 +21,10 @@ export default function CardKnowledge({
   summary,
   star = 3,
   views = 0,
-  comments = 0
+  comments = 0,
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
-
 
   const displayTitle = title || " ";
   const displayImage = preview_img || fallbackImage;
@@ -63,7 +62,12 @@ export default function CardKnowledge({
         <h1 className="text-lg font-semibold p-1 hover:text-brandSecondary">
           {displayTitle}
         </h1>
-        <p className="text-base p-1 line-clamp-3">{displaySummary}</p>
+        <p
+          className="text-base p-1 line-clamp-3"
+          style={{ minHeight: "4.5em" }}
+        >
+          {displaySummary}
+        </p>
 
         <div className="flex items-center justify-between gap-4">
           <div className="flex gap-1">

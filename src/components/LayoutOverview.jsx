@@ -41,7 +41,7 @@ export default function LayoutOverviewPage({
 
   return (
     isShow && (
-      <div className="max-w-screen-2xl mx-auto py-10 z-50 text-black p-1">
+      <div className="max-w-screen-2xl mx-auto py-10 z-50 text-black ">
         <ContentSection header={header} content={content} />
         <div className="flex flex-wrap justify-center gap-4 mt-3">
           {data.map((member, index) => {
