@@ -15,6 +15,7 @@ import LoginModal from "../../../components/LoginModal";
 import clsx from "clsx";
 import { createInteractedArticle } from "../../../api/InteractedArticle/interactedArticle";
 import { toast } from "react-toastify";
+import { Eye } from "lucide-react";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -67,7 +68,6 @@ export default function DetailPage() {
     const parts = slug.split("=");
     const articleID = parts.at(-1);
 
-    console.log(articleID);
     const data = {
       userName: user.email,
       fullName: user.name,
@@ -78,11 +78,14 @@ export default function DetailPage() {
       createdDate: new Date(),
       updatedDate: new Date(),
     };
+
+
     const response = await createInteractedArticle(data);
 
     if (response.status === 201) {
       toast.success(t("homepage.contentSection.services.recordComment"));
-      if(type === INTERACTED_ARTICLE_ENUM["RATE"]) setRating(parseInt(value, 10));
+      if (type === INTERACTED_ARTICLE_ENUM["RATE"])
+        setRating(parseInt(value, 10));
       fetchCommnent();
     }
 
@@ -108,9 +111,15 @@ export default function DetailPage() {
         setTargetId(articleData.id);
         setArticle(articleData);
 
-        const rateItems = articleData.interactedArticles.filter(item => item.type === INTERACTED_ARTICLE_ENUM.RATE);
-        const total = rateItems.reduce((sum, item) => sum + parseInt(item.value, 10), 0);
-        const point =  rateItems.length > 0 ? Math.ceil(total / rateItems.length): 5;
+        const rateItems = articleData.interactedArticles.filter(
+          (item) => item.type === INTERACTED_ARTICLE_ENUM.RATE
+        );
+        const total = rateItems.reduce(
+          (sum, item) => sum + parseInt(item.value, 10),
+          0
+        );
+        const point =
+          rateItems.length > 0 ? Math.ceil(total / rateItems.length) : 5;
         setTotalRating(point);
 
         const all_comments = articleData.interactedArticles
@@ -134,10 +143,11 @@ export default function DetailPage() {
               item.userName === user.email
           );
 
-          if (ratedRecord_by_user){
-            console.log(ratedRecord_by_user);
+          if (ratedRecord_by_user) {
             setRating(parseInt(ratedRecord_by_user.value));
-          }
+          } else setRating(0);
+        } else {
+          setRating(0);
         }
       })
       .catch((error) => {
@@ -226,17 +236,19 @@ export default function DetailPage() {
       </Helmet>
       <BreadcrumbDynamic header={article.title} />
 
-      <div className="md:w-3/4 w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
+      <div className="md:max-w-screen-2xl w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
         <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">
           <h1 className="font-semibold text-xl py-2">{article.title || " "}</h1>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:justify-between">
             <h2 className="text-base opacity-75">
               {convertISOToDate(article.createDate)}
             </h2>
 
             <div className="flex gap-1">
-              <h2 className="text-lg font-medium mb-2">{t("homepage.contentSection.services.ratingScore")}</h2>
+              <h2 className="text-lg font-medium mb-2">
+                {t("homepage.contentSection.services.ratingScore")}
+              </h2>
               {[1, 2, 3, 4, 5].map((star) => (
                 <svg
                   key={star}
@@ -263,14 +275,18 @@ export default function DetailPage() {
             <div className="article-content">{parsedContent}</div>
           </div>
 
-          <div className="flex items-center justify-between mt-4 font-medium text-lg">
+          <div className="flex md:flex-row  flex-col md:items-center justify-between mt-4 font-medium text-lg">
             <div>
-              <h2 className="">{t("homepage.contentSection.services.share")}</h2>
+              <h2 className="">
+                {t("homepage.contentSection.services.share")}
+              </h2>
               <ShareButton />
             </div>
 
             <div>
-              <h2 className="text-lg font-medium mb-2">{t("homepage.contentSection.services.evaluateArticle")}</h2>
+              <h2 className="text-lg font-medium mb-2">
+                {t("homepage.contentSection.services.evaluateArticle")}
+              </h2>
               <div className="flex gap-1">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg
@@ -294,16 +310,20 @@ export default function DetailPage() {
                   </svg>
                 ))}
               </div>
-              {rating > 0 && (
+              {/* {rating > 0 && (
                 <p className="text-sm text-gray-600 mt-1">
-                  {t("homepage.contentSection.services.thank4Rated.sentence1")} {rating} {t("homepage.contentSection.services.thank4Rated.sentence2")}
+                  {t("homepage.contentSection.services.thank4Rated.sentence1")}{" "}
+                  {rating}{" "}
+                  {t("homepage.contentSection.services.thank4Rated.sentence2")}
                 </p>
-              )}
+              )} */}
             </div>
           </div>
 
           <div className="mt-6">
-            <h3 className="text-lg font-medium mb-4">{t("homepage.contentSection.services.currentComments")}</h3>
+            <h3 className="text-lg font-medium mb-4">
+              {t("homepage.contentSection.services.currentComments")}
+            </h3>
             {comments.length > 0 ? (
               <div className="space-y-4">
                 {comments.map((comment) => (
@@ -335,18 +355,22 @@ export default function DetailPage() {
                 ))}
               </div>
             ) : (
-              <i className="text-sm text-gray-500">{t("homepage.contentSection.services.noComment")}</i>
+              <i className="text-sm text-gray-500">
+                {t("homepage.contentSection.services.noComment")}
+              </i>
             )}
           </div>
 
           <div className="mt-4">
             <h2 className="mb-4 text-brandPrimary font-bold text-xl">
-            {t("homepage.contentSection.services.comment")}
+              {t("homepage.contentSection.services.comment")}
             </h2>
 
             <div className="mt-2">
               <textarea
-                placeholder={t('homepage.contentSection.services.inputComment')+"..."}
+                placeholder={
+                  t("homepage.contentSection.services.inputComment") + "..."
+                }
                 className={clsx(
                   "w-full p-3 border border-gray-300 rounded resize-none min-h-[100px] text-sm",
                   !user ? "bg-brandPrimary/10" : "bg-inherit"
@@ -378,14 +402,21 @@ export default function DetailPage() {
 
               {showLoginPrompt && !user && (
                 <div className="mt-2 bg-yellow-100 border border-yellow-400 text-yellow-700 p-3 rounded text-md">
-                  {t("homepage.contentSection.services.needLogin2Comment.sentence1")} {" "}
+                  {t(
+                    "homepage.contentSection.services.needLogin2Comment.sentence1"
+                  )}{" "}
                   <span
                     className="font-bold cursor-pointer text-blue-600 underline"
                     onClick={() => setShowLoginDialog(true)}
                   >
-                    {t("homepage.contentSection.services.needLogin2Comment.sentence2")} {" "}
+                    {t(
+                      "homepage.contentSection.services.needLogin2Comment.sentence2"
+                    )}{" "}
                   </span>
-                  {t("homepage.contentSection.services.needLogin2Comment.sentence3")}.
+                  {t(
+                    "homepage.contentSection.services.needLogin2Comment.sentence3"
+                  )}
+                  .
                 </div>
               )}
 
