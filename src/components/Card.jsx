@@ -14,7 +14,8 @@ export default function Card({
   comments = 0,
   star = 3,
 }) {
-  const {t} = useTranslation();
+
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleClick = () => {
     // Tạo slug từ fullName và kết hợp với id theo định dạng "slug=id"
@@ -48,20 +49,16 @@ export default function Card({
           <h1 className="text-base font-semibold text-brandPrimary line-clamp-1 xl:line-clamp-2 md:text-[14px] hover:text-brandSecondary">
             {title || ""}
           </h1>
-          <p className="text-[14px] line-clamp-3 h-[65px]">{summary || ""}</p>
-        </div>
-
-        <div className="mt-2">
-          <a
-            href=""
-            className="block text-sm text-brandSecondary font-semibold hover:text-red-600"
+          <p
+            className="text-[14px] line-clamp-3"
+            style={{ minHeight: "4.5em" }}
           >
-            {t("homepage.blogCard.btnContent")}
-          </a>
+            {summary || ""}
+          </p>
         </div>
 
         {/* RATING + COMMENTS + VIEWS */}
-        <div className="flex xl:flex-row flex-col justify-between items-center gap-1 mt-2 w-full">
+        <div className="flex justify-between items-center gap-1 mt-2 w-full">
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((star) => (
               <svg
@@ -86,6 +83,15 @@ export default function Card({
               <Eye className="w-4 h-4" />
             </div>
           </div>
+        </div>
+
+        <div className="mt-2">
+          <a
+            href=""
+            className="block text-sm text-brandSecondary font-semibold hover:text-red-600 text-right"
+          >
+            {t("homepage.blogCard.btnContent")}
+          </a>
         </div>
       </div>
     </div>

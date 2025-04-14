@@ -79,7 +79,6 @@ export default function DetailPage() {
       updatedDate: new Date(),
     };
 
-
     const response = await createInteractedArticle(data);
 
     if (response.status === 201) {

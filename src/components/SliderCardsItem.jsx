@@ -240,7 +240,7 @@ const SliderCardsItem = ({
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto w-full md:w-3/4 relative overflow-hidden py-10">
+    <div className="max-w-screen-2xl mx-auto w-full md:w-[95%] relative overflow-hidden py-10">
       {isCard && (
         <div
           ref={containerRef}
@@ -269,18 +269,27 @@ const SliderCardsItem = ({
                 className="flex-shrink-0 px-2 md:px-4"
                 style={{ width: `${100 / cardsPerView}%` }}
               >
-                <Card {...card} views ={card.views} comments = {card.interactedArticles.filter(item => item.type === 'COMMENT').length} star={
-                (() => {
-                  const rateItems = card.interactedArticles.filter(item => item.type === 'RATE');
-                  const total = rateItems.reduce(
-                    (sum, item) => sum + parseInt(item.value, 10),
-                    0
-                  );
-                  return rateItems.length > 0
-                    ? Math.ceil(total / rateItems.length)
-                    : 5;
-                })()
-              } />
+                <Card
+                  {...card}
+                  views={card.views}
+                  comments={
+                    card.interactedArticles.filter(
+                      (item) => item.type === "COMMENT"
+                    ).length
+                  }
+                  star={(() => {
+                    const rateItems = card.interactedArticles.filter(
+                      (item) => item.type === "RATE"
+                    );
+                    const total = rateItems.reduce(
+                      (sum, item) => sum + parseInt(item.value, 10),
+                      0
+                    );
+                    return rateItems.length > 0
+                      ? Math.ceil(total / rateItems.length)
+                      : 5;
+                  })()}
+                />
               </div>
             ))}
           </div>
