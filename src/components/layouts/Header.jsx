@@ -463,7 +463,7 @@ const Header = () => {
             ))}
           </ul>
 
-          {!user && (
+          {/* {!user && (
             <div className="flex justify-end p-4">
               <span
                 className="font-bold cursor-pointer text-brandPrimary underline"
@@ -475,7 +475,7 @@ const Header = () => {
                 Đăng nhập
               </span>{" "}
             </div>
-          )}
+          )} */}
         </div>
       </div>
 
