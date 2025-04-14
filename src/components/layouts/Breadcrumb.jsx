@@ -50,42 +50,42 @@ const BreadcrumbDynamic = ({header}) => {
 
   return (
     <div className="bg-gray-200 w-full">
-      <div className="md:max-w-screen-2xl mx-auto md:p-4 sm:p-2 p-1 z-50 text-black">
-        <nav className="text-black text-sm" aria-label="Breadcrumb">
-          <ol className="flex items-center space-x-2 md:text-base text-sm">
-            {/* Breadcrumb đầu tiên: Trang Chủ */}
-            <li>
-              <Link to="/" className="text-black hover:underline">
-                {t("nav.home") || "Trang Chủ"}
-              </Link>
-            </li>
-            {pathnames.map((_, index) => {
-              const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-              const label = findLabelByPath(routeTo);
-              const isLast = index === pathnames.length - 1;
+    <div className="md:max-w-screen-2xl mx-auto md:p-4 sm:p-2 p-1 z-50 text-black">
+      <nav className="text-black text-sm" aria-label="Breadcrumb">
+        <ol className="flex items-center gap-1 md:text-base text-sm ">
+          {/* Breadcrumb đầu tiên: Trang Chủ */}
+          <li className="flex items-center ">
+            <Link to="/" className="text-black hover:underline  min-w-[70px]">
+             <span className="">{t("nav.home") || "Trang Chủ"}</span>  
+            </Link>
+          </li>
+          {pathnames.map((_, index) => {
+            const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+            const label = findLabelByPath(routeTo);
+            const isLast = index === pathnames.length - 1;
 
-              return (
-                <li key={routeTo} className="flex items-center">
-                  <ChevronRightIcon className="w-4 h-4 text-black mx-2" />
-                  {isLast ? (
-                    <span className="text-brandSecondary font-bold">
-                      {label}
-                    </span>
-                  ) : (
-                    <Link
-                      to={routeTo}
-                      className="text-black hover:underline text-base"
-                    >
-                      {label}
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
-      </div>
+            return (
+              <li key={routeTo} className="flex items-center">
+                <ChevronRightIcon className="w-4 h-4 text-black mx-2" />
+                {isLast ? (
+                  <span className="text-brandSecondary font-bold min-w-[50px]">
+                    {label}
+                  </span>
+                ) : (
+                  <Link
+                    to={routeTo}
+                    className="text-black hover:underline  min-w-[50px]"
+                  >
+                    {label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
     </div>
+  </div>
   );
 };
 
