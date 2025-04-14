@@ -5,7 +5,15 @@ import { useTranslation } from "react-i18next";
 const createSlug = (title) => {
   return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
 };
-export default function Card({ id, preview_img, title, summary, views = 0, comments = 0, star = 3 }) {
+export default function Card({
+  id,
+  preview_img,
+  title,
+  summary,
+  views = 0,
+  comments = 0,
+  star = 3,
+}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleClick = () => {
@@ -32,16 +40,16 @@ export default function Card({ id, preview_img, title, summary, views = 0, comme
         </div>
       </div>
       <div className="p-1">
-        <h1 className="text-base font-semibold py-1 text-brandPrimary hover:text-brandSecondary text-justify">
+        <h1 className="text-base font-semibold py-1 text-brandPrimary hover:text-brandSecondary text-justify line-clamp-1">
           {title || ""}
         </h1>
 
-        <p className="text-[14px] line-clamp-4 h-[85px]">{summary || ""}</p>
+        <p className="text-[14px] line-clamp-2 mb-2">{summary || ""}</p>
 
         <div
           className="flex flex-row gap-2 items-center 
                 md:flex-col md:items-start md:gap-2 
-                lg:flex-row lg:items-center lg:justify-between lg:gap-6"
+                lg:flex-col lg:items-start lg:gap-2 xl:flex-row xl:items-center xl:justify-between xl:gap-6"
         >
           {/* Stars */}
           <div className="flex gap-1">
