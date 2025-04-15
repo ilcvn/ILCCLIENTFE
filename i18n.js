@@ -86,6 +86,7 @@ const resources = {
             paragraph5: '"Đồng hành cùng doanh nghiệp trong kỷ nguyên mới."',
           },
           btnContent: "Xem thêm",
+          btnRegister: "Đăng ký"
         },
         contentSection: {
           services: {
@@ -326,6 +327,7 @@ const resources = {
             paragraph5: '"Accompanying businesses in the new era."',
           },
           btnContent: "Read More",
+          btnRegister: "Sign up"
         },
         contentSection: {
           services: {
@@ -558,6 +560,7 @@ const resources = {
             paragraph5: '"新時代陪伴企業前進"',
           },
           btnContent: "查看更多",
+          btnRegister: "注册"
         },
         contentSection: {
           services: {

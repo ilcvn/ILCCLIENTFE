@@ -22,6 +22,7 @@ export default function CardKnowledge({
   star = 3,
   views = 0,
   comments = 0,
+  typeArticle='NEWS' 
 }) {
   const {t} = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
@@ -54,8 +55,12 @@ export default function CardKnowledge({
   const handleCardClick = useDebounce(() => {
     navigate(linkTo);
   }, 300);
-  const handleClickLienHeLienHe = useDebounce(() => {
+  const handleClickContact = useDebounce(() => {
     navigate("/lien-he");
+  }, 300);
+
+  const handleClickDetailArticle = useDebounce(() => {
+    navigate("/dich-vu/"+id);
   }, 300);
 
   return (
@@ -120,12 +125,22 @@ export default function CardKnowledge({
             </div>
           </div>
 
-          <button
-            onClick={handleClickLienHeLienHe}
-            className="text-base w-full inline-block p-4 mx-2 text-end text-brandSecondary font-semibold hover:mx-1 hover:text-red-600"
-          >
-            {t("homepage.blogCard.btnContent")}
-          </button>
+          {typeArticle === "NEWS" ? (
+            <button
+              onClick={handleClickDetailArticle}
+              className="text-base w-full inline-block p-4 mx-2 text-end text-brandSecondary font-semibold hover:mx-1 hover:text-red-600"
+            >
+              {t("homepage.blogCard.btnContent")}
+            </button>
+          ) : (
+            <button
+              onClick={handleClickContact}
+              className="text-base w-full inline-block p-4 mx-2 text-end text-brandSecondary font-semibold hover:mx-1 hover:text-red-600"
+            >
+              {t("homepage.blogCard.btnRegister")}
+            </button>
+          )}
+          
         </div>
       </div>
     </div>
