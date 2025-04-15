@@ -1,7 +1,7 @@
-import { Eye, MessageCircleMore } from "lucide-react";
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import {Eye, MessageCircleMore} from "lucide-react";
+import React, {useCallback, useState} from "react";
+import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router-dom";
 
 // Hàm tạo slug cho tiêu đề
 const createSlug = (title) => {
@@ -23,9 +23,19 @@ export default function CardKnowledge({
   views = 0,
   comments = 0,
 }) {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
+  const useDebounce = (callback, delay) => {
+    const [timer, setTimer] = useState(null);
 
+    return useCallback(
+      (...args) => {
+        if (timer) clearTimeout(timer);
+        setTimer(setTimeout(() => callback(...args), delay));
+      },
+      [callback, delay, timer]
+    );
+  };
   const displayTitle = title || " ";
   const displayImage = preview_img || fallbackImage;
   const displaySummary = summary || " ";
@@ -41,17 +51,17 @@ export default function CardKnowledge({
   const [rating, setRating] = useState(star);
 
   // Hàm xử lý khi bấm vào Card
-  const handleCardClick = () => {
+  const handleCardClick = useDebounce(() => {
     navigate(linkTo);
-  };
+  }, 300);
+  const handleClickLienHeLienHe = useDebounce(() => {
+    navigate("/lien-he");
+  }, 300);
 
   return (
-    <div
-      className="group text-start cursor-pointer"
-      onClick={handleCardClick} // Gọi navigate khi click vào toàn bộ card
-    >
+    <div className="group text-start cursor-pointer">
       {/* Container ảnh với overflow-hidden */}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden" onClick={handleCardClick}>
         <img
           src={displayImage}
           alt={displayTitle}
@@ -59,15 +69,17 @@ export default function CardKnowledge({
         />
       </div>
       <div className="text-justify">
-        <h1 className="text-lg font-semibold p-1 hover:text-brandSecondary">
-          {displayTitle}
-        </h1>
-        <p
-          className="text-base p-1 line-clamp-3"
-          style={{ minHeight: "4.5em" }}
-        >
-          {displaySummary}
-        </p>
+        <div onClick={handleCardClick}>
+          <h1 className="text-lg font-semibold p-1 hover:text-brandSecondary">
+            {displayTitle}
+          </h1>
+          <p
+            className="text-base p-1 line-clamp-3"
+            style={{minHeight: "4.5em"}}
+          >
+            {displaySummary}
+          </p>
+        </div>
 
         <div className="flex items-center justify-between gap-4">
           <div className="flex gap-1">
@@ -109,7 +121,7 @@ export default function CardKnowledge({
           </div>
 
           <button
-            onClick={(e) => e.stopPropagation()}
+            onClick={handleClickLienHeLienHe}
             className="text-base w-full inline-block p-4 mx-2 text-end text-brandSecondary font-semibold hover:mx-1 hover:text-red-600"
           >
             {t("homepage.blogCard.btnContent")}

@@ -53,7 +53,7 @@ function ContactPage() {
                   <span className="mr-1 font-semibold">
                     {t("contactPage.hotlineLabel2", "Hotline:")}
                   </span>
-                  <span>0934 121 183</span>
+                  <span>0983 285 499</span>
                 </div>
                 <div className="flex items-start">
                   <IoLocationSharp className="w-6 h-6 text-brandSecondary mr-1 font-semibold" />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -6,7 +6,7 @@ import {
   FaShareAlt,
   FaCheck,
 } from "react-icons/fa";
-import { SiZalo } from "react-icons/si";
+import {SiZalo} from "react-icons/si";
 
 export default function ShareButton() {
   const [copied, setCopied] = useState(false);
@@ -83,14 +83,14 @@ export default function ShareButton() {
       </button>
 
       {/* Zalo - chỉ hiển thị nếu là mobile */}
-      {isMobile && (
+      {/* {isMobile && (
         <button
           onClick={() => shareToSocial("zalo")}
           className="bg-sky-500 text-white p-3 rounded-full hover:bg-sky-600"
         >
           <SiZalo size={20} />
         </button>
-      )}
+      )} */}
 
       {/* Copy */}
       <button
