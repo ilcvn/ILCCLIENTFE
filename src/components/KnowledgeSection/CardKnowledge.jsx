@@ -22,7 +22,7 @@ export default function CardKnowledge({
   star = 3,
   views = 0,
   comments = 0,
-  typeArticle='NEWS' 
+  typeArticle = "NEWS",
 }) {
   const {t} = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
@@ -78,48 +78,51 @@ export default function CardKnowledge({
           <h1 className="text-lg font-semibold p-1 hover:text-brandSecondary">
             {displayTitle}
           </h1>
-          <p
-            className="text-base py-1 line-clamp-3 max-h-[4.5em] text-gray-600"
-          >
+          <p className="text-base py-1 line-clamp-3 max-h-[4.5em] text-gray-600">
             {displaySummary}
           </p>
         </div>
 
         <div className="flex items-center justify-between gap-4 py-2">
-          <div className="flex gap-1">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <svg
-                key={star}
-                onClick={() =>
-                  // handleRateSubmit(
-                  //   INTERACTED_ARTICLE_ENUM["RATE"],
-                  //   star.toString()
-                  // )
+          <div className="flex gap-2">
+            <div className="flex gap-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <svg
+                  key={star}
+                  onClick={() =>
+                    // handleRateSubmit(
+                    //   INTERACTED_ARTICLE_ENUM["RATE"],
+                    //   star.toString()
+                    // )
 
-                  {}
-                }
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill={rating >= star ? "#facc15" : "#e5e7eb"}
-                className="xl:w-6 xl:h-6 h-4 w-4 cursor-pointer transition-colors"
-              >
-                <path d="M12 .587l3.668 7.431L24 9.168l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.017 0 9.168l8.332-1.15z" />
-              </svg>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="w-full text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <span className="lg:text-base text-sm "> {totalComments}</span>
-                <MessageCircleMore className="w-4 h-4 " />
-              </div>
+                    {}
+                  }
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill={rating >= star ? "#facc15" : "#e5e7eb"}
+                  className="xl:w-6 xl:h-6 h-4 w-4 cursor-pointer transition-colors"
+                >
+                  <path d="M12 .587l3.668 7.431L24 9.168l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.017 0 9.168l8.332-1.15z" />
+                </svg>
+              ))}
             </div>
 
-            <div className="w-full text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <span className="lg:text-base text-sm "> {totalViews}</span>
-                <Eye className="w-4 h-4 " />
+            <div className="flex items-center gap-4">
+              <div className="w-full text-sm text-gray-500">
+                <div className="flex items-center gap-2">
+                  <span className="lg:text-base text-sm ">
+                    {" "}
+                    {totalComments}
+                  </span>
+                  <MessageCircleMore className="w-4 h-4 " />
+                </div>
+              </div>
+
+              <div className="w-full text-sm text-gray-500">
+                <div className="flex items-center gap-2">
+                  <span className="lg:text-base text-sm "> {totalViews}</span>
+                  <Eye className="w-4 h-4 " />
+                </div>
               </div>
             </div>
           </div>
@@ -128,18 +131,17 @@ export default function CardKnowledge({
             <button
               onClick={handleClickDetailArticle}
               className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-center min-w-16 min-h-9"
-              >
+            >
               {t("homepage.blogCard.btnContent")}
             </button>
           ) : (
             <button
               onClick={handleClickContact}
               className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600  min-w-16 min-h-9 text-center"
-              >
+            >
               {t("homepage.blogCard.btnRegister")}
             </button>
           )}
-          
         </div>
       </div>
     </div>

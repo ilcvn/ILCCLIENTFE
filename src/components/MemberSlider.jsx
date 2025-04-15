@@ -19,15 +19,14 @@ const SliderMember = () => {
   useEffect(() => {
     const updateCardsPerView = () => {
       const width = window.innerWidth;
-      if (width <= 480) {
-        setCardsPerView(1);
-      } else if (width <= 768) {
-        setCardsPerView(2);
-      } else if (width < 1024) {
-        setCardsPerView(3);
+      if (width <= 768) {
+        setCardsPerView(1); // Màn hình nhỏ hiển thị 1 thẻ
+      } else if (width <= 1024) {
+        setCardsPerView(2); // Màn hình từ 769px đến 1024px hiển thị 2 thẻ
       } else {
-        setCardsPerView(4);
+        setCardsPerView(4); // Màn hình lớn hơn 1024px hiển thị 4 thẻ
       }
+      
     };
     updateCardsPerView();
     window.addEventListener("resize", updateCardsPerView);
