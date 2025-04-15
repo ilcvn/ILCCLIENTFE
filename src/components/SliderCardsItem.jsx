@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {useState, useEffect, useRef, useContext} from "react";
 import Card from "./Card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {ChevronLeft, ChevronRight} from "lucide-react";
 import CardVideo from "./CardVideo";
-import { getArticles } from "../api/Article/article";
-import { LanguageContext } from "../context/LanguageContext";
-import { useTranslation } from "react-i18next";
+import {getArticles} from "../api/Article/article";
+import {LanguageContext} from "../context/LanguageContext";
+import {useTranslation} from "react-i18next";
 
 const videosArray = [
   {
@@ -46,19 +46,15 @@ const videosArray = [
   },
 ];
 
-const SliderCardsItem = ({
-  isCard,
-  isCardVideo,
-  isPrevNextBtn,
-}) => {
+const SliderCardsItem = ({isCard, isCardVideo, isPrevNextBtn}) => {
   const [cardsPerView, setCardsPerView] = useState(4);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const { t } = useTranslation();
-  const { language } = useContext(LanguageContext);
+  const {t} = useTranslation();
+  const {language} = useContext(LanguageContext);
 
-  const [sliderState, setSliderState] = useState({ index: 0, direction: 1 });
+  const [sliderState, setSliderState] = useState({index: 0, direction: 1});
   const [dragStartX, setDragStartX] = useState(null);
   const [dragDelta, setDragDelta] = useState(0);
   const containerRef = useRef(null);
@@ -72,10 +68,8 @@ const SliderCardsItem = ({
       const width = window.innerWidth;
       if (width <= 480) {
         setCardsPerView(1);
-      } else if (width <= 768) {
-        setCardsPerView(2);
       } else if (width < 1024) {
-        setCardsPerView(3);
+        setCardsPerView(2);
       } else {
         setCardsPerView(4);
       }
@@ -113,11 +107,11 @@ const SliderCardsItem = ({
   }, [language, currentPage, isCard]);
 
   // Reset slider index when language changes or dataSource updates
-useEffect(() => {
-  if (sliderArrayLength <= cardsPerView) {
-    setSliderState({ index: 0, direction: 1 });
-  }
-}, [language, sliderArrayLength, cardsPerView]);
+  useEffect(() => {
+    if (sliderArrayLength <= cardsPerView) {
+      setSliderState({index: 0, direction: 1});
+    }
+  }, [language, sliderArrayLength, cardsPerView]);
 
   // Auto-scroll slider
   useEffect(() => {
@@ -126,9 +120,9 @@ useEffect(() => {
         setSliderState((prev) => {
           let next = prev.index + prev.direction;
           if (next >= sliderArrayLength - cardsPerView)
-            return { index: sliderArrayLength - cardsPerView, direction: -1 };
-          if (next <= 0) return { index: 0, direction: 1 };
-          return { index: next, direction: prev.direction };
+            return {index: sliderArrayLength - cardsPerView, direction: -1};
+          if (next <= 0) return {index: 0, direction: 1};
+          return {index: next, direction: prev.direction};
         });
       }, 3000);
       return () => clearInterval(interval);
@@ -195,7 +189,7 @@ useEffect(() => {
             <div
               key={card.id || index}
               className="flex-shrink-0 px-2 md:px-4"
-              style={{ width: `${100 / cardsPerView}%` }}
+              style={{width: `${100 / cardsPerView}%`}}
             >
               {isCard && (
                 <Card
@@ -239,9 +233,7 @@ useEffect(() => {
           <button
             className="absolute md:right-0 right-2 top-1/2 transform -translate-y-1/2 bg-brandSecondary rounded-full h-12 w-12 text-white"
             onClick={handleNext}
-            disabled={
-              sliderState.index >= sliderArrayLength - cardsPerView
-            }
+            disabled={sliderState.index >= sliderArrayLength - cardsPerView}
           >
             <ChevronRight className="w-6 h-6 mx-auto" />
           </button>

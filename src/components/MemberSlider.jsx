@@ -21,10 +21,8 @@ const SliderMember = () => {
       const width = window.innerWidth;
       if (width <= 480) {
         setCardsPerView(1);
-      } else if (width <= 768) {
-        setCardsPerView(2);
       } else if (width < 1024) {
-        setCardsPerView(3);
+        setCardsPerView(2);
       } else {
         setCardsPerView(4);
       }

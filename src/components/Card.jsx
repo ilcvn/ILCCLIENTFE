@@ -75,39 +75,41 @@ export default function Card({
 
         {/* RATING + COMMENTS + VIEWS */}
         <div className="flex justify-between items-center gap-1 mt-2 w-full">
-          <div className="flex gap-1">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <svg
-                key={star}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill={rating >= star ? "#facc15" : "#e5e7eb"}
-                className="w-4 h-4"
-              >
-                <path d="M12 .587l3.668 7.431L24 9.168l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.017 0 9.168l8.332-1.15z" />
-              </svg>
-            ))}
+          <div className="flex gap-2 flex-wrap">
+            {" "}
+            <div className="flex gap-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <svg
+                  key={star}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill={rating >= star ? "#facc15" : "#e5e7eb"}
+                  className="xl:w-6 xl:h-6 h-4 w-4 cursor-pointer transition-colors"
+                >
+                  <path d="M12 .587l3.668 7.431L24 9.168l-6 5.849L19.335 24 12 19.897 4.665 24 6 15.017 0 9.168l8.332-1.15z" />
+                </svg>
+              ))}
+            </div>
+            <div className="flex items-center gap-1 text-gray-500 text-[12px]">
+              <div className="flex items-center gap-1">
+                <span className="lg:text-base text-sm ">{comments || 0}</span>
+                <MessageCircleMore className="w-4 h-4" />
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="lg:text-base text-sm ">{views || 0}</span>
+                <Eye className="w-4 h-4" />
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-1 text-gray-500 text-[12px]">
-            <div className="flex items-center gap-1">
-              <span>{comments || 0}</span>
-              <MessageCircleMore className="w-4 h-4" />
-            </div>
-            <div className="flex items-center gap-1">
-              <span>{views || 0}</span>
-              <Eye className="w-4 h-4" />
-            </div>
+          <div className="mb-2">
+            <button
+              onClick={handleClickDetailArticle}
+              className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600  min-w-16 min-h-9 text-center"
+            >
+              {t("homepage.blogCard.btnContent")}
+            </button>
           </div>
-        </div>
-
-        <div className="mt-2">
-          <button
-            onClick={handleClickDetailArticle}
-            className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-right min-w-16 min-h-9 text-center"
-          >
-            {t("homepage.blogCard.btnContent")}
-          </button>
         </div>
       </div>
     </div>
