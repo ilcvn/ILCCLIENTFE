@@ -22,10 +22,8 @@ const SliderMember = () => {
       if (width <= 480) {
         setCardsPerView(1);
       } else if (width <= 768) {
-        // Tablet nhỏ, màn hình trung bình
         setCardsPerView(2);
       } else if (width < 1024) {
-        // Tablet lớn
         setCardsPerView(3);
       } else {
         setCardsPerView(4);
@@ -60,7 +58,7 @@ const SliderMember = () => {
 
     fetchMembers();
   }, [language, t]);
-  // Reset slider index when language changes or dataSource updates
+
   useEffect(() => {
     if (sliderArrayLength <= cardsPerView) {
       setSliderState({index: 0, direction: 1});

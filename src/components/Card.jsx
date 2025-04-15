@@ -104,7 +104,7 @@ export default function Card({
         <div className="mt-2">
           <button
             onClick={handleClickDetailArticle}
-            className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-right"
+            className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-right min-w-16 min-h-9 text-center"
           >
             {t("homepage.blogCard.btnContent")}
           </button>
