@@ -90,7 +90,7 @@ const resources = {
         },
         contentSection: {
           services: {
-            header: "DỊCH VỤ KHOA HỌC VÀ CÔNG NGHỆ",
+            header: "DỊCH VỤ KHOA HỌC PHÁP LÝ",
             content:
               "Tư vấn phản biện khoa học nâng cao trình độ trong các lĩnh vực nghiên cứu.",
             currentComments: "Bình Luận Gần Đây",
@@ -331,7 +331,7 @@ const resources = {
         },
         contentSection: {
           services: {
-            header: "CUSTOMER SERVICES",
+            header: "FORENSIC SCIENCE SERVICES",
             content:
               "Pioneering comprehensive legal solutions and partnering with businesses",
             currentComments:"Latest Comments",
@@ -564,7 +564,7 @@ const resources = {
         },
         contentSection: {
           services: {
-            header: "客户服务",
+            header: "法医科学服务",
             content: "率先提供全面的法律解决方案，并与企业携手同行",
             currentComments:"最新评论",
             noComment: "还没有评论",

@@ -60,7 +60,7 @@ export default function CardKnowledge({
   }, 300);
 
   const handleClickDetailArticle = useDebounce(() => {
-    navigate("/dich-vu/"+id);
+    navigate(`/dich-vu/${id}`);
   }, 300);
 
   return (

@@ -38,10 +38,9 @@ export default function Card({
     navigate(`/dich-vu/${id}`);
   }, 300); // 300ms debounce delay
 
-  // Handle contact button click
-  const handleClickLienHeLienHe = useDebounce(() => {
-    navigate('/lien-he');
-  }, 300); // 300ms debounce delay
+  const handleClickDetailArticle = useDebounce(() => {
+    navigate(`/dich-vu/${id}`);
+  }, 300);
 
   const [rating, setRating] = useState(star);
   const [totalComments, setTotalComments] = useState(0);
@@ -105,7 +104,7 @@ export default function Card({
         <div className="mt-2">
           <button
             className="block text-sm text-brandSecondary font-semibold hover:text-red-600 text-right"
-            onClick={handleClickLienHeLienHe}
+            onClick={handleClickDetailArticle}
           >
             {t('homepage.blogCard.btnContent')}
           </button>
