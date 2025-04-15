@@ -127,14 +127,14 @@ export default function CardKnowledge({
           {typeArticle === "NEWS" ? (
             <button
               onClick={handleClickDetailArticle}
-              className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-right"
+              className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-center min-w-16 min-h-9"
               >
               {t("homepage.blogCard.btnContent")}
             </button>
           ) : (
             <button
               onClick={handleClickContact}
-              className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-right"
+              className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600  min-w-16 min-h-9 text-center"
               >
               {t("homepage.blogCard.btnRegister")}
             </button>
