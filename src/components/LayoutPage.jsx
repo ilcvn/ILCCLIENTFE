@@ -23,7 +23,7 @@ export default function LayoutPage({
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-8 gap-5 bg-white">
           {Array.isArray(data) &&
             data.map((item, index) => (
-              <CardKnowledge key={index} {...item} basePath={path} views ={item.views} comments = {item.interactedArticles.filter(item => item.type === 'COMMENT').length} star={
+              <CardKnowledge key={index} {...item} basePath={path} typeArticle={item.type} views ={item.views} comments = {item.interactedArticles.filter(item => item.type === 'COMMENT').length} star={
                 (() => {
                   const rateItems = item.interactedArticles.filter(item => item.type === 'RATE');
                   const total = rateItems.reduce(

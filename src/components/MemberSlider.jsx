@@ -19,10 +19,14 @@ const SliderMember = () => {
   useEffect(() => {
     const updateCardsPerView = () => {
       const width = window.innerWidth;
-      if (width < 640) setCardsPerView(1);
-      else if (width < 768) setCardsPerView(2);
-      else if (width < 1024) setCardsPerView(3);
-      else setCardsPerView(4);
+      if (width <= 768) {
+        setCardsPerView(1); // Màn hình nhỏ hiển thị 1 thẻ
+      } else if (width <= 1024) {
+        setCardsPerView(2); // Màn hình từ 769px đến 1024px hiển thị 2 thẻ
+      } else {
+        setCardsPerView(4); // Màn hình lớn hơn 1024px hiển thị 4 thẻ
+      }
+      
     };
     updateCardsPerView();
     window.addEventListener("resize", updateCardsPerView);
@@ -43,7 +47,7 @@ const SliderMember = () => {
               member.role.includes("GROUP_PRESIDENT") ||
               member.role.includes("ROOM_PRESIDENT"))
         );
-      
+
         setMembers(memberTeam);
         setSliderArrayLength(memberTeam.length);
       } catch (error) {
@@ -53,6 +57,12 @@ const SliderMember = () => {
 
     fetchMembers();
   }, [language, t]);
+
+  useEffect(() => {
+    if (sliderArrayLength <= cardsPerView) {
+      setSliderState({index: 0, direction: 1});
+    }
+  }, [language, sliderArrayLength, cardsPerView]);
 
   useEffect(() => {
     if (sliderArrayLength > cardsPerView) {
@@ -125,7 +135,7 @@ const SliderMember = () => {
       >
         <div
           className={`flex transition-transform duration-500 ease-in-out select-none ${
-            members.length < 4 ? "justify-center" : ""
+            sliderArrayLength < cardsPerView ? "justify-center" : ""
           }`}
           style={{
             transform: `translateX(-${

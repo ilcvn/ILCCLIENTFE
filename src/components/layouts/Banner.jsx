@@ -24,7 +24,7 @@ function Banner() {
       <div className=" relative mx-auto max-w-screen-2xl ">
         {/* Chữ chạy (marquee) */}
         <div className="flex flex-wrap justify-center xl:justify-end items-center gap-4">
-          <div className="w-[530px] overflow-hidden">
+          <div className="w-[600px] overflow-hidden">
             <div className="flex whitespace-nowrap animate-[marquee_10s_linear_infinite]">
               <p className="text-xl font-semibold text-white">
                 {t("banner.marquee")}

@@ -86,10 +86,11 @@ const resources = {
             paragraph5: '"Đồng hành cùng doanh nghiệp trong kỷ nguyên mới."',
           },
           btnContent: "Xem thêm",
+          btnRegister: "Đăng ký"
         },
         contentSection: {
           services: {
-            header: "DỊCH VỤ KHOA HỌC VÀ CÔNG NGHỆ",
+            header: "DỊCH VỤ KHOA HỌC PHÁP LÝ",
             content:
               "Tư vấn phản biện khoa học nâng cao trình độ trong các lĩnh vực nghiên cứu.",
             currentComments: "Bình Luận Gần Đây",
@@ -326,10 +327,11 @@ const resources = {
             paragraph5: '"Accompanying businesses in the new era."',
           },
           btnContent: "Read More",
+          btnRegister: "Sign up"
         },
         contentSection: {
           services: {
-            header: "CUSTOMER SERVICES",
+            header: "FORENSIC SCIENCE SERVICES",
             content:
               "Pioneering comprehensive legal solutions and partnering with businesses",
             currentComments:"Latest Comments",
@@ -558,10 +560,11 @@ const resources = {
             paragraph5: '"新時代陪伴企業前進"',
           },
           btnContent: "查看更多",
+          btnRegister: "注册"
         },
         contentSection: {
           services: {
-            header: "客户服务",
+            header: "法医科学服务",
             content: "率先提供全面的法律解决方案，并与企业携手同行",
             currentComments:"最新评论",
             noComment: "还没有评论",

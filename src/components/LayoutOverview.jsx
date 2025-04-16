@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import { MoveLeft, MoveRight } from "lucide-react";
+import {MoveLeft, MoveRight} from "lucide-react";
 import ContentSection from "./ContentSection";
-import { useNavigate } from "react-router-dom";
-import { getRoles } from "../helper/RoleMember";
-import { getTitles } from "../helper/TitleMember";
+import {useNavigate} from "react-router-dom";
+import {getRoles} from "../helper/RoleMember";
+import {getTitles} from "../helper/TitleMember";
 import clsx from "clsx";
-
 
 export default function LayoutOverviewPage({
   data,
@@ -45,7 +44,6 @@ export default function LayoutOverviewPage({
         <ContentSection header={header} content={content} />
         <div className="flex flex-wrap justify-center gap-4 mt-3">
           {data.map((member, index) => {
-
             const roleName = member.role
               ? getRoleTitles(member.role)
               : "Chưa có vai trò";
@@ -53,8 +51,7 @@ export default function LayoutOverviewPage({
               ? member.penName
               : "Chưa có học vị";
 
-            const slug =  member.fullName.replace(/\s+/g, "-");
-
+            const slug = member.fullName.replace(/\s+/g, "-");
 
             return (
               <div
@@ -73,7 +70,6 @@ export default function LayoutOverviewPage({
                   />
                   <div className="space-y-2 mt-6">
                     <h3 className="font-bold md:text-xl text-md text-brandPrimary mt-3">
-
                       {member.fullName}
                     </h3>
                     <p className="md:text-lg text-base text-brandSecondary font-semibold">
@@ -90,7 +86,7 @@ export default function LayoutOverviewPage({
                       <p className="text-sm mt-2">Email: {member.email}</p>
                       <p className="text-sm">SĐT: {member.phone}</p>
                       <div className="w-20 h-[1px] bg-white rounded-lg my-3"></div>
-            <p className="text-xs text-justify line-clamp-[8]">
+                      <p className="text-xs text-justify line-clamp-[8]">
                         {member.description}
                       </p>
                     </div>
@@ -107,7 +103,6 @@ export default function LayoutOverviewPage({
         {/* Pagination Section */}
         {pagination.total > membersPerPage && (
           <div className="flex justify-center mt-10 items-center gap-2 flex-wrap">
-
             <button
               onClick={() => onPageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage === 1}
