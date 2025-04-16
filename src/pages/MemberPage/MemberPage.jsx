@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
 import {getMemberById} from "../../api/Nember/nember";
 import {FaBookOpen, FaPhone} from "react-icons/fa6";
@@ -23,7 +23,7 @@ export default function MemberPage() {
   const [education, setEducation] = useState([]);
   const [workExperience, setWorkExperience] = useState([]);
   const [consultExperience, setConsultExperience] = useState([]);
-
+  const navigate = useNavigate();
   const ChangeRole = getRoles();
   const ChangeTitle = getTitles();
 
@@ -101,7 +101,7 @@ export default function MemberPage() {
         setWorkExperience(workData);
         setConsultExperience(consultData);
       } catch (err) {
-        setError(err);
+        navigate("/not-found", {replace: true});
       } finally {
         setLoading(false);
       }
@@ -111,8 +111,6 @@ export default function MemberPage() {
   }, [slug]);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching member: {error.message}</div>;
-  if (!member) return <div>No member found</div>;
 
   const renderTimeline = (data = []) => {
     if (data.length === 0) {
@@ -165,9 +163,7 @@ export default function MemberPage() {
     <div className="w-full">
       <BreadcrumbDynamic header={member.fullName} />
       <Helmet>
-        <title>
-          {member.fullName} | ILC
-        </title>
+        <title>{member.fullName} | ILC</title>
       </Helmet>
       <div className="flex justify-center">
         <img
