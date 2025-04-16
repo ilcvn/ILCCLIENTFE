@@ -28,7 +28,7 @@ const ContactForm = ({ data }) => {
   const [resetKey, setResetKey] = useState(0);
   const [errors, setErrors] = useState({});
   const searchQuery = "";
-  const type = "SERVICE";
+  const type = "";
   const [selectedItems, setSelectedItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
@@ -297,24 +297,28 @@ const ContactForm = ({ data }) => {
       </div>
 
       <div>
-        <h2 className="text-[16px] my-2">{t("footer.serviceText")}</h2>
+        <h2 className="text-[16px] font-medium my-2">
+          {t("footer.serviceText")}
+        </h2>
         {articles?.length > 0 && (
-          <>
-            {articles.map((article) => (
-              <div key={article.id} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  id={article.id}
-                  className="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                  checked={selectedItems.includes(article.id)}
-                  onChange={(e) => handleCheckboxChange(e, article.id)}
-                />
-                <label htmlFor={article.id} className="text-gray-700">
-                  {article.title}
-                </label>
-              </div>
-            ))}
-          </>
+          <div className="max-h-[200px] overflow-y-auto">
+            {articles
+              .filter((article) => article.type !== "NEWS")
+              .map((article) => (
+                <div key={article.id} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id={article.id}
+                    className="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    checked={selectedItems.includes(article.id)}
+                    onChange={(e) => handleCheckboxChange(e, article.id)}
+                  />
+                  <label htmlFor={article.id} className="text-gray-700">
+                    {article.title}
+                  </label>
+                </div>
+              ))}
+          </div>
         )}
       </div>
 
