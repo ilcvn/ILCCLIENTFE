@@ -1,21 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ItemKnowledge from "../../../components/KnowledgeSection/ItemKnowledge";
-import { getArticleById, getArticles } from "../../../api/Article/article";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {getArticleById, getArticles} from "../../../api/Article/article";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import "./Article.css";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import BreadcrumbDynamic from "../../../components/layouts/Breadcrumb";
-import { convertISOToDate } from "../../../helper/date";
-import { useTranslation } from "react-i18next";
-import { LanguageContext } from "../../../context/LanguageContext";
+import {convertISOToDate} from "../../../helper/date";
+import {useTranslation} from "react-i18next";
+import {LanguageContext} from "../../../context/LanguageContext";
 import ShareButton from "../../../components/layouts/ShareButton";
-import { Helmet } from "react-helmet";
+import {Helmet} from "react-helmet";
 import LoginModal from "../../../components/LoginModal";
 import clsx from "clsx";
-import { createInteractedArticle } from "../../../api/InteractedArticle/interactedArticle";
-import { toast } from "react-toastify";
-import { Eye } from "lucide-react";
+import {createInteractedArticle} from "../../../api/InteractedArticle/interactedArticle";
+import {toast} from "react-toastify";
+import {Eye} from "lucide-react";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -27,9 +27,9 @@ export default function DetailPage() {
   const [targetId, setTargetId] = useState(0);
 
   const searchQuery = "";
-  const { slug } = useParams();
-  const { t } = useTranslation();
-  const { language } = useContext(LanguageContext);
+  const {slug} = useParams();
+  const {t} = useTranslation();
+  const {language} = useContext(LanguageContext);
   const location = useLocation();
   const pathParts = location.pathname.split("/");
   const category = pathParts[1].toLowerCase();
@@ -44,7 +44,7 @@ export default function DetailPage() {
   const [showLoginPrompt, setShowLoginPrompt] = useState(true);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [showLoginDialog, setShowLoginDialog] = useState(false);
-
+  const navigate = useNavigate();
   const pathToCategory = {
     "dich-vu": "SERVICE",
     "dao-tao": "TRAINING",
@@ -150,6 +150,8 @@ export default function DetailPage() {
         }
       })
       .catch((error) => {
+        navigate("/not-found", {replace: true});
+
         console.error("Error fetching article:", error);
       })
       .finally(() => {
@@ -170,7 +172,7 @@ export default function DetailPage() {
           categoryPath,
           currentLanguage
         );
-        const { articles: fetchedArticles, pagination } = res.data.data;
+        const {articles: fetchedArticles, pagination} = res.data.data;
 
         const filteredArticles = targetId
           ? fetchedArticles.filter((article) => article.id !== targetId)
