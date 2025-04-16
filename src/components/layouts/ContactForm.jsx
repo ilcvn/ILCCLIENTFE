@@ -298,7 +298,7 @@ const ContactForm = ({ data }) => {
 
       <div>
         <h2 className="text-[16px] font-medium my-2">
-          {t("footer.serviceText")}
+          {t("footer.serviceText")+":"}
         </h2>
         {articles?.length > 0 && (
           <div className="max-h-[200px] overflow-y-auto">
