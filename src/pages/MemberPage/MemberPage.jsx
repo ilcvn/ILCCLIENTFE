@@ -97,7 +97,6 @@ export default function MemberPage() {
         );
 
         setMember(data);
-        console.log(data);
         setEducation(educationData);
         setWorkExperience(workData);
         setConsultExperience(consultData);
