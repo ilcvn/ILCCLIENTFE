@@ -111,9 +111,7 @@ export default function AboutPage() {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>
-          {t("nav.overview")} | ILC
-        </title>
+        <title>{t("nav.overview")} | ILC</title>
       </Helmet>
 
       {optionsToRender.map((option, index) => {
@@ -196,9 +194,8 @@ export default function AboutPage() {
           );
         } else {
           return (
-            <>
+            <div key={option.value}>
               <EcoSystem
-                key="edu"
                 type={PARTNER_OPTIONS[0]}
                 header={t(
                   "homepage.contentSection.partners.educationInstitution"
@@ -208,20 +205,18 @@ export default function AboutPage() {
                 )}
               />
               <EcoSystem
-                key="ent"
                 type={PARTNER_OPTIONS[1]}
                 header={t("homepage.contentSection.partners.enterprise")}
                 subheader={t("homepage.contentSection.partners.enterprise_sub")}
               />
               <EcoSystem
-                key="org"
                 type={PARTNER_OPTIONS[2]}
                 header={t("homepage.contentSection.partners.organization")}
                 subheader={t(
                   "homepage.contentSection.partners.organization_sub"
                 )}
               />
-            </>
+            </div>
           );
         }
       })}

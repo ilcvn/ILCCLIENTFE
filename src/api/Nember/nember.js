@@ -5,5 +5,6 @@ export const getMembers = (search = "", page = "", limit = "", language = "") =>
 };
 
 export const getMemberById = (id) => {
+  
   return instance.get(`/member/${id}`);
 };
