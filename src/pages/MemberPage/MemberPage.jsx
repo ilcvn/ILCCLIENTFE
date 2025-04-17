@@ -82,6 +82,7 @@ export default function MemberPage() {
     const fetchMember = async () => {
       setLoading(true);
       try {
+        console.log('he;;p');
         const response = await getMemberById(newslug);
         const data = response.data.data;
         const details = data?.memberDetails || [];
@@ -97,6 +98,7 @@ export default function MemberPage() {
         );
 
         setMember(data);
+        console.log(data);
         setEducation(educationData);
         setWorkExperience(workData);
         setConsultExperience(consultData);
@@ -111,6 +113,8 @@ export default function MemberPage() {
   }, [slug]);
 
   if (loading) return <div>Loading...</div>;
+
+  if(!member) return null;
 
   const renderTimeline = (data = []) => {
     if (data.length === 0) {
