@@ -155,7 +155,7 @@ const Header = () => {
           {/* Logo */}
           <div className="xl:absolute relative w-full  xl:left-[0%] h-full shadow-sm px-2  xl:max-w-[240px] bottom-[112%] z-30">
             <div className="bg-white text-center sticky">
-              <button onClick={() => navigate("/")}>
+              <button onClick={() => navigate("/")} className="w-full">
                 <img
                   src={Logo}
                   alt="Viện Khoa học pháp lý và Phát triển doanh nghiệp (Institute of Legal Science and Corporate Development - ILC)"

@@ -125,7 +125,6 @@ const Footer = () => {
               // Tạo slug động từ title
               const linkSlug = createSlug(article.title);
               const linkTo = `/dich-vu/${article.id}`;
-
               return (
                 <div
                   key={index}
