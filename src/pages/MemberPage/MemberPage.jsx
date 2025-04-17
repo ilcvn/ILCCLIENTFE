@@ -110,6 +110,7 @@ export default function MemberPage() {
         setConsultExperience(consultData);
       } catch (err) {
         navigate("/not-found", {replace: true});
+        console.error(err)
       } finally {
         setLoading(false);
         setHasCheckedMember(true); // Đánh dấu đã check xong
@@ -117,9 +118,10 @@ export default function MemberPage() {
     };
 
     if (slug) fetchMember();
-  }, [slug]);
+  }, [slug,navigate]);
 
-  if (!hasCheckedMember) return null; // Chưa kiểm tra xong => không render gì cả
+  if (loading) return <div>Loading...</div>;
+  if (!member) return null;
 
   if (!member) return navigate("/not-found", {replace: true});
   const renderTimeline = (data = []) => {

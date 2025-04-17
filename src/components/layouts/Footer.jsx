@@ -94,100 +94,99 @@ const Footer = () => {
 
   return (
     <footer className="bg-brandPrimary text-white py-10 px-6 md:px-12 justify-end">
-      <div className="container w-full mx-auto grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-8 md:gap-12">
-        {/* Cột 1: Liên hệ */}
-        <div className="w-full ">
-          <h2 className="text-xl font-semibold">{t("footer.contactTitle")}</h2>
-          <hr className="border-t-2 mt-2" />
-          <nav className="mt-4 space-y-3 text-md">
-            {companyLinks.map((link, index) => (
-              <p key={link.id + "-" + index}>
-                <span
-                  className={clsx("font-bold", {
-                    "whitespace-pre-line": link.id === 4,
-                  })}
+    <div className="container w-full mx-auto grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-8 md:gap-12">
+      {/* Cột 1: Liên hệ */}
+      <div className="w-full ">
+        <h2 className="text-xl font-semibold">{t("footer.contactTitle")}</h2>
+        <hr className="border-t-2 mt-2" />
+        <nav className="mt-4 space-y-3 text-md">
+          {companyLinks.map((link, index) => (
+            <p key={link.id + "-" + index}>
+              <span
+                className={clsx("font-bold", {
+                  "whitespace-pre-line": link.id === 4,
+                })}
+              >
+                {link.name}
+              </span>{" "}
+              {link.text}
+            </p>
+          ))}
+        </nav>
+      </div>
+
+      {/* Cột 2: Hỗ trợ */}
+      <div className="w-full ">
+        <h2 className="text-xl font-semibold">{t("footer.supportTitle")}</h2>
+        <hr className="border-t-2 mt-2" />
+        <nav className="mt-4 space-y-3">
+          {articles?.length > 0 &&
+            articles.map((article, index) => {
+              // Tạo slug động từ title
+              const linkSlug = createSlug(article.title);
+              const linkTo = `/dich-vu/${article.id}`;
+              return (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 hover:translate-x-2 duration-300 hover:text-brandSecondary"
                 >
-                  {link.name}
-                </span>{" "}
-                {link.text}
-              </p>
-            ))}
-          </nav>
-        </div>
-
-        {/* Cột 2: Hỗ trợ */}
-        <div className="w-full ">
-          <h2 className="text-xl font-semibold">{t("footer.supportTitle")}</h2>
-          <hr className="border-t-2 mt-2" />
-          <nav className="mt-4 space-y-3">
-            {articles?.length > 0 &&
-              articles.map((article, index) => {
-                // Tạo slug động từ title
-                const linkSlug = createSlug(article.title);
-                const linkTo = `/dich-vu/${article.id}`;
-
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 hover:translate-x-2 duration-300 hover:text-brandSecondary"
+                  <MoveRight className="shrink-0" />
+                  <Link
+                    to={linkTo}
+                    className="focus:outline-none focus:ring-2 focus:ring-blue-300 rounded transition-all duration-300 ease-in-out hover:text-orange-400 hover:underline hover:font-bold"
                   >
-                    <MoveRight className="shrink-0" />
-                    <Link
-                      to={linkTo}
-                      className="focus:outline-none focus:ring-2 focus:ring-blue-300 rounded transition-all duration-300 ease-in-out hover:text-orange-400 hover:underline hover:font-bold"
-                    >
-                      {article.title}
-                    </Link>
-                  </div>
-                );
-              })}
-          </nav>
-          <br />
-          <h2 className="text-xl font-semibold">{t("footer.office")}</h2>
-          <hr className="border-t-2 mt-2" />
-          <nav className="mt-4 space-y-3 text-md">
-            {address.map((link, index) => (
-              <p key={link.id + "-" + index}>
-                <span
-                  className={clsx("font-bold", {
-                    "whitespace-pre-line": link.id === 5,
-                  })}
-                >
-                  {link.name}
-                </span>{" "}
-                {link.text}
-              </p>
-            ))}
-          </nav>
-        </div>
+                    {article.title}
+                  </Link>
+                </div>
+              );
+            })}
+        </nav>
+        <br />
+        <h2 className="text-xl font-semibold">{t("footer.office")}</h2>
+        <hr className="border-t-2 mt-2" />
+        <nav className="mt-4 space-y-3 text-md">
+          {address.map((link, index) => (
+            <p key={link.id + "-" + index}>
+              <span
+                className={clsx("font-bold", {
+                  "whitespace-pre-line": link.id === 5,
+                })}
+              >
+                {link.name}
+              </span>{" "}
+              {link.text}
+            </p>
+          ))}
+        </nav>
+      </div>
 
-        {/* Cột 3: Đăng ký tư vấn */}
-        <div className="w-full ">
-          <h2 className="text-xl font-semibold">{t("footer.consultTitle")}</h2>
-          <hr className="border-t-2 mt-2" />
-          <ConsultationForm />
-        </div>
+      {/* Cột 3: Đăng ký tư vấn */}
+      <div className="w-full ">
+        <h2 className="text-xl font-semibold">{t("footer.consultTitle")}</h2>
+        <hr className="border-t-2 mt-2" />
+        <ConsultationForm />
+      </div>
 
-        {/* Cột 4: Bản đồ */}
-        <div className="w-full ">
-          <h2 className="text-xl font-semibold">{t("footer.mapTitle")}</h2>
-          <hr className="border-t-2 mt-2" />
-          <div className="mt-4 w-full h-60">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7994954790993!2d106.71636007583876!3d10.826650758263636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528815d9292d1%3A0xcc09c2ed0645bee8!2zMzIgxJDGsOG7nW5nIDE4LCBIaeG7h3AgQsOsbmggQ2jDoW5oLCBUaOG7pyDEkOG7qWMsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1744222384981!5m2!1svi!2s"
-              className={clsx(
-                "border-0",
-                "w-[100%] h-[100%]",
-                "md:w-[350px] md:h-[300px]"
-              )}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+      {/* Cột 4: Bản đồ */}
+      <div className="w-full ">
+        <h2 className="text-xl font-semibold">{t("footer.mapTitle")}</h2>
+        <hr className="border-t-2 mt-2" />
+        <div className="mt-4 w-full h-60">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7994954790993!2d106.71636007583876!3d10.826650758263636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528815d9292d1%3A0xcc09c2ed0645bee8!2zMzIgxJDGsOG7nW5nIDE4LCBIaeG7h3AgQsOsbmggQ2jDoW5oLCBUaOG7pyDEkOG7qWMsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1744222384981!5m2!1svi!2s"
+            className={clsx(
+              "border-0",
+              "w-[100%] h-[100%]",
+              "md:w-[350px] md:h-[300px]"
+            )}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
   );
 };
 
