@@ -82,7 +82,6 @@ export default function MemberPage() {
     const fetchMember = async () => {
       setLoading(true);
       try {
-        console.log('he;;p');
         const response = await getMemberById(newslug);
         const data = response.data.data;
         const details = data?.memberDetails || [];
