@@ -112,6 +112,8 @@ export default function MemberPage() {
 
   if (loading) return <div>Loading...</div>;
 
+  if(!member) return null;
+
   const renderTimeline = (data = []) => {
     if (data.length === 0) {
       return <p className="text-gray-500"> </p>;
