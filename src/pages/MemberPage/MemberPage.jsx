@@ -16,6 +16,7 @@ export default function MemberPage() {
   const {slug} = useParams();
   const newslug = slug?.slice(slug.indexOf("=") + 1);
   const {t} = useTranslation();
+  const [hasCheckedMember, setHasCheckedMember] = useState(false);
 
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -83,7 +84,14 @@ export default function MemberPage() {
       setLoading(true);
       try {
         const response = await getMemberById(newslug);
-        const data = response.data.data;
+        const data = response.data?.data;
+        if (!data) {
+          setHasCheckedMember(true);
+
+          navigate("/not-found", {replace: true});
+          return;
+        }
+
         const details = data?.memberDetails || [];
 
         const educationData = details.filter(
@@ -104,14 +112,16 @@ export default function MemberPage() {
         navigate("/not-found", {replace: true});
       } finally {
         setLoading(false);
+        setHasCheckedMember(true); // Đánh dấu đã check xong
       }
     };
 
     if (slug) fetchMember();
   }, [slug]);
 
-  if (loading) return <div>Loading...</div>;
+  if (!hasCheckedMember) return null; // Chưa kiểm tra xong => không render gì cả
 
+  if (!member) return navigate("/not-found", {replace: true});
   const renderTimeline = (data = []) => {
     if (data.length === 0) {
       return <p className="text-gray-500"> </p>;
