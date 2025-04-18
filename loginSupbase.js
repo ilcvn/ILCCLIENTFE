@@ -13,5 +13,4 @@ async function login() {
     }
 }
 
-// Gọi hàm login ngay khi file JS được load
 login();
