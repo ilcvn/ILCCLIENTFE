@@ -13,8 +13,9 @@
 /* Đoạn văn */
 .article-content p {
   font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
 }
-
 /* Hình ảnh */
 .article-content img {
   width: 100%;
