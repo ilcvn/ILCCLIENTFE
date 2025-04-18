@@ -5,7 +5,6 @@ import Header from "./components/layouts/Header.jsx";
 import SharingContact from "./components/layouts/SharingContact.jsx";
 import Banner from "./components/layouts/Banner.jsx";
 import SubFooter from "./components/layouts/SubFooter.jsx";
-import LogoWrapper from "./components/layouts/LogoWrapper";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import LoadingScreenSlash from "./components/layouts/LoadingScreenSlash.jsx";
 import { Suspense } from "react";
@@ -16,19 +15,20 @@ import HomePage from "./pages/HomePage/HomePage";
 import ServicePage from "./pages/ServicePage/ServicePage";
 import MemberPage from "./pages/MemberPage/MemberPage.jsx";
 import SearchPage from "./pages/SearchPage/SearchPage.jsx";
+import ScrollToTop from "./components/layouts/ScrollToTop.jsx";
 import { ToastContainer } from "react-toastify";
 
 const routesConfig = [
   { path: "/", element: <HomePage /> },
   { path: "/tong-quan", element: <AboutPage /> },
-  { path: "/dich-vu", element: <ServicePage typePage="SERVICE"/> },
+  { path: "/dich-vu", element: <ServicePage typePage="SERVICE" /> },
   { path: "/dich-vu/:slug", element: <DetailPage /> },
-  { path: "/tin-tuc", element: <ServicePage typePage="NEWS"/> },
+  { path: "/tin-tuc", element: <ServicePage typePage="NEWS" /> },
   { path: "/tin-tuc/:slug", element: <DetailPage /> },
-  { path: "/nghien-cuu", element: <ServicePage typePage="RESEARCH"/> },
+  { path: "/nghien-cuu", element: <ServicePage typePage="RESEARCH" /> },
   { path: "/nghien-cuu/:slug", element: <DetailPage /> },
 
-  { path: "/dao-tao", element: <ServicePage typePage="TRAINING"/> },
+  { path: "/dao-tao", element: <ServicePage typePage="TRAINING" /> },
   { path: "/dao-tao/:slug", element: <DetailPage /> },
 
   { path: "/lien-he", element: <ContactPage /> },
@@ -50,32 +50,38 @@ const allRootPath = [
 function App() {
   return (
     <Router>
-      <Banner />
-      <LoadingScreenSlash />
-      <Suspense fallback={<div>Loading...</div>}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">
-            <Routes>
-              {routesConfig.map((route, index) => (
-                <Route key={index} path={route.path} element={route.element} />
-              ))}
-              {allRootPath.map((path, index) => (
-                <Route
-                  key={`about-${index}`}
-                  path={path}
-                  element={<AboutPage />}
-                />
-              ))}
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
-          <SharingContact />
-          <Footer />
-        </div>
-        <SubFooter />
-      </Suspense>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ScrollToTop>
+        <Banner />
+        <LoadingScreenSlash />
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
+              <Routes>
+                {routesConfig.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={route.element}
+                  />
+                ))}
+                {allRootPath.map((path, index) => (
+                  <Route
+                    key={`about-${index}`}
+                    path={path}
+                    element={<AboutPage />}
+                  />
+                ))}
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </main>
+            <SharingContact />
+            <Footer />
+          </div>
+          <SubFooter />
+        </Suspense>
+        <ToastContainer position="top-right" autoClose={3000} />
+      </ScrollToTop>
     </Router>
   );
 }
