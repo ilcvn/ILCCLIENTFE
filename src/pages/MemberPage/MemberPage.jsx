@@ -102,15 +102,17 @@ export default function MemberPage() {
         setConsultExperience(consultData);
       } catch (err) {
         navigate("/not-found", {replace: true});
+        console.error(err)
       } finally {
         setLoading(false);
       }
     };
 
     if (slug) fetchMember();
-  }, [slug]);
+  }, [slug,navigate]);
 
   if (loading) return <div>Loading...</div>;
+  if (!member) return null;
 
   if(!member) return null;
 

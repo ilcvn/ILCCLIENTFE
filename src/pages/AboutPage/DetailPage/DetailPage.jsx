@@ -69,9 +69,9 @@ export default function DetailPage() {
     const articleID = parts.at(-1);
 
     const data = {
-      userName: user.email,
-      fullName: user.name,
-      avatar: user.photo,
+      userName: user?.email,
+      fullName: user?.name,
+      avatar: user?.photo,
       type: type,
       value: value.trim(),
       articleID: articleID,
@@ -229,7 +229,6 @@ export default function DetailPage() {
       }
     },
   });
-
   return (
     <div className="bg-white w-full">
       <Helmet>
