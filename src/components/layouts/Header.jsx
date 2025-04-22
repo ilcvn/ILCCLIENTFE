@@ -256,16 +256,14 @@ const Header = () => {
 
                       {/* Nếu có submenu */}
                       {link.children && (
-                        <ul
-                          className="absolute left-0 top-11 w-full min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3 
-                     group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
-                     transition-all duration-300 ease-in-out delay-150"
-                        >
+                    <ul className="absolute left-0 top-11 w-auto min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3 
+                        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
+                        transition-all duration-300 ease-in-out delay-150" >
                           {link.children.map((child) => (
                             <li key={child.id}>
                               <Link
                                 to={child.path}
-                                className="block px-4 py-2 hover:bg-brandPrimary hover:text-white text-sm text-neutralGrey font-semibold"
+                                className="block px-4 py-2 hover:bg-brandPrimary hover:text-white text-sm text-neutralGrey font-semibold whitespace-nowrap"
                               >
                                 {t(child.label).toUpperCase()}
                               </Link>
