@@ -130,7 +130,7 @@ const Header = () => {
 
     const selectedArticles = articleMap[nav.id] || articleMap.default;
 
-    return selectedArticles.slice(0, 5).map((article) => ({
+    return selectedArticles.sort((a, b) => b.view - a.view).slice(0, 5).map((article) => ({
       id: article.id,
       label: article.title,
       path: `${nav.dynamicPrefix}/${article.id}`,
