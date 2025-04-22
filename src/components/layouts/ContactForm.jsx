@@ -2,13 +2,13 @@
 import React, {useState, useEffect, useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {toast} from "react-toastify";
-import {format} from "date-fns";
 import {DatePickerDialog} from "../datepicker/DatePickerDialog";
 import UploadComponent from "../UploadComponent";
 import {createReservation} from "../../api/reservation/reservation";
-import {uploadFile} from "../UploadFile";
 import {getAllArticles, getArticles} from "../../api/Article/article";
 import {LanguageContext} from "../../context/LanguageContext";
+import {uploadToImgbb} from "../../helper/uploadToImgbb";
+import imageCompression from "browser-image-compression";
 
 const ContactForm = ({data}) => {
   const {t} = useTranslation();
@@ -93,8 +93,21 @@ const ContactForm = ({data}) => {
   }, [searchQuery, currentPage, language, data]);
 
   // Nhận file từ UploadComponent (đối tượng file)
-  const handleFileUpload = (file) => {
-    setFormData((prev) => ({...prev, file}));
+  const handleFileUpload = async (file) => {
+    try {
+      // Cấu hình nén ảnh
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true,
+      };
+
+      const compressedFile = await imageCompression(file, options);
+
+      setFormData((prev) => ({...prev, file: compressedFile}));
+    } catch (error) {
+      console.error("Error compressing the image:", error);
+    }
   };
 
   const handleChange = (e) => {
@@ -188,7 +201,7 @@ const ContactForm = ({data}) => {
     setLoading(true);
     try {
       if (formData.file) {
-        const fileUrl = await uploadFile(formData.file);
+        const fileUrl = await uploadToImgbb(formData.file);
         payload.file = fileUrl;
       }
 
@@ -200,8 +213,7 @@ const ContactForm = ({data}) => {
 
       const response = await createReservation(payload);
       toast.success("Gửi thành công!");
-
-      // Reset form sau khi gửi thành công
+      console.log("Payload:", payload); // Reset form sau khi gửi thành công
       setFormData({
         name: "",
         phone: "",
@@ -221,7 +233,6 @@ const ContactForm = ({data}) => {
       setLoading(false);
     }
   };
-
   return (
     <form className="space-y-4" onSubmit={handleSubmit}>
       {/* Các input thông tin */}
@@ -304,7 +315,7 @@ const ContactForm = ({data}) => {
           {t("footer.serviceText") + ":"}
         </h2>
         {articles?.length > 0 && (
-          <div className="max-h-[200px] overflow-y-auto">
+          <div className="max-h-[200px] overflow-y-auto py-2">
             {articles
               .filter((article) => article.type !== "NEWS")
               .map((article) => (
@@ -345,7 +356,7 @@ const ContactForm = ({data}) => {
             resetKey={resetKey}
           />
         </label>
-        {formData.file && <p className="text-sm">{formData.file.name}</p>}
+        {formData.file && <p className="text-sm">{""}</p>}
       </div>
 
       <div className="flex space-x-3">

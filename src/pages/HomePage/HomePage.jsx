@@ -4,14 +4,11 @@ import BlogCard from "../../components/BlogCard";
 import CarouselBanner from "../../components/layouts/CarouselBanner";
 import { Banner, Blogcard_1 } from "../../assets";
 import ContentSection from "../../components/ContentSection";
-import ILCKnowledgeSection from "../../components/KnowledgeSection/ILCKnowledgeSection";
 import SliderCardsItem from "../../components/SliderCardsItem";
 import SliderCounterparty from "../../components/SliderCounterparty";
 import { useTranslation } from "react-i18next";
-import EcoSystem from "../../components/Ecosystem";
 import SliderMember from "../../components/MemberSlider";
 import { Helmet } from "react-helmet";
-import ShareButton from "../../components/layouts/ShareButton";
 
 function HomePage() {
   const { t } = useTranslation();

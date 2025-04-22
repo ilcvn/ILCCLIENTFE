@@ -15,7 +15,7 @@ export default function UploadComponent({ onFileUpload, resetKey }) {
       return;
     }
     setFile(selectedFile);
-    onFileUpload(selectedFile); // Truyền file cho component cha
+    onFileUpload(selectedFile); 
   };
 
   return (
@@ -28,7 +28,7 @@ export default function UploadComponent({ onFileUpload, resetKey }) {
       />
       <label
         htmlFor="fileInput"
-        className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer hover:bg-blue-600 transition"
+        className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer hover:bg-blue-600 transition max-w-[100px] truncate"
       >
         {file ? file.name : "File"}
       </label>
