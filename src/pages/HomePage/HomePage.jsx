@@ -39,45 +39,16 @@ function HomePage() {
       <div className="py-4 invisible">=========SPACING============</div>
 
       <BlogCard
-        path={"https://www.facebook.com/profile.php?id=61573840948225"}
         imageUrl={Blogcard_1}
         title={t("homepage.blogCard.title")}
         subTitle={t("homepage.blogCard.subTitle")}
         content={
           <>
-            <div className="">
-              <span className="text-gray-400 text-justify">{introText}</span>
-              {!isExpanded && "... "}
-              <AnimatePresence initial={false}>
-                {isExpanded && (
-                  <motion.span
-                    key="content"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="inline-block overflow-hidden text-black"
-                  >
-                    <p className="text-justify">{remainingText}</p>
-                  </motion.span>
-                )}
-              </AnimatePresence>
-              <br />
-              <button
-                onClick={toggleExpand}
-                className="text-blue-600 hover:underline"
-              >
-                {isExpanded
-                  ? t("homepage.blogCard.btnParagraphCollapse")
-                  : t("homepage.blogCard.btnParagraphSeeMore")}
-              </button>
-            </div>
-
-            <br />
             <p className="text-justify">
               {t("homepage.blogCard.content.paragraph1")}
             </p>
             <br />
+
             {/* <p>{t("homepage.blogCard.content.paragraph2")}</p>
             <ul>
               <li>{t("homepage.blogCard.content.listItem1")}</li>
@@ -102,10 +73,36 @@ function HomePage() {
               </span>
               <i>{t("homepage.blogCard.content.paragraph5")}</i>
             </div>
+
+            <br />
+
+            <div className="">
+              <span className="text-gray-400 text-justify">{introText}</span>
+              {!isExpanded && "... "}
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.span
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="inline-block overflow-hidden text-black"
+                  >
+                    <p className="text-justify">{remainingText}</p>
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </div>
           </>
         }
         showBtn={true}
-        btnContent={t("homepage.blogCard.btnContent")}
+        btnContent={
+          isExpanded
+            ? t("homepage.blogCard.btnParagraphCollapse")
+            : t("homepage.blogCard.btnParagraphSeeMore")
+        }
+        handleSeeMore={toggleExpand}
       />
 
       <div className="py-4 invisible">=========SPACING============</div>

@@ -7,7 +7,7 @@ const BlogCard = ({
   content,
   showBtn,
   btnContent,
-  path,
+  handleSeeMore,
 }) => {
   return (
     <div className="max-w-screen-2xl mx-auto md:w-3/4" id="blog-product">
@@ -26,14 +26,12 @@ const BlogCard = ({
 
           <div className="flex justify-end">
             {showBtn && (
-              <a
-                href={path}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md text-center  md:w-28  w-full  md:p-3 p-4 py-2 bg-brandSecondary text-white hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4"
+              <button
+                onClick={handleSeeMore}
+                className="rounded-md text-center md:w-28  w-full  md:p-3 p-4 py-2 bg-brandSecondary text-white hover:bg-neutralDGrey transition-all duration-300 hover:-translate-y-4"
               >
                 {btnContent}
-              </a>
+              </button>
             )}
           </div>
         </div>
