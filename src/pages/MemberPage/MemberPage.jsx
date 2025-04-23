@@ -1,21 +1,21 @@
-import React, {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import {getMemberById} from "../../api/Nember/nember";
-import {FaBookOpen, FaPhone} from "react-icons/fa6";
-import {MdEmail} from "react-icons/md";
-import {useTranslation} from "react-i18next";
-import {getTitles} from "../../helper/TitleMember";
-import {getRoles} from "../../helper/RoleMember";
-import {RiContactsBook3Fill} from "react-icons/ri";
-import {BsBookmarkStarFill} from "react-icons/bs";
-import {Helmet} from "react-helmet";
-import {BannerMemberDetail} from "../../assets/index";
+import { getMemberById } from "../../api/Nember/nember";
+import { FaBookOpen, FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { useTranslation } from "react-i18next";
+import { getTitles } from "../../helper/TitleMember";
+import { getRoles } from "../../helper/RoleMember";
+import { RiContactsBook3Fill } from "react-icons/ri";
+import { BsBookmarkStarFill } from "react-icons/bs";
+import { Helmet } from "react-helmet";
+import { BannerMemberDetail } from "../../assets/index";
 
 export default function MemberPage() {
-  const {slug} = useParams();
+  const { slug } = useParams();
   const newslug = slug?.slice(slug.indexOf("=") + 1);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -101,7 +101,7 @@ export default function MemberPage() {
         setWorkExperience(workData);
         setConsultExperience(consultData);
       } catch (err) {
-        navigate("/not-found", {replace: true});
+        navigate("/not-found", { replace: true });
         console.error(err);
       } finally {
         setLoading(false);
@@ -113,7 +113,7 @@ export default function MemberPage() {
 
   if (!member) return null;
 
-  if(!member) return null;
+  if (!member) return null;
 
   const renderTimeline = (data = []) => {
     if (data.length === 0) {
@@ -187,8 +187,8 @@ export default function MemberPage() {
         <div className="absolute inset-0 bg-white/85 backdrop-blur-sm z-0" />
 
         {/* Content */}
-        <div className="relative z-10">
-          <div className="max-w-screen-2xl mx-auto bg-white p-8 shadow-lg mb-6">
+        <div className="relative z-10 p-16">
+          <div className="min-w-full mx-auto bg-white shadow-lg mb-6 p-8">
             <div className="flex flex-col md:flex-row items-center md:items-start relative">
               <img
                 src={member.imgUrl}
@@ -210,20 +210,24 @@ export default function MemberPage() {
             </div>
 
             <div className="flex flex-col gap-2 md:mb-4 my-6">
-              <a
-                href={`tel:${member.phone}`}
-                className="flex items-center space-x-2 text-brandSecondary"
-              >
-                <FaPhone size={20} />
-                <span className="text-black/80">{member.phone}</span>
-              </a>
-              <a
-                href={`mailto:${member.gmail}`}
-                className="flex items-center space-x-2 text-brandSecondary"
-              >
-                <MdEmail size={20} />
-                <span className="text-black/80">{member.gmail}</span>
-              </a>
+              {member.phone.trim() && (
+                <a
+                  href={`tel:${member.phone}`}
+                  className="flex items-center space-x-2 text-brandSecondary"
+                >
+                  <FaPhone size={20} />
+                  <span className="text-black/80">{member.phone}</span>
+                </a>
+              )}
+              {member.gmail.trim() && (
+                <a
+                  href={`mailto:${member.gmail}`}
+                  className="flex items-center space-x-2 text-brandSecondary"
+                >
+                  <MdEmail size={20} />
+                  <span className="text-black/80">{member.gmail}</span>
+                </a>
+              )}
             </div>
 
             <div>
@@ -260,7 +264,6 @@ export default function MemberPage() {
             </h2>
             <ul className="space-y-4">{renderTimeline(consultExperience)}</ul>
           </div> */}
-          
         </div>
       </div>
     </div>

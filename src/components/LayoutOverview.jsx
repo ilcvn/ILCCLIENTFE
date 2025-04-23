@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import {MoveLeft, MoveRight} from "lucide-react";
+import { MoveLeft, MoveRight } from "lucide-react";
 import ContentSection from "./ContentSection";
-import {useNavigate} from "react-router-dom";
-import {getRoles} from "../helper/RoleMember";
-import {getTitles} from "../helper/TitleMember";
+import { useNavigate } from "react-router-dom";
+import { getRoles } from "../helper/RoleMember";
+import { getTitles } from "../helper/TitleMember";
 import clsx from "clsx";
 
 export default function LayoutOverviewPage({
@@ -57,7 +57,7 @@ export default function LayoutOverviewPage({
               <div
                 key={member.id}
                 className={clsx(
-                  "relative w-[46%] h-[350px] sm:w-[48%] md:w-[31%] xl:w-[23%] xl:h-[400px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-none",
+                  "relative w-[46%] h-[350px] sm:w-[48%] md:w-[31%] xl:w-[23%] xl:h-[400px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-none"
                   //index >= 4 ? "block sm:hidden" : ""
                 )}
                 onClick={() => navigate(`/tong-quan/${member.id}`)}
@@ -86,7 +86,7 @@ export default function LayoutOverviewPage({
                       <p className="text-sm mt-2">Email: {member.email}</p>
                       <p className="text-sm">SĐT: {member.phone}</p>
                       <div className="w-20 h-[1px] bg-white rounded-lg my-3"></div>
-                      <p className="text-xs text-justify line-clamp-[8]">
+                      <p className="text-xs text-justify line-clamp-[8] whitespace-pre-line">
                         {member.description}
                       </p>
                     </div>

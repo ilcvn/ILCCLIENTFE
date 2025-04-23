@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
-import { ChevronDown, ChevronRight, Menu, Search, X } from "lucide-react";
+import { AlignLeft, ChevronDown, ChevronRight, Search } from "lucide-react";
 import navLinks from "../../constants/navLinks.js";
 import { Logo } from "../../assets/index.js";
 import { getAllArticles } from "../../api/Article/article.js";
@@ -130,11 +130,14 @@ const Header = () => {
 
     const selectedArticles = articleMap[nav.id] || articleMap.default;
 
-    return selectedArticles.sort((a, b) => b.view - a.view).slice(0, 5).map((article) => ({
-      id: article.id, 
-      label: article.title,
-      path: `${nav.dynamicPrefix}/${article.id}`,
-    }));
+    return selectedArticles
+      .sort((a, b) => b.view - a.view)
+      .slice(0, 5)
+      .map((article) => ({
+        id: article.id,
+        label: article.title,
+        path: `${nav.dynamicPrefix}/${article.id}`,
+      }));
   };
 
   const dynamicNavLinks = navLinks.map((nav) =>
@@ -174,7 +177,7 @@ const Header = () => {
             {/* MOBILE MENU */}
             <div className="h-full flex items-center xl:hidden bg-brandPrimary w-full px-2 shadow-lg">
               <button className="mr-2" onClick={() => setIsOpen(true)}>
-                <Menu className="object-contain w-11 h-11 text-white" />
+                <AlignLeft className="object-contain w-8 h-8 text-white" />
               </button>
 
               <div className="relative w-full">
@@ -256,9 +259,11 @@ const Header = () => {
 
                       {/* Nếu có submenu */}
                       {link.children && (
-                    <ul className="absolute left-0 top-11 w-auto min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3 
+                        <ul
+                          className="absolute left-0 top-11 w-auto min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3 
                         group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
-                        transition-all duration-300 ease-in-out delay-150" >
+                        transition-all duration-300 ease-in-out delay-150"
+                        >
                           {link.children.map((child) => (
                             <li key={child.id}>
                               <Link
