@@ -67,7 +67,9 @@ function HomePage() {
                 onClick={toggleExpand}
                 className="text-blue-600 hover:underline"
               >
-                {isExpanded ? "Thu gọn" : "Xem thêm"}
+                {isExpanded
+                  ? t("homepage.blogCard.btnParagraphCollapse")
+                  : t("homepage.blogCard.btnParagraphSeeMore")}
               </button>
             </div>
 

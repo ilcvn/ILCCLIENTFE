@@ -172,7 +172,7 @@ export default function MemberPage() {
         <img
           src="https://www.ilcvn.vn/assets/logo-jN9dnkTi.png"
           alt="Banner"
-          className="w-[500px] h-[450px] p-4 "
+          className="w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] p-4 "
         />
       </div>
 
@@ -187,7 +187,7 @@ export default function MemberPage() {
         <div className="absolute inset-0 bg-white/85 backdrop-blur-sm z-0" />
 
         {/* Content */}
-        <div className="relative z-10 p-16">
+        <div className="relative z-10 md:p-8 lg:p-16">
           <div className="min-w-full mx-auto bg-white shadow-lg mb-6 p-8">
             <div className="flex flex-col md:flex-row items-center md:items-start relative">
               <img
