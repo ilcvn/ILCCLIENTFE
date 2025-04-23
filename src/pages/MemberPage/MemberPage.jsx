@@ -237,29 +237,30 @@ export default function MemberPage() {
           </div>
 
           {/* EDUCATION */}
-          <div className="w-full lg:max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+          {/* <div className="w-full lg:max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
             <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
               <FaBookOpen className="" /> {t("detailMember.EDUCATION")}
             </h2>
             <ul className="space-y-4">{renderTimeline(education)}</ul>
-          </div>
+          </div> */}
 
           {/* WORK EXPERIENCE */}
-          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+          {/* <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
             <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
               <RiContactsBook3Fill /> {t("detailMember.WORK_EXPERIENCE")}
             </h2>
             <ul className="space-y-4">{renderTimeline(workExperience)}</ul>
-          </div>
+          </div> */}
 
           {/* CONSULT EXPERIENCE */}
-          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+          {/* <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
             <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
               <BsBookmarkStarFill />
               {t("detailMember.CONSULT_EXPERIENCE")}
             </h2>
             <ul className="space-y-4">{renderTimeline(consultExperience)}</ul>
-          </div>
+          </div> */}
+          
         </div>
       </div>
     </div>

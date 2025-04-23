@@ -131,7 +131,7 @@ const Header = () => {
     const selectedArticles = articleMap[nav.id] || articleMap.default;
 
     return selectedArticles.sort((a, b) => b.view - a.view).slice(0, 5).map((article) => ({
-      id: article.id,
+      id: article.id, 
       label: article.title,
       path: `${nav.dynamicPrefix}/${article.id}`,
     }));
