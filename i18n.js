@@ -1,6 +1,6 @@
 // src/i18n.js
 import i18n from "i18next";
-import {initReactI18next} from "react-i18next";
+import { initReactI18next } from "react-i18next";
 const savedLanguage = localStorage.getItem("language") || "vi";
 
 const resources = {
@@ -63,6 +63,8 @@ const resources = {
             "Viện Khoa học pháp lý và Phát triển doanh nghiệp (Institute of Legal Science and Corporate Development - ILC)",
           subTitle: "CÔNG CUỘC - PHÁT TRIỂN - ĐỔI MỚI",
           content: {
+            paragraph0:
+              'Logo được tạo nên bởi sự kết hợp của quả địa cầu màu xanh cách điệu, chữ cái ILC và tên tiếng Anh của Viện, trong đó: Quả địa cầu là biểu hiện cho phạm vi kết nối mạnh mẽ trên phạm vi toàn thế giới. Năm đường cong cách điệu bên dưới cùng nét đậm, dày và thanh mảnh dần lên trên thể hiện sự chuyển đổi cấp tiến của các doanh nghiệp trong kỷ nguyên số. Màu xanh thể hiện nền tảng là mối quan hệ hòa bình, hợp tác hữu nghị, tốt đẹp, một nền kinh tế xanh – bền vững. Ba chữ "ILC" là từ viết tắt của Viện. Chữ "I" ngay thẳng không một nét thừa - nằm ở chính giữa logo, cân đối tổng thể bố cục. Chữ "I" không chỉ là một từ viết tắt mà nó còn là đại diện cho giá trị cốt lõi của Viện - sự chính trực và công bằng của pháp luật sẽ luôn được đặt ở trung tâm. Chữ "L" là một biến thể xuất phát từ chữ "I". Điều này biểu trưng cho sự phát triển theo hướng đa dạng hóa và chuyển đổi linh hoạt. Chữ "C" là sự lồng ghép của 2 hình ảnh chiếc búa thẩm phán giáng xuống mặt gỗ và chiếc kính lúp nghiên cứu, thể hiện sự nghiên cứu pháp luật chuyên sâu. Ba chữ "ILC" màu cam đại diện cho sự sáng tạo, đổi mới và tri thức. Font của chữ "ILC" có nét dày đậm, hiện đại thể hiện truyền thống nhưng cũng sẵn sàng đổi mới. Cuối cùng là dòng chữ đầy đủ của Viện bằng tiếng Anh: Institute of Legal Science and Corporate Development. Toàn bộ logo là một sự kết hợp hài hòa mang ý nghĩa: Hợp tác phát triển toàn cầu bền vững vì giá trị chung của cộng đồng.',
             paragraph1:
               "Là đơn vị trực thuộc thứ 29 của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện Khoa học pháp lý và Phát triển doanh nghiệp được thành lập với mục tiêu tư vấn chính sách pháp luật, cầu nối cho chính sách của cơ quan nhà nước và hoạt động của doanh nghiệp được gặp nhau; đào tạo, bồi dưỡng kiến thức pháp luật; phản biện chính sách và kiến nghị nhà nước sửa đổi, bổ sung các quy định của pháp luật phù hợp với thực tế; nghiên cứu và ứng dụng chuyển đổi số, trí tuệ nhân tạo AI, đặc biệt tập trung vào quản trị doanh nghiệp, kinh tế xanh và công nghệ mới. Bằng cách thực hiện những mục tiêu này, Viện có thể đóng góp vào sự phát triển bền vững của doanh nghiệp, đồng thời cung cấp giá trị cho cộng đồng xã hội.",
             paragraph2:
@@ -86,7 +88,7 @@ const resources = {
             paragraph5: '"Đồng hành cùng doanh nghiệp trong kỷ nguyên mới."',
           },
           btnContent: "Xem thêm",
-          btnRegister: "Đăng ký"
+          btnRegister: "Đăng ký",
         },
         contentSection: {
           services: {
@@ -98,12 +100,12 @@ const resources = {
             comment: "Bình Luận",
             sentComment: "Gửi Bình Luận",
             needLogin2Comment: {
-              sentence1:"Bạn Cần",
-              sentence2:"Đăng Nhập",
-              sentence3:"Để Bình Luận"
+              sentence1: "Bạn Cần",
+              sentence2: "Đăng Nhập",
+              sentence3: "Để Bình Luận",
             },
             inputComment: "Nhập Bình Luận",
-            thank4Rated:{
+            thank4Rated: {
               sentance1: "Bạn Đã Đánh Giá",
               sentance2: "Sao. Cảm Ơn Bạn!",
             },
@@ -133,11 +135,14 @@ const resources = {
             header: "ĐỐI TÁC KHÁCH HÀNG",
             content: "",
             enterprise: "Đối Tác Doanh Nghiệp",
-            enterprise_sub: "Chúng tôi tự hào đồng hành cùng nhiều doanh nghiệp lớn, vững mạnh trong các lĩnh vực khác nhau.",
+            enterprise_sub:
+              "Chúng tôi tự hào đồng hành cùng nhiều doanh nghiệp lớn, vững mạnh trong các lĩnh vực khác nhau.",
             educationInstitution: "Đối Tác Giáo Dục",
-            educationInstitution_sub: "Hệ sinh thái của chúng tôi hợp tác với các tổ chức giáo dục toàn quốc, xây dựng mạng lưới đối tác mạnh mẽ",
+            educationInstitution_sub:
+              "Hệ sinh thái của chúng tôi hợp tác với các tổ chức giáo dục toàn quốc, xây dựng mạng lưới đối tác mạnh mẽ",
             organization: "Cơ Quan Đối Tác",
-            organization_sub: "Viện phát triển mạnh mẽ, gắn kết với các cơ quan tổ chức tiềm năng, đang vươn lên",
+            organization_sub:
+              "Viện phát triển mạnh mẽ, gắn kết với các cơ quan tổ chức tiềm năng, đang vươn lên",
           },
         },
       },
@@ -151,7 +156,7 @@ const resources = {
         namePlaceholder: "Họ tên",
         phonePlaceholder: "Số điện thoại",
         addressPlaceholder: "Địa chỉ",
-        adddresslabel:"Địa chỉ:",
+        adddresslabel: "Địa chỉ:",
         emailPlaceholder: "Email",
         subjectPlaceholder: "Chủ đề",
         messagePlaceholder: "Nội dung",
@@ -179,9 +184,7 @@ const resources = {
         infomation: "Thông tin liên hệ",
         infoMember: "Thông Tin thành viên",
       },
-      comment: {
-
-      },
+      comment: {},
       search: {
         title: "Tìm kiếm",
         placeholder: "Nhập giá trị vào đây...",
@@ -226,7 +229,8 @@ const resources = {
           "Ban Công Tác Xã Hội Và Hỗ Trợ Doanh Nghiệp, Doanh Nhân",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Ban Đào Tạo Và Phát Triển Nguồn Nhân Lực",
-        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Ban Hợp Tác Đầu Tư Và Truyền Thông' ,
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT:
+          "Ban Hợp Tác Đầu Tư Và Truyền Thông",
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Ban Kinh Tế Số, Trí Tuệ Nhân Tạo Và Phát Triển Doanh Nghiệp",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -244,7 +248,6 @@ const resources = {
         WORK_EXPERIENCE: "QUÁ TRÌNH CÔNG TÁC",
         CONSULT_EXPERIENCE: "KINH NGHIỆM TƯ VẤN",
       },
-      
     },
   },
   en: {
@@ -305,6 +308,8 @@ const resources = {
           title: "Institute of Legal Science and Corporate Development (ILC)",
           subTitle: "DEDICATED - DEVELOPING - INNOVATIVE",
           content: {
+            paragraph0:
+              'The logo is created by the combination of a stylized blue globe, the letters ILC and the English name of the Institute, in which: The globe represents the strong connectivity on a global scale. The five stylized curves below with bold, thick and thin lines gradually rising up represent the radical transformation of businesses in the digital age. The blue color represents the foundation of peaceful, friendly and good cooperation, a green and sustainable economy. The three letters "ILC" are the abbreviation of the Institute. The letter "I" is straight without a single extra line - located in the middle of the logo, balancing the overall layout. The letter "I" is not only an acronym but also represents the core values of the Institute - the integrity and fairness of the law will always be placed in the center. The letter "L" is a variation of the letter "I". This symbolizes the development towards diversification and flexible transformation. The letter "C" is a combination of two images of a judge\'s hammer hitting a wooden surface and a magnifying glass, representing in-depth legal research. The three orange letters "ILC" represent creativity, innovation and knowledge. The font of the letter "ILC" has a thick, modern stroke showing tradition but also ready for innovation. Finally, the full text of the Institute in English: Institute of Legal Science and Corporate Development. The entire logo is a harmonious combination with the meaning: Sustainable global development cooperation for the common value of the community.',
             paragraph1:
               "As a unit under the 29th branch of the Vietnam Association of Small and Medium Enterprises (VINASME), the Institute was established in 2024 with the main functions and tasks as follows: to conduct scientific research on law and business both domestically and internationally; to study the commercial systems of international organizations; and to research and implement projects related to law, finance, investment, trade, corporate governance, digital economy, artificial intelligence, human resources, and risk management.",
             paragraph2:
@@ -327,31 +332,31 @@ const resources = {
             paragraph5: '"Accompanying businesses in the new era."',
           },
           btnContent: "Read More",
-          btnRegister: "Sign up"
+          btnRegister: "Sign up",
         },
         contentSection: {
           services: {
             header: "FORENSIC SCIENCE SERVICES",
             content:
               "Pioneering comprehensive legal solutions and partnering with businesses",
-            currentComments:"Latest Comments",
+            currentComments: "Latest Comments",
             noComment: "No Comments Yet",
             comment: "Comment",
             sentComment: "Sent Your Comment",
             needLogin2Comment: {
               sentence1: "You need to",
               sentence2: "log in",
-              sentence3: "to comment"
+              sentence3: "to comment",
             },
             inputComment: "Enter Comment",
             thank4Rated: {
               sentence1: "You Have Rated",
-              sentence2: "Thank You For Your Feedback!"
+              sentence2: "Thank You For Your Feedback!",
             },
             evaluateArticle: "Evaluate This Article",
             share: "Share",
             ratingScore: "Rating Score:",
-            recordComment: "Your Feedback Has Been Recorded."
+            recordComment: "Your Feedback Has Been Recorded.",
           },
           developers: {
             header: "OUR DEVELOPERS",
@@ -375,11 +380,14 @@ const resources = {
             header: "CUSTOMER PARTNERS",
             content: "",
             enterprise: "Enterprise Partner",
-            enterprise_sub: "We are proud to partner with many large and strong enterprises across various industries",
+            enterprise_sub:
+              "We are proud to partner with many large and strong enterprises across various industries",
             educationInstitution: "Educational Partner",
-            educationInstitution_sub: "Our ecosystem collaborates with educational institutions nationwide, building a robust network of partners",
+            educationInstitution_sub:
+              "Our ecosystem collaborates with educational institutions nationwide, building a robust network of partners",
             organization: "Partner Organization",
-            organization_sub: "The institute is growing rapidly, building strong connections with potential organizations that are rising",
+            organization_sub:
+              "The institute is growing rapidly, building strong connections with potential organizations that are rising",
           },
         },
       },
@@ -391,7 +399,7 @@ const resources = {
         addressText:
           "32, Street No. 18, Quarter 1, Phú Hữu Ward, Thủ Đức City, Ho Chi Minh City.",
         namePlaceholder: "Full Name",
-        adddresslabel:"Address:",
+        adddresslabel: "Address:",
         phonePlaceholder: "Phone Number",
         addressPlaceholder: "Address",
         emailPlaceholder: "Email",
@@ -466,7 +474,8 @@ const resources = {
           "Social Work and Business Support Board",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Human Resource Training and Development Department",
-        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Investment and Communication Cooperation Department' ,
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT:
+          "Investment and Communication Cooperation Department",
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Department of Digital Economy, Artificial Intelligence and Business Development",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -542,6 +551,8 @@ const resources = {
           title: "法律科学与企业发展研究院 (ILC)",
           subTitle: "奉献 - 发展 - 创新",
           content: {
+            paragraph0:
+              "該標誌由一個風格化的藍色地球、字母ILC和學院的英文名稱組合而成，其中：地球象徵著全球範​​圍內的強大聯繫。下方五條風格化的曲線，以粗、粗、細的筆觸逐漸向上移動，代表著數位時代企業的徹底轉變。綠色代表和平、友好、良好關係的基礎以及綠色、永續的經濟。「ILC」三個字母是Institute的縮寫。字母“I”筆直，沒有多餘的筆畫，位於標誌的中心，平衡了整體佈局。字母「I」不僅僅是一個縮寫，它還代表了該研究所的核心價值——法律的誠信和公正永遠是中心。字母“L”是字母“I”的變體。這代表著多樣化和靈活轉型的成長。字母「C」由兩個圖像組合而成：法官的法槌敲擊木質表面和放大鏡，代表著深入的法律研究。三個橙色字母「ILC」代表創造力、創新和知識。「ILC」字樣的字體具有濃重的現代筆觸，代表著傳統，但也為創新做好了準備。最後，該研究所的英文全文為：Institute of Legal Science and Corporate Development。整個標誌造型和諧統一，寓意：為社會共同價值而進行永續的全球發展合作。",
             paragraph1:
               "作为隶属于越南中小企业协会（VINASME）第29分会的单位，该研究院于2024年成立，其主要职能和任务如下：开展国内外法律及商业科学研究；研究国际组织的商业制度；开展与法律、金融、投资、贸易、企业管理、数字经济、人工智能、人力资源及风险管理等相关的研究和项目实施。",
             paragraph2: "除研究活动外，该研究院还提供科技服务：",
@@ -560,25 +571,25 @@ const resources = {
             paragraph5: '"新時代陪伴企業前進"',
           },
           btnContent: "查看更多",
-          btnRegister: "注册"
+          btnRegister: "注册",
         },
         contentSection: {
           services: {
             header: "法医科学服务",
             content: "率先提供全面的法律解决方案，并与企业携手同行",
-            currentComments:"最新评论",
+            currentComments: "最新评论",
             noComment: "还没有评论",
             comment: "评论",
             sentComment: "提交评论",
             needLogin2Comment: {
               sentence1: "你需要",
               sentence2: "登录",
-              sentence3: "才能评论"
+              sentence3: "才能评论",
             },
             inputComment: "输入评论",
             thank4Rated: {
               sentence1: "您已评分",
-              sentence2: "谢谢您的评价！"
+              sentence2: "谢谢您的评价！",
             },
             evaluateArticle: "评价文章",
             share: "分享",
@@ -607,9 +618,11 @@ const resources = {
             enterprise: "企业合作伙伴",
             enterprise_sub: "我们自豪地与多个行业的大型且强大的企业合作",
             educationInstitution: "教育合作伙伴",
-            educationInstitution_sub: "我们的生态系统与全国各地的教育机构合作，建立了一个强大的合作伙伴网络",
+            educationInstitution_sub:
+              "我们的生态系统与全国各地的教育机构合作，建立了一个强大的合作伙伴网络",
             organization: "合作机构",
-            organization_sub: "学院正在快速发展，与有潜力的机构建立紧密联系，正在崛起",
+            organization_sub:
+              "学院正在快速发展，与有潜力的机构建立紧密联系，正在崛起",
           },
         },
       },
@@ -692,7 +705,7 @@ const resources = {
         SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD: "社会工作与商业支持委员会",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "人力资源培训与发展部",
-        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: '投资与传播合作部',
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: "投资与传播合作部",
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "数字经济、人工智能与商业发展部",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:

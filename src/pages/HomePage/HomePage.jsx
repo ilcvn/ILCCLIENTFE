@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import BlogCard from "../../components/BlogCard";
 import CarouselBanner from "../../components/layouts/CarouselBanner";
 import { Banner, Blogcard_1 } from "../../assets";
@@ -9,9 +8,25 @@ import SliderCounterparty from "../../components/SliderCounterparty";
 import { useTranslation } from "react-i18next";
 import SliderMember from "../../components/MemberSlider";
 import { Helmet } from "react-helmet";
+import { AnimatePresence, motion } from "framer-motion";
 
 function HomePage() {
   const { t } = useTranslation();
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const fullTextLogo = t("homepage.blogCard.content.paragraph0");
+
+  const splitKeywords = ["Quả địa cầu", "The globe", "地球象徵"];
+  const splitPoint = splitKeywords.reduce((acc, keyword) => {
+    const idx = fullTextLogo.indexOf(keyword);
+    return idx !== -1 && (acc === -1 || idx < acc) ? idx : acc;
+  }, -1);
+
+  const introText = fullTextLogo.slice(0, splitPoint);
+  const remainingText = fullTextLogo.slice(splitPoint);
+
+  const toggleExpand = () => setIsExpanded((prev) => !prev);
 
   return (
     <div>
@@ -30,7 +45,36 @@ function HomePage() {
         subTitle={t("homepage.blogCard.subTitle")}
         content={
           <>
-            <p className="text-justify">{t("homepage.blogCard.content.paragraph1")}</p>
+            <div className="">
+              <span className="text-gray-400 text-justify">{introText}</span>
+              {!isExpanded && "... "}
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.span
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="inline-block overflow-hidden text-black"
+                  >
+                    <p className="text-justify">{remainingText}</p>
+                  </motion.span>
+                )}
+              </AnimatePresence>
+              <br />
+              <button
+                onClick={toggleExpand}
+                className="text-blue-600 hover:underline"
+              >
+                {isExpanded ? "Thu gọn" : "Xem thêm"}
+              </button>
+            </div>
+
+            <br />
+            <p className="text-justify">
+              {t("homepage.blogCard.content.paragraph1")}
+            </p>
             <br />
             {/* <p>{t("homepage.blogCard.content.paragraph2")}</p>
             <ul>
@@ -44,12 +88,16 @@ function HomePage() {
             <p>{t("homepage.blogCard.content.paragraph3")}</p>
             <br /> */}
             <div className="flex items-center gap-3">
-              <span><b>{t("homepage.blogCard.content.tip1")}:</b></span>
+              <span>
+                <b>{t("homepage.blogCard.content.tip1")}:</b>
+              </span>
               <i>{t("homepage.blogCard.content.paragraph4")}</i>
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="whitespace-nowrap"><b>{t("homepage.blogCard.content.tip2")}:</b></span>
+              <span className="whitespace-nowrap">
+                <b>{t("homepage.blogCard.content.tip2")}:</b>
+              </span>
               <i>{t("homepage.blogCard.content.paragraph5")}</i>
             </div>
           </>

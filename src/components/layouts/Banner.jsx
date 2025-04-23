@@ -20,7 +20,7 @@ function Banner() {
   };
 
   return (
-    <div className=" p-4 w-full   overflow-hidden bg-brandPrimary  text-white ">
+    <div className=" p-4 w-full overflow-hidden bg-brandPrimary  text-white ">
       <div className=" relative mx-auto max-w-screen-2xl ">
         {/* Chữ chạy (marquee) */}
         <div className="flex flex-wrap justify-center xl:justify-end items-center gap-4">
