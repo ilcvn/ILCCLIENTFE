@@ -9,15 +9,16 @@ import { useTranslation } from "react-i18next";
 import SliderMember from "../../components/MemberSlider";
 import { Helmet } from "react-helmet";
 import { AnimatePresence, motion } from "framer-motion";
+import clsx from "clsx";
 
 function HomePage() {
   const { t } = useTranslation();
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const fullTextLogo = t("homepage.blogCard.content.paragraph0");
+  const fullTextLogo = t("homepage.blogCard.content.paragraph6");
 
-  const splitKeywords = ["Quả địa cầu", "The globe", "地球象徵"];
+  const splitKeywords = ["Quả địa cầu", "The globe", "地球象征"];
   const splitPoint = splitKeywords.reduce((acc, keyword) => {
     const idx = fullTextLogo.indexOf(keyword);
     return idx !== -1 && (acc === -1 || idx < acc) ? idx : acc;
@@ -25,6 +26,12 @@ function HomePage() {
 
   const introText = fullTextLogo.slice(0, splitPoint);
   const remainingText = fullTextLogo.slice(splitPoint);
+
+  // t("homepage.blogCard.content.paragraph7") +
+  // "\n" +
+  // t("homepage.blogCard.content.paragraph8") +
+  // "\n" +
+  // t("homepage.blogCard.content.paragraph9");
 
   const toggleExpand = () => setIsExpanded((prev) => !prev);
 
@@ -77,7 +84,14 @@ function HomePage() {
             <br />
 
             <div className="">
-              <span className="text-gray-400 text-justify">{introText}</span>
+              <span
+                className={clsx(
+                  "text-justify",
+                  !isExpanded ? "text-gray-400" : "text-inherit"
+                )}
+              >
+                {introText}
+              </span>
               {!isExpanded && "... "}
               <AnimatePresence initial={false}>
                 {isExpanded && (
@@ -90,6 +104,51 @@ function HomePage() {
                     className="inline-block overflow-hidden text-black"
                   >
                     <p className="text-justify">{remainingText}</p>
+                  </motion.span>
+                )}
+
+                {isExpanded && (
+                  <motion.span
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="inline-block overflow-hidden text-black"
+                  >
+                    <p className="text-justify">
+                      {t("homepage.blogCard.content.paragraph7")}
+                    </p>
+                  </motion.span>
+                )}
+
+                {isExpanded && (
+                  <motion.span
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="inline-block overflow-hidden text-black"
+                  >
+                    <p className="text-justify">
+                      {t("homepage.blogCard.content.paragraph8")}
+                    </p>
+                  </motion.span>
+                )}
+
+                {isExpanded && (
+                  <motion.span
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="inline-block overflow-hidden text-black"
+                  >
+                    <p className="text-justify">
+                      {t("homepage.blogCard.content.paragraph9")}
+                    </p>
                   </motion.span>
                 )}
               </AnimatePresence>

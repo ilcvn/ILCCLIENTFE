@@ -81,12 +81,11 @@ const resources = {
             bền vững vì giá trị chung của cộng đồng.`,
           },
           content: {
-            paragraph0:
-              'Logo được tạo nên bởi sự kết hợp của quả địa cầu màu xanh cách điệu, chữ cái ILC và tên tiếng Anh của Viện, trong đó: Quả địa cầu là biểu hiện cho phạm vi kết nối mạnh mẽ trên phạm vi toàn thế giới. Năm đường cong cách điệu bên dưới cùng nét đậm, dày và thanh mảnh dần lên trên thể hiện sự chuyển đổi cấp tiến của các doanh nghiệp trong kỷ nguyên số. Màu xanh thể hiện nền tảng là mối quan hệ hòa bình, hợp tác hữu nghị, tốt đẹp, một nền kinh tế xanh – bền vững. Ba chữ "ILC" là từ viết tắt của Viện. Chữ "I" ngay thẳng không một nét thừa - nằm ở chính giữa logo, cân đối tổng thể bố cục. Chữ "I" không chỉ là một từ viết tắt mà nó còn là đại diện cho giá trị cốt lõi của Viện - sự chính trực và công bằng của pháp luật sẽ luôn được đặt ở trung tâm. Chữ "L" là một biến thể xuất phát từ chữ "I". Điều này biểu trưng cho sự phát triển theo hướng đa dạng hóa và chuyển đổi linh hoạt. Chữ "C" là sự lồng ghép của 2 hình ảnh chiếc búa thẩm phán giáng xuống mặt gỗ và chiếc kính lúp nghiên cứu, thể hiện sự nghiên cứu pháp luật chuyên sâu. Ba chữ "ILC" màu cam đại diện cho sự sáng tạo, đổi mới và tri thức. Font của chữ "ILC" có nét dày đậm, hiện đại thể hiện truyền thống nhưng cũng sẵn sàng đổi mới. Cuối cùng là dòng chữ đầy đủ của Viện bằng tiếng Anh: Institute of Legal Science and Corporate Development. Toàn bộ logo là một sự kết hợp hài hòa mang ý nghĩa: Hợp tác phát triển toàn cầu bền vững vì giá trị chung của cộng đồng.',
             paragraph1:
               "Là đơn vị trực thuộc của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện Khoa học pháp lý và Phát triển doanh nghiệp được thành lập với mục tiêu tư vấn chính sách pháp luật, cầu nối cho chính sách của cơ quan nhà nước và hoạt động của doanh nghiệp được gặp nhau; đào tạo, bồi dưỡng kiến thức pháp luật; phản biện chính sách và kiến nghị nhà nước sửa đổi, bổ sung các quy định của pháp luật phù hợp với thực tế; nghiên cứu và ứng dụng chuyển đổi số, trí tuệ nhân tạo AI, đặc biệt tập trung vào quản trị doanh nghiệp, kinh tế xanh và công nghệ mới. Bằng cách thực hiện những mục tiêu này, Viện có thể đóng góp vào sự phát triển bền vững của doanh nghiệp, đồng thời cung cấp giá trị cho cộng đồng xã hội.",
             paragraph2:
               "Bên cạnh hoạt động nghiên cứu, Viện còn thực hiện các dịch vụ KH&CN:",
+
             listItem1:
               "Xây dựng dự án cố vấn pháp lý cho các DNNVV tại Việt Nam.",
             listItem2:
@@ -104,6 +103,17 @@ const resources = {
             tip2: "Tầm nhìn",
             paragraph4: '"Nâng tầm doanh nghiệp Việt."',
             paragraph5: '"Đồng hành cùng doanh nghiệp trong kỷ nguyên mới."',
+            paragraph6:
+              "Logo được tạo nên bởi sự kết hợp của quả địa cầu màu xanh cách điệu, chữ cái ILC và tên tiếng Anh của Viện, trong đó: Quả địa cầu là biểu hiện cho phạm vi kết nối mạnh mẽ trên phạm vi toàn thế giới. Năm đường cong cách điệu bên dưới cùng nét đậm, dày và thanh mảnh dần lên trên thể hiện sự chuyển đổi cấp tiến của các doanh nghiệp trong kỷ nguyên số. Màu xanh thể hiện nền tảng là mối quan hệ hòa bình, hợp tác hữu nghị, tốt đẹp, một nền kinh tế xanh – bền vững.",
+
+            paragraph7:
+              'Ba chữ "ILC" là từ viết tắt của Viện. Chữ "I" ngay thẳng không một nét thừa - nằm ở chính giữa logo, cân đối tổng thể bố cục. Chữ "I" không chỉ là một từ viết tắt mà nó còn là đại diện cho giá trị cốt lõi của Viện - sự chính trực và công bằng của pháp luật sẽ luôn được đặt ở trung tâm.',
+
+            paragraph8:
+              'Chữ "L" là một biến thể xuất phát từ chữ "I". Điều này biểu trưng cho sự phát triển theo hướng đa dạng hóa và chuyển đổi linh hoạt. Chữ "C" là sự lồng ghép của 2 hình ảnh chiếc búa thẩm phán giáng xuống mặt gỗ và chiếc kính lúp nghiên cứu, thể hiện sự nghiên cứu pháp luật chuyên sâu.',
+
+            paragraph9:
+              'Ba chữ "ILC" màu cam đại diện cho sự sáng tạo, đổi mới và tri thức. Font của chữ "ILC" có nét dày đậm, hiện đại thể hiện truyền thống nhưng cũng sẵn sàng đổi mới. Cuối cùng là dòng chữ đầy đủ của Viện bằng tiếng Anh: Institute of Legal Science and Corporate Development. Toàn bộ logo là một sự kết hợp hài hòa mang ý nghĩa: Hợp tác phát triển toàn cầu bền vững vì giá trị chung của cộng đồng.',
           },
           btnParagraphSeeMore: "Xem thêm",
           btnParagraphCollapse: "Thu gọn",
@@ -339,12 +349,11 @@ const resources = {
             paragraph4: `The three orange letters "ILC" represent creativity, innovation, and knowledge. The font used for "ILC" is bold and modern, showing a sense of tradition while also embracing innovation. Finally, the full English name of the Institute appears: Institute of Legal Science and Corporate Development. The entire logo is a harmonious combination conveying the message: Sustainable global cooperation and development for the shared values of the community.`,
           },
           content: {
-            paragraph0:
-              'The logo is created by the combination of a stylized blue globe, the letters ILC and the English name of the Institute, in which: The globe represents the strong connectivity on a global scale. The five stylized curves below with bold, thick and thin lines gradually rising up represent the radical transformation of businesses in the digital age. The blue color represents the foundation of peaceful, friendly and good cooperation, a green and sustainable economy. The three letters "ILC" are the abbreviation of the Institute. The letter "I" is straight without a single extra line - located in the middle of the logo, balancing the overall layout. The letter "I" is not only an acronym but also represents the core values of the Institute - the integrity and fairness of the law will always be placed in the center. The letter "L" is a variation of the letter "I". This symbolizes the development towards diversification and flexible transformation. The letter "C" is a combination of two images of a judge\'s hammer hitting a wooden surface and a magnifying glass, representing in-depth legal research. The three orange letters "ILC" represent creativity, innovation and knowledge. The font of the letter "ILC" has a thick, modern stroke showing tradition but also ready for innovation. Finally, the full text of the Institute in English: Institute of Legal Science and Corporate Development. The entire logo is a harmonious combination with the meaning: Sustainable global development cooperation for the common value of the community.',
             paragraph1:
               "As a unit under the Vietnam Association of Small and Medium Enterprises (VINASME), the Institute was established in 2024 with the main functions and tasks as follows: to conduct scientific research on law and business both domestically and internationally; to study the commercial systems of international organizations; and to research and implement projects related to law, finance, investment, trade, corporate governance, digital economy, artificial intelligence, human resources, and risk management.",
             paragraph2:
               "In addition to its research activities, the Institute also provides scientific and technological services:",
+
             listItem1:
               "Developing legal advisory projects for SMEs in Vietnam.",
             listItem2:
@@ -361,6 +370,17 @@ const resources = {
             tip2: "Vision",
             paragraph4: '"Raising Vietnamese businesses."',
             paragraph5: '"Accompanying businesses in the new era."',
+            paragraph6:
+              "The logo is formed by the combination of a stylized blue globe, the letters ILC, and the Institute's English name, in which: The globe represents the Institute’s strong global connectivity. The five stylized curves beneath, thick at the base and thinning toward the top, symbolize the progressive transformation of businesses in the digital era. The blue color represents a foundation of peace, friendly cooperation, and a sustainable green economy.",
+
+            paragraph7:
+              'The letters "ILC" are the acronym of the Institute. The letter "I" is upright and flawless—placed precisely in the center of the logo, ensuring overall visual balance. More than just an initial, the letter "I" embodies the Institute’s core value: the integrity and fairness of law, which is always placed at the heart of its mission.',
+
+            paragraph8:
+              'The letter "L" is an evolved form of the letter "I", symbolizing growth through diversification and flexible transformation. The letter "C" integrates two visual elements: a judge’s gavel striking a block and a magnifying glass, representing deep legal research and analytical insight.',
+
+            paragraph9:
+              'The orange color of the letters "ILC" stands for creativity, innovation, and knowledge. The font is bold and modern, combining tradition with a readiness to adapt. At the bottom of the logo appears the full English name: Institute of Legal Science and Corporate Development. The entire logo represents a harmonious blend that conveys a message of sustainable global cooperation for the shared values of the community.',
           },
           btnParagraphSeeMore: "See more",
           btnParagraphCollapse: "Collapse",
@@ -596,6 +616,7 @@ const resources = {
             paragraph1:
               "是越南中小企业协会（VINASME）下属的单位，该研究院于2024年成立，其主要职能和任务如下：开展国内外法律及商业科学研究；研究国际组织的商业制度；开展与法律、金融、投资、贸易、企业管理、数字经济、人工智能、人力资源及风险管理等相关的研究和项目实施。",
             paragraph2: "除研究活动外，该研究院还提供科技服务：",
+
             listItem1: "为越南中小企业制定法律顾问项目。",
             listItem2:
               "为越南中小企业提供数字化转型与信息技术项目的咨询与开发。",
@@ -605,10 +626,22 @@ const resources = {
             listItem5: "提供房地产中介认证培训；管理及运营公寓。",
             paragraph3:
               "我们向已故的陈厚仁律师致以感谢和敬意，感谢他对我们的信任以及将公司品牌传递给我们的律师团队。ILC凭借其标志，凝聚了西贡土地与人民的精髓，展现出开放、多元、慷慨、侠义与信任的精神……",
+
             tip1: "任務",
             tip2: "願景",
             paragraph4: '"提升越南企業。"',
             paragraph5: '"新時代陪伴企業前進"',
+            paragraph6:
+              "该标志由一个蓝色地球图案、ILC字母和学院英文名称组成，其中：地球象征着全球范围内的强大连接能力。下方的五条曲线从粗到细，象征着企业在数字时代中的渐进式转型。蓝色代表和平关系、友好合作以及可持续发展的绿色经济基础。",
+
+            paragraph7:
+              "“ILC”三个字母是学院的缩写。字母“I”直立、简洁，位于标志正中央，体现出整体的平衡性。它不仅是一个缩写，更代表着学院的核心价值——法律的正直与公正始终处于中心地位。",
+
+            paragraph8:
+              "字母“L”是由“I”演变而来，象征着多样化与灵活转型的发展方向。字母“C”融合了法官敲击木槌与放大镜的形象，体现了对法律深入研究的精神。",
+
+            paragraph9:
+              "橙色的“ILC”三个字母象征着创造力、创新精神和知识。字体粗壮现代，体现了既传承传统又勇于革新的理念。底部是英文全称：Institute of Legal Science and Corporate Development。整个标志和谐统一，传达出为共同价值实现全球可持续合作的发展理念。",
           },
           btnParagraphSeeMore: "查看更多",
           btnParagraphCollapse: "收起",
