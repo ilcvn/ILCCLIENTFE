@@ -151,6 +151,8 @@ const Header = () => {
     window.location.href = "/";
   };
 
+  console.log(dynamicNavLinks);
+
   return (
     <>
       <div className="w-full relative shadow-lg">
@@ -219,7 +221,6 @@ const Header = () => {
               } `}
             >
               {" "}
-              {/* <ul className={"flex items-center gap-12"}> */}
               <ul
                 className={`flex items-center mr-2 ${
                   language.toUpperCase() === "VI"
@@ -260,9 +261,15 @@ const Header = () => {
                       {/* Nếu có submenu */}
                       {link.children && (
                         <ul
-                          className="absolute left-0 top-11 w-auto min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3 
-                        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
-                        transition-all duration-300 ease-in-out delay-150"
+                          className={clsx(
+                            "absolute left-0 top-[46px] w-auto min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3",
+                            "group-hover:opacity-100 group-hover:visible group-hover:translate-y-0",
+                            "transition-all duration-300 ease-in-out delay-150",
+                            link.children.some(
+                              (child) =>
+                                child.children || child.children?.length !== 0
+                            ) && "border-t-2 border-brandPrimary"
+                          )}
                         >
                           {link.children.map((child) => (
                             <li key={child.id}>
