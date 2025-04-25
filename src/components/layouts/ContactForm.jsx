@@ -1,18 +1,19 @@
 /* eslint-disable react/prop-types */
-import React, {useState, useEffect, useContext} from "react";
-import {useTranslation} from "react-i18next";
-import {toast} from "react-toastify";
-import {DatePickerDialog} from "../datepicker/DatePickerDialog";
+import React, { useState, useEffect, useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
+import { DatePickerDialog } from "../datepicker/DatePickerDialog";
 import UploadComponent from "../UploadComponent";
-import {createReservation} from "../../api/reservation/reservation";
-import {getAllArticles, getArticles} from "../../api/Article/article";
-import {LanguageContext} from "../../context/LanguageContext";
-import {uploadToImgbb} from "../../helper/uploadToImgbb";
+import { createReservation } from "../../api/reservation/reservation";
+import { getArticles } from "../../api/Article/article";
+import { LanguageContext } from "../../context/LanguageContext";
 import imageCompression from "browser-image-compression";
+import useCloudinaryUpload from "../../helper/uploadFileCloudinary";
+import { Paperclip } from "lucide-react";
 
-const ContactForm = ({data}) => {
-  const {t} = useTranslation();
-  const {language, changeLanguage} = useContext(LanguageContext);
+const ContactForm = ({ data }) => {
+  const { t } = useTranslation();
+  const { language, changeLanguage } = useContext(LanguageContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const ContactForm = ({data}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesLn, setArticlesLn] = useState([]);
   const handleCheckboxChange = (event, articleId) => {
-    const {checked} = event.target;
+    const { checked } = event.target;
 
     setSelectedItems((prevSelectedItems) => {
       const updatedItems = checked
@@ -45,6 +46,8 @@ const ContactForm = ({data}) => {
       return updatedItems;
     });
   };
+
+  const { uploadFile } = useCloudinaryUpload();
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -59,13 +62,13 @@ const ContactForm = ({data}) => {
           currentLanguage
         );
 
-        const {articles, pagination} = res.data.data;
+        const { articles, pagination } = res.data.data;
 
         const services = articles.filter(
           (ser) => ser.language.toUpperCase() === currentLanguage
         );
         const data = services.sort((a, b) =>
-          a.title.localeCompare(b.title, "vi", {sensitivity: "base"})
+          a.title.localeCompare(b.title, "vi", { sensitivity: "base" })
         );
         setArticles(data);
       } catch (error) {
@@ -92,26 +95,31 @@ const ContactForm = ({data}) => {
     }
   }, [searchQuery, currentPage, language, data]);
 
-  // Nhận file từ UploadComponent (đối tượng file)
   const handleFileUpload = async (file) => {
     try {
-      // Cấu hình nén ảnh
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true,
-      };
+      const imageTypes = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
 
-      const compressedFile = await imageCompression(file, options);
+      if (imageTypes.includes(file.type)) {
+        // Nếu là ảnh thì nén
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
 
-      setFormData((prev) => ({...prev, file: compressedFile}));
+        const compressedFile = await imageCompression(file, options);
+        setFormData((prev) => ({ ...prev, file: compressedFile }));
+      } else {
+        // Nếu không phải ảnh, dùng file gốc
+        setFormData((prev) => ({ ...prev, file }));
+      }
     } catch (error) {
       console.error("Error compressing the image:", error);
     }
   };
 
   const handleChange = (e) => {
-    const {name, value, type, files} = e.target;
+    const { name, value, type, files } = e.target;
     setFormData({
       ...formData,
       [name]: type === "file" ? files[0] : value,
@@ -201,19 +209,19 @@ const ContactForm = ({data}) => {
     setLoading(true);
     try {
       if (formData.file) {
-        const fileUrl = await uploadToImgbb(formData.file);
+        const fileUrl = await uploadFile(formData.file);
         payload.file = fileUrl;
       }
 
       let subject = "";
       selectedItems.forEach((item, index) => {
-        subject += item + (index !== selectedItems.length - 1 ? ", " : ""); // Add comma unless it's the last item
+        subject += item + (index !== selectedItems.length - 1 ? ", " : "");
       });
       payload.subject = subject;
 
       const response = await createReservation(payload);
       toast.success("Gửi thành công!");
-      console.log("Payload:", payload); // Reset form sau khi gửi thành công
+      console.log("Payload:", payload);
       setFormData({
         name: "",
         phone: "",
@@ -349,14 +357,19 @@ const ContactForm = ({data}) => {
         )}
       </div>
 
-      <div className="flex items-center space-x-3">
+      <div className="flex flex-col space-y-3 items-start md:flex-row md:items-center md:space-x-3">
         <label className="rounded cursor-pointer">
           <UploadComponent
             onFileUpload={handleFileUpload}
             resetKey={resetKey}
           />
         </label>
-        {formData.file && <p className="text-sm">{""}</p>}
+        {formData.file && (
+          <div className="flex items-center gap-2">
+            <p className="text-sm">{formData.file.name}</p>
+            <Paperclip className="w-4 h-4" />
+          </div>
+        )}
       </div>
 
       <div className="flex space-x-3">
