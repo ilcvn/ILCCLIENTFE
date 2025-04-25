@@ -151,8 +151,6 @@ const Header = () => {
     window.location.href = "/";
   };
 
-  console.log(dynamicNavLinks);
-
   return (
     <>
       <div className="w-full relative shadow-lg">

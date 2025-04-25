@@ -72,3 +72,9 @@
   height: 100%;
   border: none;
 }
+
+.custom-blockquote {
+  border-left: 4px solid #f17458;
+  padding-left: 1em;
+  color: #f17458;
+}

@@ -3,7 +3,7 @@ import ItemKnowledge from "../../../components/KnowledgeSection/ItemKnowledge";
 import { getArticleById, getArticles } from "../../../api/Article/article";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./Article.css";
-import parse from "html-react-parser";
+import parse, { domToReact } from "html-react-parser";
 import DOMPurify from "dompurify";
 import BreadcrumbDynamic from "../../../components/layouts/Breadcrumb";
 import { convertISOToDate } from "../../../helper/date";
@@ -15,7 +15,6 @@ import LoginModal from "../../../components/LoginModal";
 import clsx from "clsx";
 import { createInteractedArticle } from "../../../api/InteractedArticle/interactedArticle";
 import { toast } from "react-toastify";
-import { Eye } from "lucide-react";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -206,7 +205,7 @@ export default function DetailPage() {
 
   // Xử lý HTML, giữ lại iframe
   const sanitizedHTML = DOMPurify.sanitize(article.content || "", {
-    ADD_TAGS: ["iframe"],
+    ADD_TAGS: ["iframe", "blockquote"],
     ADD_ATTR: [
       "allow",
       "allowfullscreen",
@@ -227,8 +226,16 @@ export default function DetailPage() {
           </div>
         );
       }
+      if (domNode.name === "blockquote") {
+        return (
+          <blockquote className="custom-blockquote">
+            {domToReact(domNode.children)}
+          </blockquote>
+        );
+      }
     },
   });
+
   return (
     <div className="bg-white w-full">
       <Helmet>
