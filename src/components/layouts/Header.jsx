@@ -130,14 +130,34 @@ const Header = () => {
 
     const selectedArticles = articleMap[nav.id] || articleMap.default;
 
-    return selectedArticles
-      .sort((a, b) => b.view - a.view)
-      //.slice(0, 5)
-      .map((article) => ({
-        id: article.id,
-        label: article.title,
-        path: `${nav.dynamicPrefix}/${article.id}`,
-      }));
+    return selectedArticles.sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+    
+        // Compare alphabetically
+        if (titleA[0] < titleB[0]) return -1;
+        if (titleA[0] > titleB[0]) return 1;
+    
+        // If same starting character, sort by length
+        if (titleA.length < titleB.length) return -1;
+        if (titleA.length > titleB.length) return 1;
+    
+        return 0;
+      })
+    .map((article) => ({
+      id: article.id,
+      label: article.title,
+      path: `${nav.dynamicPrefix}/${article.id}`,
+    }));
+    
+    // selectedArticles
+    //   .sort((a, b) => b.view - a.view)
+    //   //.slice(0, 5)
+    //   .map((article) => ({
+    //     id: article.id,
+    //     label: article.title,
+    //     path: `${nav.dynamicPrefix}/${article.id}`,
+    //   }));
   };
 
   const dynamicNavLinks = navLinks.map((nav) =>
