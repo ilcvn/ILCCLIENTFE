@@ -132,7 +132,7 @@ const Header = () => {
 
     return selectedArticles
       .sort((a, b) => b.view - a.view)
-      .slice(0, 5)
+      //.slice(0, 5)
       .map((article) => ({
         id: article.id,
         label: article.title,
