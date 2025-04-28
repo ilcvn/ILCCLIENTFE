@@ -3,7 +3,6 @@ import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import ContentSection from "../../components/ContentSection.jsx";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb.jsx";
 import { Link } from "lucide-react";
-import { IoLocationSharp } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import ContactForm from "../../components/layouts/ContactForm.jsx";
 import { useLocation } from "react-router-dom";
@@ -61,16 +60,14 @@ function ContactPage() {
                   <span className="mr-1 font-semibold">{"Ms. Hà:"}</span>
                   <span>0971 992 232</span>
                 </div>
-                <div className="flex items-start flex-nowrap">
-                  <IoLocationSharp className="w-6 h-6 text-brandSecondary mr-1 font-semibold" />
+                <div className="flex items-start">
+                  <MapPinIcon className="w-10 h-10 sm:w-7 sm:h-7 md:w-6 md:h-6 text-brandSecondary mr-1 font-semibold" />
                   <div className="flex items-center">
                     <div className="">
                       <span className="font-bold">
-                        {" "}
-                        {t("contactPage.adddresslabel")}{" "}
+                        {t("contactPage.adddresslabel")}
                       </span>
                       <span className="font-normal">
-                        {" "}
                         {t("contactPage.addressText")}
                       </span>
                     </div>

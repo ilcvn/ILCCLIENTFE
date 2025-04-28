@@ -130,26 +130,27 @@ const Header = () => {
 
     const selectedArticles = articleMap[nav.id] || articleMap.default;
 
-    return selectedArticles.sort((a, b) => {
+    return selectedArticles
+      .sort((a, b) => {
         const titleA = a.title.toLowerCase();
         const titleB = b.title.toLowerCase();
-    
+
         // Compare alphabetically
         if (titleA[0] < titleB[0]) return -1;
         if (titleA[0] > titleB[0]) return 1;
-    
+
         // If same starting character, sort by length
         if (titleA.length < titleB.length) return -1;
         if (titleA.length > titleB.length) return 1;
-    
+
         return 0;
       })
-    .map((article) => ({
-      id: article.id,
-      label: article.title,
-      path: `${nav.dynamicPrefix}/${article.id}`,
-    }));
-    
+      .map((article) => ({
+        id: article.id,
+        label: article.title,
+        path: `${nav.dynamicPrefix}/${article.id}`,
+      }));
+
     // selectedArticles
     //   .sort((a, b) => b.view - a.view)
     //   //.slice(0, 5)
@@ -368,7 +369,7 @@ const Header = () => {
 
         <div
           className={clsx(
-            "fixed left-0 top-0 h-full w-3/4 bg-white shadow-lg transform transition-transform z-[100] duration-500 ease-in-out",
+            "fixed left-0 top-0 h-full w-3/4 bg-white shadow-lg transform transition-transform z-[100] duration-500 ease-in-out max-h-screen overflow-y-auto",
             isOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
@@ -429,8 +430,9 @@ const Header = () => {
             >
               <Search className="w-5 h-5 text-neutralDGrey" />
             </button>
+
             {suggestions.length > 0 && (
-              <ul className="absolute left-0 right-0 bg-white border border-gray-300 mt-1 max-h-60 overflow-y-auto z-50">
+              <ul className="absolute left-0 right-0 bg-white border border-gray-300 mt-1 max-h-60 z-50 overflow-y-auto">
                 {suggestions.map((article, index) => (
                   <li
                     key={index}
