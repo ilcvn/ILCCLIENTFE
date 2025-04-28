@@ -71,7 +71,7 @@ function ContactPage() {
                 </div>
                 <div className="flex items-start">
                   <IoLocationSharp className="w-6 h-6 text-brandSecondary mr-1 font-semibold" />
-                  <div className="flex Item-center gap-2">
+                  <div className="flex flex-wrap Item-center gap-2">
                     <span className="font-semibold">
                       {t("contactPage.adddresslabel")}{" "}
                     </span>
