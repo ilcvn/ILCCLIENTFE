@@ -54,7 +54,7 @@ const Footer = () => {
     {
       text: "0971 992 232",
       id: 5,
-      name: 'Ms. Hà',
+      name: '+Ms. Hà',
     },
     {
       text: "info@ilcvn.vn",
