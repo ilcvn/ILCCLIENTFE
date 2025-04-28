@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import ContentSection from "../../components/ContentSection.jsx";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb.jsx";
-import { Link } from "lucide-react";
+import { MdMale } from 'react-icons/md';
+import { FaMale } from 'react-icons/fa';
+
 import { IoLocationSharp } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import ContactForm from "../../components/layouts/ContactForm.jsx";
@@ -46,14 +48,28 @@ function ContactPage() {
                   <span className="mr-1 font-semibold">
                     {t("contactPage.hotlineLabel", "Hotline:")}
                   </span>
+                  <span>0934 121 183 - 0983 285 499</span>
+                </div>
+                <div className="flex items-center">
+                  <MdMale className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
+                  <span className="mr-1 font-semibold">
+                    {'Mr. Hưng:'}
+                  </span>
+                  <span>0983 285 499</span>
+                </div>
+                <div className="flex items-center">
+                  <MdMale className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
+                  <span className="mr-1 font-semibold">
+                    {'Mr. Ngọc Anh:'}
+                  </span>
                   <span>0934 121 183</span>
                 </div>
                 <div className="flex items-center">
-                  <Link className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
+                  <FaMale className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
-                    {t("contactPage.hotlineLabel2", "Hotline:")}
+                    {'Ms. Hà:'}
                   </span>
-                  <span>0983 285 499</span>
+                  <span>0971 992 232</span>
                 </div>
                 <div className="flex items-start">
                   <IoLocationSharp className="w-6 h-6 text-brandSecondary mr-1 font-semibold" />
