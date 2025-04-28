@@ -42,18 +42,33 @@ const Footer = () => {
       name: t("footer.hotlineLabel"),
     },
     {
-      text: "info@ilcvn.vn",
+      text: "0983 285 499",
       id: 3,
+      name: '+MR. Hưng:',
+    },
+    {
+      text: "0934 121 183",
+      id: 4,
+      name: '+MR. Ngọc Anh:',
+    },
+    {
+      text: "0971 992 232",
+      id: 5,
+      name: 'Ms. Hà',
+    },
+    {
+      text: "info@ilcvn.vn",
+      id: 6,
       name: t("footer.emailLabel"),
     },
     {
       text: t("footer.workingTimeText"),
-      id: 4,
+      id: 7,
       name: t("footer.workingTimeLabel"),
     },
     {
       text: t("0318760066"),
-      id: 5, // Sửa id để tránh trùng với id: 4
+      id: 8, // Sửa id để tránh trùng với id: 4
       name: t("footer.tax"),
     },
   ];
