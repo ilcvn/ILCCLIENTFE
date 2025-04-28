@@ -54,7 +54,7 @@ const Footer = () => {
     {
       text: "0971 992 232",
       id: 5,
-      name: 'Ms. Hà',
+      name: '+Ms. Hà:',
     },
     {
       text: "info@ilcvn.vn",
@@ -89,7 +89,7 @@ const Footer = () => {
           currentLanguage
         );
         const { articles, pagination } = res.data.data;
-        const firstFive = articles.slice(0, 3);
+        const firstFive = articles.slice(0, 4);
 
         setArticles(firstFive);
         setPagination(pagination);
