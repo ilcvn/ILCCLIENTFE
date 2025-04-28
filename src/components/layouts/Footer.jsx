@@ -44,12 +44,12 @@ const Footer = () => {
     {
       text: "0983 285 499",
       id: 3,
-      name: '+MR. Hưng:',
+      name: '+Mr. Hưng:',
     },
     {
       text: "0934 121 183",
       id: 4,
-      name: '+MR. Ngọc Anh:',
+      name: '+Mr. Ngọc Anh:',
     },
     {
       text: "0971 992 232",
