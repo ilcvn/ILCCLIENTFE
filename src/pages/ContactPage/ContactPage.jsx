@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import ContentSection from "../../components/ContentSection.jsx";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb.jsx";
-import { MdMale } from 'react-icons/md';
-import { FaMale } from 'react-icons/fa';
-
+import { Link } from "lucide-react";
 import { IoLocationSharp } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import ContactForm from "../../components/layouts/ContactForm.jsx";
@@ -44,28 +42,28 @@ function ContactPage() {
                   <span>info@ilcvn.vn</span>
                 </div>
                 <div className="flex items-center">
-                  <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
+                  <Link className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
                     {t("contactPage.hotlineLabel", "Hotline:")}
                   </span>
                   <span>0934 121 183 - 0983 285 499</span>
                 </div>
                 <div className="flex items-center">
-                  <MdMale className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
+                  <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
                     {'Mr. Hưng:'}
                   </span>
                   <span>0983 285 499</span>
                 </div>
                 <div className="flex items-center">
-                  <MdMale className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
+                  <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
                     {'Mr. Ngọc Anh:'}
                   </span>
                   <span>0934 121 183</span>
                 </div>
                 <div className="flex items-center">
-                  <FaMale className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
+                  <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
                   <span className="mr-1 font-semibold">
                     {'Ms. Hà:'}
                   </span>
