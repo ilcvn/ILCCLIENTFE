@@ -21,16 +21,14 @@ function ContactPage() {
     <div>
       <BreadcrumbDynamic />
       <Helmet>
-        <title>
-          {t("nav.contact")} | ILC
-        </title>
+        <title>{t("nav.contact")} | ILC</title>
       </Helmet>
       <div className="px-2 py-10 lg:px-14 lg:py-10 mb-12">
         <ContentSection header={t("contactPage.header", "LIÊN HỆ")} />
         <div className="flex items-center justify-center">
           <div className="container md:mx-auto md:p-5 grid lg:grid-cols-1 xl:grid-cols-2 gap-10">
             <div className="relative">
-              <div className="col-span-2 mb-10 space-y-2">
+              <div className="col-span mb-10 space-y-2">
                 <h1 className="text-3xl font-bold text-center text-brandSecondary mb-4">
                   {t("contactPage.platformName", "ILC PLATFORM").toUpperCase()}
                 </h1>
@@ -50,32 +48,32 @@ function ContactPage() {
                 </div>
                 <div className="flex items-center">
                   <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
-                  <span className="mr-1 font-semibold">
-                    {'Mr. Hưng:'}
-                  </span>
+                  <span className="mr-1 font-semibold">{"Mr. Hưng:"}</span>
                   <span>0983 285 499</span>
                 </div>
                 <div className="flex items-center">
                   <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
-                  <span className="mr-1 font-semibold">
-                    {'Mr. Ngọc Anh:'}
-                  </span>
+                  <span className="mr-1 font-semibold">{"Mr. Ngọc Anh:"}</span>
                   <span>0934 121 183</span>
                 </div>
                 <div className="flex items-center">
                   <PhoneIcon className="w-5 h-5 text-brandSecondary mr-2 font-semibold" />
-                  <span className="mr-1 font-semibold">
-                    {'Ms. Hà:'}
-                  </span>
+                  <span className="mr-1 font-semibold">{"Ms. Hà:"}</span>
                   <span>0971 992 232</span>
                 </div>
-                <div className="flex items-start">
+                <div className="flex items-start flex-nowrap">
                   <IoLocationSharp className="w-6 h-6 text-brandSecondary mr-1 font-semibold" />
-                  <div className="flex flex-wrap item-center gap-2">
-                    <span className="font-semibold">
-                      {t("contactPage.adddresslabel")}{" "}
-                    </span>
-                    <span>{t("contactPage.addressText")}</span>
+                  <div className="flex items-center">
+                    <div className="">
+                      <span className="font-bold">
+                        {" "}
+                        {t("contactPage.adddresslabel")}{" "}
+                      </span>
+                      <span className="font-normal">
+                        {" "}
+                        {t("contactPage.addressText")}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
