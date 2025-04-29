@@ -236,7 +236,7 @@ const Header = () => {
               className={`hidden xl:flex items-center  ${
                 isScrolled
                   ? "fixed top-0 left-0 justify-center w-full bg-white p-4 shadow-lg"
-                  : "relative justify-end mr-[5%]  h-full"
+                  : "relative justify-end mr-[5%] h-full"
               } `}
             >
               {" "}
@@ -281,13 +281,14 @@ const Header = () => {
                       {link.children && (
                         <ul
                           className={clsx(
-                            "absolute left-0 top-[46px] w-auto min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3",
+                            "absolute left-0 w-max bg-white shadow-lg opacity-0 invisible translate-y-3",
                             "group-hover:opacity-100 group-hover:visible group-hover:translate-y-0",
                             "transition-all duration-300 ease-in-out delay-150",
                             link.children.some(
                               (child) =>
                                 child.children || child.children?.length !== 0
-                            ) && "border-t-2 border-brandPrimary"
+                            ) && "border-t-2 border-brandPrimary",
+                            !isScrolled ? "top-[46px]" : "top-[44px]"
                           )}
                         >
                           {link.children.map((child) => (
@@ -296,7 +297,11 @@ const Header = () => {
                                 to={child.path}
                                 className="block px-4 py-2 hover:bg-brandPrimary hover:text-white text-sm text-neutralGrey font-semibold whitespace-nowrap"
                               >
-                                {t(child.label).toUpperCase()}
+                                {t(
+                                  child.label.length > 50
+                                    ? `${child.label.slice(0, 50)}...`
+                                    : child.label
+                                ).toUpperCase()}
                               </Link>
                             </li>
                           ))}
