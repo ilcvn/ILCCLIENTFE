@@ -80,6 +80,7 @@ const SliderCounterparty = () => {
                   src={service.imgUrl ? service.imgUrl : fallbackImage}
                   alt={service.fullName || `Slide ${index + 1}`}
                   className="w-max h-auto object-cover"
+                  loading="lazy"
                 />
               </a>
             </div>

@@ -67,6 +67,7 @@ export default function LayoutOverviewPage({
                     src={member.imgUrl}
                     alt={member.name}
                     className="w-32 h-32 lg:w-40 lg:h-40 rounded-full mx-auto object-cover"
+                    loading="lazy"
                   />
                   <div className="space-y-2 mt-6">
                     <h3 className="font-bold md:text-xl text-md text-brandPrimary mt-3">
@@ -75,7 +76,7 @@ export default function LayoutOverviewPage({
                     <p className="md:text-lg text-base text-brandSecondary font-semibold">
                       {roleName.toUpperCase()}
                     </p>
-                    <p className="md:text-base text-sm black">{titleName}</p>
+                    <p className="md:text-base text-sm black line-clamp-3">{titleName}</p>
                   </div>
                 </div>
 

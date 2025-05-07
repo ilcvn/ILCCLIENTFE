@@ -277,6 +277,7 @@ export default function DetailPage() {
                 src={article.preview_img}
                 alt={article.title}
                 className="w-full aspect-[2/1] object-cover"
+                loading="lazy"
               />
             )}
             <div className="article-content">{parsedContent}</div>
@@ -339,6 +340,7 @@ export default function DetailPage() {
                       src={comment.user.avatar}
                       alt={comment.user.name}
                       className="w-10 h-10 rounded-full"
+                      loading="lazy"
                     />
                     <div className="bg-gray-100 p-3 rounded-lg w-full">
                       <div className="flex justify-between items-center">

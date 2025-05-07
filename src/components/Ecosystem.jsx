@@ -67,6 +67,7 @@ const EcoSystem = ({type, header, subheader}) => {
                   src={service.imgUrl ? service.imgUrl : fallbackImage}
                   alt={service.fullName || `Slide ${index + 1}`}
                   className="w-full h-auto object-cover p-2"
+                  loading="lazy"
                 />
               </a>
             </div>

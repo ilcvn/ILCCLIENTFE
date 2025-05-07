@@ -66,6 +66,7 @@ const Community = () => {
                 src={item.imageSrc}
                 alt={item.title}
                 className="w-24 h-24 object-contain mb-4"
+                loading="lazy"
               />
               <h3 className="text-lg font-bold text-gray-700 mb-2">
                 {item.title}

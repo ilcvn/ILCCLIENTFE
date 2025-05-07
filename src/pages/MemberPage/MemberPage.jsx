@@ -173,6 +173,7 @@ export default function MemberPage() {
           src="https://www.ilcvn.vn/assets/logo-jN9dnkTi.png"
           alt="Banner"
           className="w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] p-4 "
+          loading="lazy"
         />
       </div>
 
@@ -193,6 +194,7 @@ export default function MemberPage() {
               <img
                 src={member.imgUrl}
                 alt={member.fullName}
+                loading="lazy"
                 className="w-64 h-64 p-1 lg:w-60 lg:h-60 rounded-full object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
               />
 

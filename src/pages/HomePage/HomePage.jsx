@@ -178,6 +178,7 @@ function HomePage() {
           src={Banner}
           alt="Banner"
           className="w-full h-auto max-h-[500px] object-cover rounded-md"
+          loading="lazy"
         />
       </div>
 
