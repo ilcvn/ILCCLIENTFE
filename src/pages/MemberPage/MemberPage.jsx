@@ -53,7 +53,7 @@ export default function MemberPage() {
       }
 
       if (
-        origin_departments[i] === "BOARD_OF_DIRECTORS" &&
+        (origin_departments[i] === "BOARD_OF_DIRECTORS" || origin_departments[i] === "CHIEF_OF_STAFF" )&&
         origin_roles[i] !== "MEMBER"
       ) {
         role_department += t(`roles.${origin_roles[i]}`);
