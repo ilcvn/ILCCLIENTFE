@@ -57,7 +57,7 @@ export default function LayoutOverviewPage({
               <div
                 key={member.id}
                 className={clsx(
-                  "relative w-[46%] h-[350px] sm:w-[48%] md:w-[31%] xl:w-[23%] xl:h-[400px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-none"
+                  "relative w-[46%] h-auto sm:w-[48%] md:w-[31%] xl:w-[23%] xl:h-[400px] group cursor-pointer bg-white shadow-lg border-dashed border-[2px] border-brandPrimary overflow-hidden hover:border-white rounded-none"
                   //index >= 4 ? "block sm:hidden" : ""
                 )}
                 onClick={() => navigate(`/tong-quan/${member.id}`)}
