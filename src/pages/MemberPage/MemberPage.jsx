@@ -53,7 +53,8 @@ export default function MemberPage() {
       }
 
       if (
-        (origin_departments[i] === "BOARD_OF_DIRECTORS" || origin_departments[i] === "CHIEF_OF_STAFF" )&&
+        (origin_departments[i] === "BOARD_OF_DIRECTORS" ||
+          origin_departments[i] === "CHIEF_OF_STAFF") &&
         origin_roles[i] !== "MEMBER"
       ) {
         role_department += t(`roles.${origin_roles[i]}`);
@@ -178,7 +179,7 @@ export default function MemberPage() {
 
       {/* Wrapper with Background Image and Overlay */}
       <div
-        className="relative bg-cover bg-center bg-no-repeat min-h-screen w-full"
+        className="relative bg-cover bg-center bg-no-repeat min-h-max w-full"
         style={{
           backgroundImage: `url(${BannerMemberDetail})`,
         }}
