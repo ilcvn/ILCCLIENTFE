@@ -33,6 +33,7 @@ export default function ItemKnowledge({
         <img
           src={displayImage}
           alt={displayTitle}
+          loading="lazy"
           className="w-full h-[300px] aspect-square md:aspect-[4/3] md:h-auto object-cover md:mx-auto"
         />
         <div className="mx-auto w-full">

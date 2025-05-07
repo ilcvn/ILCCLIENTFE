@@ -39,6 +39,7 @@ export default function MemberDetailPage() {
         src={member.image}
         alt={member.name}
         className="w-40 h-40 rounded-full mt-4"
+        loading="lazy"
       />
       <p className="mt-4">{member.description}</p>
 

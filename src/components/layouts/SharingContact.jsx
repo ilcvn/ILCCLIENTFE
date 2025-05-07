@@ -77,6 +77,7 @@ function SharingContact() {
                     src="//bizweb.dktcdn.net/100/472/913/themes/888429/assets/addthis-phone.svg?1725935235961"
                     alt="Gọi ngay cho chúng tôi"
                     className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
               </a>
@@ -96,6 +97,7 @@ function SharingContact() {
                     src="//bizweb.dktcdn.net/100/472/913/themes/888429/assets/addthis-zalo.svg?1725935235961"
                     alt="Chat với chúng tôi qua Zalo"
                     className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
               </a>
@@ -115,6 +117,7 @@ function SharingContact() {
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
                     alt="Chat với chúng tôi qua Facebook"
                     className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
               </a>
@@ -134,6 +137,7 @@ function SharingContact() {
                           src={user?.photo}
                           alt="avatar"
                           className="w-10 h-10 rounded-full object-cover"
+                          loading="lazy"
                         />
                       </div>
 
@@ -167,6 +171,7 @@ function SharingContact() {
                         src="https://cdn-icons-png.flaticon.com/512/6681/6681221.png"
                         alt="Login"
                         className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
+                        loading="lazy"
                       />
                     </div>
                   </button>

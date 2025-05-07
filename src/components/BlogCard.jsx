@@ -36,7 +36,7 @@ const BlogCard = ({
           </div>
         </div>
         <div className="hidden xl:block">
-          <img src={imageUrl} alt={title} className="w-3/4" />
+          <img src={imageUrl} alt={title} className="w-3/4 " loading="lazy" />
         </div>
       </div>
     </div>
