@@ -1,6 +1,6 @@
 // src/i18n.js
 import i18n from "i18next";
-import {initReactI18next} from "react-i18next";
+import { initReactI18next } from "react-i18next";
 const savedLanguage = localStorage.getItem("language") || "vi";
 
 const resources = {
@@ -62,11 +62,30 @@ const resources = {
           title:
             "Viện Khoa học pháp lý và Phát triển doanh nghiệp (Institute of Legal Science and Corporate Development - ILC)",
           subTitle: "CÔNG CUỘC - PHÁT TRIỂN - ĐỔI MỚI",
+          logoExplain: {
+            paragraph0: `Logo được tạo nên bởi sự kết hợp của quả địa cầu màu xanh cách điệu, chữ cái ILC và tên tiếng Anh của Viện, trong
+              đó: Quả địa cầu là biểu hiện cho phạm vi kết nối mạnh mẽ trên phạm vi toàn thế giới. Năn đường cong cách điệu bên
+              dưới cùng nét đậm, dày và thanh mảnh dần lên trên thể thể hiện sự chuyển đổi cấp tiến của các doanh nghiệp trong kỷ
+              nguyên số. Màu xanh thể hiện nền tảng là mối quan hệ hòa bình, hợp tác hữu nghị, tốt đẹp, một nền kinh tế xanh – bền
+              vững. Ba chữ ILC là từ viết tắt của Viện.`,
+            paragraph1:`Chữ I ngay thẳng không một nét thừa - nằm ở chính giữa logo, cân đối tổng thể bố cục. Chữ I không chỉ là một từ viết
+              tắt mà nó còn là đại diện cho giá trị cốt lõi của Viện - sự chính trực và công bằng của pháp luật sẽ luôn được đặt ở
+              trung tâm.`,
+            paragraph2:`Chữ L là một biến thể xuất phát từ chữ I. Điều này biểu trưng cho sự phát triển theo hướng đa dạng hóa và chuyển đổi
+              linh hoạt.`,
+            paragraph3:`Chữ C là sự lồng ghép của 2 hình ảnh chiếc búa thẩm phán giáng xuống mặt gỗ và chiếc kính lúp nghiên cứu, thể hiện
+              sự nghiên cứu pháp luật chuyên sâu.`,
+            paragraph4:`Ba chữ ILC màu cam đại diện cho sự sáng tạo, đổi mới và tri thức. Font của chữ ILC có nét dày đậm, hiện đại thể hiện
+            truyền thống nhưng cũng sẵn sàng đổi mới. Cuối cùng là dòng chữ đầy đủ của Việ bằng tiếng Anh: Institute of Legal
+            Science and Corporate Development. Toàn bộ logo là một sự kết hợp hài hòa mang ý nghĩa: Hợp tác phát triển toàn cầu
+            bền vững vì giá trị chung của cộng đồng.`,
+          },
           content: {
             paragraph1:
-              "Là đơn vị trực thuộc thứ 29 của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện Khoa học pháp lý và Phát triển doanh nghiệp được thành lập với mục tiêu tư vấn chính sách pháp luật, cầu nối cho chính sách của cơ quan nhà nước và hoạt động của doanh nghiệp được gặp nhau; đào tạo, bồi dưỡng kiến thức pháp luật; phản biện chính sách và kiến nghị nhà nước sửa đổi, bổ sung các quy định của pháp luật phù hợp với thực tế; nghiên cứu và ứng dụng chuyển đổi số, trí tuệ nhân tạo AI, đặc biệt tập trung vào quản trị doanh nghiệp, kinh tế xanh và công nghệ mới. Bằng cách thực hiện những mục tiêu này, Viện có thể đóng góp vào sự phát triển bền vững của doanh nghiệp, đồng thời cung cấp giá trị cho cộng đồng xã hội.",
+              "Là đơn vị trực thuộc của Hiệp hội Doanh nghiệp nhỏ và vừa Việt Nam (VINASME). Viện Khoa học pháp lý và Phát triển doanh nghiệp được thành lập với mục tiêu tư vấn chính sách pháp luật, cầu nối cho chính sách của cơ quan nhà nước và hoạt động của doanh nghiệp được gặp nhau; đào tạo, bồi dưỡng kiến thức pháp luật; phản biện chính sách và kiến nghị nhà nước sửa đổi, bổ sung các quy định của pháp luật phù hợp với thực tế; nghiên cứu và ứng dụng chuyển đổi số, trí tuệ nhân tạo AI, đặc biệt tập trung vào quản trị doanh nghiệp, kinh tế xanh và công nghệ mới. Bằng cách thực hiện những mục tiêu này, Viện có thể đóng góp vào sự phát triển bền vững của doanh nghiệp, đồng thời cung cấp giá trị cho cộng đồng xã hội.",
             paragraph2:
               "Bên cạnh hoạt động nghiên cứu, Viện còn thực hiện các dịch vụ KH&CN:",
+
             listItem1:
               "Xây dựng dự án cố vấn pháp lý cho các DNNVV tại Việt Nam.",
             listItem2:
@@ -84,9 +103,22 @@ const resources = {
             tip2: "Tầm nhìn",
             paragraph4: '"Nâng tầm doanh nghiệp Việt."',
             paragraph5: '"Đồng hành cùng doanh nghiệp trong kỷ nguyên mới."',
+            paragraph6:
+              "Logo được tạo nên bởi sự kết hợp của quả địa cầu màu xanh cách điệu, chữ cái ILC và tên tiếng Anh của Viện, trong đó: Quả địa cầu là biểu hiện cho phạm vi kết nối mạnh mẽ trên phạm vi toàn thế giới. Năm đường cong cách điệu bên dưới cùng nét đậm, dày và thanh mảnh dần lên trên thể hiện sự chuyển đổi cấp tiến của các doanh nghiệp trong kỷ nguyên số. Màu xanh thể hiện nền tảng là mối quan hệ hòa bình, hợp tác hữu nghị, tốt đẹp, một nền kinh tế xanh – bền vững.",
+
+            paragraph7:
+              'Ba chữ "ILC" là từ viết tắt của Viện. Chữ "I" ngay thẳng không một nét thừa - nằm ở chính giữa logo, cân đối tổng thể bố cục. Chữ "I" không chỉ là một từ viết tắt mà nó còn là đại diện cho giá trị cốt lõi của Viện - sự chính trực và công bằng của pháp luật sẽ luôn được đặt ở trung tâm.',
+
+            paragraph8:
+              'Chữ "L" là một biến thể xuất phát từ chữ "I". Điều này biểu trưng cho sự phát triển theo hướng đa dạng hóa và chuyển đổi linh hoạt. Chữ "C" là sự lồng ghép của 2 hình ảnh chiếc búa thẩm phán giáng xuống mặt gỗ và chiếc kính lúp nghiên cứu, thể hiện sự nghiên cứu pháp luật chuyên sâu.',
+
+            paragraph9:
+              'Ba chữ "ILC" màu cam đại diện cho sự sáng tạo, đổi mới và tri thức. Font của chữ "ILC" có nét dày đậm, hiện đại thể hiện truyền thống nhưng cũng sẵn sàng đổi mới. Cuối cùng là dòng chữ đầy đủ của Viện bằng tiếng Anh: Institute of Legal Science and Corporate Development. Toàn bộ logo là một sự kết hợp hài hòa mang ý nghĩa: Hợp tác phát triển toàn cầu bền vững vì giá trị chung của cộng đồng.',
           },
+          btnParagraphSeeMore: "Xem thêm",
+          btnParagraphCollapse: "Thu gọn",
           btnContent: "Xem thêm",
-          btnRegister: "Đăng ký"
+          btnRegister: "Đăng ký",
         },
         contentSection: {
           services: {
@@ -98,12 +130,12 @@ const resources = {
             comment: "Bình Luận",
             sentComment: "Gửi Bình Luận",
             needLogin2Comment: {
-              sentence1:"Bạn Cần",
-              sentence2:"Đăng Nhập",
-              sentence3:"Để Bình Luận"
+              sentence1: "Bạn Cần",
+              sentence2: "Đăng Nhập",
+              sentence3: "Để Bình Luận",
             },
             inputComment: "Nhập Bình Luận",
-            thank4Rated:{
+            thank4Rated: {
               sentance1: "Bạn Đã Đánh Giá",
               sentance2: "Sao. Cảm Ơn Bạn!",
             },
@@ -133,11 +165,14 @@ const resources = {
             header: "ĐỐI TÁC KHÁCH HÀNG",
             content: "",
             enterprise: "Đối Tác Doanh Nghiệp",
-            enterprise_sub: "Chúng tôi tự hào đồng hành cùng nhiều doanh nghiệp lớn, vững mạnh trong các lĩnh vực khác nhau.",
+            enterprise_sub:
+              "Chúng tôi tự hào đồng hành cùng nhiều doanh nghiệp lớn, vững mạnh trong các lĩnh vực khác nhau.",
             educationInstitution: "Đối Tác Giáo Dục",
-            educationInstitution_sub: "Hệ sinh thái của chúng tôi hợp tác với các tổ chức giáo dục toàn quốc, xây dựng mạng lưới đối tác mạnh mẽ",
+            educationInstitution_sub:
+              "Hệ sinh thái của chúng tôi hợp tác với các tổ chức giáo dục toàn quốc, xây dựng mạng lưới đối tác mạnh mẽ",
             organization: "Cơ Quan Đối Tác",
-            organization_sub: "Viện phát triển mạnh mẽ, gắn kết với các cơ quan tổ chức tiềm năng, đang vươn lên",
+            organization_sub:
+              "Viện phát triển mạnh mẽ, gắn kết với các cơ quan tổ chức tiềm năng, đang vươn lên",
           },
         },
       },
@@ -151,7 +186,7 @@ const resources = {
         namePlaceholder: "Họ tên",
         phonePlaceholder: "Số điện thoại",
         addressPlaceholder: "Địa chỉ",
-        adddresslabel:"Địa chỉ:",
+        adddresslabel: "Địa chỉ:",
         emailPlaceholder: "Email",
         subjectPlaceholder: "Chủ đề",
         messagePlaceholder: "Nội dung",
@@ -179,9 +214,7 @@ const resources = {
         infomation: "Thông tin liên hệ",
         infoMember: "Thông Tin thành viên",
       },
-      comment: {
-
-      },
+      comment: {},
       search: {
         title: "Tìm kiếm",
         placeholder: "Nhập giá trị vào đây...",
@@ -199,8 +232,8 @@ const resources = {
         VICE_CHAIRMAN: "Phó Chủ Tịch Hội đồng",
         GROUP_PRESIDENT: "Trưởng Ban",
         GROUP_VICE_PRESIDENT: "Phó Ban",
-        ROOM_PRESIDENT: "Trưởng Phòng",
-        ROOM_VICE_PRESIDENT: "Phó Phòng",
+        ROOM_PRESIDENT: "Chánh Văn Phòng",
+        ROOM_VICE_PRESIDENT: "Phó Chánh Văn Phòng",
         NA: "Chưa xác định",
       },
 
@@ -226,7 +259,8 @@ const resources = {
           "Ban Công Tác Xã Hội Và Hỗ Trợ Doanh Nghiệp, Doanh Nhân",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Ban Đào Tạo Và Phát Triển Nguồn Nhân Lực",
-        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Ban Hợp Tác Đầu Tư Và Truyền Thông' ,
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT:
+          "Ban Hợp Tác Đầu Tư Và Truyền Thông",
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Ban Kinh Tế Số, Trí Tuệ Nhân Tạo Và Phát Triển Doanh Nghiệp",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -244,7 +278,6 @@ const resources = {
         WORK_EXPERIENCE: "QUÁ TRÌNH CÔNG TÁC",
         CONSULT_EXPERIENCE: "KINH NGHIỆM TƯ VẤN",
       },
-      
     },
   },
   en: {
@@ -304,11 +337,23 @@ const resources = {
         blogCard: {
           title: "Institute of Legal Science and Corporate Development (ILC)",
           subTitle: "DEDICATED - DEVELOPING - INNOVATIVE",
+          logoExplain: {
+            paragraph0: `The logo is created from the combination of a stylized blue globe, the letters ILC, and the English name of the Institute. The globe represents strong global connectivity. The stylized curve beneath, starting bold and thick then gradually tapering upward, symbolizes the progressive transformation of businesses in the digital era. The blue color reflects a foundation of peace, cooperation, friendship, and a sustainable green economy. The three letters ILC are the abbreviation of the Institute.`,
+            
+            paragraph1: `The letter "I" is upright with no excess strokes — positioned at the center of the logo to balance the overall layout. It not only stands for an abbreviation but also represents the Institute’s core value — integrity and fairness in law, which will always be placed at the heart.`,
+            
+            paragraph2: `The letter "L" is a variant derived from the letter "I", symbolizing development through diversification and flexible transformation.`,
+            
+            paragraph3: `The letter "C" integrates two images — a judge's gavel striking the sound block and a magnifying glass for research — symbolizing in-depth legal research.`,
+            
+            paragraph4: `The three orange letters "ILC" represent creativity, innovation, and knowledge. The font used for "ILC" is bold and modern, showing a sense of tradition while also embracing innovation. Finally, the full English name of the Institute appears: Institute of Legal Science and Corporate Development. The entire logo is a harmonious combination conveying the message: Sustainable global cooperation and development for the shared values of the community.`,
+          },
           content: {
             paragraph1:
-              "As a unit under the 29th branch of the Vietnam Association of Small and Medium Enterprises (VINASME), the Institute was established in 2024 with the main functions and tasks as follows: to conduct scientific research on law and business both domestically and internationally; to study the commercial systems of international organizations; and to research and implement projects related to law, finance, investment, trade, corporate governance, digital economy, artificial intelligence, human resources, and risk management.",
+              "As a unit under the Vietnam Association of Small and Medium Enterprises (VINASME), the Institute was established in 2024 with the main functions and tasks as follows: to conduct scientific research on law and business both domestically and internationally; to study the commercial systems of international organizations; and to research and implement projects related to law, finance, investment, trade, corporate governance, digital economy, artificial intelligence, human resources, and risk management.",
             paragraph2:
               "In addition to its research activities, the Institute also provides scientific and technological services:",
+
             listItem1:
               "Developing legal advisory projects for SMEs in Vietnam.",
             listItem2:
@@ -325,33 +370,46 @@ const resources = {
             tip2: "Vision",
             paragraph4: '"Raising Vietnamese businesses."',
             paragraph5: '"Accompanying businesses in the new era."',
+            paragraph6:
+              "The logo is formed by the combination of a stylized blue globe, the letters ILC, and the Institute's English name, in which: The globe represents the Institute’s strong global connectivity. The five stylized curves beneath, thick at the base and thinning toward the top, symbolize the progressive transformation of businesses in the digital era. The blue color represents a foundation of peace, friendly cooperation, and a sustainable green economy.",
+
+            paragraph7:
+              'The letters "ILC" are the acronym of the Institute. The letter "I" is upright and flawless—placed precisely in the center of the logo, ensuring overall visual balance. More than just an initial, the letter "I" embodies the Institute’s core value: the integrity and fairness of law, which is always placed at the heart of its mission.',
+
+            paragraph8:
+              'The letter "L" is an evolved form of the letter "I", symbolizing growth through diversification and flexible transformation. The letter "C" integrates two visual elements: a judge’s gavel striking a block and a magnifying glass, representing deep legal research and analytical insight.',
+
+            paragraph9:
+              'The orange color of the letters "ILC" stands for creativity, innovation, and knowledge. The font is bold and modern, combining tradition with a readiness to adapt. At the bottom of the logo appears the full English name: Institute of Legal Science and Corporate Development. The entire logo represents a harmonious blend that conveys a message of sustainable global cooperation for the shared values of the community.',
           },
+          btnParagraphSeeMore: "See more",
+          btnParagraphCollapse: "Collapse",
           btnContent: "Read More",
-          btnRegister: "Sign up"
+          btnRegister: "Sign up",
         },
         contentSection: {
           services: {
             header: "FORENSIC SCIENCE SERVICES",
             content:
               "Pioneering comprehensive legal solutions and partnering with businesses",
-            currentComments:"Latest Comments",
+            currentComments: "Latest Comments",
             noComment: "No Comments Yet",
             comment: "Comment",
             sentComment: "Sent Your Comment",
             needLogin2Comment: {
               sentence1: "You need to",
               sentence2: "log in",
-              sentence3: "to comment"
+              sentence3: "to comment",
             },
             inputComment: "Enter Comment",
             thank4Rated: {
               sentence1: "You Have Rated",
-              sentence2: "Thank You For Your Feedback!"
+              sentence2: "Thank You For Your Feedback!",
             },
             evaluateArticle: "Evaluate This Article",
             share: "Share",
             ratingScore: "Rating Score:",
-            recordComment: "Your Feedback Has Been Recorded."
+            recordComment: "Your Feedback Has Been Recorded.",
           },
           developers: {
             header: "OUR DEVELOPERS",
@@ -375,11 +433,14 @@ const resources = {
             header: "CUSTOMER PARTNERS",
             content: "",
             enterprise: "Enterprise Partner",
-            enterprise_sub: "We are proud to partner with many large and strong enterprises across various industries",
+            enterprise_sub:
+              "We are proud to partner with many large and strong enterprises across various industries",
             educationInstitution: "Educational Partner",
-            educationInstitution_sub: "Our ecosystem collaborates with educational institutions nationwide, building a robust network of partners",
+            educationInstitution_sub:
+              "Our ecosystem collaborates with educational institutions nationwide, building a robust network of partners",
             organization: "Partner Organization",
-            organization_sub: "The institute is growing rapidly, building strong connections with potential organizations that are rising",
+            organization_sub:
+              "The institute is growing rapidly, building strong connections with potential organizations that are rising",
           },
         },
       },
@@ -391,7 +452,7 @@ const resources = {
         addressText:
           "32, Street No. 18, Quarter 1, Phú Hữu Ward, Thủ Đức City, Ho Chi Minh City.",
         namePlaceholder: "Full Name",
-        adddresslabel:"Address:",
+        adddresslabel: "Address:",
         phonePlaceholder: "Phone Number",
         addressPlaceholder: "Address",
         emailPlaceholder: "Email",
@@ -439,8 +500,8 @@ const resources = {
         VICE_CHAIRMAN: "Vice Chairman",
         GROUP_PRESIDENT: "Head of the Department",
         GROUP_VICE_PRESIDENT: "Vice Head of the Department",
-        ROOM_PRESIDENT: "Department Manager",
-        ROOM_VICE_PRESIDENT: "Assistant Manager",
+        ROOM_PRESIDENT: "Chief of Office",
+        ROOM_VICE_PRESIDENT: "Deputy Chief of Office",
         NA: "Unknown",
       },
       titles: {
@@ -466,7 +527,8 @@ const resources = {
           "Social Work and Business Support Board",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "Human Resource Training and Development Department",
-        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: 'Investment and Communication Cooperation Department' ,
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT:
+          "Investment and Communication Cooperation Department",
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "Department of Digital Economy, Artificial Intelligence and Business Development",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:
@@ -541,10 +603,20 @@ const resources = {
         blogCard: {
           title: "法律科学与企业发展研究院 (ILC)",
           subTitle: "奉献 - 发展 - 创新",
+          logoExplain: {
+            paragraph0: `Logo 由一个蓝色地球的艺术化图形、ILC 字母和研究院的英文名称组合而成。其中：地球象征全球范围内强大的连接能力。下方的曲线以粗实起笔，逐渐变细变轻，象征企业在数字时代的渐进式转型。蓝色代表和平、友好合作、良好关系的基础，以及可持续的绿色经济。ILC 三个字母是研究院名称的缩写。`,
+            paragraph1: `字母 I 笔直无多余笔画，位于 logo 正中，构成整体布局的平衡。I 不仅是缩写的字母，也代表研究院的核心价值——法律的正直与公正始终处于核心地位。`, 
+            paragraph2: `字母 L 是从字母 I 演变而来的，象征多元化发展与灵活转型。`,
+            paragraph3: `字母 C 融合了法官敲击木槌和研究用的放大镜两种图像，象征深入的法律研究。`,
+            paragraph4: `三个橙色字母 ILC 代表创造力、创新和知识。ILC 的字体粗实、现代，既体现传统，又展现出面向未来的创新精神。最后出现研究院的全英文名称：Institute of Legal Science and Corporate Development（法律科学与企业发展研究院）。整个 logo 是一个和谐的组合，传达着“为了共同价值，实现全球可持续合作与发展”的理念。`,
+          },          
           content: {
+            paragraph0:
+              "該標誌由一個風格化的藍色地球、字母ILC和學院的英文名稱組合而成，其中：地球象徵著全球範​​圍內的強大聯繫。下方五條風格化的曲線，以粗、粗、細的筆觸逐漸向上移動，代表著數位時代企業的徹底轉變。綠色代表和平、友好、良好關係的基礎以及綠色、永續的經濟。「ILC」三個字母是Institute的縮寫。字母“I”筆直，沒有多餘的筆畫，位於標誌的中心，平衡了整體佈局。字母「I」不僅僅是一個縮寫，它還代表了該研究所的核心價值——法律的誠信和公正永遠是中心。字母“L”是字母“I”的變體。這代表著多樣化和靈活轉型的成長。字母「C」由兩個圖像組合而成：法官的法槌敲擊木質表面和放大鏡，代表著深入的法律研究。三個橙色字母「ILC」代表創造力、創新和知識。「ILC」字樣的字體具有濃重的現代筆觸，代表著傳統，但也為創新做好了準備。最後，該研究所的英文全文為：Institute of Legal Science and Corporate Development。整個標誌造型和諧統一，寓意：為社會共同價值而進行永續的全球發展合作。",
             paragraph1:
-              "作为隶属于越南中小企业协会（VINASME）第29分会的单位，该研究院于2024年成立，其主要职能和任务如下：开展国内外法律及商业科学研究；研究国际组织的商业制度；开展与法律、金融、投资、贸易、企业管理、数字经济、人工智能、人力资源及风险管理等相关的研究和项目实施。",
+              "是越南中小企业协会（VINASME）下属的单位，该研究院于2024年成立，其主要职能和任务如下：开展国内外法律及商业科学研究；研究国际组织的商业制度；开展与法律、金融、投资、贸易、企业管理、数字经济、人工智能、人力资源及风险管理等相关的研究和项目实施。",
             paragraph2: "除研究活动外，该研究院还提供科技服务：",
+
             listItem1: "为越南中小企业制定法律顾问项目。",
             listItem2:
               "为越南中小企业提供数字化转型与信息技术项目的咨询与开发。",
@@ -554,31 +626,45 @@ const resources = {
             listItem5: "提供房地产中介认证培训；管理及运营公寓。",
             paragraph3:
               "我们向已故的陈厚仁律师致以感谢和敬意，感谢他对我们的信任以及将公司品牌传递给我们的律师团队。ILC凭借其标志，凝聚了西贡土地与人民的精髓，展现出开放、多元、慷慨、侠义与信任的精神……",
+
             tip1: "任務",
             tip2: "願景",
             paragraph4: '"提升越南企業。"',
             paragraph5: '"新時代陪伴企業前進"',
+            paragraph6:
+              "该标志由一个蓝色地球图案、ILC字母和学院英文名称组成，其中：地球象征着全球范围内的强大连接能力。下方的五条曲线从粗到细，象征着企业在数字时代中的渐进式转型。蓝色代表和平关系、友好合作以及可持续发展的绿色经济基础。",
+
+            paragraph7:
+              "“ILC”三个字母是学院的缩写。字母“I”直立、简洁，位于标志正中央，体现出整体的平衡性。它不仅是一个缩写，更代表着学院的核心价值——法律的正直与公正始终处于中心地位。",
+
+            paragraph8:
+              "字母“L”是由“I”演变而来，象征着多样化与灵活转型的发展方向。字母“C”融合了法官敲击木槌与放大镜的形象，体现了对法律深入研究的精神。",
+
+            paragraph9:
+              "橙色的“ILC”三个字母象征着创造力、创新精神和知识。字体粗壮现代，体现了既传承传统又勇于革新的理念。底部是英文全称：Institute of Legal Science and Corporate Development。整个标志和谐统一，传达出为共同价值实现全球可持续合作的发展理念。",
           },
+          btnParagraphSeeMore: "查看更多",
+          btnParagraphCollapse: "收起",
           btnContent: "查看更多",
-          btnRegister: "注册"
+          btnRegister: "注册",
         },
         contentSection: {
           services: {
             header: "法医科学服务",
             content: "率先提供全面的法律解决方案，并与企业携手同行",
-            currentComments:"最新评论",
+            currentComments: "最新评论",
             noComment: "还没有评论",
             comment: "评论",
             sentComment: "提交评论",
             needLogin2Comment: {
               sentence1: "你需要",
               sentence2: "登录",
-              sentence3: "才能评论"
+              sentence3: "才能评论",
             },
             inputComment: "输入评论",
             thank4Rated: {
               sentence1: "您已评分",
-              sentence2: "谢谢您的评价！"
+              sentence2: "谢谢您的评价！",
             },
             evaluateArticle: "评价文章",
             share: "分享",
@@ -607,9 +693,11 @@ const resources = {
             enterprise: "企业合作伙伴",
             enterprise_sub: "我们自豪地与多个行业的大型且强大的企业合作",
             educationInstitution: "教育合作伙伴",
-            educationInstitution_sub: "我们的生态系统与全国各地的教育机构合作，建立了一个强大的合作伙伴网络",
+            educationInstitution_sub:
+              "我们的生态系统与全国各地的教育机构合作，建立了一个强大的合作伙伴网络",
             organization: "合作机构",
-            organization_sub: "学院正在快速发展，与有潜力的机构建立紧密联系，正在崛起",
+            organization_sub:
+              "学院正在快速发展，与有潜力的机构建立紧密联系，正在崛起",
           },
         },
       },
@@ -667,8 +755,8 @@ const resources = {
         VICE_CHAIRMAN: "副董事长",
         GROUP_PRESIDENT: "部门负责人",
         GROUP_VICE_PRESIDENT: "部门副负责人",
-        ROOM_PRESIDENT: "部门经理",
-        ROOM_VICE_PRESIDENT: "副科长",
+        ROOM_PRESIDENT: "办公室主任",
+        ROOM_VICE_PRESIDENT: "办公室副主任",
         NA: "未知",
       },
       titles: {
@@ -692,7 +780,7 @@ const resources = {
         SOCIAL_WORK_AND_BUSINESS_SUPPORT_BOARD: "社会工作与商业支持委员会",
         HUMAN_RESOURCE_TRAINING_AND_DEVELOPMENT_DEPARTMENT:
           "人力资源培训与发展部",
-        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: '投资与传播合作部',
+        INVESTMENT_AND_COMMUNICATION_COOPERATION_DEPARTMENT: "投资与传播合作部",
         DEPARTMENT_OF_DIGITAL_ECONOMY_ARTIFICIAL_INTELLIGENCE_AND_BUSINESS_DEVELOPMENT:
           "数字经济、人工智能与商业发展部",
         DEPARTMENT_OF_ECONOMICS_FINANCE_AND_INTERNATIONAL_TRADE:

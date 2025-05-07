@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
-import { ChevronDown, ChevronRight, Menu, Search, X } from "lucide-react";
+import { AlignLeft, ChevronDown, ChevronRight, Search } from "lucide-react";
 import navLinks from "../../constants/navLinks.js";
 import { Logo } from "../../assets/index.js";
 import { getAllArticles } from "../../api/Article/article.js";
@@ -130,11 +130,35 @@ const Header = () => {
 
     const selectedArticles = articleMap[nav.id] || articleMap.default;
 
-    return selectedArticles.slice(0, 5).map((article) => ({
-      id: article.id,
-      label: article.title,
-      path: `${nav.dynamicPrefix}/${article.id}`,
-    }));
+    return selectedArticles
+      .sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+
+        // Compare alphabetically
+        if (titleA[0] < titleB[0]) return -1;
+        if (titleA[0] > titleB[0]) return 1;
+
+        // If same starting character, sort by length
+        if (titleA.length < titleB.length) return -1;
+        if (titleA.length > titleB.length) return 1;
+
+        return 0;
+      })
+      .map((article) => ({
+        id: article.id,
+        label: article.title,
+        path: `${nav.dynamicPrefix}/${article.id}`,
+      }));
+
+    // selectedArticles
+    //   .sort((a, b) => b.view - a.view)
+    //   //.slice(0, 5)
+    //   .map((article) => ({
+    //     id: article.id,
+    //     label: article.title,
+    //     path: `${nav.dynamicPrefix}/${article.id}`,
+    //   }));
   };
 
   const dynamicNavLinks = navLinks.map((nav) =>
@@ -153,7 +177,7 @@ const Header = () => {
       <div className="w-full relative shadow-lg">
         <div className=" relative mx-auto max-w-screen-2xl ">
           {/* Logo */}
-          <div className="xl:absolute relative w-full  xl:left-[0%] h-full shadow-sm px-2  xl:max-w-[240px] bottom-[112%] z-40">
+          <div className="xl:absolute relative w-full  xl:left-[0%] h-full shadow-sm px-2  xl:max-w-[240px] bottom-[112%] z-30">
             <div className="bg-white text-center sticky">
               <button onClick={() => navigate("/")}>
                 <img
@@ -174,7 +198,7 @@ const Header = () => {
             {/* MOBILE MENU */}
             <div className="h-full flex items-center xl:hidden bg-brandPrimary w-full px-2 shadow-lg">
               <button className="mr-2" onClick={() => setIsOpen(true)}>
-                <Menu className="object-contain w-11 h-11 text-white" />
+                <AlignLeft className="object-contain w-8 h-8 text-white" />
               </button>
 
               <div className="relative w-full">
@@ -212,11 +236,10 @@ const Header = () => {
               className={`hidden xl:flex items-center  ${
                 isScrolled
                   ? "fixed top-0 left-0 justify-center w-full bg-white p-4 shadow-lg"
-                  : "relative justify-end mr-[5%]  h-full"
+                  : "relative justify-end mr-[5%] h-full"
               } `}
             >
               {" "}
-              {/* <ul className={"flex items-center gap-12"}> */}
               <ul
                 className={`flex items-center mr-2 ${
                   language.toUpperCase() === "VI"
@@ -257,17 +280,28 @@ const Header = () => {
                       {/* Nếu có submenu */}
                       {link.children && (
                         <ul
-                          className="absolute left-0 top-11 w-full min-w-48 bg-white shadow-lg opacity-0 invisible translate-y-3 
-                     group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
-                     transition-all duration-300 ease-in-out delay-150"
+                          className={clsx(
+                            "absolute left-0 w-max bg-white shadow-lg opacity-0 invisible translate-y-3",
+                            "group-hover:opacity-100 group-hover:visible group-hover:translate-y-0",
+                            "transition-all duration-300 ease-in-out delay-150",
+                            link.children.some(
+                              (child) =>
+                                child.children || child.children?.length !== 0
+                            ) && "border-t-2 border-brandPrimary",
+                            !isScrolled ? "top-[46px]" : "top-[44px]"
+                          )}
                         >
                           {link.children.map((child) => (
                             <li key={child.id}>
                               <Link
                                 to={child.path}
-                                className="block px-4 py-2 hover:bg-brandPrimary hover:text-white text-sm text-neutralGrey font-semibold"
+                                className="block px-4 py-2 hover:bg-brandPrimary hover:text-white text-sm text-neutralGrey font-semibold whitespace-nowrap"
                               >
-                                {t(child.label).toUpperCase()}
+                                {t(
+                                  child.label.length > 50
+                                    ? `${child.label.slice(0, 50)}...`
+                                    : child.label
+                                ).toUpperCase()}
                               </Link>
                             </li>
                           ))}
@@ -340,12 +374,12 @@ const Header = () => {
 
         <div
           className={clsx(
-            "fixed left-0 top-0 h-full w-3/4 bg-white shadow-lg transform transition-transform z-[100] duration-500 ease-in-out",
+            "fixed left-0 top-0 h-full w-3/4 bg-white shadow-lg transform transition-transform z-[100] duration-500 ease-in-out max-h-screen overflow-y-auto",
             isOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
           <div className="p-4">
-            <a href="/public" className="mx-auto">
+            <a href="/" className="mx-auto">
               <img
                 src={Logo}
                 alt="Viện Khoa học pháp lý và Phát triển doanh nghiệp (Institute of Legal Science and Corporate Development - ILC)"
@@ -401,8 +435,9 @@ const Header = () => {
             >
               <Search className="w-5 h-5 text-neutralDGrey" />
             </button>
+
             {suggestions.length > 0 && (
-              <ul className="absolute left-0 right-0 bg-white border border-gray-300 mt-1 max-h-60 overflow-y-auto z-50">
+              <ul className="absolute left-0 right-0 bg-white border border-gray-300 mt-1 max-h-60 z-50 overflow-y-auto">
                 {suggestions.map((article, index) => (
                   <li
                     key={index}

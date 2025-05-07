@@ -33,10 +33,11 @@ export default function ItemKnowledge({
         <img
           src={displayImage}
           alt={displayTitle}
+          loading="lazy"
           className="w-full h-[300px] aspect-square md:aspect-[4/3] md:h-auto object-cover md:mx-auto"
         />
         <div className="mx-auto w-full">
-          <h1 className="text-lg font-semibold hover:text-brandSecondary line-clamp-1">
+          <h1 className="text-md font-semibold hover:text-brandSecondary line-clamp-1">
             {displayTitle}
           </h1>
           <p className="text-base line-clamp-2">{displaySummary}</p>

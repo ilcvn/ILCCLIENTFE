@@ -2,13 +2,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { format } from "date-fns";
 import { DatePickerDialog } from "../datepicker/DatePickerDialog";
 import UploadComponent from "../UploadComponent";
 import { createReservation } from "../../api/reservation/reservation";
-import { uploadFile } from "../UploadFile";
-import { getAllArticles, getArticles } from "../../api/Article/article";
+import { getArticles } from "../../api/Article/article";
 import { LanguageContext } from "../../context/LanguageContext";
+import imageCompression from "browser-image-compression";
+import useCloudinaryUpload from "../../helper/uploadFileCloudinary";
+import { Paperclip } from "lucide-react";
 
 const ContactForm = ({ data }) => {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ const ContactForm = ({ data }) => {
   const [resetKey, setResetKey] = useState(0);
   const [errors, setErrors] = useState({});
   const searchQuery = "";
-  const type = "SERVICE";
+  const type = "";
   const [selectedItems, setSelectedItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
@@ -45,6 +46,8 @@ const ContactForm = ({ data }) => {
       return updatedItems;
     });
   };
+
+  const { uploadFile } = useCloudinaryUpload();
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -64,7 +67,10 @@ const ContactForm = ({ data }) => {
         const services = articles.filter(
           (ser) => ser.language.toUpperCase() === currentLanguage
         );
-        setArticles(services);
+        const data = services.sort((a, b) =>
+          a.title.localeCompare(b.title, "vi", { sensitivity: "base" })
+        );
+        setArticles(data);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
@@ -89,9 +95,27 @@ const ContactForm = ({ data }) => {
     }
   }, [searchQuery, currentPage, language, data]);
 
-  // Nhận file từ UploadComponent (đối tượng file)
-  const handleFileUpload = (file) => {
-    setFormData((prev) => ({ ...prev, file }));
+  const handleFileUpload = async (file) => {
+    try {
+      const imageTypes = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
+
+      if (imageTypes.includes(file.type)) {
+        // Nếu là ảnh thì nén
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+
+        const compressedFile = await imageCompression(file, options);
+        setFormData((prev) => ({ ...prev, file: compressedFile }));
+      } else {
+        // Nếu không phải ảnh, dùng file gốc
+        setFormData((prev) => ({ ...prev, file }));
+      }
+    } catch (error) {
+      console.error("Error compressing the image:", error);
+    }
   };
 
   const handleChange = (e) => {
@@ -191,14 +215,13 @@ const ContactForm = ({ data }) => {
 
       let subject = "";
       selectedItems.forEach((item, index) => {
-        subject += item + (index !== selectedItems.length - 1 ? ", " : ""); // Add comma unless it's the last item
+        subject += item + (index !== selectedItems.length - 1 ? ", " : "");
       });
       payload.subject = subject;
 
       const response = await createReservation(payload);
       toast.success("Gửi thành công!");
-
-      // Reset form sau khi gửi thành công
+      console.log("Payload:", payload);
       setFormData({
         name: "",
         phone: "",
@@ -218,7 +241,6 @@ const ContactForm = ({ data }) => {
       setLoading(false);
     }
   };
-
   return (
     <form className="space-y-4" onSubmit={handleSubmit}>
       {/* Các input thông tin */}
@@ -297,24 +319,28 @@ const ContactForm = ({ data }) => {
       </div>
 
       <div>
-        <h2 className="text-[16px] my-2">{t("footer.serviceText")}</h2>
+        <h2 className="text-[16px] font-medium my-2">
+          {t("footer.serviceText") + ":"}
+        </h2>
         {articles?.length > 0 && (
-          <>
-            {articles.map((article) => (
-              <div key={article.id} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  id={article.id}
-                  className="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                  checked={selectedItems.includes(article.id)}
-                  onChange={(e) => handleCheckboxChange(e, article.id)}
-                />
-                <label htmlFor={article.id} className="text-gray-700">
-                  {article.title}
-                </label>
-              </div>
-            ))}
-          </>
+          <div className="max-h-[200px] overflow-y-auto py-2">
+            {articles
+              .filter((article) => article.type !== "NEWS")
+              .map((article) => (
+                <div key={article.id} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id={article.id}
+                    className="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    checked={selectedItems.includes(article.id)}
+                    onChange={(e) => handleCheckboxChange(e, article.id)}
+                  />
+                  <label htmlFor={article.id} className="text-gray-700">
+                    {article.title}
+                  </label>
+                </div>
+              ))}
+          </div>
         )}
       </div>
 
@@ -331,14 +357,19 @@ const ContactForm = ({ data }) => {
         )}
       </div>
 
-      <div className="flex items-center space-x-3">
+      <div className="flex flex-col space-y-3 items-start md:flex-row md:items-center md:space-x-3">
         <label className="rounded cursor-pointer">
           <UploadComponent
             onFileUpload={handleFileUpload}
             resetKey={resetKey}
           />
         </label>
-        {formData.file && <p className="text-sm">{formData.file.name}</p>}
+        {formData.file && (
+          <div className="flex items-center gap-2">
+            <p className="text-sm">{formData.file.name}</p>
+            <Paperclip className="w-4 h-4" />
+          </div>
+        )}
       </div>
 
       <div className="flex space-x-3">

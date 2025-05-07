@@ -38,7 +38,7 @@ export default function LoginModal({ onClose, onLoginSuccess }) {
           className="flex items-center justify-center gap-2 w-full mb-3 py-2 rounded ring-1 ring-gray-300 hover:ring-blue-600"
           onClick={() => handleLogin(googleProvider)}
         >
-          <img src={Google} alt="Google" className="w-5 h-5" />
+          <img src={Google} alt="Google" className="w-5 h-5" loading="lazy"/>
           Đăng nhập với Google
         </button>
 
@@ -46,7 +46,7 @@ export default function LoginModal({ onClose, onLoginSuccess }) {
           className="flex items-center justify-center gap-2 w-full py-2 rounded ring-1 ring-gray-300 hover:ring-blue-600"
           onClick={() => handleLogin(facebookProvider)}
         >
-          <img src={Facebook} alt="Facebook" className="w-5 h-5" />
+          <img src={Facebook} alt="Facebook" className="w-5 h-5" loading="lazy" />
           Đăng nhập với Facebook
         </button>
       </div>

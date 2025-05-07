@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import ContentSection from "./ContentSection";
 import CardKnowledge from "./KnowledgeSection/CardKnowledge";
 import { MoveLeft, MoveRight } from "lucide-react";
@@ -16,6 +16,10 @@ export default function LayoutPage({
     ? Math.ceil(pagination.total / pagination.limit)
     : 0;
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [onPageChange]);
+
   return (
     <div>
       <div className="md:max-w-screen-2xl w-full mx-auto md:px-4 px-2 py-10 z-50 text-black">
@@ -23,9 +27,21 @@ export default function LayoutPage({
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-8 gap-5 bg-white">
           {Array.isArray(data) &&
             data.map((item, index) => (
-              <CardKnowledge key={index} {...item} basePath={path} typeArticle={item.type} views ={item.views} comments = {item.interactedArticles.filter(item => item.type === 'COMMENT').length} star={
-                (() => {
-                  const rateItems = item.interactedArticles.filter(item => item.type === 'RATE');
+              <CardKnowledge
+                key={index}
+                {...item}
+                basePath={path}
+                typeArticle={item.type}
+                views={item.views}
+                comments={
+                  item.interactedArticles.filter(
+                    (item) => item.type === "COMMENT"
+                  ).length
+                }
+                star={(() => {
+                  const rateItems = item.interactedArticles.filter(
+                    (item) => item.type === "RATE"
+                  );
                   const total = rateItems.reduce(
                     (sum, item) => sum + parseInt(item.value, 10),
                     0
@@ -33,8 +49,8 @@ export default function LayoutPage({
                   return rateItems.length > 0
                     ? Math.ceil(total / rateItems.length)
                     : 5;
-                })()
-              } />
+                })()}
+              />
             ))}
         </div>
 

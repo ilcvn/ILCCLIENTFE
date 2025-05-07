@@ -102,6 +102,7 @@ export default function CardAvatar({props = {}}) {
       <img
         src={imgUrl}
         alt={fullName}
+        loading="lazy"
         className="p-1 w-[330px]  aspect-square mx-auto rounded-full object-cover transition-transform duration-300 hover:scale-90"
       />
       <div className="p-2 md:mb-0  w-full lg:h-36 h-52 bg-white rounded-md shadow-md flex flex-col items-center justify-center text-center">

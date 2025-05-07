@@ -1,21 +1,21 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import {getMemberById} from "../../api/Nember/nember";
-import {FaBookOpen, FaPhone} from "react-icons/fa6";
-import {MdEmail} from "react-icons/md";
-import {useTranslation} from "react-i18next";
-import {getTitles} from "../../helper/TitleMember";
-import {getRoles} from "../../helper/RoleMember";
-import {RiContactsBook3Fill} from "react-icons/ri";
-import {BsBookmarkStarFill} from "react-icons/bs";
-import {Helmet} from "react-helmet";
-import {BannerMemberDetail} from "../../assets/index";
+import { getMemberById } from "../../api/Nember/nember";
+import { FaBookOpen, FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { useTranslation } from "react-i18next";
+import { getTitles } from "../../helper/TitleMember";
+import { getRoles } from "../../helper/RoleMember";
+import { RiContactsBook3Fill } from "react-icons/ri";
+import { BsBookmarkStarFill } from "react-icons/bs";
+import { Helmet } from "react-helmet";
+import { BannerMemberDetail } from "../../assets/index";
 
 export default function MemberPage() {
-  const {slug} = useParams();
+  const { slug } = useParams();
   const newslug = slug?.slice(slug.indexOf("=") + 1);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ export default function MemberPage() {
   const [education, setEducation] = useState([]);
   const [workExperience, setWorkExperience] = useState([]);
   const [consultExperience, setConsultExperience] = useState([]);
-
+  const navigate = useNavigate();
   const ChangeRole = getRoles();
   const ChangeTitle = getTitles();
 
@@ -53,7 +53,7 @@ export default function MemberPage() {
       }
 
       if (
-        origin_departments[i] === "BOARD_OF_DIRECTORS" &&
+        (origin_departments[i] === "BOARD_OF_DIRECTORS" || origin_departments[i] === "CHIEF_OF_STAFF" )&&
         origin_roles[i] !== "MEMBER"
       ) {
         role_department += t(`roles.${origin_roles[i]}`);
@@ -101,18 +101,19 @@ export default function MemberPage() {
         setWorkExperience(workData);
         setConsultExperience(consultData);
       } catch (err) {
-        setError(err);
+        navigate("/not-found", { replace: true });
+        console.error(err);
       } finally {
         setLoading(false);
       }
     };
 
     if (slug) fetchMember();
-  }, [slug]);
+  }, [slug, navigate]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching member: {error.message}</div>;
-  if (!member) return <div>No member found</div>;
+  if (!member) return null;
+
+  if (!member) return null;
 
   const renderTimeline = (data = []) => {
     if (data.length === 0) {
@@ -165,15 +166,14 @@ export default function MemberPage() {
     <div className="w-full">
       <BreadcrumbDynamic header={member.fullName} />
       <Helmet>
-        <title>
-          {member.fullName} | ILC
-        </title>
+        <title>{member.fullName} | ILC</title>
       </Helmet>
       <div className="flex justify-center">
         <img
           src="https://www.ilcvn.vn/assets/logo-jN9dnkTi.png"
           alt="Banner"
-          className="w-[500px] h-[450px] p-4 "
+          className="w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] p-4 "
+          loading="lazy"
         />
       </div>
 
@@ -188,12 +188,13 @@ export default function MemberPage() {
         <div className="absolute inset-0 bg-white/85 backdrop-blur-sm z-0" />
 
         {/* Content */}
-        <div className="relative z-10">
-          <div className="max-w-screen-2xl mx-auto bg-white p-8 shadow-lg mb-6">
+        <div className="relative z-10 md:p-8 lg:p-16">
+          <div className="min-w-full mx-auto bg-white shadow-lg mb-6 p-8">
             <div className="flex flex-col md:flex-row items-center md:items-start relative">
               <img
                 src={member.imgUrl}
                 alt={member.fullName}
+                loading="lazy"
                 className="w-64 h-64 p-1 lg:w-60 lg:h-60 rounded-full object-cover shadow-lg relative lg:absolute z-20 lg:bottom-16 border-4 border-brandSecondary/80 hover:border-blue-500 transition-all duration-300"
               />
 
@@ -211,20 +212,24 @@ export default function MemberPage() {
             </div>
 
             <div className="flex flex-col gap-2 md:mb-4 my-6">
-              <a
-                href={`tel:${member.phone}`}
-                className="flex items-center space-x-2 text-brandSecondary"
-              >
-                <FaPhone size={20} />
-                <span className="text-black/80">{member.phone}</span>
-              </a>
-              <a
-                href={`mailto:${member.gmail}`}
-                className="flex items-center space-x-2 text-brandSecondary"
-              >
-                <MdEmail size={20} />
-                <span className="text-black/80">{member.gmail}</span>
-              </a>
+              {member.phone.trim() && (
+                <a
+                  href={`tel:${member.phone}`}
+                  className="flex items-center space-x-2 text-brandSecondary"
+                >
+                  <FaPhone size={20} />
+                  <span className="text-black/80">{member.phone}</span>
+                </a>
+              )}
+              {member.gmail.trim() && (
+                <a
+                  href={`mailto:${member.gmail}`}
+                  className="flex items-center space-x-2 text-brandSecondary"
+                >
+                  <MdEmail size={20} />
+                  <span className="text-black/80">{member.gmail}</span>
+                </a>
+              )}
             </div>
 
             <div>
@@ -238,29 +243,29 @@ export default function MemberPage() {
           </div>
 
           {/* EDUCATION */}
-          <div className="w-full lg:max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+          {/* <div className="w-full lg:max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
             <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
               <FaBookOpen className="" /> {t("detailMember.EDUCATION")}
             </h2>
             <ul className="space-y-4">{renderTimeline(education)}</ul>
-          </div>
+          </div> */}
 
           {/* WORK EXPERIENCE */}
-          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+          {/* <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
             <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
               <RiContactsBook3Fill /> {t("detailMember.WORK_EXPERIENCE")}
             </h2>
             <ul className="space-y-4">{renderTimeline(workExperience)}</ul>
-          </div>
+          </div> */}
 
           {/* CONSULT EXPERIENCE */}
-          <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
+          {/* <div className="max-w-screen-2xl mx-auto p-8 bg-white shadow-lg mb-6">
             <h2 className="md:text-xl text-lg font-semibold text-brandSecondary flex gap-3">
               <BsBookmarkStarFill />
               {t("detailMember.CONSULT_EXPERIENCE")}
             </h2>
             <ul className="space-y-4">{renderTimeline(consultExperience)}</ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -70,6 +70,7 @@ export default function CardKnowledge({
         <img
           src={displayImage}
           alt={displayTitle}
+          loading="lazy"
           className="md:h-[310px] aspect-[2/1] w-full mx-auto transform transition-transform duration-300 ease-in-out group-hover:scale-110"
         />
       </div>

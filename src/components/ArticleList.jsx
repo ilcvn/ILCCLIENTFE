@@ -37,7 +37,7 @@ function ArticleList({ searchQuery = '' }) {
           <img
             src={article.preview_img}
             alt={article.title}
-            style={{ width: '200px', height: 'auto' }}
+            style={{ width: '200px', height: 'auto' ,loading: 'lazy' }}
           />
           <p><strong>Type:</strong> {article.type}</p>
           <p><strong>Summary:</strong> {article.content}</p>

@@ -42,18 +42,33 @@ const Footer = () => {
       name: t("footer.hotlineLabel"),
     },
     {
-      text: "info@ilcvn.vn",
+      text: "0983 285 499",
       id: 3,
+      name: '+Mr. Hưng:',
+    },
+    {
+      text: "0934 121 183",
+      id: 4,
+      name: '+Mr. Ngọc Anh:',
+    },
+    {
+      text: "0971 992 232",
+      id: 5,
+      name: '+Ms. Hà:',
+    },
+    {
+      text: "info@ilcvn.vn",
+      id: 6,
       name: t("footer.emailLabel"),
     },
     {
       text: t("footer.workingTimeText"),
-      id: 4,
+      id: 7,
       name: t("footer.workingTimeLabel"),
     },
     {
       text: t("0318760066"),
-      id: 5, // Sửa id để tránh trùng với id: 4
+      id: 8, // Sửa id để tránh trùng với id: 4
       name: t("footer.tax"),
     },
   ];
@@ -74,7 +89,7 @@ const Footer = () => {
           currentLanguage
         );
         const { articles, pagination } = res.data.data;
-        const firstFive = articles.slice(0, 3);
+        const firstFive = articles.slice(0, 4);
 
         setArticles(firstFive);
         setPagination(pagination);
@@ -94,9 +109,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-brandPrimary text-white py-10 px-6 md:px-12 justify-end">
-      <div className="container mx-auto flex flex-col md:flex-row flex-wrap gap-8 md:gap-12">
+      <div className="container w-full mx-auto grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-8 md:gap-12">
         {/* Cột 1: Liên hệ */}
-        <div className="w-full md:w-[45%] lg:w-[20%]">
+        <div className="w-full ">
           <h2 className="text-xl font-semibold">{t("footer.contactTitle")}</h2>
           <hr className="border-t-2 mt-2" />
           <nav className="mt-4 space-y-3 text-md">
@@ -116,7 +131,7 @@ const Footer = () => {
         </div>
 
         {/* Cột 2: Hỗ trợ */}
-        <div className="w-full md:w-[45%] lg:w-[20%]">
+        <div className="w-full ">
           <h2 className="text-xl font-semibold">{t("footer.supportTitle")}</h2>
           <hr className="border-t-2 mt-2" />
           <nav className="mt-4 space-y-3">
@@ -162,14 +177,14 @@ const Footer = () => {
         </div>
 
         {/* Cột 3: Đăng ký tư vấn */}
-        <div className="w-full md:w-[45%] lg:w-[20%]">
+        <div className="w-full ">
           <h2 className="text-xl font-semibold">{t("footer.consultTitle")}</h2>
           <hr className="border-t-2 mt-2" />
           <ConsultationForm />
         </div>
 
         {/* Cột 4: Bản đồ */}
-        <div className="w-full md:w-[45%] lg:w-[20%]">
+        <div className="w-full">
           <h2 className="text-xl font-semibold">{t("footer.mapTitle")}</h2>
           <hr className="border-t-2 mt-2" />
           <div className="mt-4 w-full h-60">

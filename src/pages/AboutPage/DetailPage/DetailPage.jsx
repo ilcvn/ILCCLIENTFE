@@ -3,7 +3,7 @@ import ItemKnowledge from "../../../components/KnowledgeSection/ItemKnowledge";
 import { getArticleById, getArticles } from "../../../api/Article/article";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./Article.css";
-import parse from "html-react-parser";
+import parse, { domToReact } from "html-react-parser";
 import DOMPurify from "dompurify";
 import BreadcrumbDynamic from "../../../components/layouts/Breadcrumb";
 import { convertISOToDate } from "../../../helper/date";
@@ -15,7 +15,6 @@ import LoginModal from "../../../components/LoginModal";
 import clsx from "clsx";
 import { createInteractedArticle } from "../../../api/InteractedArticle/interactedArticle";
 import { toast } from "react-toastify";
-import { Eye } from "lucide-react";
 
 export default function DetailPage() {
   const [articles, setArticles] = useState([]);
@@ -44,7 +43,7 @@ export default function DetailPage() {
   const [showLoginPrompt, setShowLoginPrompt] = useState(true);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [showLoginDialog, setShowLoginDialog] = useState(false);
-
+  const navigate = useNavigate();
   const pathToCategory = {
     "dich-vu": "SERVICE",
     "dao-tao": "TRAINING",
@@ -69,9 +68,9 @@ export default function DetailPage() {
     const articleID = parts.at(-1);
 
     const data = {
-      userName: user.email,
-      fullName: user.name,
-      avatar: user.photo,
+      userName: user?.email,
+      fullName: user?.name,
+      avatar: user?.photo,
       type: type,
       value: value.trim(),
       articleID: articleID,
@@ -150,6 +149,8 @@ export default function DetailPage() {
         }
       })
       .catch((error) => {
+        navigate("/not-found", { replace: true });
+
         console.error("Error fetching article:", error);
       })
       .finally(() => {
@@ -204,7 +205,7 @@ export default function DetailPage() {
 
   // Xử lý HTML, giữ lại iframe
   const sanitizedHTML = DOMPurify.sanitize(article.content || "", {
-    ADD_TAGS: ["iframe"],
+    ADD_TAGS: ["iframe", "blockquote"],
     ADD_ATTR: [
       "allow",
       "allowfullscreen",
@@ -223,6 +224,13 @@ export default function DetailPage() {
           <div className="iframe-container">
             <iframe {...domNode.attribs} title="Embedded content" />
           </div>
+        );
+      }
+      if (domNode.name === "blockquote") {
+        return (
+          <blockquote className="custom-blockquote">
+            {domToReact(domNode.children)}
+          </blockquote>
         );
       }
     },
@@ -269,6 +277,7 @@ export default function DetailPage() {
                 src={article.preview_img}
                 alt={article.title}
                 className="w-full aspect-[2/1] object-cover"
+                loading="lazy"
               />
             )}
             <div className="article-content">{parsedContent}</div>
@@ -331,6 +340,7 @@ export default function DetailPage() {
                       src={comment.user.avatar}
                       alt={comment.user.name}
                       className="w-10 h-10 rounded-full"
+                      loading="lazy"
                     />
                     <div className="bg-gray-100 p-3 rounded-lg w-full">
                       <div className="flex justify-between items-center">

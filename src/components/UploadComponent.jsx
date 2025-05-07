@@ -1,3 +1,4 @@
+import { File } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
 export default function UploadComponent({ onFileUpload, resetKey }) {
@@ -15,7 +16,7 @@ export default function UploadComponent({ onFileUpload, resetKey }) {
       return;
     }
     setFile(selectedFile);
-    onFileUpload(selectedFile); // Truyền file cho component cha
+    onFileUpload(selectedFile);
   };
 
   return (
@@ -24,13 +25,17 @@ export default function UploadComponent({ onFileUpload, resetKey }) {
         id="fileInput"
         type="file"
         className="hidden"
+        accept=".jpg,.jpeg,.png,.pdf,.docx,.txt"
         onChange={handleFileChange}
       />
       <label
         htmlFor="fileInput"
-        className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer hover:bg-blue-600 transition"
+        className="px-4 py-2 ring-1 ring-brandPrimary text-brandPrimary rounded cursor-pointer hover:bg-blue-100 transition max-w-max truncate"
       >
-        {file ? file.name : "File"}
+        <div className="flex items-center gap-2">
+          {file ? "Change File" : "File upload"}
+          <File className="w-4 h-4" />
+        </div>
       </label>
     </div>
   );
