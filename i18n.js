@@ -233,7 +233,7 @@ const resources = {
         GROUP_PRESIDENT: "Trưởng Ban",
         GROUP_VICE_PRESIDENT: "Phó Ban",
         ROOM_PRESIDENT: "Chánh Văn Phòng",
-        ROOM_VICE_PRESIDENT: "Phó Chánh Phòng",
+        ROOM_VICE_PRESIDENT: "Phó Chánh Văn Phòng",
         NA: "Chưa xác định",
       },
 
