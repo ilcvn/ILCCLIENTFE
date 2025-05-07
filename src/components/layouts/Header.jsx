@@ -298,8 +298,8 @@ const Header = () => {
                                 className="block px-4 py-2 hover:bg-brandPrimary hover:text-white text-sm text-neutralGrey font-semibold whitespace-nowrap"
                               >
                                 {t(
-                                  child.label.length > 50
-                                    ? `${child.label.slice(0, 50)}...`
+                                  child.label.length > 35
+                                    ? `${child.label.slice(0, 35)}...`
                                     : child.label
                                 ).toUpperCase()}
                               </Link>
