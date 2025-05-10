@@ -65,7 +65,7 @@ export default function MemberPage() {
           t(`about.${origin_departments[i]}`);
       }
     }
-    return role_department;
+    return role_department.replace("Hội Đồng Hội Đồng", "Hội Đồng").replace("Ban Ban", "Ban");
   };
 
   const getTitleNames = (penName) => {
