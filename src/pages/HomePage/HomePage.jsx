@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import BlogCard from "../../components/BlogCard";
-import CarouselBanner from "../../components/layouts/CarouselBanner";
+import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 import { Banner, Blogcard_1 } from "../../assets";
+import BlogCard from "../../components/BlogCard";
 import ContentSection from "../../components/ContentSection";
+import CarouselBanner from "../../components/layouts/CarouselBanner";
+import SliderMember from "../../components/MemberSlider";
 import SliderCardsItem from "../../components/SliderCardsItem";
 import SliderCounterparty from "../../components/SliderCounterparty";
-import { useTranslation } from "react-i18next";
-import SliderMember from "../../components/MemberSlider";
-import { Helmet } from "react-helmet";
-import { AnimatePresence, motion } from "framer-motion";
-import clsx from "clsx";
 
 function HomePage() {
   const { t } = useTranslation();
