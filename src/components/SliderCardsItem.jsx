@@ -1,65 +1,36 @@
 /* eslint-disable react/prop-types */
-import React, {useState, useEffect, useRef, useContext} from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Card from "./Card";
-import {ChevronLeft, ChevronRight} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import CardVideo from "./CardVideo";
-import {getArticles} from "../api/Article/article";
-import {LanguageContext} from "../context/LanguageContext";
-import {useTranslation} from "react-i18next";
+import { getArticles } from "../api/Article/article";
+import { LanguageContext } from "../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 
-const videosArray = [
+const videos = [
   {
     id: 1,
-    title: "3 Thay Đổi Quan Trọng Trên VneID",
-    img: "https://image3.luatvietnam.vn/uploaded/665twebp/images/original/2025/01/06/thay-doi-quan-trong-tren-vneid-_0601174306.jpg",
-    url: "https://www.youtube.com/watch?v=LG2EqTfb-A4",
-  },
-  {
-    id: 2,
-    title: "3 Thay Đổi Quan Trọng Trên VneID",
-    img: "https://image3.luatvietnam.vn/uploaded/665twebp/images/original/2025/01/06/thay-doi-quan-trong-tren-vneid-_0601174306.jpg",
-    url: "https://www.youtube.com/watch?v=LG2EqTfb-A4",
-  },
-  {
-    id: 3,
-    title: "3 Thay Đổi Quan Trọng Trên VneID",
-    img: "https://image3.luatvietnam.vn/uploaded/665twebp/images/original/2025/01/06/thay-doi-quan-trong-tren-vneid-_0601174306.jpg",
-    url: "https://www.youtube.com/watch?v=LG2EqTfb-A4",
-  },
-  {
-    id: 4,
-    title: "3 Thay Đổi Quan Trọng Trên VneID",
-    img: "https://image3.luatvietnam.vn/uploaded/665twebp/images/original/2025/01/06/thay-doi-quan-trong-tren-vneid-_0601174306.jpg",
-    url: "https://www.youtube.com/watch?v=LG2EqTfb-A4",
-  },
-  {
-    id: 5,
-    title: "3 Thay Đổi Quan Trọng Trên VneID",
-    img: "https://image3.luatvietnam.vn/uploaded/665twebp/images/original/2025/01/06/thay-doi-quan-trong-tren-vneid-_0601174306.jpg",
-    url: "https://www.youtube.com/watch?v=LG2EqTfb-A4",
-  },
-  {
-    id: 6,
-    title: "3 Thay Đổi Quan Trọng Trên VneID",
-    img: "https://image3.luatvietnam.vn/uploaded/665twebp/images/original/2025/01/06/thay-doi-quan-trong-tren-vneid-_0601174306.jpg",
-    url: "https://www.youtube.com/watch?v=LG2EqTfb-A4",
+    title:
+      "Chào mừng đến với Viện Khoa học Pháp lý và Phát triển Doanh nghiệp ILC.",
+    img: "https://drive.google.com/thumbnail?id=1jE06rMnAZNjRo2P0tGQ-_yUQvEvyS9j9",
+    url: "https://drive.google.com/file/d/1jE06rMnAZNjRo2P0tGQ-_yUQvEvyS9j9/view",
   },
 ];
 
-const SliderCardsItem = ({isCard, isCardVideo, isPrevNextBtn}) => {
+const SliderCardsItem = ({ isCard, isCardVideo, isPrevNextBtn }) => {
   const [cardsPerView, setCardsPerView] = useState(4);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const {t} = useTranslation();
-  const {language} = useContext(LanguageContext);
+  const { t } = useTranslation();
+  const { language } = useContext(LanguageContext);
 
-  const [sliderState, setSliderState] = useState({index: 0, direction: 1});
+  const [sliderState, setSliderState] = useState({ index: 0, direction: 1 });
   const [dragStartX, setDragStartX] = useState(null);
   const [dragDelta, setDragDelta] = useState(0);
   const containerRef = useRef(null);
 
-  const dataSource = isCardVideo ? videosArray : articles;
+  const dataSource = isCardVideo ? videos : articles;
   const sliderArrayLength = dataSource.length;
 
   // Responsive cardsPerView
@@ -109,7 +80,7 @@ const SliderCardsItem = ({isCard, isCardVideo, isPrevNextBtn}) => {
   // Reset slider index when language changes or dataSource updates
   useEffect(() => {
     if (sliderArrayLength <= cardsPerView) {
-      setSliderState({index: 0, direction: 1});
+      setSliderState({ index: 0, direction: 1 });
     }
   }, [language, sliderArrayLength, cardsPerView]);
 
@@ -120,9 +91,9 @@ const SliderCardsItem = ({isCard, isCardVideo, isPrevNextBtn}) => {
         setSliderState((prev) => {
           let next = prev.index + prev.direction;
           if (next >= sliderArrayLength - cardsPerView)
-            return {index: sliderArrayLength - cardsPerView, direction: -1};
-          if (next <= 0) return {index: 0, direction: 1};
-          return {index: next, direction: prev.direction};
+            return { index: sliderArrayLength - cardsPerView, direction: -1 };
+          if (next <= 0) return { index: 0, direction: 1 };
+          return { index: next, direction: prev.direction };
         });
       }, 3000);
       return () => clearInterval(interval);
@@ -189,7 +160,7 @@ const SliderCardsItem = ({isCard, isCardVideo, isPrevNextBtn}) => {
             <div
               key={card.id || index}
               className="flex-shrink-0 px-2 md:px-4"
-              style={{width: `${100 / cardsPerView}%`}}
+              style={{ width: `${100 / cardsPerView}%` }}
             >
               {isCard && (
                 <Card
