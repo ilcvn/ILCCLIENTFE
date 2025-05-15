@@ -1,19 +1,18 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, useRef, useContext } from "react";
-import Card from "./Card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import CardVideo from "./CardVideo";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { getArticles } from "../api/Article/article";
 import { LanguageContext } from "../context/LanguageContext";
-import { useTranslation } from "react-i18next";
+import Card from "./Card";
+import CardVideo from "./CardVideo";
 
 const videos = [
   {
     id: 1,
     title:
       "Chào mừng đến với Viện Khoa học Pháp lý và Phát triển Doanh nghiệp ILC.",
-    img: "https://drive.google.com/thumbnail?id=1jE06rMnAZNjRo2P0tGQ-_yUQvEvyS9j9",
-    url: "https://drive.google.com/file/d/1jE06rMnAZNjRo2P0tGQ-_yUQvEvyS9j9/view",
+    videoId: "8fu0H_PbZjA",
   },
 ];
 
