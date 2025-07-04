@@ -34,7 +34,10 @@ const resources = {
         emailLabel: "Email:",
         workingTimeLabel: "Thời gian làm việc:",
         workingTimeText: "Thứ 2 - Thứ 7: Từ 8:00 đến 17:00",
-        addressOffice1Label: "Văn phòng tại tỉnh Bình Dương: ",
+        mainaddressOfficeLabel: "Địa chỉ trụ sở chính: ",
+        mainaddressOfficeText:
+          "Số 32, Đường số 18, phường Long Trường, TP. Hồ Chí Minh",
+        addressOffice1Label: "Văn phòng tại Bình Dương: ",
         addressOffice1Text:
           "Số 450 Phạm Ngọc Thạch, phường Bình Dương, TP. Hồ Chí Minh",
         addressOffice2Label: "Văn phòng tại Hà Nội: ",
@@ -310,7 +313,10 @@ const resources = {
         emailLabel: "Email:",
         workingTimeLabel: "Working Hours:",
         workingTimeText: "Mon - Sat: 8:00 to 17:00",
-        addressOffice1Label: "Office in Binh Duong province: ",
+        mainaddressOfficeLabel: "Head Office Address: ",
+        mainaddressOfficeText:
+          "No. 32, Street No. 18, Long Truong Ward, Ho Chi Minh City",
+        addressOffice1Label: "Office in Binh Duong: ",
         addressOffice1Text:
           "No. 450 Pham Ngoc Thach Street, Binh Duong Ward, Ho Chi Minh City",
         addressOffice2Label: "Office in Hanoi: ",
@@ -577,6 +583,9 @@ const resources = {
         emailLabel: "邮箱：",
         workingTimeLabel: "工作时间：",
         workingTimeText: "周一至周六：8:00 至 17:00",
+        mainaddressOfficeLabel: "总部地址: ",
+        mainaddressOfficeText:
+          "越南胡志明市，Long Trường坊，第18街，32号",
         addressOffice1Label: "办公室在平阳省: ",
         addressOffice1Text: "越南胡志明市，Bình Dương坊，Phạm Ngọc Thạch街450号",
 
