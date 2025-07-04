@@ -18,18 +18,13 @@ const Footer = () => {
   // Dữ liệu liên hệ
   const address = [
     {
-      text: t("footer.mainaddressOfficeText"),
-      id: 5,
-      name: t("footer.mainaddressOfficeLabel"),
-    },
-    {
       text: t("footer.addressOffice2Text"),
-      id: 6,
+      id: 5,
       name: t("footer.addressOffice2Label"),
     },
     {
       text: t("footer.addressOffice1Text"),
-      id: 7, // Sửa id để tránh trùng với id: 5
+      id: 6, // Sửa id để tránh trùng với id: 5
       name: t("footer.addressOffice1Label"),
     },
   ];
