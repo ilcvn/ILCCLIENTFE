@@ -29,14 +29,11 @@ const resources = {
         contactTitle: "Liên hệ với chúng tôi",
         addressLabel: "Địa chỉ:",
         addressText:
-          "Số 32, Đường số 18, Khu phố 1, phường Phú Hữu, thành phố Thủ Đức, Thành phố Hồ Chí Minh",
+          "Số 32, Đường số 18, phường Long Trường, TP. Hồ Chí Minh",
         hotlineLabel: "Hotline:",
         emailLabel: "Email:",
         workingTimeLabel: "Thời gian làm việc:",
         workingTimeText: "Thứ 2 - Thứ 7: Từ 8:00 đến 17:00",
-        mainaddressOfficeLabel: "Địa chỉ trụ sở chính: ",
-        mainaddressOfficeText:
-          "Số 32, Đường số 18, phường Long Trường, TP. Hồ Chí Minh",
         addressOffice1Label: "Văn phòng tại Bình Dương: ",
         addressOffice1Text:
           "Số 450 Phạm Ngọc Thạch, phường Bình Dương, TP. Hồ Chí Minh",
@@ -308,17 +305,14 @@ const resources = {
         contactTitle: "Contact Us",
         addressLabel: "Address:",
         addressText:
-          "32, Street No. 18, Quarter 1, Phú Hữu Ward, Thủ Đức City, Ho Chi Minh City.",
+          "No. 32, Street No. 18, Long Truong Ward, Ho Chi Minh City.",
         hotlineLabel: "Hotline:",
         emailLabel: "Email:",
         workingTimeLabel: "Working Hours:",
         workingTimeText: "Mon - Sat: 8:00 to 17:00",
-        mainaddressOfficeLabel: "Head Office Address: ",
-        mainaddressOfficeText:
-          "No. 32, Street No. 18, Long Truong Ward, Ho Chi Minh City",
         addressOffice1Label: "Office in Binh Duong: ",
         addressOffice1Text:
-          "No. 450 Pham Ngoc Thach Street, Binh Duong Ward, Ho Chi Minh City",
+          "No. 450 Pham Ngoc Thach Street, Binh Duong Ward, Ho Chi Minh City.",
         addressOffice2Label: "Office in Hanoi: ",
         addressOffice2Text:
           "No. 70 Trung Hoa Street, Yen Hoa Ward, Hanoi City",
@@ -456,7 +450,7 @@ const resources = {
         emailLabel: "Email:",
         hotlineLabel: "Hotline:",
         addressText:
-          "32, Street No. 18, Quarter 1, Phú Hữu Ward, Thủ Đức City, Ho Chi Minh City.",
+          "No. 32, Street No. 18, Long Truong Ward, Ho Chi Minh City.",
         namePlaceholder: "Full Name",
         adddresslabel: "Address:",
         phonePlaceholder: "Phone Number",
@@ -578,7 +572,7 @@ const resources = {
       footer: {
         contactTitle: "联系我们",
         addressLabel: "地址：",
-        addressText: "明市，富裕坊，第一社区，18号街，32号",
+        addressText: "越南胡志明市，Long Trường坊，第18街，32号",
         hotlineLabel: "热线：",
         emailLabel: "邮箱：",
         workingTimeLabel: "工作时间：",
@@ -715,7 +709,7 @@ const resources = {
         platformName: "ILC平台",
         emailLabel: "邮箱:",
         hotlineLabel: "热线:",
-        addressText: "地址：胡志明市，富裕坊，第一社区，18号街，32号.",
+        addressText: "地址：越南胡志明市，Long Trường坊，第18街，32号.",
         namePlaceholder: "姓名",
         adddresslabel: "地址：",
         phonePlaceholder: "电话号码",
