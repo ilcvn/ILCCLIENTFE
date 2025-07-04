@@ -36,10 +36,10 @@ const resources = {
         workingTimeText: "Thứ 2 - Thứ 7: Từ 8:00 đến 17:00",
         addressOffice1Label: "Văn phòng tại tỉnh Bình Dương: ",
         addressOffice1Text:
-          "Số 450 Phạm Ngọc Thạch, phường Phú Mỹ, thành phố Thủ Dầu Một, tỉnh Bình Dương",
+          "Số 450 Phạm Ngọc Thạch, phường Bình Dương, TP. Hồ Chí Minh",
         addressOffice2Label: "Văn phòng tại Hà Nội: ",
         addressOffice2Text:
-          "Số 70 Trung Hòa, phường Trung Hòa, quận Cầu Giấy, Hà Nội",
+          "Số 70 Trung Hoà, phường Yên Hoà, TP. Hà Nội",
         supportTitle: "Hỗ Trợ",
         tax: "Mã số thuế: ",
         office: "Văn Phòng Đại Diện",
@@ -312,10 +312,10 @@ const resources = {
         workingTimeText: "Mon - Sat: 8:00 to 17:00",
         addressOffice1Label: "Office in Binh Duong province: ",
         addressOffice1Text:
-          "No. 450 Pham Ngoc Thach, Phu My ward, Thu Dau Mot city, Binh Duong province",
+          "No. 450 Pham Ngoc Thach Street, Binh Duong Ward, Ho Chi Minh City",
         addressOffice2Label: "Office in Hanoi: ",
         addressOffice2Text:
-          "No. 70 Trung Hoa, Trung Hoa ward, Cau Giay district, Hanoi",
+          "No. 70 Trung Hoa Street, Yen Hoa Ward, Hanoi City",
         supportTitle: "Support",
         tax: "Tax code:",
         office: "Representative Office",
@@ -578,10 +578,10 @@ const resources = {
         workingTimeLabel: "工作时间：",
         workingTimeText: "周一至周六：8:00 至 17:00",
         addressOffice1Label: "办公室在平阳省: ",
-        addressOffice1Text: "平阳省，守德一市，富美坊，范玉石街450号",
+        addressOffice1Text: "越南胡志明市，Bình Dương坊，Phạm Ngọc Thạch街450号",
 
         addressOffice2Label: "办公室在河内: ",
-        addressOffice2Text: "河内市，桥纸区，中和坊，中和街70号",
+        addressOffice2Text: "越南河内市，Yên Hoà坊，Trung Hòa街70号",
         supportTitle: "支持",
         tax: "税号: ",
         office: "代表处",
