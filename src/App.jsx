@@ -17,19 +17,26 @@ import MemberPage from "./pages/MemberPage/MemberPage.jsx";
 import SearchPage from "./pages/SearchPage/SearchPage.jsx";
 import ScrollToTop from "./components/layouts/ScrollToTop.jsx";
 import { ToastContainer } from "react-toastify";
+import AdmissionPage from "./pages/AdmissionPage/AdmissionPage.jsx";
 
 const routesConfig = [
   { path: "/", element: <HomePage /> },
   { path: "/tong-quan", element: <AboutPage /> },
+
   { path: "/dich-vu", element: <ServicePage typePage="SERVICE" /> },
   { path: "/dich-vu/:slug", element: <DetailPage /> },
+
   { path: "/tin-tuc", element: <ServicePage typePage="NEWS" /> },
   { path: "/tin-tuc/:slug", element: <DetailPage /> },
+
   { path: "/nghien-cuu", element: <ServicePage typePage="RESEARCH" /> },
   { path: "/nghien-cuu/:slug", element: <DetailPage /> },
 
   { path: "/dao-tao", element: <ServicePage typePage="TRAINING" /> },
   { path: "/dao-tao/:slug", element: <DetailPage /> },
+
+  { path: "/tuyen-sinh", element: <AdmissionPage typePage="ADMISSIONS" /> },
+  { path: "/tuyen-sinh/:slug", element: <DetailPage /> },
 
   { path: "/lien-he", element: <ContactPage /> },
   { path: "/tong-quan/:slug", element: <MemberPage /> },

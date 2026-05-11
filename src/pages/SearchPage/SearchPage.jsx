@@ -6,6 +6,7 @@ import { getArticles } from "../../api/Article/article";
 import { LanguageContext } from "../../context/LanguageContext";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
+import { Frown } from "lucide-react";
 
 export default function SearchPage() {
   const location = useLocation();
@@ -36,7 +37,8 @@ export default function SearchPage() {
         const { articles, pagination } = res.data.data;
 
         const articlesLeague = articles.filter(
-          (article) => article.language.toLowerCase() === language.toLowerCase()
+          (article) =>
+            article.language.toLowerCase() === language.toLowerCase(),
         );
 
         setArticles(articles);
@@ -78,8 +80,9 @@ export default function SearchPage() {
               path={location.pathname}
             />
           ) : (
-            <div className="w-full flex justify-center items-center h-[82vh] bg-gray-400">
-              <p className="text-4xl">{t("search.find")}</p>
+            <div className="w-full flex justify-center items-center h-[82vh] bg-slate-50">
+              <p className="text-3xl">{t("search.find")}</p>{" "}
+              <Frown className="ml-2 w-8 h-8" />
             </div>
           )}
         </div>

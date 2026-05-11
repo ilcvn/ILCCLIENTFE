@@ -49,6 +49,7 @@ export default function DetailPage() {
     "dao-tao": "TRAINING",
     "nghien-cuu": "RESEARCH",
     "tin-tuc": "NEWS",
+    "tuyen-sinh": "ADMISSIONS",
   };
 
   const INTERACTED_ARTICLE_ENUM = {
@@ -110,11 +111,11 @@ export default function DetailPage() {
         setArticle(articleData);
 
         const rateItems = articleData.interactedArticles.filter(
-          (item) => item.type === INTERACTED_ARTICLE_ENUM.RATE
+          (item) => item.type === INTERACTED_ARTICLE_ENUM.RATE,
         );
         const total = rateItems.reduce(
           (sum, item) => sum + parseInt(item.value, 10),
-          0
+          0,
         );
         const point =
           rateItems.length > 0 ? Math.ceil(total / rateItems.length) : 5;
@@ -138,7 +139,7 @@ export default function DetailPage() {
           const ratedRecord_by_user = articleData.interactedArticles.find(
             (item) =>
               item.type === INTERACTED_ARTICLE_ENUM.RATE &&
-              item.userName === user.email
+              item.userName === user.email,
           );
 
           if (ratedRecord_by_user) {
@@ -167,9 +168,9 @@ export default function DetailPage() {
         const res = await getArticles(
           searchQuery,
           currentPage,
-          6,
+          10,
           categoryPath,
-          currentLanguage
+          currentLanguage,
         );
         const { articles: fetchedArticles, pagination } = res.data.data;
 
@@ -178,7 +179,8 @@ export default function DetailPage() {
           : fetchedArticles;
 
         const articlesLeague = filteredArticles.filter(
-          (article) => article.language.toLowerCase() === language.toLowerCase()
+          (article) =>
+            article.language.toLowerCase() === language.toLowerCase(),
         );
 
         const shuffleArray = (array) => {
@@ -301,7 +303,7 @@ export default function DetailPage() {
                     onClick={() =>
                       handleRateSubmit(
                         INTERACTED_ARTICLE_ENUM["RATE"],
-                        star.toString()
+                        star.toString(),
                       )
                     }
                     onMouseEnter={() => setHoverRating(star)}
@@ -380,7 +382,7 @@ export default function DetailPage() {
                 }
                 className={clsx(
                   "w-full p-3 border border-gray-300 rounded resize-none min-h-[100px] text-sm",
-                  !user ? "bg-brandPrimary/10" : "bg-inherit"
+                  !user ? "bg-brandPrimary/10" : "bg-inherit",
                 )}
                 onFocus={() => {
                   if (!user) {
@@ -399,7 +401,7 @@ export default function DetailPage() {
                   onClick={() =>
                     handleRateSubmit(
                       INTERACTED_ARTICLE_ENUM["COMMENT"],
-                      comment
+                      comment,
                     )
                   }
                 >
@@ -410,18 +412,18 @@ export default function DetailPage() {
               {showLoginPrompt && !user && (
                 <div className="mt-2 bg-yellow-100 border border-yellow-400 text-yellow-700 p-3 rounded text-md">
                   {t(
-                    "homepage.contentSection.services.needLogin2Comment.sentence1"
+                    "homepage.contentSection.services.needLogin2Comment.sentence1",
                   )}{" "}
                   <span
                     className="font-bold cursor-pointer text-blue-600 underline"
                     onClick={() => setShowLoginDialog(true)}
                   >
                     {t(
-                      "homepage.contentSection.services.needLogin2Comment.sentence2"
+                      "homepage.contentSection.services.needLogin2Comment.sentence2",
                     )}{" "}
                   </span>
                   {t(
-                    "homepage.contentSection.services.needLogin2Comment.sentence3"
+                    "homepage.contentSection.services.needLogin2Comment.sentence3",
                   )}
                   .
                 </div>
@@ -442,13 +444,17 @@ export default function DetailPage() {
             <h2 className="font-semibold text-xl py-2 text-red-600">
               {t("detailPage.title")}
             </h2>
-            <div className="grid grid-rows-3 w-full gap-4">
-              {articles.map((card, index) => (
-                <div key={index}>
-                  <ItemKnowledge {...card} path={category} />
-                </div>
-              ))}
-            </div>
+            {articles.length !== 0 ? (
+              <div className="grid grid-rows-3 w-full gap-4">
+                {articles.map((card, index) => (
+                  <div key={index}>
+                    <ItemKnowledge {...card} path={category} />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <h2 className="text-sm text-slate-400">Hiện chưa có thông tin</h2>
+            )}
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 // src/constants/navLinks.js
 const navLinks = [
-  {id: 1, label: "nav.home", path: "/"},
+  { id: 1, label: "nav.home", path: "/" },
   {
     id: 2,
     label: "nav.overview",
@@ -8,12 +8,28 @@ const navLinks = [
     dynamicSource: "default",
     dynamicPrefix: "/tong-quan",
     children: [
-      {id: 1, label: "about.BOARD_OF_MANAGEMERS", path: "/tong-quan/hoi-dong-quan-ly-vien"},
-      {id: 2, label: "about.BOARD_OF_DIRECTORS", path: "/tong-quan/ban-lanh-dao"},
-      {id: 3, label: "about.SCIENTIFIC_COUNCIL", path: "/tong-quan/Hoi-dong-khoa-hoc"},
-      {id: 4, label: "about.ADVISORY_BOARD", path: "/tong-quan/Hoi-dong-co-van"},
-      {id: 5, label: "about.OTHER_DEPRATMENTS", path: "/tong-quan/phong-ban"},    
-      {id: 6, label: "about.PARTNERS", path: "/tong-quan/partner"},    
+      {
+        id: 1,
+        label: "about.BOARD_OF_MANAGEMERS",
+        path: "/tong-quan/hoi-dong-quan-ly-vien",
+      },
+      {
+        id: 2,
+        label: "about.BOARD_OF_DIRECTORS",
+        path: "/tong-quan/ban-lanh-dao",
+      },
+      {
+        id: 3,
+        label: "about.SCIENTIFIC_COUNCIL",
+        path: "/tong-quan/Hoi-dong-khoa-hoc",
+      },
+      {
+        id: 4,
+        label: "about.ADVISORY_BOARD",
+        path: "/tong-quan/Hoi-dong-co-van",
+      },
+      { id: 5, label: "about.OTHER_DEPRATMENTS", path: "/tong-quan/phong-ban" },
+      { id: 6, label: "about.PARTNERS", path: "/tong-quan/partner" },
     ],
   },
   {
@@ -48,7 +64,15 @@ const navLinks = [
     dynamicPrefix: "/tin-tuc",
     children: [],
   },
-  {id: 7, label: "nav.contact", path: "/lien-he"},
+  {
+    id: 8,
+    label: "nav.admissions",
+    path: "/tuyen-sinh",
+    dynamicSource: "articles",
+    dynamicPrefix: "/tuyen-sinh",
+    children: [],
+  },
+  { id: 7, label: "nav.contact", path: "/lien-he" },
 ];
 
 export default navLinks;

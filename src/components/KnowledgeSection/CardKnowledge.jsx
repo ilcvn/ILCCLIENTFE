@@ -1,7 +1,7 @@
-import {Eye, MessageCircleMore} from "lucide-react";
-import React, {useCallback, useState} from "react";
-import {useTranslation} from "react-i18next";
-import {useNavigate} from "react-router-dom";
+import { Eye, MessageCircleMore } from "lucide-react";
+import React, { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 // Hàm tạo slug cho tiêu đề
 const createSlug = (title) => {
@@ -24,7 +24,7 @@ export default function CardKnowledge({
   comments = 0,
   typeArticle = "NEWS",
 }) {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate(); // Dùng để điều hướng
   const useDebounce = (callback, delay) => {
     const [timer, setTimer] = useState(null);
@@ -34,7 +34,7 @@ export default function CardKnowledge({
         if (timer) clearTimeout(timer);
         setTimer(setTimeout(() => callback(...args), delay));
       },
-      [callback, delay, timer]
+      [callback, delay, timer],
     );
   };
   const displayTitle = title || " ";
@@ -64,26 +64,27 @@ export default function CardKnowledge({
   }, 300);
 
   return (
-    <div className="group text-start cursor-pointer border-0 shadow-sm">
+    <div className="group text-start cursor-pointer border-0 shadow-lg h-auto w-full">
       {/* Container ảnh với overflow-hidden */}
       <div className="overflow-hidden" onClick={handleCardClick}>
         <img
           src={displayImage}
           alt={displayTitle}
-          className="md:h-[310px] aspect-[2/1] w-full mx-auto transform transition-transform duration-300 ease-in-out group-hover:scale-110"
+          className="h-[200px] md:h-[230px] aspect-square w-full mx-auto transform transition-transform duration-300 ease-in-out group-hover:scale-110"
         />
       </div>
-      <div className="text-justify ">
+
+      <div className="text-justify px-2 py-4">
         <div onClick={handleCardClick} className="min-h-[120px]">
-          <h1 className="text-lg font-semibold p-1 hover:text-brandSecondary">
+          <h1 className="text-lg line-clamp-1 font-semibold p-1 hover:text-brandSecondary">
             {displayTitle}
           </h1>
-          <p className="text-base py-1 line-clamp-3 max-h-[4.5em] text-gray-600">
+          <p className="text-base py-1 line-clamp-3 max-h-[4.5rem] text-gray-600">
             {displaySummary}
           </p>
         </div>
 
-        <div className="flex items-center justify-between gap-4 py-2">
+        <div className="flex items-center justify-between gap-4 py-2 w-full">
           <div className="flex gap-2">
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -130,14 +131,14 @@ export default function CardKnowledge({
           {typeArticle === "NEWS" ? (
             <button
               onClick={handleClickDetailArticle}
-              className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-center min-w-16 min-h-9"
+              className="text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600 text-center min-w-16 min-h-9"
             >
               {t("homepage.blogCard.btnContent")}
             </button>
           ) : (
             <button
               onClick={handleClickContact}
-              className="block text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600  min-w-16 min-h-9 text-center"
+              className="text-sm text-white  bg-brandSecondary p-2 rounded-lg font-semibold hover:bg-red-600  min-w-16 min-h-9 text-center"
             >
               {t("homepage.blogCard.btnRegister")}
             </button>

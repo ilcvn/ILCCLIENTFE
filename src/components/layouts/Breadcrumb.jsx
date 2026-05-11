@@ -49,7 +49,7 @@ const BreadcrumbDynamic = ({ header }) => {
   };
 
   return (
-    <div className="bg-gray-200 w-full">
+    <div className="bg-brandPrimary/10 w-full">
       <div className="md:max-w-screen-2xl mx-auto md:p-4 sm:p-2 p-1 z-50 text-black">
         <nav className="text-black text-sm" aria-label="Breadcrumb">
           <ol className="flex items-center gap-1 md:text-base text-sm ">
