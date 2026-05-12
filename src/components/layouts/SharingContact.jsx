@@ -112,7 +112,7 @@ function SharingContact() {
                 <div className="relative">
                   <span className="absolute inset-0 w-full h-full rounded-full border-4 border-brandPrimary animate-pulse-border"></span>
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/500px-Facebook_Logo_%282019%29.png"
                     alt="Chat với chúng tôi qua Facebook"
                     className="w-11 h-11 rounded-full shadow-md transition-transform group-hover:scale-110"
                   />
@@ -178,7 +178,7 @@ function SharingContact() {
 
         <button
           onClick={() => setShowContactMenu((prev) => !prev)}
-          className="w-11 h-11 text-white flex items-center justify-center bg-brandSecondary rounded-full shadow-lg"
+          className="w-11 h-11 text-white flex items-center justify-center bg-brandSecondary rounded-full shadow-xl"
           title="Mở Menu"
         >
           {showContactMenu ? (
