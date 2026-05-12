@@ -1,50 +1,42 @@
 import React, { useContext, useEffect, useState } from "react";
-import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
-import { Outlet, useLocation } from "react-router-dom";
-import LayoutPage from "../../components/LayoutPage";
-import { getArticles } from "../../api/Article/article";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../../context/LanguageContext";
+import { getArticles } from "../../api/Article/article";
+import BreadcrumbDynamic from "../../components/layouts/Breadcrumb";
 import { Helmet } from "react-helmet";
+import { Outlet, useLocation } from "react-router-dom";
+import LayoutPage from "../../components/LayoutPage";
 
-export default function ServicePage({ typePage }) {
+const AdmissionPage = () => {
   const location = useLocation();
-  const isRootPath = location.pathname === "/dich-vu";
+  const isRootPath = location.pathname === "/tuyen-sinh";
   const [articles, setArticles] = useState([]);
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const { t } = useTranslation();
+
   const { language, changeLanguage } = useContext(LanguageContext);
   const [articlesLn, setarticlesLn] = useState([]);
-  const [type, setType] = useState("SERVICE");
-  const [headerValue, setHeaderValue] = useState();
-
+  // Tạm thời searchQuery = "" (mặc định)
   const searchQuery = "";
+  const type = "ADMISSIONS";
+
   useEffect(() => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const currentLanguage = (language || "VI").toUpperCase();
-
-        setHeaderValue(t(`nav.${typePage.toLowerCase()}`));
+        const currentLanguage = language.toUpperCase() || "VI";
         const res = await getArticles(
           searchQuery,
           currentPage,
           10,
-          typePage,
+          type,
           currentLanguage,
         );
-        const data = res.data?.data;
-
-        setType(typePage);
-        if (data) {
-          const { articles, pagination } = data;
-          setArticles(articles);
-          setPagination(pagination);
-        } else {
-          console.warn("No data received from API.");
-        }
+        const { articles, pagination } = res.data.data;
+        setArticles(articles);
+        setPagination(pagination);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
@@ -53,7 +45,7 @@ export default function ServicePage({ typePage }) {
     };
 
     fetchArticles();
-  }, [searchQuery, currentPage, language, typePage]);
+  }, [searchQuery, currentPage, language]);
 
   // Hàm thay đổi trang
   const handlePageChange = (page) => {
@@ -64,21 +56,22 @@ export default function ServicePage({ typePage }) {
     <div className="bg-white w-full">
       <BreadcrumbDynamic />
       <Helmet>
-        <title>{t("nav.service")} | ILC</title>
+        <title>{t("nav.admissions")} | ILC</title>
       </Helmet>
-      {/* Nếu path là "/tong-quan", hiển thị LayoutPage */}
-      {
+      {isRootPath && (
         <LayoutPage
-          header={headerValue}
+          header={t("nav.admissions")}
           data={articles}
           pagination={pagination}
           onPageChange={handlePageChange}
           path={location.pathname}
         />
-      }
+      )}
 
       {/* Hiển thị nội dung của route con (nếu có) */}
       <Outlet />
     </div>
   );
-}
+};
+
+export default AdmissionPage;

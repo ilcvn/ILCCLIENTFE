@@ -26,11 +26,11 @@ export const getArticles = (
   page = "",
   limit = "",
   type = "",
-  language = ""
+  language = "",
 ) => {
   return instance.get(
     `/article/?type=${encodeURIComponent(
-      type
-    )}&search=${search}&page=${page}&limit=${limit}&language=${language}`
+      type,
+    )}&search=${search}&page=${page}&limit=${limit}&language=${language}`,
   );
 };

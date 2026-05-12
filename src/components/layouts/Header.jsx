@@ -26,6 +26,7 @@ const Header = () => {
   const [AboutArticles, setAboutArticles] = useState([]);
   const [NewsArticles, setNewsArticles] = useState([]);
   const [KnowledgeArticles, setKnowledgeArticles] = useState([]);
+  const [admissionsArticles, setAdmissionsArticles] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -47,19 +48,23 @@ const Header = () => {
         const response = await getAllArticles();
         const allArticles = response.data.data.articles;
         const articlesLeague = allArticles.filter(
-          (article) => article.language.toLowerCase() === language.toLowerCase()
+          (article) =>
+            article.language.toLowerCase() === language.toLowerCase(),
         );
         const ServiceArticles = articlesLeague.filter((article) =>
-          article.type.includes("SERVICE")
+          article.type.includes("SERVICE"),
         );
         const NewsArticles = articlesLeague.filter((article) =>
-          article.type.includes("NEWS")
+          article.type.includes("NEWS"),
         );
         const AboutArticles = articlesLeague.filter((article) =>
-          article.type.includes("TRAINING")
+          article.type.includes("TRAINING"),
         );
         const KnowledgeArticles = articlesLeague.filter((article) =>
-          article.type.includes("RESEARCH")
+          article.type.includes("RESEARCH"),
+        );
+        const admissionsArticles = articlesLeague.filter((article) =>
+          article.type.includes("ADMISSIONS"),
         );
 
         setArticles(allArticles);
@@ -68,6 +73,7 @@ const Header = () => {
         setServiceArticles(ServiceArticles);
         setNewsArticles(NewsArticles);
         setKnowledgeArticles(KnowledgeArticles);
+        setAdmissionsArticles(admissionsArticles);
       } catch (err) {
         setError(err);
         console.error("Lỗi khi lấy bài viết:", err);
@@ -94,7 +100,7 @@ const Header = () => {
     setInputValue(value);
     if (value.length > 0) {
       const filtered = articlesLn.filter((article) =>
-        article.title.toLowerCase().includes(value.toLowerCase())
+        article.title.toLowerCase().includes(value.toLowerCase()),
       );
       setSuggestions(filtered);
     } else {
@@ -125,6 +131,7 @@ const Header = () => {
       2: AboutArticles,
       5: KnowledgeArticles,
       6: NewsArticles,
+      8: admissionsArticles,
       default: AboutArticles,
     };
 
@@ -164,7 +171,7 @@ const Header = () => {
   const dynamicNavLinks = navLinks.map((nav) =>
     nav.dynamicSource === "articles"
       ? { ...nav, children: generateChildren(nav) }
-      : nav
+      : nav,
   );
 
   const handleLogout = () => {
@@ -192,7 +199,7 @@ const Header = () => {
           <div
             className={clsx(
               "h-16 w-full",
-              isScrolled ? "fixed top-0 z-30" : "relative top-0 z-40"
+              isScrolled ? "fixed top-0 z-30" : "relative top-0 z-40",
             )}
           >
             {/* MOBILE MENU */}
@@ -245,15 +252,15 @@ const Header = () => {
                   language.toUpperCase() === "VI"
                     ? "gap-9"
                     : language.toUpperCase() === "EN"
-                    ? "gap-12"
-                    : "gap-20"
+                      ? "gap-12"
+                      : "gap-20"
                 }`}
               >
                 {dynamicNavLinks.map((link) => {
                   const isActive =
                     location.pathname === link.path ||
                     link.children?.some(
-                      (child) => location.pathname === child.path
+                      (child) => location.pathname === child.path,
                     );
 
                   return (
@@ -262,7 +269,7 @@ const Header = () => {
                       className={clsx(
                         link.children
                           ? "relative group max-w-35 inline-block"
-                          : ""
+                          : "",
                       )}
                     >
                       <Link
@@ -271,7 +278,7 @@ const Header = () => {
                           "text-lg font-medium transition mx-2",
                           isActive
                             ? "text-brandPrimary"
-                            : "hover:text-brandPrimary"
+                            : "hover:text-brandPrimary",
                         )}
                       >
                         {t(link.label).toUpperCase()}
@@ -286,9 +293,9 @@ const Header = () => {
                             "transition-all duration-300 ease-in-out delay-150",
                             link.children.some(
                               (child) =>
-                                child.children || child.children?.length !== 0
+                                child.children || child.children?.length !== 0,
                             ) && "border-t-2 border-brandPrimary",
-                            !isScrolled ? "top-[46px]" : "top-[44px]"
+                            !isScrolled ? "top-[46px]" : "top-[44px]",
                           )}
                         >
                           {link.children.map((child) => (
@@ -300,7 +307,7 @@ const Header = () => {
                                 {t(
                                   child.label.length > 35
                                     ? `${child.label.slice(0, 35)}...`
-                                    : child.label
+                                    : child.label,
                                 ).toUpperCase()}
                               </Link>
                             </li>
@@ -367,7 +374,7 @@ const Header = () => {
         <div
           className={clsx(
             "fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity",
-            isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+            isOpen ? "opacity-100 visible" : "opacity-0 invisible",
           )}
           onClick={() => setIsOpen(false)}
         ></div>
@@ -375,7 +382,7 @@ const Header = () => {
         <div
           className={clsx(
             "fixed left-0 top-0 h-full w-3/4 bg-white shadow-lg transform transition-transform z-[100] duration-500 ease-in-out max-h-screen overflow-y-auto",
-            isOpen ? "translate-x-0" : "-translate-x-full"
+            isOpen ? "translate-x-0" : "-translate-x-full",
           )}
         >
           <div className="p-4">
