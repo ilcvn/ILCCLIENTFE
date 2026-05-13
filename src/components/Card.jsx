@@ -1,7 +1,7 @@
-import {Eye, MessageCircleMore} from "lucide-react";
-import React, {useState, useCallback} from "react";
-import {useNavigate} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import { Eye, MessageCircleMore } from "lucide-react";
+import React, { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const createSlug = (title) => {
   return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
@@ -16,7 +16,7 @@ const useDebounce = (callback, delay) => {
       if (timer) clearTimeout(timer);
       setTimer(setTimeout(() => callback(...args), delay));
     },
-    [callback, delay, timer]
+    [callback, delay, timer],
   );
 };
 
@@ -29,7 +29,7 @@ export default function Card({
   comments = 0,
   star = 3,
 }) {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // Handle navigation click
@@ -46,7 +46,7 @@ export default function Card({
   const [totalComments, setTotalComments] = useState(0);
 
   return (
-    <div className="text-justify cursor-pointer w-full  min-h-[300px] h-full flex flex-col justify-between rounded-md hover:scale-105 duration-300 bg-white shadow-sm transition-transform">
+    <div className="text-justify cursor-pointer w-full min-h-[300px] h-full flex flex-col justify-between rounded-lg hover:scale-105 duration-300 bg-white shadow-lg transition-transform">
       {/* IMAGE */}
       <div
         className="overflow-hidden w-full aspect-[3/2] rounded-t-md"
@@ -68,7 +68,10 @@ export default function Card({
           <h1 className="text-base font-semibold text-brandPrimary line-clamp-1 xl:line-clamp-2 md:text-[14px] hover:text-brandSecondary">
             {title || ""}
           </h1>
-          <p className="text-[14px] line-clamp-3" style={{minHeight: "4.5em"}}>
+          <p
+            className="text-[14px] line-clamp-3"
+            style={{ minHeight: "4.5em" }}
+          >
             {summary || ""}
           </p>
         </div>
