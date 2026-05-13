@@ -61,7 +61,7 @@ const SliderCardsItem = ({ isCard, isCardVideo, isPrevNextBtn }) => {
           currentPage,
           6,
           "SERVICE",
-          (language || "VI").toUpperCase()
+          (language || "VI").toUpperCase(),
         );
         const data = res.data?.data;
         if (data?.articles) {
@@ -167,17 +167,17 @@ const SliderCardsItem = ({ isCard, isCardVideo, isPrevNextBtn }) => {
                   views={card.views}
                   comments={
                     card.interactedArticles?.filter(
-                      (item) => item.type === "COMMENT"
+                      (item) => item.type === "COMMENT",
                     ).length || 0
                   }
                   star={(() => {
                     const rateItems =
                       card.interactedArticles?.filter(
-                        (item) => item.type === "RATE"
+                        (item) => item.type === "RATE",
                       ) || [];
                     const total = rateItems.reduce(
                       (sum, item) => sum + parseInt(item.value, 10),
-                      0
+                      0,
                     );
                     return rateItems.length > 0
                       ? Math.ceil(total / rateItems.length)

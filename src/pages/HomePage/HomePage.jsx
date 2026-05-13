@@ -87,7 +87,7 @@ function HomePage() {
               <span
                 className={clsx(
                   "text-justify",
-                  !isExpanded ? "text-gray-400" : "text-inherit"
+                  !isExpanded ? "text-gray-400" : "text-inherit",
                 )}
               >
                 {introText}
@@ -177,7 +177,7 @@ function HomePage() {
         <img
           src={Banner}
           alt="Banner"
-          className="w-full h-auto max-h-[500px] object-cover rounded-md"
+          className="w-full h-auto max-h-[500px] object-cover rounded-2xl"
         />
       </div>
 

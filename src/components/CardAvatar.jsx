@@ -1,8 +1,8 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
-import {getRoles} from "../helper/RoleMember";
-import {getTitles} from "../helper/TitleMember";
-import {useTranslation} from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { getRoles } from "../helper/RoleMember";
+import { getTitles } from "../helper/TitleMember";
+import { useTranslation } from "react-i18next";
 import { RiLeafFill } from "react-icons/ri";
 
 // Hàm chuyển đổi fullName thành slug (ví dụ "Thành Viên" -> "thanh-vien")
@@ -10,7 +10,7 @@ const createSlug = (title) => {
   return title ? title.trim().toLowerCase().replace(/\s+/g, "-") : "unknown";
 };
 
-export default function CardAvatar({props = {}}) {
+export default function CardAvatar({ props = {} }) {
   const {
     id = "unknown-id",
     fullName = "",
@@ -22,7 +22,7 @@ export default function CardAvatar({props = {}}) {
 
   const language = localStorage.getItem("language");
   const navigate = useNavigate();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const ChangeRole = getRoles();
 
   const handleClick = () => {
@@ -36,26 +36,34 @@ export default function CardAvatar({props = {}}) {
     if (!roleValue) return " ";
     const roles = getRoles();
     const roleFound = roles.find(
-      (role) => role.value === roleValue.toUpperCase()
+      (role) => role.value === roleValue.toUpperCase(),
     );
     return roleFound ? roleFound.title : "";
   };
   const getRoleTitles = (roles) => {
-
     const priorityList = [
-      'PRESIDENT', 'VICE_PRESIDENT', 'CHAIRPERSON', 'GROUP_PRESIDENT',
-      'ROOM_PRESIDENT', 'VICE_CHAIRMAN', 'GROUP_VICE_PRESIDENT', 'ROOM_VICE_PRESIDENT', 'MEMBER'
+      "PRESIDENT",
+      "VICE_PRESIDENT",
+      "CHAIRPERSON",
+      "GROUP_PRESIDENT",
+      "ROOM_PRESIDENT",
+      "VICE_CHAIRMAN",
+      "GROUP_VICE_PRESIDENT",
+      "ROOM_VICE_PRESIDENT",
+      "MEMBER",
     ];
-  
-    const roleArray = roles.split(', ').map(role => role.trim());
-  
+
+    const roleArray = roles.split(", ").map((role) => role.trim());
+
     const sortedRoles = roleArray.sort((a, b) => {
       return priorityList.indexOf(a) - priorityList.indexOf(b);
     });
-  
-    const sortedRolesString = sortedRoles.join(', ');
 
-    const roleValues = [sortedRolesString.split(",").map((role) => role.trim())[0]];
+    const sortedRolesString = sortedRoles.join(", ");
+
+    const roleValues = [
+      sortedRolesString.split(",").map((role) => role.trim())[0],
+    ];
 
     const roleNames = roleValues.map((roleValue) => {
       const roleFound = ChangeRole.find((item) => item.value === roleValue);
@@ -102,15 +110,14 @@ export default function CardAvatar({props = {}}) {
       <img
         src={imgUrl}
         alt={fullName}
-        className="p-1 w-[330px]  aspect-square mx-auto rounded-full object-cover transition-transform duration-300 hover:scale-90"
+        className="p-1 w-[330px] aspect-square mx-auto rounded-full object-cover transition-transform duration-300 hover:scale-90"
       />
-      <div className="p-2 md:mb-0  w-full lg:h-36 h-52 bg-white rounded-md shadow-md flex flex-col items-center justify-center text-center">
+      <div className="p-2 md:mb-0  w-full lg:h-36 h-52 bg-white rounded-md shadow-lg flex flex-col items-center justify-center text-center">
         <h2 className="text-base font-bold mt-2 p-1 w-full text-brandPrimary">
           {fullName.toUpperCase()}
         </h2>
         <p className="text-[14px] md:my-1 font-bold text-brandSecondary ">
           {getRoleTitles(role)}
-          
         </p>
         <h2 className="text-[12px] p-1 my-2 w-full font-semibold opacity-80 text-black">
           {penName.toUpperCase()}
