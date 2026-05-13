@@ -245,8 +245,8 @@ export default function DetailPage() {
       </Helmet>
       <BreadcrumbDynamic header={article.title} />
 
-      <div className="md:max-w-screen-2xl w-full mx-auto grid md:grid-cols-4 grid-cols-1 gap-2 relative">
-        <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4 col-span-3">
+      <div className="md:max-w-screen-2xl w-full mx-auto grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-2 relative">
+        <div className="md:border-r md:border-gray-200 md:p-4 p-2 space-y-4">
           <h1 className="font-semibold text-xl py-2">{article.title || " "}</h1>
 
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:justify-between">
@@ -439,20 +439,18 @@ export default function DetailPage() {
           </div>
         </div>
 
-        <div className="px-2 py-4 md:py-2 col-span-1">
-          <div className="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="px-2 py-4 md:block md:py-2">
+          <div className="sticky top-20 bottom-20 right-10 w-full">
             <h2 className="mb-3 text-lg font-semibold text-brandPrimary">
               {t("detailPage.title")}
             </h2>
 
-            {articles.length > 0 ? (
-              <div className="flex flex-col gap-6">
+            {articles.length !== 0 ? (
+              <div className="grid grid-rows-3 w-full gap-4">
                 {articles.map((card, index) => (
-                  <ItemKnowledge
-                    key={card.id ?? index}
-                    {...card}
-                    path={category}
-                  />
+                  <div key={index}>
+                    <ItemKnowledge {...card} path={category} />
+                  </div>
                 ))}
               </div>
             ) : (

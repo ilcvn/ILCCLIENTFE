@@ -33,14 +33,14 @@ export default function ItemKnowledge({
         <img
           src={displayImage}
           alt={displayTitle}
-          className="w-full h-[200px] md:aspect-[4/3] md:h-auto object-cover md:mx-auto"
+          className="w-full h-[200px] md:aspect-[5/3] md:h-auto object-cover md:mx-auto"
         />
         <div className="mx-auto w-full">
           <h2 className="text-sm font-semibold text-gray-900 group-hover:text-brandSecondary line-clamp-1">
             {displayTitle}
           </h2>
           <p className="mt-1 text-xs line-clamp-2">{displaySummary}</p>
-          <i className="mt-1.5 block text-xs text-gray-400">
+          <i className="mt-1.5 block text-xs text-gray-500">
             {createDate ? format(createDate, "dd-MM-yyyy") : ""}
           </i>
         </div>

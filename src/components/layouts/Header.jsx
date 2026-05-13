@@ -349,15 +349,22 @@ const Header = () => {
                           </button>
                         </div>
                         {suggestions.length > 0 && (
-                          <ul className="bg-white border border-gray-300 mt-1 max-h-60 overflow-y-auto z-50">
+                          <ul className="bg-white border border-gray-300 mt-1 max-h-60 overflow-y-auto z-50 w-full">
                             {suggestions.map((article, index) => (
-                              <li
-                                key={index}
-                                className="px-2 py-1 hover:bg-gray-100 cursor-pointer"
-                                onClick={() => handleSuggestionClick(article)}
-                              >
-                                {article.title}
-                              </li>
+                              <div className="flex items-start gap-2 px-2 py-1 pb-2 hover:bg-brandPrimary/20 cursor-pointer">
+                                <img
+                                  src={article.preview_img}
+                                  alt=""
+                                  className="w-16 h-16 object-cover rounded-md"
+                                />
+                                <li
+                                  key={index}
+                                  className=""
+                                  onClick={() => handleSuggestionClick(article)}
+                                >
+                                  {article.title}
+                                </li>
+                              </div>
                             ))}
                           </ul>
                         )}
