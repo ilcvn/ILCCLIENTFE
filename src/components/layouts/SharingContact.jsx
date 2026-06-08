@@ -67,7 +67,7 @@ function SharingContact() {
             {/* Phone */}
             <li>
               <a
-                href="tel:0703338458"
+                href="tel:0971992232"
                 rel="nofollow"
                 className="group flex flex-col items-center"
               >
